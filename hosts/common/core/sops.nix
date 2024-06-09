@@ -4,7 +4,7 @@
 let
   secretsDirectory = builtins.toString inputs.nix-secrets;
   secretsFile = "${secretsDirectory}/secrets.yaml";
-   
+
   # FIXME: Switch to a configLib function
   # this is some stuff for distinguishing linux from darwin. Likely just remove it.
   homeDirectory =
@@ -49,25 +49,27 @@ in
       "${configVars.username}/password".neededForUsers = true;
 
       #FIXME move to mstmp.nix and also have host and address being assigned to configVars as per fidgetingbits
-      msmtp-host = { };
-      msmtp-address = { };
-      msmtp-password = { };
+      # msmtp-host = { };
+      # msmtp-address = { };
+      # msmtp-password = { };
 
       # extract to default pam-u2f authfile location for passwordless sudo. see ../optional/yubikey
-      "yubico/u2f_keys" = {
-        path = "/home/${configVars.username}/.config/Yubico/u2f_keys";
-      };
+      # "yubico/u2f_keys" = {
+      #   path = "/home/${configVars.username}/.config/Yubico/u2f_keys";
+      # };
     };
   };
   # The containing folders are created as root and if this is the first ~/.config/ entry,
   # the ownership is busted and home-manager can't target because it can't write into .config...
   # FIXME: We might not need this depending on how https://github.com/Mic92/sops-nix/issues/381 is fixed
-  system.activationScripts.sopsSetAgeKeyOwnwership = let
-    ageFolder = "${homeDirectory}/.config/sops/age";
-    user = config.users.users.${configVars.username}.name;
-    group = config.users.users.${configVars.username}.group;
-  in ''
-    mkdir -p ${ageFolder} || true
-    chown -R ${user}:${group} ${homeDirectory}/.config
-  '';
+  system.activationScripts.sopsSetAgeKeyOwnwership =
+    let
+      ageFolder = "${homeDirectory}/.config/sops/age";
+      user = config.users.users.${configVars.username}.name;
+      group = config.users.users.${configVars.username}.group;
+    in
+    ''
+      mkdir -p ${ageFolder} || true
+      chown -R ${user}:${group} ${homeDirectory}/.config
+    '';
 }

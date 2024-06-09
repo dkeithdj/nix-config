@@ -5,7 +5,7 @@
 #
 ###############################################################
 
-{ inputs, configLib, ... }: {
+{ inputs, lib, configLib, ... }: {
   imports = [
     #################### Every Host Needs This ####################
     ./hardware-configuration.nix
@@ -17,7 +17,7 @@
 
     #################### Disk Layout ####################
     inputs.disko.nixosModules.disko
-    (configLib.relativeToRoot "hosts/common/disks/standard-disk-config.nix")
+    (configLib.relativeToRoot "hosts/common/disks/disko.nix")
     {
       _module.args = {
         disk = "/dev/vda";
@@ -36,16 +36,17 @@
     "hosts/common/optional/services/openssh.nix"
 
     # Desktop
-    "hosts/common/optional/services/greetd.nix" # display manager
-    "hosts/common/optional/hyprland.nix" # window manager
+    # "hosts/common/optional/services/greetd.nix" # display manager
+    # "hosts/common/optional/hyprland.nix" # window manager
+    "hosts/common/optional/gnome.nix" # desktop environment
 
     #################### Users to Create ####################
     "hosts/common/users/denrei"
   ]);
   # set custom autologin options. see greetd.nix for details
   # TODO is there a better spot for this?
-  autoLogin.enable = true;
-  autoLogin.username = "denrei";
+  # autoLogin.enable = true;
+  # autoLogin.username = "denrei";
 
   services.gnome.gnome-keyring.enable = true;
   # TODO enable and move to greetd area? may need authentication dir or something?
@@ -63,6 +64,30 @@
       efi.canTouchEfiVariables = true;
       timeout = 3;
     };
+    initrd.postDeviceCommands = lib.mkAfter ''
+      mkdir /btrfs_tmp
+      mount /dev/root_vg/root /btrfs_tmp
+      if [[ -e /btrfs_tmp/root ]]; then
+          mkdir -p /btrfs_tmp/old_roots
+          timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
+          mv /btrfs_tmp/root "/btrfs_tmp/old_roots/$timestamp"
+      fi
+
+      delete_subvolume_recursively() {
+          IFS=$'\n'
+          for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
+              delete_subvolume_recursively "/btrfs_tmp/$i"
+          done
+          btrfs subvolume delete "$1"
+      }
+
+      for i in $(find /btrfs_tmp/old_roots/ -maxdepth 1 -mtime +30); do
+          delete_subvolume_recursively "$i"
+      done
+
+      btrfs subvolume create /btrfs_tmp/root
+      umount /btrfs_tmp
+    '';
   };
 
   # This is a fix to enable VSCode to successfully remote SSH on a client to a NixOS host

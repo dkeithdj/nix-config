@@ -29,6 +29,8 @@
 
         age
         ssh-to-age
+        neovim
+        gh
         sops;
     };
   };

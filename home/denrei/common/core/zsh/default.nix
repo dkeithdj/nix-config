@@ -1,130 +1,111 @@
-{ pkgs, ... }: {
+{ pkgs
+, lib
+, config
+, ...
+}:
+let
+  inherit (lib) mkIf;
+  packageNames = map (p: p.pname or p.name or null) config.home.packages;
+  hasPackage = name: lib.any (x: x == name) packageNames;
+  hasRipgrep = hasPackage "ripgrep";
+  hasExa = hasPackage "eza";
+  hasSpecialisationCli = hasPackage "specialisation";
+  hasAwsCli = hasPackage "awscli2";
+  hasLazygit = hasPackage "lazygit";
+  hasNeovim = config.programs.neovim.enable;
+  hasEmacs = config.programs.emacs.enable;
+  hasNeomutt = config.programs.neomutt.enable;
+  hasShellColor = config.programs.shellcolor.enable;
+  hasKitty = config.programs.kitty.enable;
+  shellcolor = "${pkgs.shellcolord}/bin/shellcolor";
+in
+{
+
   programs.zsh = {
     enable = true;
-
-    # relative to ~
-    dotDir = ".config/zsh";
-    enableCompletion = true;
-    syntaxHighlighting.enable = true;
-    autocd = true;
     autosuggestion.enable = true;
-    history.size = 10000;
-    history.share = true;
-
-    plugins = [
-      {
-        name = "powerlevel10k-config";
-        src = ./p10k;
-        file = "p10k.zsh";
-      }
-      {
-        name = "zsh-powerlevel10k";
-        src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
-        file = "powerlevel10k.zsh-theme";
-      }
-      {
-        name = "zsh-term-title";
-        src = "${pkgs.zsh-term-title}/share/zsh/zsh-term-title/";
-      }
-      {
-        name = "cd-gitroot";
-        src = "${pkgs.cd-gitroot}/share/zsh/cd-gitroot";
-      }
-      {
-        name = "zhooks";
-        src = "${pkgs.zhooks}/share/zsh/zhooks";
-      }
-    ];
-
-    initExtraFirst = ''
-      # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-      # Initialization code that may require console input (password prompts, [y/n]
-      # confirmations, etc.) must go above this block; everything else may go below.
-      if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-        source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-      fi
-    '';
-
+    syntaxHighlighting.enable = true;
     initExtra = ''
-      # autoSuggestions config
 
-      unsetopt correct # autocorrect commands
+    bindkey -s '^f' '. cd-project\r'
 
-      setopt hist_ignore_all_dups # remove older duplicate entries from history
-      setopt hist_reduce_blanks # remove superfluous blanks from history items
-      setopt inc_append_history # save history entries as soon as they are entered
+    bindkey "^p" up-line-or-beginning-search # Up
+    bindkey "^n" down-line-or-beginning-search # Down
+    bindkey "^k" up-line-or-beginning-search # Up
+    bindkey "^j" down-line-or-beginning-search # Down
+    bindkey -r "^u"
+    bindkey -r "^d"
 
-      # auto complete options
-      setopt auto_list # automatically list choices on ambiguous completion
-      setopt auto_menu # automatically use menu completion
-      zstyle ':completion:*' menu select # select completions with arrow keys
-      zstyle ':completion:*' group-name "" # group results by category
-      zstyle ':completion:::::' completer _expand _complete _ignored _approximate # enable approximate matches for completion
-
-      #      bindkey '^I' forward-word         # tab
-      #      bindkey '^[[Z' backward-word      # shift+tab
-      #      bindkey '^ ' autosuggest-accept   # ctrl+space
     '';
 
-    oh-my-zsh = {
-      enable = true;
-      # Standard OMZ plugins pre-installed to $ZSH/plugins/
-      # Custom OMZ plugins are added to $ZSH_CUSTOM/plugins/
-      # Enabling too many plugins will slowdown shell startup
-      plugins = [
-        "git"
-        "sudo" # press Esc twice to get the previous command prefixed with sudo https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/sudo
-      ];
-      extraConfig = ''
-        # Display red dots whilst waiting for completion.
-        COMPLETION_WAITING_DOTS="true"
-      '';
+    history = {
+      ignoreDups = true;
+      size = 10000;
+      path = "${config.xdg.dataHome}/zsh/history";
     };
 
+
     shellAliases = {
-      # Overrides those provided by OMZ libs, plugins, and themes.
-      # For a full list of active aliases, run `alias`.
+      jqless = "jq -C | less -r";
 
-      #-------------Bat related------------
-      cat = "bat";
-      diff = "batdiff";
-      rg = "batgrep";
-      man = "batman";
+      n = "nix";
+      nd = "nix develop -c $SHELL";
+      ns = "nix shell";
+      nsn = "nix shell nixpkgs#";
+      nb = "nix build";
+      nbn = "nix build nixpkgs#";
+      nf = "nix flake";
 
-      #------------Navigation------------
-      doc = "cd $HOME/documents";
-      scripts = "cd $HOME/scripts";
-      ts = "cd $HOME/.talon/user/fidget";
-      src = "cd $HOME/src";
-      edu = "cd $HOME/src/edu";
-      dfs = "cd $HOME/src/dotfiles";
-      dfsw = "cd $HOME/src/dotfiles.wiki";
-      nfs = "cd $HOME/nix-config";
-      uc = "cd $HOME/src/unmovedcentre";
-      l = "eza -lah";
-      la = "eza -lah";
-      ll = "eza -lh";
-      ls = "eza";
-      lsa = "eza -lah";
+      nr = "nixos-rebuild --flake .";
+      nrs = "nixos-rebuild --flake . switch";
+      snr = "sudo nixos-rebuild --flake .";
+      snrs = "sudo nixos-rebuild --flake . switch";
+      hm = "home-manager --flake .";
+      hms = "home-manager --flake . switch";
 
-      #-------------Neovim---------------
-      e = "nvim";
-      vi = "nvim";
-      vim = "nvim";
+      s = mkIf hasSpecialisationCli "specialisation";
 
-      #-----------Nix related----------------
-      ne = "nix-instantiate --eval";
-      nb = "nix-build";
-      ns = "nix-shell";
+      ls = mkIf hasExa "eza";
+      exa = mkIf hasExa "eza";
 
-      #-----------Remotes----------------
-      cakes = "ssh -l freshcakes freshcakes.memeoid.cx";
-      gooey = "ssh -l pi 10.13.37.69";
-      gusto = "ssh -l ta 10.13.37.5";
-      grief = "ssh -l ta 10.13.37.7";
+      e = mkIf hasEmacs "emacsclient -t";
 
-      #-------------Git Goodness-------------
-      # just reference `$ alias` and use the defautls, they're good.
+      v = mkIf hasNeovim "nvim";
+      g = mkIf hasLazygit "lazygit";
+
+      ck = mkIf hasKitty "clone-in-kitty --type os-window";
+
+      awssw = mkIf hasAwsCli "export AWS_PROFILE=(aws configure list-profiles | fzf)";
+      # awssw = aws-switch;
+      grep = "grep --color=auto";
+      egrep = "egrep --color=auto";
+      fgrep = "fgrep --color=auto";
+      # confirm before overwriting something
+      cp = "cp -iv";
+      mv = "mv -iv";
+      rm = "rm -vI";
+      bc = "bc -ql";
+      mkd = "mkdir -pv";
+
+    };
+
+    zplug = {
+      enable = true;
+      zplugHome = "${config.xdg.dataHome}/zsh/zplug";
+      plugins = [
+        { name = "zsh-users/zsh-autosuggestions"; }
+        { name = "hlissner/zsh-autopair"; }
+        { name = "jeffreytse/zsh-vi-mode"; }
+        { name = "themes/robbyrussell"; tags = [ as:theme from:oh-my-zsh ]; }
+
+        { name = "zap-zsh/fzf"; }
+        { name = "Aloxaf/fzf-tab"; }
+        { name = "zap-zsh/exa"; }
+        { name = "zsh-users/zsh-syntax-highlighting"; }
+        { name = "MichaelAquilina/zsh-you-should-use"; }
+        { name = "esc/conda-zsh-completion"; }
+      ];
     };
   };
 }
+

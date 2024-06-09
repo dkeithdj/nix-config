@@ -1,14 +1,15 @@
-{ config, lib, pkgs, outputs, configLib, ... }:
+{ config, lib, pkgs, outputs, inputs, configLib, ... }:
 {
   imports = (configLib.scanPaths ./.)
-    ++ (builtins.attrValues outputs.homeManagerModules);
+    ++ (builtins.attrValues outputs.homeManagerModules)
+    ++ [ inputs.impermanence.nixosModules.home-manager.impermanence ];
 
   services.ssh-agent.enable = true;
 
   home = {
-    username = lib.mkDefault "ta";
+    username = lib.mkDefault "denrei";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
-    stateVersion = lib.mkDefault "23.05";
+    stateVersion = lib.mkDefault "24.05";
     sessionPath = [
       "$HOME/.local/bin"
       "$HOME/scripts/talon_scripts"
@@ -20,6 +21,30 @@
       TERMINAL = "kitty";
       EDITOR = "nvim";
       MANPAGER = "batman"; # see ./cli/bat.nix
+    };
+
+    persistence = {
+      "/persist/home/denrei" = {
+        # defaultDirectoryMethod = "symlink";
+        directories = [
+          "Documents"
+          "Downloads"
+          "Pictures"
+          "Videos"
+          "Music"
+          "VirtualBox VMs"
+          ".gnupg"
+          ".ssh"
+          ".nixops"
+          ".local/share/keyrings"
+          ".local/share/direnv"
+          ".local/bin"
+          ".local/share/zsh/"
+          ".local/share/nvim/"
+          ".local/share/nix" # trusted settings and repl history
+        ];
+        allowOther = true;
+      };
     };
   };
 
@@ -38,7 +63,10 @@
       fd# tree style ls
       findutils# find
       fzf# fuzzy search
+      gh# github cli
       jq# JSON pretty printer and manipulator
+      lazygit# git TUI
+      lazydocker# docker TUI
       nix-tree# nix package tree viewer
       ncdu# TUI disk usage
       pciutils
@@ -51,7 +79,22 @@
       unzip# zip extraction
       unrar# rar extraction
       wget# downloader
+
+      nixd# Nix LSP
+      alejandra# Nix formatter
+      nixfmt-rfc-style
+      nvd# Differ
+      nix-diff# Differ, more detailed
+      nix-output-monitor
+      nh# Nice wrapper for NixOS and HM
+      neofetch# system info
+      fastfetch# system info
+
+      wf-recorder
+      wl-clipboard
+
       zip; # zip compression
+
   };
 
   nixpkgs = {
