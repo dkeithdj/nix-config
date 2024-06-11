@@ -3,10 +3,6 @@
   programs.ssh = {
     enable = true;
 
-    # req'd for enabling yubikey-agent
-    extraConfig = ''
-      AddKeysToAgent yes
-    '';
 
     matchBlocks = {
       "git" = {
@@ -14,6 +10,7 @@
         user = "git";
         forwardAgent = true;
         identitiesOnly = true;
+        AddKeysToAgent = "yes";
         identityFile = [
           "~/.ssh/id_ed25519_github"
         ];

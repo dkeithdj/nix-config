@@ -40,9 +40,9 @@ age-key:
 rekey:
   cd ../nix-secrets && (\
     sops updatekeys -y secrets.yaml && \
-    (pre-commit run --all-files || true) && \
     git add -u && (git commit -m "chore: rekey" || true) && git push \
   )
+
 check-sops:
   scripts/check-sops.sh
 

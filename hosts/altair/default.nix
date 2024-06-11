@@ -11,9 +11,9 @@
     ./hardware-configuration.nix
 
     #################### Hardware Modules ####################
-    inputs.hardware.nixosModules.common-cpu-amd
-    inputs.hardware.nixosModules.common-gpu-amd
-    inputs.hardware.nixosModules.common-pc-ssd
+    # inputs.hardware.nixosModules.common-cpu-amd
+    # inputs.hardware.nixosModules.common-gpu-amd
+    # inputs.hardware.nixosModules.common-pc-ssd
 
     #################### Disk Layout ####################
     inputs.disko.nixosModules.disko
@@ -30,9 +30,6 @@
     "hosts/common/core"
 
     #################### Host-specific Optional Configs ####################
-    # "hosts/common/optional/yubikey"
-    # "hosts/common/optional/services/clamav.nix" # depends on optional/msmtp.nix
-    # "hosts/common/optional/msmtp.nix" # required for emailing clamav alerts
     "hosts/common/optional/services/openssh.nix"
 
     # Desktop
@@ -70,6 +67,6 @@
   programs.nix-ld.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.05";
 }
 

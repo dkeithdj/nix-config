@@ -4,8 +4,8 @@
   fontProfiles = {
     enable = true;
     monospace = {
-      family = "FiraCode Nerd Font";
-      package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
+      family = "FantasqueSansM Nerd Font";
+      package = pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; };
     };
     regular = {
       family = "Fira Sans";
@@ -13,3 +13,4 @@
     };
   };
 }
+

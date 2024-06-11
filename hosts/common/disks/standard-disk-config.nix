@@ -1,9 +1,11 @@
 # NOTE: ... is needed because dikso passes diskoFile
-{ lib
-, disk ? "/dev/vda"
-, withSwap ? false
-, swapSize
-, ...
+{
+  lib,
+  disk ? "/dev/vda",
+  withSwap ? false,
+  swapSize,
+  configVars,
+  ...
 }:
 {
   disko.devices = {
@@ -43,7 +45,7 @@
                     ];
                   };
                   "@persist" = {
-                    mountpoint = "/persist";
+                    mountpoint = "${configVars.persistFolder}";
                     mountOptions = [
                       "compress=zstd"
                       "noatime"

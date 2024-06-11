@@ -13,7 +13,7 @@ in
   ];
 
   sops = {
-    # This is the location of the host specific age-key for ta and will to have been extracted to this location via hosts/common/core/sops.nix on the host
+    # This is the location of the host specific age-key for denrei and will to have been extracted to this location via hosts/common/core/sops.nix on the host
     age.keyFile = "${homeDirectory}/.config/sops/age/keys.txt";
 
     defaultSopsFile = "${secretsFile}";
@@ -22,6 +22,9 @@ in
     secrets = {
       "ssh_keys/denrei" = {
         path = "${homeDirectory}/.ssh/id_denrei";
+      };
+      "ssh_keys/github" = {
+        path = "${homeDirectory}/.ssh/id_e25519_github";
       };
     };
   };
