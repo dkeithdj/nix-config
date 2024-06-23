@@ -39,6 +39,7 @@
 
     "hosts/common/optional/pipewire.nix" # audio
     "hosts/common/optional/vlc.nix" # media player
+    "hosts/common/optional/kanata" # keyboard colemak
 
     #################### Users to Create ####################
     "hosts/common/users/denrei"
