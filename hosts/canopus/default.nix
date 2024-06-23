@@ -46,7 +46,7 @@
   # set custom autologin options. see greetd.nix for details
   # TODO is there a better spot for this?
   # autoLogin.enable = true;
- # autoLogin.username = "denrei";
+  # autoLogin.username = "denrei";
 
   services.gnome.gnome-keyring.enable = true;
   ssh.startAgent = true;
