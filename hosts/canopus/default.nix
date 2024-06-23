@@ -51,7 +51,7 @@
   services.gnome.gnome-keyring.enable = true;
   ssh.startAgent = true;
   # TODO enable and move to greetd area? may need authentication dir or something?
-  services.pam.services.greetd.enableGnomeKeyring = true;
+  pam.services.greetd.enableGnomeKeyring = true;
 
   networking = {
     hostName = "canopus";
