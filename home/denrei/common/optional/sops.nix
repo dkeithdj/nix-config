@@ -24,7 +24,7 @@ in
         path = "${homeDirectory}/.ssh/id_denrei";
       };
       "ssh_keys/github" = {
-        path = "${homeDirectory}/.ssh/id_e25519_github";
+        path = "${homeDirectory}/.ssh/id_ed25519_github";
       };
     };
   };
