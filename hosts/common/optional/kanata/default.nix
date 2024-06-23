@@ -1,4 +1,8 @@
-{}: {
+{ pkgs }: {
+  envoronment.systemPackages = with pkgs; [
+    kanata
+  ];
+
   services.kanata = {
     enable = true;
     keyboards = {
