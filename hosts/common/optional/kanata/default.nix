@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  envoronment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     kanata
   ];
 
