@@ -2,7 +2,6 @@
 {
   environment.systemPackages = with pkgs; [ kanata ];
 
-  systemd.services.kanafa.wantedBy = lib.mkForce [ ];
   services.kanata = {
     enable = lib.mkDefault true;
     keyboards = {
