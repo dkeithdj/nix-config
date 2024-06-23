@@ -1,4 +1,4 @@
-{ pkgs }: {
+{ pkgs, ... }: {
   envoronment.systemPackages = with pkgs; [
     kanata
   ];
