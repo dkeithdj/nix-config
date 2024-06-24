@@ -1,9 +1,9 @@
 {
   "name": "ags-dotfiles",
-  "author": "Aylur",
+  "author": "Denrei Keith",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Aylur/dotfiles.git"
+    "url": "git+https://github.com/dkeithdj/nix-config.git"
   },
   "devDependencies": {
     "@girs/accountsservice-1.0": "^1.0.0-3.2.7",
