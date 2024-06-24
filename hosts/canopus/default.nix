@@ -5,45 +5,50 @@
 #
 ###############################################################
 
-{ inputs, configLib, ... }: {
-  imports = [
-    #################### Every Host Needs This ####################
-    ./hardware-configuration.nix
+{ inputs, configLib, ... }:
+{
+  imports =
+    [
+      #################### Every Host Needs This ####################
+      ./hardware-configuration.nix
 
-    #################### Hardware Modules ####################
-    # inputs.hardware.nixosModules.common-cpu-amd
-    # inputs.hardware.nixosModules.common-gpu-amd
-    # inputs.hardware.nixosModules.common-pc-ssd
+      #################### Hardware Modules ####################
+      # inputs.hardware.nixosModules.common-cpu-amd
+      # inputs.hardware.nixosModules.common-gpu-amd
+      # inputs.hardware.nixosModules.common-pc-ssd
 
-    #################### Disk Layout ####################
-    inputs.disko.nixosModules.disko
-    (configLib.relativeToRoot "hosts/common/disks/laptop-disk-config.nix")
-    {
-      _module.args = {
-        disk = [ "/dev/nvme0n1" "/dev/sda" ];
-        withSwap = true;
-        swapSize = "8";
-      };
-    }
-  ]
-  ++ (map configLib.relativeToRoot [
-    #################### Required Configs ####################
-    "hosts/common/core"
+      #################### Disk Layout ####################
+      inputs.disko.nixosModules.disko
+      (configLib.relativeToRoot "hosts/common/disks/laptop-disk-config.nix")
+      {
+        _module.args = {
+          disk = [
+            "/dev/nvme0n1"
+            "/dev/sda"
+          ];
+          withSwap = true;
+          swapSize = "8";
+        };
+      }
+    ]
+    ++ (map configLib.relativeToRoot [
+      #################### Required Configs ####################
+      "hosts/common/core"
 
-    #################### Host-specific Optional Configs ####################
-    "hosts/common/optional/services/openssh.nix"
+      #################### Host-specific Optional Configs ####################
+      "hosts/common/optional/services/openssh.nix"
 
-    # Desktop
-    # "hosts/common/optional/services/greetd.nix" # display manager
-    "hosts/common/optional/hyprland.nix" # window manager
+      # Desktop
+      # "hosts/common/optional/services/greetd.nix" # display manager
+      "hosts/common/optional/hyprland.nix" # window manager
 
-    "hosts/common/optional/pipewire.nix" # audio
-    "hosts/common/optional/vlc.nix" # media player
-    "hosts/common/optional/kanata" # keyboard colemak
+      "hosts/common/optional/pipewire.nix" # audio
+      "hosts/common/optional/vlc.nix" # media player
+      "hosts/common/optional/kanata" # keyboard colemak
 
-    #################### Users to Create ####################
-    "hosts/common/users/denrei"
-  ]);
+      #################### Users to Create ####################
+      "hosts/common/users/denrei"
+    ]);
   # set custom autologin options. see greetd.nix for details
   # TODO is there a better spot for this?
   # autoLogin.enable = true;
@@ -58,6 +63,26 @@
     networkmanager.enable = true;
     # enableIPv6 = false;
   };
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+    settings.General.Experimental = true; # for gnome-bluetooth percentage
+  };
+
+  programs.virt-manager.enable = true;
+  virtualisation = {
+    podman.enable = true;
+    docker.enable = true;
+    libvirtd.enable = true;
+  };
+
+  # logind
+  services.logind.extraConfig = ''
+    HandlePowerKey=ignore
+    HandleLidSwitch=suspend
+    HandleLidSwitchExternalPower=ignore
+  '';
 
   boot = {
     loader = {
@@ -74,4 +99,3 @@
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.05";
 }
-
