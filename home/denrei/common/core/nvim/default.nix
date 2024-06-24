@@ -1,9 +1,8 @@
-{
-  config,
-  lib,
-  pkgs,
-  inputs,
-  ...
+{ config
+, lib
+, pkgs
+, inputs
+, ...
 }:
 {
   xdg = {
@@ -12,7 +11,7 @@
       name = "NeoVim";
       comment = "Edit text files";
       icon = "nvim";
-      exec = "xterm -e ${pkgs.neovim}/bin/nvim %F";
+      exec = "kitty -e ${pkgs.neovim}/bin/nvim %F";
       categories = [ "TerminalEmulator" ];
       terminal = false;
       mimeType = [ "text/plain" ];
