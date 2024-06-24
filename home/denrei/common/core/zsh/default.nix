@@ -74,6 +74,7 @@ in
       g = mkIf hasLazygit "lazygit";
 
       ck = mkIf hasKitty "clone-in-kitty --type os-window";
+      cat = "bat";
 
       awssw = mkIf hasAwsCli "export AWS_PROFILE=(aws configure list-profiles | fzf)";
       # awssw = aws-switch;

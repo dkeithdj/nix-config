@@ -1,11 +1,10 @@
-{
-  config,
-  lib,
-  pkgs,
-  outputs,
-  inputs,
-  configLib,
-  ...
+{ config
+, lib
+, pkgs
+, outputs
+, inputs
+, configLib
+, ...
 }:
 {
   imports = (configLib.scanPaths ./.) ++ (builtins.attrValues outputs.homeManagerModules);
@@ -27,7 +26,7 @@
       TERM = "kitty";
       TERMINAL = "kitty";
       EDITOR = "nvim";
-      # MANPAGER = "batman"; # see ./cli/bat.nix
+      MANPAGER = "batman";
       BAT_THEME = "base16";
       # GOPATH = "${config.home.homeDirectory}/.local/share/go";
       # GOMODCACHE = "${config.home.homeDirectory}/.cache/go/pkg/mod";
@@ -76,11 +75,6 @@
       indicator = true;
     };
   };
-  # home.packages = let nerdfonts = pkgs.nerdfonts.override {
-  #     fonts = [
-  #     "Ubuntu" "UbuntuMono" "CascadiaCode" "FantasqueSansMono" "FiraCode"
-  #     ];
-  #   }; in [nerdfonts];
 
   home.packages = builtins.attrValues {
     inherit (pkgs)
@@ -90,41 +84,41 @@
 
       # See: https://github.com/nix-community/nixpkgs-fmt/issues/305
 
-      borgbackup # backups
-      btop # resource monitor
-      coreutils # basic gnu utils
+      borgbackup# backups
+      btop# resource monitor
+      coreutils# basic gnu utils
       # curl
 
-      eza # ls replacement
-      fd # tree style ls
-      findutils # find
-      fzf # fuzzy search
-      gh # github cli
-      jq # JSON pretty printer and manipulator
-      lazygit # git TUI
-      lazydocker # docker TUI
-      nix-tree # nix package tree viewer
-      ncdu # TUI disk usage
+      eza# ls replacement
+      fd# tree style ls
+      findutils# find
+      fzf# fuzzy search
+      gh# github cli
+      jq# JSON pretty printer and manipulator
+      lazygit# git TUI
+      lazydocker# docker TUI
+      nix-tree# nix package tree viewer
+      ncdu# TUI disk usage
       pciutils
-      pfetch # system info
-      pre-commit # git hooks
-      p7zip # compression & encryption
-      ripgrep # better grep
+      pfetch# system info
+      pre-commit# git hooks
+      p7zip# compression & encryption
+      ripgrep# better grep
       usbutils
-      tree # cli dir tree viewer
-      unzip # zip extraction
-      unrar # rar extraction
-      wget # downloader
+      tree# cli dir tree viewer
+      unzip# zip extraction
+      unrar# rar extraction
+      wget# downloader
 
-      nixd # Nix LSP
-      alejandra # Nix formatter
+      nixd# Nix LSP
+      alejandra# Nix formatter
       nixfmt-rfc-style
-      nvd # Differ
-      nix-diff # Differ, more detailed
+      nvd# Differ
+      nix-diff# Differ, more detailed
       nix-output-monitor
-      nh # Nice wrapper for NixOS and HM
-      neofetch # system info
-      fastfetch # system info
+      nh# Nice wrapper for NixOS and HM
+      neofetch# system info
+      fastfetch# system info
 
       wf-recorder
       wl-clipboard

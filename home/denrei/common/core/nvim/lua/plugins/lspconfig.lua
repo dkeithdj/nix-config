@@ -5,20 +5,15 @@ return {
     opts = {
         ----@type lspconfig.options
         servers = {
-            -- bashls = {},
-            -- gopls = {},
-            -- dockerls = {},
-            -- rust_analyzer = {},
-            -- pyright = {},
-            -- nixd = {
-            -- 	settings = {
-            -- 		nixd = {
-            -- 			formatting = {
-            -- 				command = { "alejandra" },
-            -- 			},
-            -- 		},
-            -- 	},
-            -- },
+            nixd = {
+                settings = {
+                    nixd = {
+                        formatting = {
+                            command = { "alejandra" },
+                        },
+                    },
+                },
+            },
             -- pyright will be automatically installed with mason and loaded with lspconfig
             -- pyright = {},
             lua_ls = {
