@@ -96,7 +96,7 @@ in
         { name = "zsh-users/zsh-autosuggestions"; }
         { name = "hlissner/zsh-autopair"; }
         { name = "jeffreytse/zsh-vi-mode"; }
-        { name = "themes/robbyrussell"; tags = [ as:theme from:oh-my-zsh ]; }
+        # { name = "themes/robbyrussell"; tags = [ as:theme from:oh-my-zsh ]; }
 
         { name = "zap-zsh/fzf"; }
         { name = "Aloxaf/fzf-tab"; }

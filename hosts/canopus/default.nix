@@ -45,6 +45,7 @@
       "hosts/common/optional/pipewire.nix" # audio
       "hosts/common/optional/vlc.nix" # media player
       "hosts/common/optional/kanata" # keyboard colemak
+      "hosts/common/optional/nautilus.nix" # file manager
 
       #################### Users to Create ####################
       "hosts/common/users/denrei"
@@ -80,6 +81,9 @@
     powerOnBoot = false;
     settings.General.Experimental = true; # for gnome-bluetooth percentage
   };
+
+  # dconf
+  programs.dconf.enable = true;
 
   programs.virt-manager.enable = true;
   virtualisation = {
