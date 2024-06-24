@@ -8,6 +8,7 @@
     common/optional/theme.nix
     common/optional/sops.nix
     common/optional/ags.nix
+    common/optinal/starship.nix
     common/optional/helper-scripts
 
     common/optional/desktops
