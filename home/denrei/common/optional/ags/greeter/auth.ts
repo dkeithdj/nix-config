@@ -5,7 +5,8 @@ import { bash } from "lib/utils";
 const userName = await bash(
   "find /home -maxdepth 1 -printf '%f\n' | tail -n 1",
 );
-const iconFile = `/var/lib/AccountsService/icons/${userName}`;
+// const iconFile = `/var/lib/AccountsService/icons/${userName}`;
+const { image } = options.quicksettings.avatar;
 
 // FIXME: AccountsService crashes?
 // import AccountsService from "gi://AccountsService?version=1.0"
@@ -34,7 +35,7 @@ async function login(pw: string) {
 const avatar = Widget.Box({
   class_name: "avatar",
   hpack: "center",
-  css: `background-image: url('${iconFile}')`,
+  css: `background-image: url('${image}')`,
 });
 
 const password = Widget.Entry({
