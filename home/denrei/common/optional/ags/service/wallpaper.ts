@@ -99,7 +99,7 @@ class Wallpaper extends Service {
       if (!this.#blockMonitor) this.#wallpaper();
     });
 
-    Utils.execAsync("swww-daemon")
+    Utils.execAsync("swww-daemon --format xrgb")
       .then(this.#wallpaper)
       .catch(() => null);
   }
