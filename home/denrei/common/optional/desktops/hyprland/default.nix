@@ -1,7 +1,4 @@
-{ inputs
-, pkgs
-, ...
-}:
+{ inputs, pkgs, ... }:
 let
   hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
   # plugins = inputs.hyprland-plugins.packages.${pkgs.system};
@@ -119,14 +116,24 @@ in
 
       bind =
         let
-          binding = mod: cmd: key: arg: "${mod}, ${key}, ${cmd}, ${arg}";
+          binding =
+            mod: cmd: key: arg:
+            "${mod}, ${key}, ${cmd}, ${arg}";
           mvfocus = binding "SUPER" "movefocus";
           ws = binding "SUPER" "workspace";
           resizeactive = binding "SUPER CTRL" "resizeactive";
           mvactive = binding "SUPER ALT" "moveactive";
           mvtows = binding "SUPER SHIFT" "movetoworkspace";
           e = "exec, ags -b hypr";
-          arr = [ 1 2 3 4 5 6 7 ];
+          arr = [
+            1
+            2
+            3
+            4
+            5
+            6
+            7
+          ];
         in
         [
           "CTRL SHIFT, R,  ${e} quit; ags -b hypr"
@@ -137,7 +144,7 @@ in
           ",Print,         ${e} -r 'recorder.screenshot()'"
           "SHIFT,Print,    ${e} -r 'recorder.screenshot(true)'"
           "SUPER, Return, exec, xterm" # xterm is a symlink, not actually xterm
-          "SUPER, W, exec, firefox"
+          "SUPER, W, exec, brave"
           "SUPER, T, exec, kitty"
 
           # youtube
@@ -207,7 +214,7 @@ in
           size = 8;
           passes = 3;
           new_optimizations = "on";
-          noise = 0.01;
+          noise = 1.0e-2;
           contrast = 0.9;
           brightness = 0.8;
           popups = true;
