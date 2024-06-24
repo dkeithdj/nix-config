@@ -51,14 +51,14 @@ const options = mkOptions(OPTIONS, {
 
     shadows: opt(true),
     padding: opt(7),
-    spacing: opt(12),
+    spacing: opt(3),
     radius: opt(11),
   },
 
-  transition: opt(200),
+  transition: opt(150),
 
   font: {
-    size: opt(13),
+    size: opt(11),
     name: opt("Ubuntu Nerd Font"),
   },
 
@@ -99,7 +99,7 @@ const options = mkOptions(OPTIONS, {
       action: opt(() => App.toggleWindow("launcher")),
     },
     date: {
-      format: opt("%H:%M - %A %e."),
+      format: opt("%H:%M - %A %e"),
       action: opt(() => App.toggleWindow("datemenu")),
     },
     battery: {
