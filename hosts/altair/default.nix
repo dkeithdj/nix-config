@@ -104,16 +104,23 @@
     loader = {
       systemd-boot = {
         enable = true;
+        extraEntries = {
+          "memtest86.conf" = ''
+            title Memtest86+
+            efi /efi/memtest86/memtest.efi
+            sort-key z_memtest
+          '';
+        };
+        extraFiles = {
+          "memtest86" = {
+            source = ./memtest86;
+            type = "file";
+          };
+        };
         # extraEntries = true;
         # extraFiles = true;
       };
       efi.canTouchEfiVariables = true;
-      grub = {
-        enable = true;
-        devices = ["nodev"];
-        efiSupport = true;
-        useOSProber = true;
-      };
       timeout = 3;
     };
   };
