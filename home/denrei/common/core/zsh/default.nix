@@ -25,7 +25,7 @@ in
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    initExtra = ''
+    initExtra = /*bash*/ ''
 
     bindkey -s '^f' '. cd-project\r'
 
