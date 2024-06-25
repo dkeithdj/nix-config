@@ -4,8 +4,6 @@
     qbittorrent
     neovide
 
-    dropbox
-
     onlyoffice-bin_latest
 
     evince
