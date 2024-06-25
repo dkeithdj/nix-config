@@ -103,19 +103,13 @@
   boot = {
     loader = {
       systemd-boot = {
-        enable = true;
+        enable = false;
         extraEntries = {
-          "memtest86.conf" = ''
-            title Memtest86+
-            efi /efi/memtest86/memtest.efi
-            sort-key z_memtest
+          "bootmgfw.efi" = ''
+            title Windows
+            efi /efi/EFI/Microsoft/Boot/bootmgfw.efi
+            sort-key z
           '';
-        };
-        extraFiles = {
-          "memtest86" = {
-            source = ./memtest86;
-            type = "file";
-          };
         };
         # extraEntries = true;
         # extraFiles = true;
