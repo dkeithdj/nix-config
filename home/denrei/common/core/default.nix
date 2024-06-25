@@ -28,8 +28,8 @@
       EDITOR = "nvim";
       MANPAGER = "batman";
       BAT_THEME = "base16";
-      # GOPATH = "${config.home.homeDirectory}/.local/share/go";
-      # GOMODCACHE = "${config.home.homeDirectory}/.cache/go/pkg/mod";
+      GOPATH = "${config.home.homeDirectory}/.local/share/go";
+      GOMODCACHE = "${config.home.homeDirectory}/.cache/go/pkg/mod";
     };
 
     # persistence = {
@@ -68,6 +68,7 @@
       "file://${home}/Videos"
       "file://${home}/Downloads"
       "file://${home}/Desktop"
+      "file://${home}/Projects"
     ];
   services = {
     kdeconnect = {
