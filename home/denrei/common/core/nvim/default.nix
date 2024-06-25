@@ -1,20 +1,20 @@
-{ config
-, lib
-, pkgs
-, inputs
-, ...
-}:
 {
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: {
   xdg = {
-    configFile.nvim.source = config.lib.mkOutOfStoreSymlink ../nvim;
+    configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink ../nvim;
     desktopEntries."nvim" = lib.mkIf pkgs.stdenv.isLinux {
       name = "NeoVim";
       comment = "Edit text files";
       icon = "nvim";
       exec = "kitty -e ${pkgs.neovim}/bin/nvim %F";
-      categories = [ "TerminalEmulator" ];
+      categories = ["TerminalEmulator"];
       terminal = false;
-      mimeType = [ "text/plain" ];
+      mimeType = ["text/plain"];
     };
   };
   programs.neovim = {
@@ -50,7 +50,5 @@
       nodePackages.eslint
       nodePackages.prettier
     ];
-
   };
-
 }

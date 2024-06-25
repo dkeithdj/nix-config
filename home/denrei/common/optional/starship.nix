@@ -1,8 +1,8 @@
-{ config
-, pkgs
-, ...
-}:
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   lang = icon: color: {
     symbol = icon;
     format = "[$symbol ](${color})";
@@ -38,7 +38,7 @@ let
       format = "  ";
     };
     continuation_prompt = "∙  ┆ ";
-    line_break = { disabled = false; };
+    line_break = {disabled = false;};
     status = {
       symbol = "✗";
       not_found_symbol = "󰍉 Not Found";
@@ -107,10 +107,9 @@ let
     dart = lang "" "blue";
     elixir = lang "" "purple";
   };
-  tomlFormat = pkgs.formats.toml { };
+  tomlFormat = pkgs.formats.toml {};
   starshipCmd = "${pkgs.starship}/bin/starship";
-in
-{
+in {
   xdg.configFile."starship.toml" = {
     source = tomlFormat.generate "starship-config" settings;
   };
@@ -123,4 +122,3 @@ in
     eval "$(${starshipCmd} init zsh)"
   '';
 }
-
