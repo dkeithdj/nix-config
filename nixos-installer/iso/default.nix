@@ -33,7 +33,6 @@
 
   networking = {
     hostName = "iso";
-    networkmanager.enable = true;
   };
 
   systemd = {
