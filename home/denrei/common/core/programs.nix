@@ -4,6 +4,8 @@
     qbittorrent
     neovide
 
+    vial
+
     onlyoffice-bin_latest
 
     evince
