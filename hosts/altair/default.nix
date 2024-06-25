@@ -44,6 +44,7 @@
 
       "hosts/common/optional/pipewire.nix" # audio
       "hosts/common/optional/vlc.nix" # media player
+      "hosts/common/optional/vial.nix" # media player
 
       "hosts/common/optional/nautilus.nix" # file manager
 
@@ -101,10 +102,18 @@
 
   boot = {
     loader = {
-      systemd-boot.enable = true;
-      systemd-boot.extraEntries = true;
-      systemd-boot.extraFiles = true;
+      systemd-boot = {
+        enable = true;
+        # extraEntries = true;
+        # extraFiles = true;
+      };
       efi.canTouchEfiVariables = true;
+      grub = {
+        enable = true;
+        devices = ["nodev"];
+        efiSupport = true;
+        useOSProber = true;
+      };
       timeout = 3;
     };
   };

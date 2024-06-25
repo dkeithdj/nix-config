@@ -1,9 +1,10 @@
-{ config
-, lib
-, pkgs
-, inputs
-, configVars
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  configVars,
+  ...
 }: {
   xdg = {
     # configFile.nvim.source = ../nvim;
@@ -14,9 +15,9 @@
       comment = "Edit text files";
       icon = "nvim";
       exec = "kitty -e ${pkgs.neovim}/bin/nvim %F";
-      categories = [ "TerminalEmulator" ];
+      categories = ["TerminalEmulator"];
       terminal = false;
-      mimeType = [ "text/plain" ];
+      mimeType = ["text/plain"];
     };
   };
   programs.neovim = {
@@ -47,6 +48,8 @@
 
       nil
       lua-language-server
+      luarocks
+      lua
       stylua
       alejandra
       nodePackages.eslint
