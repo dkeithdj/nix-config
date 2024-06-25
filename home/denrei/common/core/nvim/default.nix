@@ -6,7 +6,7 @@
 }:
 {
   xdg = {
-    configFile.nvim.source = ../nvim;
+    configFile.nvim.source = config.lib.mkOutOfStoreSymlink ../nvim;
     desktopEntries."nvim" = lib.mkIf pkgs.stdenv.isLinux {
       name = "NeoVim";
       comment = "Edit text files";
