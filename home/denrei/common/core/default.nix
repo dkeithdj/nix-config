@@ -87,10 +87,11 @@
       borgbackup# backups
       btop# resource monitor
       coreutils# basic gnu utils
-      # curl
+      curl
 
       eza# ls replacement
       fd# tree style ls
+      yazi# file explorer
       findutils# find
       fzf# fuzzy search
       gh# github cli
@@ -123,6 +124,18 @@
       wf-recorder
       wl-clipboard
       zip
+
+      transmission_4-gtk
+
+      # dev stuff
+      cargo
+      go
+      python3
+      nodejs
+      elixir
+      gcc
+      gnumake
+
 
       ; # zip compression
   };
