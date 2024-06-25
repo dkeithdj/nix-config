@@ -95,7 +95,7 @@
 
   system.activationScripts.wallpaper =
     let
-      wp = pkgs.writeShellScript "wp" ''
+      wp = pkgs.writeShellScript /*bash*/ "wp" ''
         CACHE="/var/cache/greeter"
         OPTS="$CACHE/options.json"
         HOME="/home/$(find /home -maxdepth 1 -printf '%f\n' | tail -n 1)"
