@@ -105,12 +105,14 @@
       systemd-boot = {
         enable = false;
         extraEntries = {
-          "bootmgfw.efi" = ''
+          "bootmgfw.conf" = ''
             title Windows
-            efi /efi/EFI/Microsoft/Boot/bootmgfw.efi
+            efi /EFI/Microsoft/Boot/bootmgfw.efi
+            options -nointerrupt -nomap -noversion HD0b:EFI\Microsoft\bootmgfw.efi
             sort-key z
           '';
         };
+        extraFiles = {"EFI/Microsoft/Boot/bootmgfw.efi" = /efi/EFI/Microsoft/Boot/bootmgfw.efi;};
         # extraEntries = true;
         # extraFiles = true;
       };
