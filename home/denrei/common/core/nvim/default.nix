@@ -1,23 +1,22 @@
-{
-  config,
-  lib,
-  pkgs,
-  inputs,
-  configVars,
-  ...
+{ config
+, lib
+, pkgs
+, inputs
+, configVars
+, ...
 }: {
   xdg = {
     # configFile.nvim.source = ../nvim;
     # configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink ../nvim;
-    configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/${configVars.username}/common/core/nvim";
+    configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Projects/nix-config/home/${configVars.username}/common/core/nvim";
     desktopEntries."nvim" = lib.mkIf pkgs.stdenv.isLinux {
       name = "NeoVim";
       comment = "Edit text files";
       icon = "nvim";
       exec = "kitty -e ${pkgs.neovim}/bin/nvim %F";
-      categories = ["TerminalEmulator"];
+      categories = [ "TerminalEmulator" ];
       terminal = false;
-      mimeType = ["text/plain"];
+      mimeType = [ "text/plain" ];
     };
   };
   programs.neovim = {
