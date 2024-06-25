@@ -1,6 +1,10 @@
-{ pkgs, ags, config, inputs, ... }:
 {
-
+  pkgs,
+  ags,
+  config,
+  inputs,
+  ...
+}: {
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -10,45 +14,45 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-gtk];
   };
 
   security = {
     polkit.enable = true;
-    pam.services.ags = { };
+    pam.services.ags = {};
   };
 
   environment.systemPackages = with pkgs;
-    with gnome; [
-      morewaita-icon-theme
-      adwaita-icon-theme
-      qogir-icon-theme
-      loupe
-      nautilus
-      baobab
-      gnome-text-editor
-      gnome-calendar
-      gnome-boxes
-      gnome-system-monitor
-      gnome-control-center
-      gnome-weather
-      gnome-calculator
-      gnome-clocks
-      gnome-software # for flatpak
-      wl-gammactl
-      wl-clipboard
-      wayshot
-      pavucontrol
-      brightnessctl
-      swww
-    ];
+  with gnome; [
+    morewaita-icon-theme
+    adwaita-icon-theme
+    qogir-icon-theme
+    loupe
+    nautilus
+    baobab
+    gnome-text-editor
+    gnome-calendar
+    gnome-boxes
+    gnome-system-monitor
+    gnome-control-center
+    gnome-weather
+    gnome-calculator
+    gnome-clocks
+    gnome-software # for flatpak
+    wl-gammactl
+    wl-clipboard
+    wayshot
+    pavucontrol
+    brightnessctl
+    swww
+  ];
 
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {
       description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
+      wantedBy = ["graphical-session.target"];
+      wants = ["graphical-session.target"];
+      after = ["graphical-session.target"];
       serviceConfig = {
         Type = "simple";
         ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
@@ -93,9 +97,13 @@
     "d '/var/cache/greeter' - greeter greeter - -"
   ];
 
-  system.activationScripts.wallpaper =
-    let
-      wp = pkgs.writeShellScript /*bash*/ "wp" ''
+  system.activationScripts.wallpaper = let
+    wp =
+      pkgs.writeShellScript
+      /*
+      bash
+      */
+      "wp" ''
         CACHE="/var/cache/greeter"
         OPTS="$CACHE/options.json"
         HOME="/home/$(find /home -maxdepth 1 -printf '%f\n' | tail -n 1)"
@@ -113,8 +121,6 @@
           chown greeter:greeter "$CACHE/background"
         fi
       '';
-    in
+  in
     builtins.readFile wp;
-
-
 }

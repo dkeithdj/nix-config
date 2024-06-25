@@ -2,7 +2,7 @@ return {
     "jmbuhr/otter.nvim",
     dependencies = {
         "neovim/nvim-lspconfig",
-        -- "hrsh7th/nvim-cmp", -- optional, for completion
+        "hrsh7th/nvim-cmp", -- optional, for completion
         "nvim-treesitter/nvim-treesitter",
     },
     lazy = true,
