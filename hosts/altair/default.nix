@@ -38,6 +38,7 @@
     "hosts/common/optional/hyprland.nix" # window manager
 
     "hosts/common/optional/pipewire.nix" # audio
+    "hosts/common/optional/dropbox.nix" # dropbox
     "hosts/common/optional/vlc.nix" # media player
     "hosts/common/optional/kanata" # keyboard colemak
     "hosts/common/optional/nautilus.nix" # file manager
