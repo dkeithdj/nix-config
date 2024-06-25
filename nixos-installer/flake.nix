@@ -2,10 +2,12 @@
   description = "Minimal NixOS configuration for bootstrapping systems";
 
   inputs = {
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs/release-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # Declarative partitioning and formatting
-    disko.url = "github:nix-community/disko";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs:

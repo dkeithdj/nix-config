@@ -31,6 +31,7 @@
 
     #################### Host-specific Optional Configs ####################
     "hosts/common/optional/services/openssh.nix"
+    "hosts/common/optional/secure-boot"
 
     # Desktop
     # "hosts/common/optional/services/greetd.nix" # display manager
