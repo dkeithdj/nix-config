@@ -15,7 +15,7 @@
         rm -rf "$HOME/.config/ags"
 
         ln -s "$HOME/nix-config/home/denrei/common/core/nvim/" "$HOME/.config/nvim"
-        ln -s "$HOME/nix-config/home/denrei/optional/core/ags" "$HOME/.config/ags"
+        ln -s "$HOME/nix-config/home/denrei/common/optional/ags" "$HOME/.config/ags"
       fi
     '';
   nx-switch = pkgs.writeShellScriptBin "nx-switch" ''
