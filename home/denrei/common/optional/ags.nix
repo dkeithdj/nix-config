@@ -1,5 +1,7 @@
 { inputs
+, config
 , pkgs
+, configVars
 , ...
 }: {
   imports = [
@@ -24,9 +26,11 @@
     gtk3
   ];
 
+  xdg.configFile.ags.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Projects/nix-config/home/${configVars.username}/common/optional/ags";
+
   programs.ags = {
     enable = true;
-    configDir = ./ags;
+    # configDir = ./ags;
     extraPackages = with pkgs; [
       accountsservice
     ];

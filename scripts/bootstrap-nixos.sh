@@ -291,9 +291,9 @@ if yes_or_no "Do you want to copy your full nix-config and nix-secrets to $targe
 	green "Adding ssh host fingerprint at $target_destination to ~/.ssh/known_hosts"
 	ssh-keyscan -p "$ssh_port" "$target_destination" >>~/.ssh/known_hosts || true
 	green "Copying full nix-config to $target_hostname"
-	sync "$target_user" "${git_root}"/../nix-config
+	sync "$target_user" "${git_root}"/../Projects/nix-config
 	green "Copying full nix-secrets to $target_hostname"
-	sync "$target_user" "${git_root}"/../nix-secrets
+	sync "$target_user" "${git_root}"/../Projects/nix-secrets
 
 	if yes_or_no "Do you want to rebuild immediately?"; then
 		green "Rebuilding nix-config on $target_hostname"

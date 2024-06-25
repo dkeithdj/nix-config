@@ -51,8 +51,9 @@
       nixosConfigurations = {
         # host = newConfig "name" disk" "withSwap" "swapSize" "diskConfig"
         # Swap size is in GiB
-        polaris = newConfig "polaris" "/dev/vda" false "0" "standard-disk-config";
+        altair = newConfig "altair" "/dev/nvme1n1" false "0" "standard-disk-config";
         canopus = newConfig "canopus" [ "/dev/nvme0n1" "/dev/sda" ] true "8" "laptop-disk-config";
+        polaris = newConfig "polaris" "/dev/vda" false "0" "standard-disk-config";
 
         # Custom ISO
         #
