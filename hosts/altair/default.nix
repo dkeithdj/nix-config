@@ -4,48 +4,52 @@
 #  NixOS running on Bare Metal
 #
 ###############################################################
+{
+  inputs,
+  configLib,
+  ...
+}: {
+  imports =
+    [
+      #################### Every Host Needs This ####################
+      ./hardware-configuration.nix
 
-{ inputs, configLib, ... }: {
-  imports = [
-    #################### Every Host Needs This ####################
-    ./hardware-configuration.nix
+      #################### Hardware Modules ####################
+      # inputs.hardware.nixosModules.common-cpu-amd
+      # inputs.hardware.nixosModules.common-gpu-amd
+      # inputs.hardware.nixosModules.common-pc-ssd
 
-    #################### Hardware Modules ####################
-    # inputs.hardware.nixosModules.common-cpu-amd
-    # inputs.hardware.nixosModules.common-gpu-amd
-    # inputs.hardware.nixosModules.common-pc-ssd
+      #################### Disk Layout ####################
+      inputs.disko.nixosModules.disko
+      (configLib.relativeToRoot "hosts/common/disks/standard-disk-config.nix")
+      {
+        _module.args = {
+          disk = "/dev/nvme1n1";
+          withSwap = false;
+        };
+      }
+    ]
+    ++ (map configLib.relativeToRoot [
+      #################### Required Configs ####################
+      "hosts/common/core"
 
-    #################### Disk Layout ####################
-    inputs.disko.nixosModules.disko
-    (configLib.relativeToRoot "hosts/common/disks/standard-disk-config.nix")
-    {
-      _module.args = {
-        disk = "/dev/nvme1n1";
-        withSwap = false;
-      };
-    }
-  ]
-  ++ (map configLib.relativeToRoot [
-    #################### Required Configs ####################
-    "hosts/common/core"
+      #################### Host-specific Optional Configs ####################
+      "hosts/common/optional/services/openssh.nix"
+      "hosts/common/optional/services/dropbox.nix" # dropbox
+      "hosts/common/optional/secure-boot"
 
-    #################### Host-specific Optional Configs ####################
-    "hosts/common/optional/services/openssh.nix"
-    "hosts/common/optional/services/dropbox.nix" # dropbox
-    "hosts/common/optional/secure-boot"
+      # Desktop
+      # "hosts/common/optional/services/greetd.nix" # display manager
+      "hosts/common/optional/hyprland.nix" # window manager
 
-    # Desktop
-    # "hosts/common/optional/services/greetd.nix" # display manager
-    "hosts/common/optional/hyprland.nix" # window manager
+      "hosts/common/optional/pipewire.nix" # audio
+      "hosts/common/optional/vlc.nix" # media player
 
-    "hosts/common/optional/pipewire.nix" # audio
-    "hosts/common/optional/vlc.nix" # media player
-    "hosts/common/optional/kanata" # keyboard colemak
-    "hosts/common/optional/nautilus.nix" # file manager
+      "hosts/common/optional/nautilus.nix" # file manager
 
-    #################### Users to Create ####################
-    "hosts/common/users/denrei"
-  ]);
+      #################### Users to Create ####################
+      "hosts/common/users/denrei"
+    ]);
   # set custom autologin options. see greetd.nix for details
   # TODO is there a better spot for this?
   # autoLogin.enable = true;
@@ -110,4 +114,3 @@
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.05";
 }
-
