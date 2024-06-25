@@ -171,6 +171,7 @@
           specialArgs = specialArgs;
           modules = [
             kmonad.nixosModules.default
+            lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager
             { home-manager.extraSpecialArgs = specialArgs; }
             ./hosts/canopus
