@@ -4,5 +4,6 @@
     (mpv.override { scripts = [ mpvScripts.mpris ]; })
     calibre
     spotify
+    obs-studio
   ];
 }

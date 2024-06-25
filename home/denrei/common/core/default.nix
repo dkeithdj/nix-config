@@ -98,6 +98,7 @@
       jq# JSON pretty printer and manipulator
       lazygit# git TUI
       lazydocker# docker TUI
+      docker-compose
       nix-tree# nix package tree viewer
       ncdu# TUI disk usage
       pciutils
