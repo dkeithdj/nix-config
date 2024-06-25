@@ -1,51 +1,50 @@
-import GLib from "gi://GLib?version=2.0";
-import icons from "lib/icons";
-import { bash } from "lib/utils";
+import GLib from "gi://GLib?version=2.0"
+import icons from "lib/icons"
+import { bash } from "lib/utils"
 
 const userName = await bash(
   "find /home -maxdepth 1 -printf '%f\n' | tail -n 1",
-);
-// const iconFile = `/var/lib/AccountsService/icons/${userName}`;
-const { image } = options.quicksettings.avatar;
+)
+const iconFile = `/var/lib/AccountsService/icons/${userName}`
 
 // FIXME: AccountsService crashes?
 // import AccountsService from "gi://AccountsService?version=1.0"
 // const { iconFile, realName, userName } = AccountsService.UserManager
 //     .get_default().list_users()[0]
 
-const loggingin = Variable(false);
+const loggingin = Variable(false)
 
-const CMD = GLib.getenv("DENREI_DM_CMD") || "Hyprland";
+const CMD = GLib.getenv("DENREI_DM_CMD") || "Hyprland"
 
 const ENV =
   GLib.getenv("DENREI_DM_ENV") ||
-  "WLR_NO_HARDWARE_CURSORS=1 _JAVA_AWT_WM_NONREPARENTING=1";
+  "WLR_NO_HARDWARE_CURSORS=1 _JAVA_AWT_WM_NONREPARENTING=1"
 
 async function login(pw: string) {
-  loggingin.value = true;
-  const greetd = await Service.import("greetd");
-  return greetd.login(userName, pw, CMD, ENV.split(/\s+/)).catch((res) => {
-    loggingin.value = false;
-    response.label = res?.description || JSON.stringify(res);
-    password.text = "";
-    revealer.reveal_child = true;
-  });
+  loggingin.value = true
+  const greetd = await Service.import("greetd")
+  return greetd.login(userName, pw, CMD, ENV.split(/\s+/)).catch(res => {
+    loggingin.value = false
+    response.label = res?.description || JSON.stringify(res)
+    password.text = ""
+    revealer.reveal_child = true
+  })
 }
 
 const avatar = Widget.Box({
   class_name: "avatar",
   hpack: "center",
-  css: `background-image: url('${image}')`,
-});
+  css: `background-image: url('${iconFile}')`,
+})
 
 const password = Widget.Entry({
   placeholder_text: "Password",
   hexpand: true,
   visibility: false,
   on_accept: ({ text }) => {
-    login(text || "");
+    login(text || "")
   },
-});
+})
 
 const response = Widget.Label({
   class_name: "response",
@@ -54,12 +53,12 @@ const response = Widget.Label({
   hpack: "center",
   hexpand: true,
   xalign: 0.5,
-});
+})
 
 const revealer = Widget.Revealer({
   transition: "slide_down",
   child: response,
-});
+})
 
 export default Widget.Box({
   class_name: "auth",
@@ -100,7 +99,7 @@ export default Widget.Box({
             active: true,
           }),
           Widget.Icon({
-            visible: loggingin.bind().as((b) => !b),
+            visible: loggingin.bind().as(b => !b),
             icon: icons.ui.lock,
           }),
           password,
@@ -109,4 +108,4 @@ export default Widget.Box({
     }),
     Widget.Box({ class_name: "response-box" }, revealer),
   ],
-});
+})
