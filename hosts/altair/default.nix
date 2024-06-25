@@ -102,6 +102,8 @@
   boot = {
     loader = {
       systemd-boot.enable = true;
+      systemd-boot.extraEntries = true;
+      systemd-boot.extraFiles = true;
       efi.canTouchEfiVariables = true;
       timeout = 3;
     };
