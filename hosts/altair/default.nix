@@ -31,6 +31,7 @@
 
     #################### Host-specific Optional Configs ####################
     "hosts/common/optional/services/openssh.nix"
+    "hosts/common/optional/services/dropbox.nix" # dropbox
     "hosts/common/optional/secure-boot"
 
     # Desktop
@@ -38,7 +39,6 @@
     "hosts/common/optional/hyprland.nix" # window manager
 
     "hosts/common/optional/pipewire.nix" # audio
-    "hosts/common/optional/dropbox.nix" # dropbox
     "hosts/common/optional/vlc.nix" # media player
     "hosts/common/optional/kanata" # keyboard colemak
     "hosts/common/optional/nautilus.nix" # file manager
