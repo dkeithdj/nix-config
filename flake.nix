@@ -4,16 +4,16 @@
   inputs = {
     #################### Official NixOS and HM Package Sources ####################
 
-    nixpkgs.url = "github:NixOS/nixpkgs/release-24.05";
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:NixOS/nixpkgs/release-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.05"; # also see 'stable-packages' overlay at 'overlays/default.nix"
 
     hardware.url = "github:nixos/nixos-hardware";
     systems.url = "github:nix-systems/default-linux";
 
     home-manager = {
-      # url = "github:nix-community/home-manager"; # unstable
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager"; # unstable
+      # url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -91,6 +91,12 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    #################### Secure Boot ####################
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      # Optional but recommended to limit the size of your system closure.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -101,6 +107,7 @@
     , home-manager
     , systems
     , kmonad
+    , lanzaboote
     , ...
     }:
     let
@@ -153,6 +160,7 @@
         altair = lib.nixosSystem {
           specialArgs = specialArgs;
           modules = [
+            lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager
             { home-manager.extraSpecialArgs = specialArgs; }
             ./hosts/altair

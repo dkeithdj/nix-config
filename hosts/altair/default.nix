@@ -33,26 +33,65 @@
     "hosts/common/optional/services/openssh.nix"
 
     # Desktop
-    "hosts/common/optional/services/greetd.nix" # display manager
+    # "hosts/common/optional/services/greetd.nix" # display manager
     "hosts/common/optional/hyprland.nix" # window manager
+
+    "hosts/common/optional/pipewire.nix" # audio
+    "hosts/common/optional/vlc.nix" # media player
+    "hosts/common/optional/kanata" # keyboard colemak
+    "hosts/common/optional/nautilus.nix" # file manager
 
     #################### Users to Create ####################
     "hosts/common/users/denrei"
   ]);
   # set custom autologin options. see greetd.nix for details
   # TODO is there a better spot for this?
-  autoLogin.enable = true;
-  autoLogin.username = "denrei";
+  # autoLogin.enable = true;
+  # autoLogin.username = "denrei";
 
-  services.gnome.gnome-keyring.enable = true;
+  programs.ssh.startAgent = true;
   # TODO enable and move to greetd area? may need authentication dir or something?
-  # services.pam.services.greetd.enableGnomeKeyring = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
 
   networking = {
     hostName = "altair";
     networkmanager.enable = true;
-    enableIPv6 = false;
+    # enableIPv6 = false;
   };
+
+  # kde connect
+  networking.firewall = rec {
+    allowedTCPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
+    allowedUDPPortRanges = allowedTCPPortRanges;
+  };
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+    settings.General.Experimental = true; # for gnome-bluetooth percentage
+  };
+
+  # dconf
+  programs.dconf.enable = true;
+
+  programs.virt-manager.enable = true;
+  virtualisation = {
+    podman.enable = true;
+    docker.enable = true;
+    libvirtd.enable = true;
+  };
+
+  # logind
+  services.logind.extraConfig = ''
+    HandlePowerKey=ignore
+    HandleLidSwitch=suspend
+    HandleLidSwitchExternalPower=ignore
+  '';
 
   boot = {
     loader = {
