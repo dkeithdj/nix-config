@@ -1,5 +1,8 @@
-{ lib, pkgs, ... }:
 {
+  lib,
+  pkgs,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     sbctl
   ];
