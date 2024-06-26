@@ -110,7 +110,8 @@ in {
         (f "xdg-desktop-portal-gnome")
         (f "transmission-gtk")
         (f "com.github.Aylur.ags")
-        "workspace 7, title:Spotify"
+        "workspace 4, title:Spotify"
+        "workspace 4, title:vesktop"
       ];
 
       bind = let
@@ -135,6 +136,7 @@ in {
           "CTRL SHIFT, R,  ${e} quit; ags -b hypr"
           "SUPER, R,       ${e} -t launcher"
           "SUPER, Tab,     ${e} -t overview"
+          "SUPER,BACKSPACE,${e} -t 'powermenu'"
           ",XF86PowerOff,  ${e} -r 'powermenu.shutdown()'"
           ",XF86Launch4,   ${e} -r 'recorder.start()'"
           ",Print,         ${e} -r 'recorder.screenshot()'"
@@ -142,6 +144,10 @@ in {
           "SUPER, Return, exec, kitty" #
           "SUPER, W, exec, brave"
           "SUPER, T, exec, kitty"
+          "SUPER, D, exec, vesktop"
+          "SUPER, M, exec, spotify"
+          "SUPER, E, exec, gtk-launch org.gnome.Nautilus"
+          "SUPER, I, exec, gtk-launch org.gnome.Settings"
 
           # youtube
           ", XF86Launch1,  exec, ${yt}"
@@ -185,7 +191,7 @@ in {
 
       bindl = [
         ",XF86AudioPlay,    exec, ${playerctl} play-pause"
-        ",XF86AudioStop,    exec, ${playerctl} pause"
+        ",XF86AudioStop,    exec, ${playerctl} stop"
         ",XF86AudioPause,   exec, ${playerctl} pause"
         ",XF86AudioPrev,    exec, ${playerctl} previous"
         ",XF86AudioNext,    exec, ${playerctl} next"

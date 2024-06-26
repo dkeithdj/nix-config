@@ -1,8 +1,9 @@
-{ inputs
-, config
-, pkgs
-, configVars
-, ...
+{
+  inputs,
+  config,
+  pkgs,
+  configVars,
+  ...
 }: {
   imports = [
     inputs.ags.homeManagerModules.default
@@ -36,4 +37,3 @@
     ];
   };
 }
-
