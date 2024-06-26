@@ -1,6 +1,6 @@
 {inputs, ...}: {
   home = {
-    sessionVariables.BROWSER = "firefox";
+    sessionVariables.BROWSER = "brave";
 
     file."firefox-gnome-theme" = {
       target = ".mozilla/firefox/default/chrome/firefox-gnome-theme";
