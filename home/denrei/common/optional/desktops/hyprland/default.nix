@@ -137,7 +137,7 @@ in {
           "SUPER, Tab,     ${e} -t overview"
           ",XF86PowerOff,  ${e} -r 'powermenu.shutdown()'"
           ",XF86Launch4,   ${e} -r 'recorder.start()'"
-          "SUPER SHIFT,P, ${e} -r 'recorder.screenshot()'"
+          ",Print,         ${e} -r 'recorder.screenshot()'"
           "SHIFT,Print,    ${e} -r 'recorder.screenshot(true)'"
           "SUPER, Return, exec, kitty" #
           "SUPER, W, exec, brave"
