@@ -103,7 +103,7 @@
   boot = {
     loader = {
       systemd-boot = {
-        enable = false;
+        enable = true;
         extraEntries = {
           "bootmgfw.conf" = ''
             title Windows
