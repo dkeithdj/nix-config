@@ -4,6 +4,7 @@
     commandLineArgs = [
       "--no-default-browser-check"
       "--restore-last-sesion"
+      "--enable-features=TouchpadOverscrollHistoryNavigation"
     ];
   };
 }
