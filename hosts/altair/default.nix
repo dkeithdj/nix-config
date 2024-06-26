@@ -105,7 +105,7 @@
       systemd-boot = {
         enable = true;
       };
-      efi.canTouchEfiVariables = false;
+      efi.canTouchEfiVariables = true;
       timeout = 3;
     };
   };
