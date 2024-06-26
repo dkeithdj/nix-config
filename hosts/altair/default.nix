@@ -102,6 +102,8 @@
 
   boot = {
     loader = {
+      xbootldrMountPoint = "/boot";
+      efiSysMountPoint = "/efi";
       systemd-boot = {
         enable = true;
         extraEntries = {
