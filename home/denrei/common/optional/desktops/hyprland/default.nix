@@ -1,5 +1,8 @@
-{ inputs, pkgs, ... }:
-let
+{
+  inputs,
+  pkgs,
+  ...
+}: let
   hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
   # plugins = inputs.hyprland-plugins.packages.${pkgs.system};
 
@@ -11,14 +14,13 @@ let
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   pactl = "${pkgs.pulseaudio}/bin/pactl";
-in
-{
+in {
   xdg.desktopEntries."org.gnome.Settings" = {
     name = "Settings";
     comment = "Gnome Control Center";
     icon = "org.gnome.Settings";
     exec = "env XDG_CURRENT_DESKTOP=gnome ${pkgs.gnome.gnome-control-center}/bin/gnome-control-center";
-    categories = [ "X-Preferences" ];
+    categories = ["X-Preferences"];
     terminal = false;
   };
 
@@ -35,7 +37,6 @@ in
     ];
 
     settings = {
-
       env = [
         "NIXOS_OZONE_WL, 1" # for ozone-based and electron apps to run on wayland
         "MOZ_ENABLE_WAYLAND, 1" # for firefox to run on wayland
@@ -94,54 +95,49 @@ in
         workspace_swipe_use_r = true;
       };
 
-      windowrule =
-        let
-          f = regex: "float, ^(${regex})$";
-        in
-        [
-          (f "org.gnome.Calculator")
-          (f "org.gnome.Nautilus")
-          (f "pavucontrol")
-          (f "nm-connection-editor")
-          (f "blueberry.py")
-          (f "org.gnome.Settings")
-          (f "org.gnome.design.Palette")
-          (f "Color Picker")
-          (f "xdg-desktop-portal")
-          (f "xdg-desktop-portal-gnome")
-          (f "transmission-gtk")
-          (f "com.github.Aylur.ags")
-          "workspace 7, title:Spotify"
-        ];
+      windowrule = let
+        f = regex: "float, ^(${regex})$";
+      in [
+        (f "org.gnome.Calculator")
+        (f "org.gnome.Nautilus")
+        (f "pavucontrol")
+        (f "nm-connection-editor")
+        (f "blueberry.py")
+        (f "org.gnome.Settings")
+        (f "org.gnome.design.Palette")
+        (f "Color Picker")
+        (f "xdg-desktop-portal")
+        (f "xdg-desktop-portal-gnome")
+        (f "transmission-gtk")
+        (f "com.github.Aylur.ags")
+        "workspace 7, title:Spotify"
+      ];
 
-      bind =
-        let
-          binding =
-            mod: cmd: key: arg:
-            "${mod}, ${key}, ${cmd}, ${arg}";
-          mvfocus = binding "SUPER" "movefocus";
-          ws = binding "SUPER" "workspace";
-          resizeactive = binding "SUPER CTRL" "resizeactive";
-          mvactive = binding "SUPER ALT" "moveactive";
-          mvtows = binding "SUPER SHIFT" "movetoworkspace";
-          e = "exec, ags -b hypr";
-          arr = [
-            1
-            2
-            3
-            4
-            5
-            6
-            7
-          ];
-        in
+      bind = let
+        binding = mod: cmd: key: arg: "${mod}, ${key}, ${cmd}, ${arg}";
+        mvfocus = binding "SUPER" "movefocus";
+        ws = binding "SUPER" "workspace";
+        resizeactive = binding "SUPER CTRL" "resizeactive";
+        mvactive = binding "SUPER ALT" "moveactive";
+        mvtows = binding "SUPER SHIFT" "movetoworkspace";
+        e = "exec, ags -b hypr";
+        arr = [
+          1
+          2
+          3
+          4
+          5
+          6
+          7
+        ];
+      in
         [
           "CTRL SHIFT, R,  ${e} quit; ags -b hypr"
           "SUPER, R,       ${e} -t launcher"
           "SUPER, Tab,     ${e} -t overview"
           ",XF86PowerOff,  ${e} -r 'powermenu.shutdown()'"
           ",XF86Launch4,   ${e} -r 'recorder.start()'"
-          ",Print,         ${e} -r 'recorder.screenshot()'"
+          "SUPER SHIFT,P, ${e} -r 'recorder.screenshot()'"
           "SHIFT,Print,    ${e} -r 'recorder.screenshot(true)'"
           "SUPER, Return, exec, kitty" #
           "SUPER, W, exec, brave"
