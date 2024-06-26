@@ -99,29 +99,25 @@
     HandleLidSwitch=suspend
     HandleLidSwitchExternalPower=ignore
   '';
-
-  boot = {
-    loader = {
-      systemd-boot = {
-        enable = true;
-        xbootldrMountPoint = "/boot";
-        extraEntries = {
-          "bootmgfw.conf" = ''
-            title Windows
-            efi /EFI/Microsoft/Boot/bootmgfw.efi
-            options -nointerrupt -nomap -noversion HD0b:EFI\Microsoft\bootmgfw.efi
-            sort-key z
-          '';
-        };
-        extraFiles = {"EFI/Microsoft/Boot/bootmgfw.efi" = /efi/EFI/Microsoft/Boot/bootmgfw.efi;};
-        # extraEntries = true;
-        # extraFiles = true;
-      };
-      efi.efiSysMountPoint = "/efi";
-      efi.canTouchEfiVariables = true;
-      timeout = 3;
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    grub = {
+      enable = true;
+      devices = ["nodev"];
+      efiSupport = true;
+      useOSProber = true;
     };
+    timeout = 3;
   };
+  # boot = {
+  #   loader = {
+  #     systemd-boot = {
+  #       enable = true;
+  #     };
+  #     efi.canTouchEfiVariables = true;
+  #     timeout = 3;
+  #   };
+  # };
 
   # This is a fix to enable VSCode to successfully remote SSH on a client to a NixOS host
   # https://nixos.wiki/wiki/Visual_Studio_Code # Remote_SSH
