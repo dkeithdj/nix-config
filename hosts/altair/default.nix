@@ -102,10 +102,9 @@
 
   boot = {
     loader = {
-      xbootldrMountPoint = "/boot";
-      efiSysMountPoint = "/efi";
       systemd-boot = {
         enable = true;
+        xbootldrMountPoint = "/boot";
         extraEntries = {
           "bootmgfw.conf" = ''
             title Windows
@@ -118,6 +117,7 @@
         # extraEntries = true;
         # extraFiles = true;
       };
+      efi.efiSysMountPoint = "/efi";
       efi.canTouchEfiVariables = true;
       timeout = 3;
     };
