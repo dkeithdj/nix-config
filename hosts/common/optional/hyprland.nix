@@ -73,7 +73,7 @@
     libinput = {
       mouse = {
         accelProfile = "flat";
-        accelSpeed = "0";
+        accelSpeed = "-0.5";
       };
     };
     gvfs.enable = true;

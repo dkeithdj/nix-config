@@ -5,6 +5,7 @@ import options from "options";
 import Bar from "widget/bar/Bar";
 import Launcher from "widget/launcher/Launcher";
 import NotificationPopups from "widget/notifications/NotificationPopups";
+import Todo from "widget/desktop/Todo";
 import OSD from "widget/osd/OSD";
 import Overview from "widget/overview/Overview";
 import PowerMenu from "widget/powermenu/PowerMenu";
@@ -37,5 +38,6 @@ App.config({
     PowerMenu(),
     SettingsDialog(),
     Verification(),
+    Todo(0),
   ],
 });
