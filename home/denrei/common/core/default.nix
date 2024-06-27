@@ -18,7 +18,7 @@
     stateVersion = lib.mkDefault "24.05";
     sessionPath = ["$HOME/.local/bin"];
     sessionVariables = {
-      FLAKE = "$HOME/src/nix-config";
+      FLAKE = "$HOME/Projects/nix-config";
       QT_XCB_GL_INTEGRATION = "none"; # kde-connect
       NIXPKGS_ALLOW_UNFREE = "1";
       NIXPKGS_ALLOW_INSECURE = "1";
