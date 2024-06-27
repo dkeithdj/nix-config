@@ -69,8 +69,12 @@
       displayManager = {
         startx.enable = true;
       };
-      libinput.mouse.accelProfile = "flat";
-      libinput.mouse.accelSpeed = "0";
+    };
+    libinput = {
+      mouse = {
+        accelProfile = "flat";
+        accelSpeed = "0";
+      };
     };
     gvfs.enable = true;
     devmon.enable = true;
