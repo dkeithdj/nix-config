@@ -33,7 +33,7 @@ in {
           fi
           rm -f -- "$tmp"
         }
-                bindkey -s '^f' '. cd-project\r'
+                bindkey -s '^f' '. ${pkgs.cdproject}\r'
 
                 bindkey "^p" up-line-or-beginning-search # Up
                 bindkey "^n" down-line-or-beginning-search # Down
@@ -84,6 +84,12 @@ in {
       bc = "bc -ql";
       mkd = "mkdir -pv";
       cat = "bat";
+
+      nc = "cd $FLAKE && v";
+      nhh = "nh home switch";
+      nho = "nh os switch";
+
+      ve = ". ${pkgs.setenv}";
     };
 
     zplug = {
