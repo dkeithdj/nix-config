@@ -15,30 +15,8 @@
   hasShellColor = config.programs.shellcolor.enable;
   hasKitty = config.programs.kitty.enable;
   shellcolor = "${pkgs.shellcolord}/bin/shellcolor";
-
-  cdproject =
-    pkgs.writeShellScriptBin
-    "cd-project"
-    ''
-      if [[ $# -eq 1 ]]; then
-      	selected=$1
-      else
-      	selected=$(find -L ~/codes -mindepth 1 -maxdepth 2 -type d | fzf) || return
-      fi
-
-      if [[ -z $selected ]]; then
-      	exit 0
-      fi
-
-      selected_name=$(basename "$selected" | tr . _)
-
-      if [[ "$(pwd)" == "$selected" ]]; then
-      	echo " 📁 already in $selected_name"
-      else
-      	echo " 📁 going to $selected_name"
-      	cd $selected
-      fi
-    '';
+  cdproject = "${pkgs.cdproject}/bin/cdproject";
+  setenv = "${pkgs.setenv}/bin/setenv";
 in {
   programs.zsh = {
     enable = true;
@@ -109,11 +87,11 @@ in {
       mkd = "mkdir -pv";
       cat = "bat";
 
-      nc = "cd $FLAKE && v";
+      ncv = "cd $FLAKE && v";
       nhh = "nh home switch";
       nho = "nh os switch";
 
-      # ve = ". ${pkgs.lib.getExe (pkgs.)}";
+      ve = ". ${setenv}";
     };
 
     zplug = {

@@ -30,6 +30,16 @@
 
       '';
     };
+    cdproject = pkgs.writeShellApplication {
+      name = "cd-project";
+      runtimeInputs = with pkgs; [fzf];
+      text = builtins.readFile ./cd-project.sh;
+    };
+    setenv = pkgs.writeShellApplication {
+      name = "setenv";
+      runtimeInputs = with pkgs; [python3];
+      text = builtins.readFile ./setenv.sh;
+    };
   };
 in {
   home.packages = builtins.attrValues {
@@ -38,6 +48,8 @@ in {
       copy-github-subfolder
       linktree
       cows
+      cdproject
+      setenv
       ;
   };
 }
