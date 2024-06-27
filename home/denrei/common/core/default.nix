@@ -91,7 +91,7 @@
       curl
       eza # ls replacement
       fd # tree style ls
-      yazi # file explorer
+      
       findutils # find
       fzf # fuzzy search
       gh # github cli
