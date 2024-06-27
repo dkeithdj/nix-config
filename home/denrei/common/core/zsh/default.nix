@@ -15,8 +15,8 @@
   hasShellColor = config.programs.shellcolor.enable;
   hasKitty = config.programs.kitty.enable;
   shellcolor = "${pkgs.shellcolord}/bin/shellcolor";
-  cdproject = "${pkgs.cdproject}/bin/cdproject";
-  setenv = "${pkgs.setenv}/bin/setenv";
+  # cdproject = "${pkgs.cdproject}/bin/cdproject";
+  # setenv = "${pkgs.setenv}/bin/setenv";
 in {
   programs.zsh = {
     enable = true;
@@ -35,7 +35,7 @@ in {
           fi
           rm -f -- "$tmp"
         }
-                bindkey -s '^f' '. ${cdproject}\r'
+                bindkey -s '^f' '. cdproject\r'
 
                 bindkey "^p" up-line-or-beginning-search # Up
                 bindkey "^n" down-line-or-beginning-search # Down
@@ -91,7 +91,7 @@ in {
       nhh = "nh home switch";
       nho = "nh os switch";
 
-      ve = ". ${setenv}";
+      # ve = ". ${setenv}";
     };
 
     zplug = {
