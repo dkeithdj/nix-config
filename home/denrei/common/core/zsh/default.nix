@@ -25,7 +25,6 @@ in {
       bash
       */
       ''
-        source ./nh.zsh
         function yy() {
           local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
           yazi "$@" --cwd-file="$tmp"
