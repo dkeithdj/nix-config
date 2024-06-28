@@ -46,6 +46,7 @@
       python3
       nodejs
 
+      marksman
       nil
       lua-language-server
       luarocks
