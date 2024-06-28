@@ -7,4 +7,7 @@
       prompt = "enabled";
     };
   };
+  programs.gh-dash = {
+    enable = true;
+  };
 }
