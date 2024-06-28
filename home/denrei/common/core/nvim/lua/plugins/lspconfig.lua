@@ -5,6 +5,7 @@ return {
     opts = {
         ----@type lspconfig.options
         servers = {
+            solc = {},
             nixd = {
                 settings = {
                     nixd = {
