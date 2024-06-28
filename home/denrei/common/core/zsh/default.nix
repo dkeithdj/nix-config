@@ -9,17 +9,20 @@
   # scripts = import ./scripts.nix {inherit pkgs;};
 in {
   # imports = [scripts = ./scripts.nix];
-  home.file.".local/bin".source = config.lib.file.mkOutOfStoreSymlink ./cd-project.sh;
+  home.file.".local/bin/cd-project".source = config.lib.file.mkOutOfStoreSymlink ./cd-project;
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    enableCompletion = true;
     dotDir = ".config/zsh";
     initExtra =
       /*
       bash
       */
       ''
+        bindkey "''${key[Up]}" up-line-or-search
+
         function yy() {
           local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
           yazi "$@" --cwd-file="$tmp"
@@ -36,7 +39,6 @@ in {
         bindkey "^j" down-line-or-beginning-search # Down
         bindkey -r "^u"
         bindkey -r "^d"
-
       '';
 
     history = {
@@ -64,12 +66,12 @@ in {
       # confirm before overwriting something
 
       # git
-      "gs" = "git status";
-      "gb" = "git branch";
-      "gch" = "git checkout";
-      "gc" = "git commit";
-      "ga" = "git add";
-      "gr" = "git reset --soft HEAD~1";
+      gs = "git status";
+      gb = "git branch";
+      gch = "git checkout";
+      gc = "git commit";
+      ga = "git add";
+      gr = "git reset --soft HEAD~1";
 
       cp = "cp -iv";
       mv = "mv -iv";
