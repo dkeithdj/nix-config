@@ -46,7 +46,7 @@
       python3
       nodejs
 
-      icu.dev
+      prettierd
       marksman
       nil
       lua-language-server
