@@ -106,7 +106,7 @@ in {
       nhh = "nh home switch";
       nho = "nh os switch";
 
-      # ve = ". ${setenv}";
+      ve = ". setenv";
     };
   };
 }
