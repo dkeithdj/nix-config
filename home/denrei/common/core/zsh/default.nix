@@ -6,11 +6,10 @@
 }: let
   # cdproject = "${pkgs.cdproject}/bin/cdproject";
   # setenv = "${pkgs.setenv}/bin/setenv";
-  helloworld = pkgs.writeShellScriptBin "helloworld" ''
-    echo "hello world" | ${pkgs.cowsay}/bin/cowsay | ${pkgs.lolcat}/bin/lolcat
-  '';
+  # scripts = import ./scripts.nix {inherit pkgs;};
 in {
-  home.packages = [helloworld];
+  # imports = [scripts = ./scripts.nix];
+  home.file.".local/bin".source = config.lib.file.mkOutOfStoreSymlink ./cd-project.sh;
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -29,7 +28,7 @@ in {
           fi
           rm -f -- "$tmp"
         }
-        bindkey -s '^f' '${pkgs.cd-project}/bin/cd-project\r'
+        bindkey -s '^f' '. cd-project\r'
 
         bindkey "^p" up-line-or-beginning-search # Up
         bindkey "^n" down-line-or-beginning-search # Down

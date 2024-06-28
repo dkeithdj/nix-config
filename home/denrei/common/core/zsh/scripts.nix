@@ -1,9 +1,9 @@
 {pkgs, ...}: let
-  GREEN = "\033[0;32m";
-  BLUE = "\033[0;34m";
-  BOLD = "\033[1m";
-  NORMAL = "\033[0m";
-  cdproject = pkgs.writeShellApplication {
+  GREEN = "'\033[0;32m'";
+  BLUE = "'\033[0;34m'";
+  BOLD = "'\033[1m'";
+  NORMAL = "'\033[0m'";
+  cd-project = pkgs.writeShellApplication {
     name = "cd-project";
 
     runtimeInputs = with pkgs; [fzf];
@@ -12,7 +12,7 @@
       if [[ $# -eq 1 ]]; then
       	selected=$1
       else
-      	selected=$(find -L ~/codes -mindepth 1 -maxdepth 2 -type d | fzf) || return
+      	selected=$(find -L ~/Projects -mindepth 1 -maxdepth 2 -type d | fzf) || return
       fi
 
       if [[ -z $selected ]]; then
@@ -26,10 +26,10 @@
       	echo " 📁 ${BLUE}already in${NORMAL} ${BOLD}$selected_name"
       else
       	echo " 📁 ${GREEN}going to${NORMAL} ${BOLD}$selected_name"
-      	cd $selected
+      	cd "$selected"
       fi
     '';
   };
 in {
-  home.packages = [cdproject];
+  cd-project = cd-project;
 }
