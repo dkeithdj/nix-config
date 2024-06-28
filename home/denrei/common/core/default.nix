@@ -6,7 +6,13 @@
   inputs,
   configLib,
   ...
-}: {
+}: let
+  homeFiles = ["Documents" "Music" "Pictures" "Videos" "Downloads" "Desktop" "Projects"];
+  projectFiles = ["nix" "work" "school" "web"];
+
+  projectCreate = lib.strings.concatMapStringsSep " " (x: "mkdir -p ${config.home.homeDirectory}/Projects/" + x) projectFiles;
+  homeCreate = lib.strings.concatMapStringsSep " " (x: "mkdir -p ${config.home.homeDirectory}/" + x) homeFiles;
+in {
   imports = (configLib.scanPaths ./.) ++ (builtins.attrValues outputs.homeManagerModules);
   # ++ [ inputs.impermanence.nixosModules.home-manager.impermanence ];
 
@@ -33,7 +39,10 @@
       GOPATH = "${config.home.homeDirectory}/.local/share/go";
       GOMODCACHE = "${config.home.homeDirectory}/.cache/go/pkg/mod";
     };
-
+    activation = {
+      home = lib.hm.dag.entryAfter ["writeBoundary"] homeCreate;
+      projects = lib.hm.dag.entryAfter ["writeBoundary"] projectCreate;
+    };
     # persistence = {
     #   "/persist/home/denrei" = {
     #     # defaultDirectoryMethod = "symlink";
@@ -61,15 +70,8 @@
 
   gtk.gtk3.bookmarks = let
     home = config.home.homeDirectory;
-  in [
-    "file://${home}/Documents"
-    "file://${home}/Music"
-    "file://${home}/Pictures"
-    "file://${home}/Videos"
-    "file://${home}/Downloads"
-    "file://${home}/Desktop"
-    "file://${home}/Projects"
-  ];
+  in
+    builtins.map (x: "file://${home}/" + x) homeFiles;
   services = {
     kdeconnect = {
       enable = true;
