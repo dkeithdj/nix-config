@@ -4,24 +4,18 @@
   config,
   ...
 }: let
-  inherit (lib) mkIf;
-  packageNames = map (p: p.pname or p.name or null) config.home.packages;
-  hasPackage = name: lib.any (x: x == name) packageNames;
-  hasExa = hasPackage "eza";
-  hasSpecialisationCli = hasPackage "specialisation";
-  hasAwsCli = hasPackage "awscli2";
-  hasLazygit = hasPackage "lazygit";
-  hasNeovim = config.programs.neovim.enable;
-  hasShellColor = config.programs.shellcolor.enable;
-  hasKitty = config.programs.kitty.enable;
-  shellcolor = "${pkgs.shellcolord}/bin/shellcolor";
   # cdproject = "${pkgs.cdproject}/bin/cdproject";
   # setenv = "${pkgs.setenv}/bin/setenv";
+  helloworld = pkgs.writeShellScriptBin "helloworld" ''
+    echo "hello world" | ${pkgs.cowsay}/bin/cowsay | ${pkgs.lolcat}/bin/lolcat
+  '';
 in {
+  home.packages = [helloworld];
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    dotDir = ".config/zsh";
     initExtra =
       /*
       bash
@@ -35,14 +29,14 @@ in {
           fi
           rm -f -- "$tmp"
         }
-                bindkey -s '^f' '. cdproject\r'
+        bindkey -s '^f' '${pkgs.cd-project}/bin/cd-project\r'
 
-                bindkey "^p" up-line-or-beginning-search # Up
-                bindkey "^n" down-line-or-beginning-search # Down
-                bindkey "^k" up-line-or-beginning-search # Up
-                bindkey "^j" down-line-or-beginning-search # Down
-                bindkey -r "^u"
-                bindkey -r "^d"
+        bindkey "^p" up-line-or-beginning-search # Up
+        bindkey "^n" down-line-or-beginning-search # Down
+        bindkey "^k" up-line-or-beginning-search # Up
+        bindkey "^j" down-line-or-beginning-search # Down
+        bindkey -r "^u"
+        bindkey -r "^d"
 
       '';
 
@@ -55,17 +49,15 @@ in {
     shellAliases = {
       jqless = "jq -C | less -r";
 
-      s = mkIf hasSpecialisationCli "specialisation";
+      ls = "eza";
+      exa = "eza";
 
-      ls = mkIf hasExa "eza";
-      exa = mkIf hasExa "eza";
+      v = "nvim";
+      g = "lazygit";
 
-      v = mkIf hasNeovim "nvim";
-      g = mkIf hasLazygit "lazygit";
+      ck = "clone-in-kitty --type os-window";
 
-      ck = mkIf hasKitty "clone-in-kitty --type os-window";
-
-      awssw = mkIf hasAwsCli "export AWS_PROFILE=(aws configure list-profiles | fzf)";
+      awssw = "export AWS_PROFILE=(aws configure list-profiles | fzf)";
       # awssw = aws-switch;
       grep = "grep --color=auto";
       egrep = "egrep --color=auto";
