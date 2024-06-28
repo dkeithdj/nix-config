@@ -135,6 +135,7 @@ in {
       go
       python3
       nodejs
+      yarn
       elixir
       gcc
       gnumake
