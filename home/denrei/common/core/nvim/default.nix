@@ -53,6 +53,7 @@
       stylua
       alejandra
       nodePackages.eslint
+      eslint_d
       nodePackages.prettier
     ];
   };

@@ -1,32 +1,51 @@
+import GLib from "gi://GLib?version=2.0";
 import options from "options";
+const { bar, quicksettings } = options;
 
-export default (monitor: number) =>
+const arst = JSON.parse(
+  Utils.readFile(`${GLib.get_user_data_dir()}/errands/data.json`),
+);
+const reactData = Variable(arst);
+
+Utils.monitorFile(`${GLib.get_user_data_dir()}/errands/data.json`, () => {
+  if (true)
+    reactData.value = JSON.parse(
+      Utils.readFile(`${GLib.get_user_data_dir()}/errands/data.json`),
+    );
+});
+// const bb = JSON.parse(aa).tasks[0].text;
+const bb = reactData.bind().as((e) => e.emitter.value.tasks);
+// const bb = arst.tasks;
+
+const task = (item) =>
+  Widget.Button({
+    css: `padding: 7px; gap: 7px;`,
+    child: Widget.Label(item.text),
+  });
+
+export default () =>
   Widget.Window({
-    monitor,
-    layer: "bottom",
-    name: `desktop${monitor}`,
-    class_name: "desktop",
-    anchor: ["top", "bottom", "left", "right"],
+    layer: "background",
+    name: "todo",
+    anchor: ["bottom", "right"],
+    margins: [10, 10, 10, 10],
     exclusivity: "ignore",
-    layer: "bottom",
+    keymode: "none",
+
     child: Widget.Box({
-      css: options.theme.dark.primary.bg.bind().as(
-        (c) => `
-            transition: 500ms;
-            background-color: ${c}`,
-      ),
-      children: [
-        Widget.Box({
-          class_name: "wallpaper",
-          expand: true,
-          vpack: "center",
-          hpack: "center",
-          label: "wiget",
-        }),
-        Widget.Button({
-          child: Widget.Label("click me!"),
-          onClicked: () => print("hello"),
-        }),
-      ],
+      vertical: true,
+      spacing: 8,
+      class_name: "quicksettings vertical",
+      css: quicksettings.width
+        .bind()
+        .as((w) => `margin: 7px; min-width: ${w}px;`),
+      children: bb.map((cc) => task(cc)),
+      // children: [Widget.Label(bb)],
+      // children: bb.map((item) => Widget.Label(item)),
+      // children: [
+      //   // Widget.Label(ll),
+      //   bb.map(item => Widget.Label(item.text)
+      //   // Widget.Label(bb),
+      // ],
     }),
   });

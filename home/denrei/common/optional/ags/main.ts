@@ -38,6 +38,6 @@ App.config({
     PowerMenu(),
     SettingsDialog(),
     Verification(),
-    Todo(0),
+    // Todo(),
   ],
 });

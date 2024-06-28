@@ -29,8 +29,6 @@
 
 Secrets for this config are stored in a private repository called nix-secrets that is pulled in as a flake input and managed using the sops-nix tool.
 
-## Support
-
 ## Heavily inspired by these awesome people
 
 - [EmergentMind](https://github.com/EmergentMind)
