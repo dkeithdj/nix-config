@@ -9,13 +9,35 @@
   # scripts = import ./scripts.nix {inherit pkgs;};
 in {
   # imports = [scripts = ./scripts.nix];
-  home.file.".local/bin/cd-project".source = config.lib.file.mkOutOfStoreSymlink ./cd-project;
+  home.file = {
+    ".local/bin/cd-project".source = config.lib.file.mkOutOfStoreSymlink ./cd-project;
+    ".local/bin/setenv".source = config.lib.file.mkOutOfStoreSymlink ./setenv;
+  };
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     enableCompletion = true;
     dotDir = ".config/zsh";
+
+    zplug = {
+      enable = true;
+      zplugHome = "${config.xdg.dataHome}/zsh/zplug";
+      plugins = [
+        {name = "zsh-users/zsh-autosuggestions";}
+        {name = "hlissner/zsh-autopair";}
+        {name = "jeffreytse/zsh-vi-mode";}
+        # { name = "themes/robbyrussell"; tags = [ as:theme from:oh-my-zsh ]; }
+
+        {name = "zap-zsh/fzf";}
+        {name = "Aloxaf/fzf-tab";}
+        {name = "zap-zsh/exa";}
+        {name = "zsh-users/zsh-syntax-highlighting";}
+        {name = "MichaelAquilina/zsh-you-should-use";}
+        {name = "esc/conda-zsh-completion";}
+      ];
+    };
+
     initExtra =
       /*
       bash
@@ -31,7 +53,7 @@ in {
           fi
           rm -f -- "$tmp"
         }
-        bindkey -s '^f' '. cd-project\r'
+        bindkey -s '^g' '. cd-project\r'
 
         bindkey "^p" up-line-or-beginning-search # Up
         bindkey "^n" down-line-or-beginning-search # Down
@@ -85,24 +107,6 @@ in {
       nho = "nh os switch";
 
       # ve = ". ${setenv}";
-    };
-
-    zplug = {
-      enable = true;
-      zplugHome = "${config.xdg.dataHome}/zsh/zplug";
-      plugins = [
-        {name = "zsh-users/zsh-autosuggestions";}
-        {name = "hlissner/zsh-autopair";}
-        {name = "jeffreytse/zsh-vi-mode";}
-        # { name = "themes/robbyrussell"; tags = [ as:theme from:oh-my-zsh ]; }
-
-        {name = "zap-zsh/fzf";}
-        {name = "Aloxaf/fzf-tab";}
-        {name = "zap-zsh/exa";}
-        {name = "zsh-users/zsh-syntax-highlighting";}
-        {name = "MichaelAquilina/zsh-you-should-use";}
-        {name = "esc/conda-zsh-completion";}
-      ];
     };
   };
 }
