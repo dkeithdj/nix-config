@@ -34,8 +34,8 @@ in {
       TERM = "kitty";
       TERMINAL = "kitty";
       EDITOR = "nvim";
-      MANPAGER = "batman";
-      BAT_THEME = "base16";
+      # MANPAGER = "batman";
+      # BAT_THEME = "base16";
       GOPATH = "${config.home.homeDirectory}/.local/share/go";
       GOMODCACHE = "${config.home.homeDirectory}/.cache/go/pkg/mod";
     };

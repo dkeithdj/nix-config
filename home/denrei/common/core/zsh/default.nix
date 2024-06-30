@@ -43,6 +43,8 @@ in {
       bash
       */
       ''
+        source ~/.nix-profile/bin/aws_zsh_completer.sh
+
         bindkey "''${key[Up]}" up-line-or-search
 
         function yy() {
