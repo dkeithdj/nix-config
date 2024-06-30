@@ -114,7 +114,7 @@ in {
       unzip # zip extraction
       unrar # rar extraction
       wget # downloader
-      
+      killall
       nixd # Nix LSP
       alejandra # Nix formatter
       nixfmt-rfc-style
