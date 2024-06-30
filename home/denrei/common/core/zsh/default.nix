@@ -80,7 +80,7 @@ in {
 
       ck = "clone-in-kitty --type os-window";
 
-      awssw = "export AWS_PROFILE=(aws configure list-profiles | fzf)";
+      awssw = "export AWS_PROFILE=$(aws configure list-profiles | fzf)";
       # awssw = aws-switch;
       grep = "grep --color=auto";
       egrep = "egrep --color=auto";

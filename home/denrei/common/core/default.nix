@@ -124,7 +124,7 @@ in {
       nh # Nice wrapper for NixOS and HM
       neofetch # system info
       fastfetch # system info
-      
+      awscli2
       wf-recorder
       wl-clipboard
       zip
