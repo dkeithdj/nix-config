@@ -129,6 +129,7 @@ in {
       wl-clipboard
       zip
       transmission_4-gtk
+      cliphist # clipboard history
       # dev stuff
       
       cargo
