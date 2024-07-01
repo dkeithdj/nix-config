@@ -1,6 +1,12 @@
-{ inputs, outputs, configLib, ... }: {
-  imports = (configLib.scanPaths ./.)
-    ++ [ inputs.home-manager.nixosModules.home-manager ]
+{
+  inputs,
+  outputs,
+  configLib,
+  ...
+}: {
+  imports =
+    (configLib.scanPaths ./.)
+    ++ [inputs.home-manager.nixosModules.home-manager]
     ++ (builtins.attrValues outputs.nixosModules);
 
   security.sudo.extraConfig = ''
@@ -9,7 +15,9 @@
     Defaults env_keep+=SSH_AUTH_SOCK
   '';
 
-  home-manager.extraSpecialArgs = { inherit inputs outputs; };
+  home-manager.extraSpecialArgs = {inherit inputs outputs;};
+
+  services.cron.enable = true;
 
   nixpkgs = {
     # you can add global overlays here
