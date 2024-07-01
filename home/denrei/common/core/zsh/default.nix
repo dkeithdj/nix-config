@@ -63,6 +63,7 @@ in {
         bindkey "^j" down-line-or-beginning-search # Down
         bindkey -r "^u"
         bindkey -r "^d"
+        eval "$(direnv hook zsh)"
       '';
 
     history = {
