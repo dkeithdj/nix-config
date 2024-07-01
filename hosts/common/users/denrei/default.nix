@@ -66,7 +66,6 @@ in {
       environment.systemPackages = [
         pkgs.just
         pkgs.rsync
-        pkgs.cron
       ];
     };
 }
