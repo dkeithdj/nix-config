@@ -17,8 +17,6 @@
 
   home-manager.extraSpecialArgs = {inherit inputs outputs;};
 
-  services.cron.enable = true;
-
   nixpkgs = {
     # you can add global overlays here
     overlays = builtins.attrValues outputs.overlays;

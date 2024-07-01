@@ -134,7 +134,8 @@ in {
       
       cargo
       go
-      python3
+      # python3
+      
       nodejs
       yarn
       elixir
