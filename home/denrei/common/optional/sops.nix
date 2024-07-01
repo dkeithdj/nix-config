@@ -27,6 +27,9 @@ in {
       "ssh_keys/canopus" = {
         path = "${homeDirectory}/.ssh/id_canopus";
       };
+      "ssh_keys/altair" = {
+        path = "${homeDirectory}/.ssh/id_altair";
+      };
     };
   };
 }
