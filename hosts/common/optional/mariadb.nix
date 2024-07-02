@@ -35,6 +35,7 @@
         name = configVars.username;
         ensurePermissions = {
           "*.*" = "ALL PRIVILEGES";
+          "root.*" = "ALL PRIVILEGES";
         };
       }
     ];
