@@ -45,6 +45,7 @@
       "hosts/common/optional/pipewire.nix" # audio
       "hosts/common/optional/vlc.nix" # media player
       "hosts/common/optional/vial.nix" # media player
+      "hosts/common/optional/mariadb.nix" # media player
 
       "hosts/common/optional/nautilus.nix" # file manager
 

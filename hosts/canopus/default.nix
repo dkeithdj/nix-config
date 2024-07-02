@@ -49,6 +49,7 @@
       "hosts/common/optional/pipewire.nix" # audio
       "hosts/common/optional/vlc.nix" # media player
       "hosts/common/optional/kanata" # keyboard colemak
+      "hosts/common/optional/mariadb.nix" # media player
       "hosts/common/optional/nautilus.nix" # file manager
 
       #################### Users to Create ####################

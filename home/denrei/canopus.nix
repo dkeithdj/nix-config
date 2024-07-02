@@ -8,7 +8,6 @@
     common/optional/sops.nix
     common/optional/ags.nix
     common/optional/starship.nix
-    common/optional/mariadb.nix
     common/optional/helper-scripts
 
     common/optional/desktops
