@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  configVars,
+  ...
+}: {
   services.mysql = {
     enable = true;
     package = pkgs.mariadb_110;
@@ -26,5 +30,13 @@
       [mysql]
       default-character-set = utf8mb4
     '';
+    ensureUsers = [
+      {
+        name = configVars.username;
+        ensurePermissions = {
+          "*.*" = "ALL PRIVILEGES";
+        };
+      }
+    ];
   };
 }
