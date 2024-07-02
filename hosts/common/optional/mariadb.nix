@@ -2,7 +2,7 @@
   services.mysql = {
     enable = true;
     package = pkgs.mariadb_110;
-    configFile = ''
+    configFile = pkgs.writeText "50-server.cnf" ''
       [server]
       user = mysql
       pid-file = /run/mysqld/mysqld.pid
