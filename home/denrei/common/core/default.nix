@@ -95,6 +95,7 @@ in {
       eza # ls replacement
       fd # tree style ls
       
+      devenv # devenv
       findutils # find
       fzf # fuzzy search
       gh # github cli
