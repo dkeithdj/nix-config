@@ -4,9 +4,11 @@
 #  NixOS running on Bare Metal
 #
 ###############################################################
-
-{ inputs, configLib, ... }:
 {
+  inputs,
+  configLib,
+  ...
+}: {
   imports =
     [
       #################### Every Host Needs This ####################
@@ -38,7 +40,7 @@
       #################### Host-specific Optional Configs ####################
       "hosts/common/optional/services/openssh.nix"
       "hosts/common/optional/services/dropbox.nix" # dropbox
-      "hosts/common/optional/secure-boot"
+      # "hosts/common/optional/secure-boot"
 
       # Desktop
       # "hosts/common/optional/services/greetd.nix" # display manager
