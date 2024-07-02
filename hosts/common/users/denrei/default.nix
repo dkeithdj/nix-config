@@ -67,5 +67,8 @@ in {
         pkgs.just
         pkgs.rsync
       ];
+      networking.extraHosts = ''
+        127.0.0.1 dcode.com
+      '';
     };
 }
