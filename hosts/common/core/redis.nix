@@ -1,8 +1,10 @@
 {pkgs, ...}: {
-  services.redis.servers = {
-    redis = {
-      enable = true;
-      package = pkgs.redis;
+  services.redis = {
+    package = pkgs.redis;
+    servers = {
+      "redis" = {
+        enable = true;
+      };
     };
   };
 }
