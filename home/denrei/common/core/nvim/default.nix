@@ -58,6 +58,8 @@
       eslint_d
       nodePackages.prettier
       ruff-lsp
+      black
+      pyright
     ];
   };
 }

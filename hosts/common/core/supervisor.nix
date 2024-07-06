@@ -1,5 +1,5 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    python312.supervisor
+    python312Packages.supervisor
   ];
 }
