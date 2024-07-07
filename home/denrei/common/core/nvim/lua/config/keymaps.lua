@@ -89,13 +89,7 @@ if vim.g.vscode then
   keymap({ "n", "v" }, "<leader>fd", "<cmd>lua require('vscode').action('editor.action.formatDocument')<CR>")
   keymap({ "n", "v" }, "<C-W>o", "<cmd>lua require('vscode').action('workbench.action.toggleSidebarVisibility')<CR>")
 
-  keymap({ "n" }, "-", "<cmd>lua require('vscode').action('vsnetrw.open')<CR>")
   keymap({ "n" }, "<esc>", "<cmd>lua require('vscode').action('vsnetrw.close')<CR>")
-  keymap({ "n" }, "R", "<cmd>lua require('vscode').action('vsnetrw.rename')<CR>")
-  keymap({ "n" }, "%", "<cmd>lua require('vscode').action('vsnetrw.create')<CR>")
-  keymap({ "n" }, "d", "<cmd>lua require('vscode').action('vsnetrw.createDir')<CR>")
-  keymap({ "n" }, "D", "<cmd>lua require('vscode').action('vsnetrw.delete')<CR>")
-  keymap({ "n" }, "<C-l>", "<cmd>lua require('vscode').action('vsnetrw.refresh')<CR>")
 
   vim.opt.clipboard = "unnamedplus"
   vim.opt.updatetime = 50
