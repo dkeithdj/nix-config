@@ -1,8 +1,7 @@
 # VLC media player
-
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   environment.systemPackages = [
     pkgs.vlc
+    pkgs.celluloid
   ];
 }
