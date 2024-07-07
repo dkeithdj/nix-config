@@ -1,7 +1,6 @@
 import icons from "lib/icons";
 const WINDOW_NAME = "clipboard";
 
-const cursor = Variable("");
 const ClipItem = (clip) =>
   Widget.Button({
     on_clicked: () => {
@@ -73,31 +72,11 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
       });
     },
   });
-  // const fixed = Widget.Fixed({
-  //   setup(self) {
-  //     self.put(Widget.Label("hello"), 0, 0);
-  //     self.put(Widget.Label("hello"), 50, 50);
-  //   },
-  // });
-  const container = Widget.Fixed({ expand: true });
-  const event = Widget.EventBox({
-    child: container,
-    on_primary_click: async () => {
-      const pos = await Hyprland.messageAsync("cursorpos");
-      const { x, y } = JSON.parse(pos);
-      const box = Widget.Box();
-      container.put(box, x, y);
-      container.show_all();
-      cursor.value = `aa`;
-    },
-  });
   return Widget.Box({
     vertical: true,
     css: `margin: ${spacing * 2}px;`,
     class_name: "launcher",
     children: [
-      event,
-      Widget.Label({ label: cursor.bind().as((v) => `Cursor: ${v}`) }),
       entry,
       Widget.Separator({ vertical: true, css: "margin: 6px 0" }),
 
