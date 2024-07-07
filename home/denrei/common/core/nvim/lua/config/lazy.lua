@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
     spec = {
-        { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+        { "LazyVim/LazyVim",                                      import = "lazyvim.plugins" },
 
         -- { import = "lazyvim.plugins.extras.lang.nushell" },
 
@@ -47,12 +47,13 @@ require("lazy").setup({
         { import = "lazyvim.plugins.extras.linting.eslint" },
         { import = "lazyvim.plugins.extras.ui.treesitter-context" },
 
+        { import = "lazyvim.plugins.extras.vscode" },
         { import = "plugins" },
     },
     lockfile = vim.fn.stdpath("cache") .. "/lazy-lock.json",
     defaults = {
         lazy = false,
-        version = false, -- always use the latest git commit
+        version = false,           -- always use the latest git commit
     },
     checker = { enabled = false }, -- automatically check for plugin updates
     performance = {
