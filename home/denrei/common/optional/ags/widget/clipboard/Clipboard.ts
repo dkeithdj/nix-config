@@ -1,34 +1,9 @@
-const { query } = await Service.import("applications");
-const WINDOW_NAME = "applauncher";
+const WINDOW_NAME = "clipboard";
 
-const AppItem = (app) =>
-  Widget.Button({
-    on_clicked: () => {
-      App.closeWindow(WINDOW_NAME);
-      Utils.exec(`app | cliphist decode | wl-copy`);
-      // app.launch();
-    },
-    attribute: { app },
-    child: Widget.Box({
-      children: [
-        Widget.Icon({
-          icon: app.icon_name || "",
-          size: 42,
-        }),
-        Widget.Label({
-          class_name: "title",
-          label: app.name,
-          xalign: 0,
-          vpack: "center",
-          truncate: "end",
-        }),
-      ],
-    }),
-  });
 const ClipItem = (clip) =>
   Widget.Button({
     on_clicked: () => {
-      Utils.exec(`${clip} | cliphist decode | wl-copy`);
+      Utils.exec(`echo ${clip} | cliphist decode | wl-copy`);
       App.closeWindow(WINDOW_NAME);
     },
     child: Widget.Box({
@@ -46,10 +21,7 @@ const ClipItem = (clip) =>
 
 const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
   // list of application buttons
-  // let applications = query("").map(AppItem);
   let applications = Utils.exec("cliphist list").split("\n").map(ClipItem);
-  // let applications = Utils.exec("cliphist list");
-  // let applications = Utils.exec("cliphist list").map(AppItem);
 
   // container holding the buttons
   const list = Widget.Box({
@@ -70,29 +42,24 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
     css: `margin-bottom: ${spacing}px;`,
 
     // to launch the first item on Enter
-    on_accept: () => {
-      // make sure we only consider visible (searched for) applications
-      // const results = applications.filter((item) => item.visible);
-      const results = applications
-        .filter((e) => e.split("\t")[0] === item)
-        .forEach((e) => e);
-      // if (results[0]) {
-      //   App.toggleWindow(WINDOW_NAME);
-      //   results[0].attribute.app.launch();
-      // }
-      if (results) {
-        App.toggleWindow(WINDOW_NAME);
-        Utils.exec(`${results} | cliphist decode | wl-copy`);
-        // results.attribute.app.launch();
+    on_accept: ({ text }) => {
+      const results = applications.filter((item) =>
+        item.child.children[0].label.includes(text),
+      );
+      if (results.length > 0) {
+        Utils.exec(
+          `echo ${results[0].child.children[0].label} | cliphist decode | wl-copy`,
+        );
+        App.closeWindow(WINDOW_NAME);
       }
     },
 
     // filter out the list
-
-    on_change: ({ text }) =>
+    on_change: ({ text }) => {
       applications.forEach((item) => {
-        item.visible = item.attribute.app.match(text ?? "");
-      }),
+        item.visible = item.child.children[0].label.includes(text);
+      });
+    },
   });
 
   return Widget.Box({
