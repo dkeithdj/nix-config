@@ -110,7 +110,7 @@ export default () =>
         App.closeWindow(WINDOW_NAME);
       }),
     visible: false,
-    keymode: "on-demand",
+    keymode: "exclusive",
     child: Applauncher({
       width: 500,
       height: 200,
