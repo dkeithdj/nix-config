@@ -1,11 +1,20 @@
+import icons from "lib/icons";
 const WINDOW_NAME = "clipboard";
 
+const cursor = Variable("");
 const ClipItem = (clip) =>
   Widget.Button({
     on_clicked: () => {
-      Utils.exec(`echo ${clip} | cliphist decode | wl-copy`);
+      Utils.execAsync([
+        "zsh",
+        "-c",
+        `cliphist decode "${clip.split("\t")[0]}" | wl-copy`,
+      ]).then((out) => {
+        App.closeWindow(WINDOW_NAME);
+      });
       App.closeWindow(WINDOW_NAME);
     },
+    attribute: { clip },
     child: Widget.Box({
       children: [
         Widget.Label({
@@ -20,58 +29,82 @@ const ClipItem = (clip) =>
   });
 
 const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
-  // list of application buttons
+  // List of clipboard items
   let applications = Utils.exec("cliphist list").split("\n").map(ClipItem);
 
-  // container holding the buttons
+  // Container holding the buttons
   const list = Widget.Box({
     vertical: true,
     children: applications,
     spacing,
   });
 
-  // repopulate the box, so the most frequent apps are on top of the list
+  // Repopulate the box with clipboard items
   function repopulate() {
     applications = Utils.exec("cliphist list").split("\n").map(ClipItem);
     list.children = applications;
   }
 
-  // search entry
+  // Search entry
   const entry = Widget.Entry({
     hexpand: true,
-    css: `margin-bottom: ${spacing}px;`,
+    primary_icon_name: icons.ui.search,
 
-    // to launch the first item on Enter
-    on_accept: ({ text }) => {
-      const results = applications.filter((item) =>
-        item.child.children[0].label.includes(text),
-      );
-      if (results.length > 0) {
-        Utils.exec(
-          `echo ${results[0].child.children[0].label} | cliphist decode | wl-copy`,
-        );
-        App.closeWindow(WINDOW_NAME);
+    // To select the first item on Enter
+    on_accept: () => {
+      const results = applications.filter((item) => item.visible);
+
+      if (results[0]) {
+        Utils.execAsync([
+          "zsh",
+          "-c",
+          `cliphist decode "${results[0].attribute.clip.split("\t")[0]}" | wl-copy`,
+        ]).then((out) => {
+          App.closeWindow(WINDOW_NAME);
+        });
       }
+      App.closeWindow(WINDOW_NAME);
     },
 
-    // filter out the list
+    // Filter out the list based on search text
     on_change: ({ text }) => {
       applications.forEach((item) => {
-        item.visible = item.child.children[0].label.includes(text);
+        item.visible = item.attribute.clip.match(text ?? "");
       });
     },
   });
-
+  // const fixed = Widget.Fixed({
+  //   setup(self) {
+  //     self.put(Widget.Label("hello"), 0, 0);
+  //     self.put(Widget.Label("hello"), 50, 50);
+  //   },
+  // });
+  const container = Widget.Fixed({ expand: true });
+  const event = Widget.EventBox({
+    child: container,
+    on_primary_click: async () => {
+      const pos = await Hyprland.messageAsync("cursorpos");
+      const { x, y } = JSON.parse(pos);
+      const box = Widget.Box();
+      container.put(box, x, y);
+      container.show_all();
+      cursor.value = `aa`;
+    },
+  });
   return Widget.Box({
     vertical: true,
     css: `margin: ${spacing * 2}px;`,
+    class_name: "launcher",
     children: [
+      event,
+      Widget.Label({ label: cursor.bind().as((v) => `Cursor: ${v}`) }),
       entry,
+      Widget.Separator({ vertical: true, css: "margin: 6px 0" }),
 
-      // wrap the list in a scrollable
+      // Wrap the list in a scrollable container
       Widget.Scrollable({
         hscroll: "never",
-        css: `min-width: ${width}px;` + `min-height: ${height}px;`,
+        css: `min-width: ${width}px; min-height: ${height}px;`,
         child: list,
       }),
     ],
@@ -79,7 +112,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
       self.hook(App, (_, windowName, visible) => {
         if (windowName !== WINDOW_NAME) return;
 
-        // when the applauncher shows up
+        // When the applauncher shows up
         if (visible) {
           repopulate();
           entry.text = "";
@@ -89,7 +122,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
   });
 };
 
-// there needs to be only one instance
+// There needs to be only one instance
 export default () =>
   Widget.Window({
     name: WINDOW_NAME,
@@ -98,10 +131,10 @@ export default () =>
         App.closeWindow(WINDOW_NAME);
       }),
     visible: false,
-    keymode: "exclusive",
+    keymode: "on-demand",
     child: Applauncher({
       width: 500,
-      height: 500,
+      height: 200,
       spacing: 12,
     }),
   });
