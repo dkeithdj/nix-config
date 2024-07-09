@@ -1,24 +1,25 @@
 {pkgs, ...}: {
-  home.packages = with pkgs;
-    [
-      vesktop
-      qbittorrent
-      neovide
-      obsidian
+  home.packages = with pkgs; [
+    vesktop
+    qbittorrent
+    neovide
+    obsidian
 
-      vial
+    vial
 
-      onlyoffice-bin_latest
+    onlyoffice-bin_latest
 
-      evince
-      gnome-solanum
+    evince
+    gnome-solanum
 
-      postman
+    postman
 
-      zoom-us
+    zoom-us
 
-      filelight
-      gnome-extensions-cli
-    ]
-    ++ (with gnomeExtensions; [clipboard-indicator clipqr smile-complementary-extension]);
+    filelight
+
+    gnome-extensions-cli
+    chrome-gnome-shell
+  ];
+  # ++ (with gnomeExtensions; [clipboard-indicator clipqr smile-complementary-extension]);
 }

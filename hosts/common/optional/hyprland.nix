@@ -14,7 +14,7 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-gtk];
+    extraPortals = [pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome];
   };
 
   security = {
@@ -23,29 +23,33 @@
   };
 
   environment.systemPackages = with pkgs;
-  with gnome; [
-    morewaita-icon-theme
-    adwaita-icon-theme
-    qogir-icon-theme
-    loupe
-    nautilus
-    baobab
-    gnome-text-editor
-    gnome-calendar
-    gnome-boxes
-    gnome-system-monitor
-    gnome-control-center
-    gnome-weather
-    gnome-calculator
-    gnome-clocks
-    gnome-software # for flatpak
-    wl-gammactl
-    wl-clipboard
-    wayshot
-    pavucontrol
-    brightnessctl
-    swww
-  ];
+  with gnome;
+    [
+      morewaita-icon-theme
+      adwaita-icon-theme
+      qogir-icon-theme
+      loupe
+      nautilus
+      baobab
+      gnome-text-editor
+      gnome-calendar
+      gnome-boxes
+      gnome-system-monitor
+      gnome-control-center
+      gnome-weather
+      gnome-calculator
+      gnome-clocks
+      gnome-software # for flatpak
+      wl-gammactl
+      wl-clipboard
+      wayshot
+      pavucontrol
+      brightnessctl
+      swww
+      gnome-shell
+      dconf-editor
+    ]
+    ++ (with gnomeExtensions; [clipboard-indicator clipqr smile-complementary-extension]);
 
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {
