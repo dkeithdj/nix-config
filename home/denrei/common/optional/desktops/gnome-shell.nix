@@ -1,10 +1,10 @@
 {pkgs, ...}: {
   programs.gnome-shell = {
     enable = true;
-    extensions = with pkgs.gnomeExtensions; [
-      clipboard-indicator
-      clipqr
-      smile-complementary-extension
+    extensions = [
+      {package = pkgs.gnomeExtensions.clipboard-indicator;}
+      {package = pkgs.gnomeExtensions.clipqr;}
+      {package = pkgs.gnomeExtensions.smile-complementary-extension;}
     ];
   };
 }

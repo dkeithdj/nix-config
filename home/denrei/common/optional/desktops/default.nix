@@ -3,7 +3,7 @@
     # Packages with custom configs go here
 
     ./hyprland
-    ./gnome-shell.nix
+    # ./gnome-shell.nix
 
     ########## Utilities ##########
     #    ./services/dunst.nix # Notification daemon
