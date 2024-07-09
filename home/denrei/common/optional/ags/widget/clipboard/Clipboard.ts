@@ -1,3 +1,4 @@
+import App from "resource:///com/github/Aylur/ags/app.js";
 import icons from "lib/icons";
 const WINDOW_NAME = "clipboard";
 

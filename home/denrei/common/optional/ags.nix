@@ -31,7 +31,7 @@
 
   programs.ags = {
     enable = true;
-    # configDir = ./ags;
+    configDir = null;
     extraPackages = with pkgs; [
       accountsservice
     ];

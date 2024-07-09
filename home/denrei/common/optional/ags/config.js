@@ -1,4 +1,6 @@
+#!/usr/bin/env ags -c hypr
 import GLib from "gi://GLib";
+import * as Utils from "resource:///com/github/Aylur/ags/utils.js";
 
 const main = "/tmp/denrei/main.js";
 const entry = `${App.configDir}/main.ts`;

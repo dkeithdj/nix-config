@@ -2,6 +2,7 @@ import "lib/session";
 import "style/style";
 import init from "lib/init";
 import options from "options";
+import App from "resource:///com/github/Aylur/ags/app.js";
 import Bar from "widget/bar/Bar";
 import Launcher from "widget/launcher/Launcher";
 import NotificationPopups from "widget/notifications/NotificationPopups";

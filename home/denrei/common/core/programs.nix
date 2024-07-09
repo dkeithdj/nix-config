@@ -15,5 +15,7 @@
     postman
 
     zoom-us
+
+    filelight
   ];
 }

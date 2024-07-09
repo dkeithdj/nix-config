@@ -55,7 +55,7 @@ rules:
     - always
   indent:
     - error
-    - 4
+    - 2
     - SwitchCase: 1
   keyword-spacing:
     - error
@@ -76,7 +76,7 @@ rules:
     - avoidEscape: true
   semi:
     - error
-    - never
+    - always
   nonblock-statement-body-position:
     - error
     - below
