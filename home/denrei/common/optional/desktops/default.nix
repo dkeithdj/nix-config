@@ -10,7 +10,7 @@
     #./rofi-wayland.nix #app launcher
     #./swww.nix #wallpaper daemon
 
-    ./gtk.nix # mainly in gnome
+    # ./gtk.nix # mainly in gnome
     #    ./qt.nix # mainly in kde
     ./fonts.nix
   ];
