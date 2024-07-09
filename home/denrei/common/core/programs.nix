@@ -18,10 +18,7 @@
       zoom-us
 
       filelight
-
-      # {package = pkgs.gnomeExtensions.clipboard-indicator;}
-      # {package = pkgs.gnomeExtensions.clipqr;}
-      # {package = pkgs.gnomeExtensions.smile-complementary-extension;}
+      gnome-extensions-cli
     ]
-    ++ (with gnomeExtensions; [clipboardqindicator clipqr smile-complementary-extension]);
+    ++ (with gnomeExtensions; [clipboard-indicator clipqr smile-complementary-extension]);
 }

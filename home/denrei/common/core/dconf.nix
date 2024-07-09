@@ -1,4 +1,8 @@
-{lib, ...}:
+{
+  pkgs,
+  lib,
+  ...
+}:
 with lib.hm.gvariant; {
   dconf.settings = {
     "org/gnome/desktop/input-sources" = {
@@ -13,6 +17,7 @@ with lib.hm.gvariant; {
 
     "org/gnome/desktop/interface" = {
       show-battery-percentage = true;
+      color-scheme = "prefer-dark";
     };
 
     "org/gnome/desktop/peripherals/touchpad" = {
@@ -123,10 +128,10 @@ with lib.hm.gvariant; {
         "org.gnome.Software.desktop"
       ];
       disable-user-extensions = false;
-      enabled-extensions = with pkgs.gnomeExensions; [
+      enabled-extensions = with pkgs.gnomeExtensions; [
         clipboard-indicator.extensionUuid
         clipqr.extensionUuid
-        smile-extension.extensionUuid
+        smile-complementary-extension.extensionUuid
       ];
     };
 
