@@ -10,6 +10,7 @@
     common/optional/starship.nix
     common/optional/helper-scripts
 
+    common/optional/fuzzel
     common/optional/desktops
     common/optional/browsers
     common/optional/media

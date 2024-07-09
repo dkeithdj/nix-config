@@ -21,6 +21,7 @@ export class Opt<T = unknown> extends Variable<T> {
   toString() {
     return `${this.value}`;
   }
+
   toJSON() {
     return `opt:${this.value}`;
   }
