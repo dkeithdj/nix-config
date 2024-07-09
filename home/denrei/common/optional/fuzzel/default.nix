@@ -11,13 +11,13 @@
       };
 
       colors = {
-        background = "#171717";
-        text = "#F7DCDE";
-        selection = "#574144";
-        selection-text = "#DEBFC2";
-        border = "#574144";
-        match = "#FFB2BC";
-        selection-match = "#FFB2BC";
+        background = "171717ff";
+        text = "F7DCDEff";
+        selection = "574144ff";
+        selection-text = "DEBFC2ff";
+        border = "574144dd";
+        match = "FFB2BCff";
+        selection-match = "FFB2BCff";
       };
       border = {
         radius = 17;
