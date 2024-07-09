@@ -17,9 +17,5 @@
     zoom-us
 
     filelight
-
-    gnome-extensions-cli
-    chrome-gnome-shell
   ];
-  # ++ (with gnomeExtensions; [clipboard-indicator clipqr smile-complementary-extension]);
 }

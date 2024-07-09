@@ -3,7 +3,6 @@
     # Packages with custom configs go here
 
     ./hyprland
-    ./gnome-shell.nix
 
     ########## Utilities ##########
     #    ./services/dunst.nix # Notification daemon
@@ -11,7 +10,7 @@
     #./rofi-wayland.nix #app launcher
     #./swww.nix #wallpaper daemon
 
-    #    ./gtk.nix # mainly in gnome
+    ./gtk.nix # mainly in gnome
     #    ./qt.nix # mainly in kde
     ./fonts.nix
   ];

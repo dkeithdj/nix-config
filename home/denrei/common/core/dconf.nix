@@ -127,12 +127,6 @@ with lib.hm.gvariant; {
         "com.usebottles.bottles.desktop"
         "org.gnome.Software.desktop"
       ];
-      disable-user-extensions = false;
-      enabled-extensions = with pkgs.gnomeExtensions; [
-        clipboard-indicator.extensionUuid
-        clipqr.extensionUuid
-        smile-complementary-extension.extensionUuid
-      ];
     };
 
     "org/gnome/shell/app-switcher" = {
