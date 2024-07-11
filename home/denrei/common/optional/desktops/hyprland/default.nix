@@ -108,7 +108,7 @@ in {
         (f "Color Picker")
         (f "xdg-desktop-portal")
         (f "xdg-desktop-portal-gnome")
-        (f "transmission-gtk")
+        # (f "transmission-gtk")
         (f "com.github.Aylur.ags")
         "workspace 4, title:Spotify"
         "workspace 4, title:vesktop"

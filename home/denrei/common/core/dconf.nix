@@ -121,7 +121,7 @@ with lib.hm.gvariant; {
         "org.gnome.Nautilus.desktop"
         "org.gnome.Calendar.desktop"
         "obsidian.desktop"
-        "transmission-gtk.desktop"
+        # "transmission-gtk.desktop"
         "discord.desktop"
         "spotify.desktop"
         "com.usebottles.bottles.desktop"

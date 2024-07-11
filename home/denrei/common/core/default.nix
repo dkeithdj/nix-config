@@ -129,7 +129,8 @@ in {
       wf-recorder
       wl-clipboard
       zip
-      transmission_4-gtk
+      # transmission_4-gtk
+      
       cliphist # clipboard history
       # dev stuff
       
