@@ -83,6 +83,11 @@
       url = "git+https://github.com/kmonad/kmonad?submodules=1&dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-ld = {
+      url = "github:Mic92/nix-ld";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     #################### Personal Repositories ####################
 
     # Private secrets repo.  See ./docs/secretsmgmt.md
@@ -113,6 +118,7 @@
     systems,
     kmonad,
     lanzaboote,
+    nix-ld,
     ...
   }: let
     inherit (self) outputs;
@@ -161,6 +167,7 @@
       altair = lib.nixosSystem {
         specialArgs = specialArgs;
         modules = [
+          nix-ld.nixosModules.nix-ld
           lanzaboote.nixosModules.lanzaboote
           home-manager.nixosModules.home-manager
           {home-manager.extraSpecialArgs = specialArgs;}
@@ -171,6 +178,7 @@
       canopus = lib.nixosSystem {
         specialArgs = specialArgs;
         modules = [
+          nix-ld.nixosModules.nix-ld
           kmonad.nixosModules.default
           lanzaboote.nixosModules.lanzaboote
           home-manager.nixosModules.home-manager
