@@ -12,14 +12,6 @@
     # example = prev.example.overrideAttrs (oldAttrs: let ... in {
     # ...
     # });
-    solana = prev.solana.overrideAttrs (oldAttrs: {
-      src = prev.fetchFromGitHub {
-        owner = "solana-labs";
-        repo = "solana";
-        rev = "830471368b87e85e4ca2f95ad8637627805b902b";
-        hash = "";
-      };
-    });
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
