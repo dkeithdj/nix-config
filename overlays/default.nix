@@ -1,10 +1,9 @@
 #
 # This file defines overlays/custom modifications to upstream packages
 #
-
-{ inputs, ... }: {
+{inputs, ...}: {
   # This one brings our custom packages from the 'pkgs' directory
-  additions = final: _prev: import ../pkgs { pkgs = final; };
+  additions = final: _prev: import ../pkgs {pkgs = final;};
 
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
@@ -13,6 +12,14 @@
     # example = prev.example.overrideAttrs (oldAttrs: let ... in {
     # ...
     # });
+    solana = prev.solana.overrideAttrs (oldAttrs: {
+      src = prev.fetchFromGitHub {
+        owner = "solana-labs";
+        repo = "solana";
+        rev = "830471368b87e85e4ca2f95ad8637627805b902b";
+        hash = "";
+      };
+    });
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
