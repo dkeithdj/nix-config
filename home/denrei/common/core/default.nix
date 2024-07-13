@@ -22,7 +22,11 @@ in {
     username = lib.mkDefault "denrei";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
     stateVersion = lib.mkDefault "24.05";
-    sessionPath = ["$HOME/.local/bin"];
+    sessionPath = [
+      "$HOME/.local/bin"
+      "$HOME/.avm/bin/"
+      "$HOME/.local/share/solana/install/active_release/bin"
+    ];
     sessionVariables = {
       PROJECTS = "$HOME/Projects";
       FLAKE = "$HOME/Projects/nix-config";
