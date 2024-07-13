@@ -25,6 +25,7 @@ in {
     sessionPath = [
       "$HOME/.local/bin"
       "$HOME/.avm/bin/"
+      "$HOME/.cargo/bin/"
       "$HOME/.local/share/solana/install/active_release/bin"
     ];
     sessionVariables = {
@@ -138,7 +139,11 @@ in {
       cliphist # clipboard history
       # dev stuff
       
-      cargo
+      # cargo
+      
+      # rustc
+      
+      rustup
       go
       # python3
       
