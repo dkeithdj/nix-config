@@ -3,7 +3,10 @@
 {pkgs, ...}: {
   programs.bat = {
     enable = true;
-    config.theme = "base16";
+    config = {
+      # Show line numbers, Git modifications and file header (but no grid)
+      style = "numbers,changes,header";
+    };
     extraPackages = builtins.attrValues {
       inherit
         (pkgs.bat-extras)
