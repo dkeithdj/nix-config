@@ -80,9 +80,10 @@
 
   hardware.bluetooth = {
     enable = true;
-    powerOnBoot = false;
+    powerOnBoot = true;
     settings.General.Experimental = true; # for gnome-bluetooth percentage
   };
+  services.blueman.enable = true;
 
   # dconf
   programs.dconf.enable = true;
@@ -113,7 +114,7 @@
 
   # This is a fix to enable VSCode to successfully remote SSH on a client to a NixOS host
   # https://nixos.wiki/wiki/Visual_Studio_Code # Remote_SSH
-  programs.nix-ld.dev.enable = true;
+  programs.nix-ld.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.05";
