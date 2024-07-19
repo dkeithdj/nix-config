@@ -83,7 +83,7 @@
     powerOnBoot = true;
     settings.General.Experimental = true; # for gnome-bluetooth percentage
   };
-  services.blueman.enable = true;
+  # services.blueman.enable = true;
 
   # dconf
   programs.dconf.enable = true;

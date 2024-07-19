@@ -39,6 +39,7 @@
     gnome-calculator
     gnome-clocks
     gnome-software # for flatpak
+    gnome-bluetooth
     wl-gammactl
     wl-clipboard
     wayshot
