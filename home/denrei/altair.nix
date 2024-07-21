@@ -8,6 +8,7 @@
     common/optional/sops.nix
     common/optional/ags.nix
     common/optional/starship.nix
+    common/optional/gdrive.nix
     # common/optional/solana.nix
     common/optional/helper-scripts
 
