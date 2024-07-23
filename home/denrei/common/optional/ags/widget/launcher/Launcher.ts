@@ -6,6 +6,8 @@ import nix from "service/nix";
 import * as AppLauncher from "./AppLauncher";
 import * as NixRun from "./NixRun";
 import * as ShRun from "./ShRun";
+import * as Cliphist from "./Cliphist";
+import * as Emoji from "./Emoji";
 
 const { width, margin } = options.launcher;
 const isnix = nix.available;
@@ -17,6 +19,10 @@ function Launcher() {
   const shicon = ShRun.Icon();
   const nix = NixRun.NixRun();
   const nixload = NixRun.Spinner();
+  const ch = Cliphist.Cliphist();
+  const chicon = Cliphist.Icon();
+  const emoji = Emoji.Emoji();
+  const emojiicon = Emoji.Icon();
 
   function HelpButton(cmd: string, desc: string | Binding<string>) {
     return Widget.Box(
@@ -51,6 +57,8 @@ function Launcher() {
     child: Widget.Box(
       { vertical: true },
       HelpButton("sh", "run a binary"),
+      HelpButton("ch", "copy a clipboard history entry"),
+      HelpButton("em", "copy an emoji"),
       isnix
         ? HelpButton(
             "nx",
@@ -68,6 +76,8 @@ function Launcher() {
     on_accept: ({ text }) => {
       if (text?.startsWith(":nx")) nix.run(text.substring(3));
       else if (text?.startsWith(":sh")) sh.run(text.substring(3));
+      else if (text?.startsWith(":ch")) ch.runFirst();
+      else if (text?.startsWith(":em")) emoji.copyFirst();
       else applauncher.launchFirst();
 
       App.toggleWindow("launcher");
@@ -76,7 +86,7 @@ function Launcher() {
     on_change: ({ text }) => {
       text ||= "";
       favs.reveal_child = text === "";
-      help.reveal_child = text.split(" ").length === 1 && text?.startsWith(":");
+      help.reveal_child = text.length < 3 && text?.startsWith(":");
 
       if (text?.startsWith(":nx")) nix.filter(text.substring(3));
       else nix.filter("");
@@ -84,7 +94,14 @@ function Launcher() {
       if (text?.startsWith(":sh")) sh.filter(text.substring(3));
       else sh.filter("");
 
+      if (text?.startsWith(":ch")) ch.filter(text.substring(3));
+      else ch.clear();
+
+      if (text?.startsWith(":em")) emoji.filter(text.substring(3));
+      else emoji.clear();
+
       if (!text?.startsWith(":")) applauncher.filter(text);
+      else applauncher.clear();
     },
   });
 
@@ -95,6 +112,20 @@ function Launcher() {
     entry.grab_focus();
     favs.reveal_child = true;
   }
+
+  Object.assign(globalThis, {
+    launcher: {
+      open: (text?: string) => {
+        App.openWindow("launcher");
+        if (text) {
+          entry.grab_focus();
+          entry.text = text;
+          entry.set_position(-1);
+          favs.reveal_child = false;
+        }
+      },
+    },
+  });
 
   const layout = Widget.Box({
     css: width.bind().as((v) => `min-width: ${v}pt;`),
@@ -109,12 +140,14 @@ function Launcher() {
         if (visible) focus();
       }),
     children: [
-      Widget.Box([entry, nixload, shicon]),
+      Widget.Box([entry, nixload, shicon, chicon, emojiicon]),
       favs,
       help,
       applauncher,
       nix,
       sh,
+      ch,
+      emoji,
     ],
   });
 

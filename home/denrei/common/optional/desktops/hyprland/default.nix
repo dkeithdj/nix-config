@@ -121,6 +121,7 @@ in {
         resizeactive = binding "SUPER CTRL" "resizeactive";
         mvactive = binding "SUPER ALT" "moveactive";
         mvtows = binding "SUPER SHIFT" "movetoworkspace";
+        mvtowssilent = binding "SUPER SHIFT" "movetoworkspacesilent";
         e = "exec, ags -b hypr";
         arr = [
           1
@@ -141,7 +142,8 @@ in {
           ",XF86Launch4,   ${e} -r 'recorder.start()'"
           ",Print,         ${e} -r 'recorder.screenshot()'"
           "SHIFT,Print,    ${e} -r 'recorder.screenshot(true)'"
-          "SUPER, V,    ${e} -t 'clipboard'"
+          "SUPER, V,    ${e} -t 'launcher.open(\":ch \")'"
+          "SUPER, .,    ${e} -t 'launcher.open(\":em \")'"
           "SUPER, Return, exec, kitty" #
           "SUPER, W, exec, brave"
           "SUPER, T, exec, kitty"
@@ -179,7 +181,8 @@ in {
           (mvactive "h" "-20 0")
         ]
         ++ (map (i: ws (toString i) (toString i)) arr)
-        ++ (map (i: mvtows (toString i) (toString i)) arr);
+        ++ (map (i: mvtows (toString i) (toString i)) arr)
+        ++ (map (i: mvtowssilent (toString i) (toString i)) arr);
 
       bindle = [
         ",XF86MonBrightnessUp,   exec, ${brightnessctl} set +5%"
@@ -194,6 +197,7 @@ in {
         ",XF86AudioPlay,    exec, ${playerctl} play-pause"
         ",XF86AudioStop,    exec, ${playerctl} stop"
         ",XF86AudioPause,   exec, ${playerctl} pause"
+        ",XF86AudioMute,    exec, ${playerctl} toggle-mute"
         ",XF86AudioPrev,    exec, ${playerctl} previous"
         ",XF86AudioNext,    exec, ${playerctl} next"
         ",XF86AudioMicMute, exec, ${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"

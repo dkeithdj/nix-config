@@ -6,7 +6,6 @@ import App from "resource:///com/github/Aylur/ags/app.js";
 import Bar from "widget/bar/Bar";
 import Launcher from "widget/launcher/Launcher";
 import NotificationPopups from "widget/notifications/NotificationPopups";
-import Todo from "widget/desktop/Todo";
 import OSD from "widget/osd/OSD";
 import Overview from "widget/overview/Overview";
 import PowerMenu from "widget/powermenu/PowerMenu";
@@ -16,7 +15,6 @@ import Verification from "widget/powermenu/Verification";
 import { forMonitors } from "lib/utils";
 import { setupQuickSettings } from "widget/quicksettings/QuickSettings";
 import { setupDateMenu } from "widget/datemenu/DateMenu";
-import Clipboard from "widget/clipboard/Clipboard";
 
 App.config({
   onConfigParsed: () => {
@@ -40,7 +38,5 @@ App.config({
     PowerMenu(),
     SettingsDialog(),
     Verification(),
-    // Todo(),
-    Clipboard(),
   ],
 });

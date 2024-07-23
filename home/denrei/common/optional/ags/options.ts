@@ -147,6 +147,9 @@ const options = mkOptions(OPTIONS, {
     sh: {
       max: opt(16),
     },
+    cliphist: {
+      max: opt(16),
+    },
     apps: {
       iconSize: opt(62),
       max: opt(6),
