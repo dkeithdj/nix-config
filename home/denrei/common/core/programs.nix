@@ -17,5 +17,6 @@
     zoom-us
 
     filelight
+    smile
   ];
 }

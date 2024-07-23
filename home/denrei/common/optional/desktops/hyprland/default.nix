@@ -110,6 +110,7 @@ in {
         (f "xdg-desktop-portal-gnome")
         # (f "transmission-gtk")
         (f "com.github.Aylur.ags")
+        (f "it.mijorus.smile")
         "workspace 4, title:Spotify"
         "workspace 4, title:vesktop"
       ];
@@ -121,7 +122,7 @@ in {
         resizeactive = binding "SUPER CTRL" "resizeactive";
         mvactive = binding "SUPER ALT" "moveactive";
         mvtows = binding "SUPER SHIFT" "movetoworkspace";
-        mvtowssilent = binding "SUPER SHIFT" "movetoworkspacesilent";
+        mvtowssilent = binding "SUPER SHIFT CTRL" "movetoworkspacesilent";
         e = "exec, ags -b hypr";
         arr = [
           1
@@ -142,8 +143,9 @@ in {
           ",XF86Launch4,   ${e} -r 'recorder.start()'"
           ",Print,         ${e} -r 'recorder.screenshot()'"
           "SHIFT,Print,    ${e} -r 'recorder.screenshot(true)'"
-          "SUPER, V,    ${e} -t 'launcher.open(\":ch \")'"
-          "SUPER, .,    ${e} -t 'launcher.open(\":em \")'"
+          "SUPER, V,    ${e} -r 'launcher.open(\":ch \")'"
+          # "SUPER, period,    ${e} -r 'launcher.open(\":em \")'"
+          "SUPER, period,    exec, smile"
           "SUPER, Return, exec, kitty" #
           "SUPER, W, exec, brave"
           "SUPER, T, exec, kitty"
