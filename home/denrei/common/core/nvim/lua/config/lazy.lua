@@ -17,7 +17,7 @@ require("lazy").setup({
 
         -- { import = "lazyvim.plugins.extras.lang.nushell" },
 
-        -- { import = "lazyvim.plugins.extras.coding.codeium" },
+        { import = "lazyvim.plugins.extras.coding.codeium" },
         { import = "lazyvim.plugins.extras.coding.copilot" },
         { import = "lazyvim.plugins.extras.coding.mini-surround" },
 

@@ -146,8 +146,7 @@ in {
         
         rustup
         go
-        # python3
-        
+        python3
         nodejs
         yarn
         elixir
