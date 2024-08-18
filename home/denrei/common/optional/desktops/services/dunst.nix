@@ -2,10 +2,12 @@
 # Dunst
 # Notifcation Daemon
 #
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.packages = builtins.attrValues {
-    inherit (pkgs)
-      libnotify; # required by dunst
+    inherit
+      (pkgs)
+      libnotify
+      ; # required by dunst
   };
 
   services.dunst = {
@@ -14,7 +16,7 @@
     #    configFile = "";
     iconTheme = {
       name = "Adwaita";
-      package = pkgs.gnome.adwaita-icon-theme;
+      package = pkgs.adwaita-icon-theme;
       size = "16x16";
     };
     settings = {

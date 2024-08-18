@@ -31,9 +31,9 @@
     };
 
     # Garbage Collection
-    gc = {
-      automatic = true;
-      options = "--delete-older-than 10d";
-    };
+    # gc = {
+    #   automatic = true;
+    #   options = "--delete-older-than 10d";
+    # };
   };
 }
