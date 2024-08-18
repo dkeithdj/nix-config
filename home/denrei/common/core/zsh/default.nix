@@ -25,6 +25,7 @@ in {
       zplugHome = "${config.xdg.dataHome}/zsh/zplug";
       plugins = [
         {name = "zsh-users/zsh-autosuggestions";}
+        {name = "ptavares/zsh-terraform";}
         {name = "hlissner/zsh-autopair";}
         {name = "jeffreytse/zsh-vi-mode";}
         # { name = "themes/robbyrussell"; tags = [ as:theme from:oh-my-zsh ]; }
@@ -34,7 +35,7 @@ in {
         {name = "zap-zsh/exa";}
         {name = "zsh-users/zsh-syntax-highlighting";}
         {name = "MichaelAquilina/zsh-you-should-use";}
-        {name = "esc/conda-zsh-completion";}
+        # {name = "esc/conda-zsh-completion";}
       ];
     };
 
