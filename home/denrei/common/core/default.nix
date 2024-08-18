@@ -145,6 +145,7 @@ in {
         # rustc
         
         rustup
+        terraform
         go
         python3
         nodejs
