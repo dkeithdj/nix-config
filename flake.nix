@@ -89,6 +89,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
     #################### Personal Repositories ####################
 
     # Private secrets repo.  See ./docs/secretsmgmt.md
@@ -120,6 +121,7 @@
     kmonad,
     lanzaboote,
     nixos-cosmic,
+    zen-browser,
     ...
   }: let
     inherit (self) outputs;
@@ -208,7 +210,7 @@
       # Desktop home
       "denrei@altair" = lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
-        extraSpecialArgs = specialArgs;
+        extraSpecialArgs = specialArgs ++ [zen-browser];
         modules = [
           ./home/denrei/altair.nix
           ./home/denrei/nixpkgs.nix
