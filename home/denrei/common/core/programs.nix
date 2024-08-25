@@ -19,7 +19,7 @@
     filelight
     smile
 
-    drm_info
-    cosmic-tasks
+    # drm_info
+    # cosmic-tasks
   ];
 }
