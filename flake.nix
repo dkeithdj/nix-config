@@ -84,6 +84,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     #################### Personal Repositories ####################
 
     # Private secrets repo.  See ./docs/secretsmgmt.md
@@ -114,6 +119,7 @@
     systems,
     kmonad,
     lanzaboote,
+    nixos-cosmic,
     ...
   }: let
     inherit (self) outputs;
@@ -162,6 +168,13 @@
       altair = lib.nixosSystem {
         specialArgs = specialArgs;
         modules = [
+          {
+            nix.settings = {
+              substituters = ["https://cosmic.cachix.org/"];
+              trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
+            };
+          }
+          nixos-cosmic.nixosModules.default
           lanzaboote.nixosModules.lanzaboote
           home-manager.nixosModules.home-manager
           {home-manager.extraSpecialArgs = specialArgs;}
