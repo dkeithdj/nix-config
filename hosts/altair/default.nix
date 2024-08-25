@@ -40,8 +40,8 @@
 
       # Desktop
       # "hosts/common/optional/services/greetd.nix" # display manager
-      # "hosts/common/optional/hyprland.nix" # window manager
-      "hosts/common/optional/cosmic.nix" # cosmic de
+      "hosts/common/optional/hyprland.nix" # window manager
+      # "hosts/common/optional/cosmic.nix" # cosmic de
 
       "hosts/common/optional/pipewire.nix" # audio
       "hosts/common/optional/vlc.nix" # media player

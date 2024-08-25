@@ -20,7 +20,6 @@
     smile
 
     drm_info
-    cosmic-emoji-picker
     cosmic-tasks
   ];
 }
