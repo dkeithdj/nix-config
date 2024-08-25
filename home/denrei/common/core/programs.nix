@@ -18,5 +18,8 @@
 
     filelight
     smile
+
+    drm_info
+    cosmic-tasks
   ];
 }
