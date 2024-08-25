@@ -43,7 +43,6 @@ in {
       iconTheme.package
       adwaita-icon-theme
       papirus-icon-theme
-      cosmic-icons
     ];
     sessionVariables = {
       XCURSOR_THEME = cursorTheme.name;
