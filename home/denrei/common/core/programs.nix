@@ -21,5 +21,7 @@
 
     # drm_info
     # cosmic-tasks
+
+    appflowy
   ];
 }
