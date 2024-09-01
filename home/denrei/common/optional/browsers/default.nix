@@ -5,7 +5,6 @@
   imports = [
     ./brave.nix
     ./firefox.nix
-    ./edge.nix
     # ./zen.nix
   ];
 }

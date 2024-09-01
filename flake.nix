@@ -210,7 +210,7 @@
       # Desktop home
       "denrei@altair" = lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
-        extraSpecialArgs = specialArgs ++ [inputs.zen-browser];
+        extraSpecialArgs = specialArgs;
         modules = [
           ./home/denrei/altair.nix
           ./home/denrei/nixpkgs.nix

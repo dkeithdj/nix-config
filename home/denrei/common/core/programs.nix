@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   home.packages = with pkgs; [
     vesktop
     qbittorrent
@@ -23,5 +27,7 @@
     # cosmic-tasks
 
     appflowy
+    microsoft-edge-dev
+    inputs.zen-browser.packages.x86_64-linux.default
   ];
 }
