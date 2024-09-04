@@ -140,6 +140,8 @@ in {
         cliphist # clipboard history
         # dev stuff
         
+        poetry
+        uv
         # cargo
         
         # rustc
