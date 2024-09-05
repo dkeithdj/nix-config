@@ -1,28 +1,30 @@
 return {
-  "karb94/neoscroll.nvim",
-  enabled = not vim.g.neovide,
-  config = function()
-    require("neoscroll").setup({
-      easing_function = "quadratic", -- Default easing function
-      -- Set any other options as needed
-    })
-
-    local t = {}
-    -- Syntax: t[keys] = {function, {function arguments}}
-    -- Use the "sine" easing function
-    t["<C-u>"] = { "scroll", { "-vim.wo.scroll", "true", "150", [['sine']] } }
-    t["<C-d>"] = { "scroll", { "vim.wo.scroll", "true", "150", [['sine']] } }
-    -- Use the "circular" easing function
-    t["<C-b>"] = { "scroll", { "-vim.api.nvim_win_get_height(0)", "true", "500", [['circular']] } }
-    t["<C-f>"] = { "scroll", { "vim.api.nvim_win_get_height(0)", "true", "500", [['circular']] } }
-    -- Pass "nil" to disable the easing animation (constant scrolling speed)
-    t["<C-y>"] = { "scroll", { "-0.10", "false", "100", nil } }
-    t["<C-e>"] = { "scroll", { "0.10", "false", "100", nil } }
-    -- When no easing function is provided the default easing function (in this case "quadratic") will be used
-    t["zt"] = { "zt", { "300" } }
-    t["zz"] = { "zz", { "300" } }
-    t["zb"] = { "zb", { "300" } }
-
-    require("neoscroll.config").set_mappings(t)
-  end,
+    "karb94/neoscroll.nvim",
+    enabled = not vim.g.neovide,
+    config = function()
+        local neoscroll = require("neoscroll")
+        neoscroll.setup({
+            -- Default easing function used in any animation where
+            -- the `easing` argument has not been explicitly supplied
+            easing = "quadratic",
+        })
+        local keymap = {
+            -- Use the "sine" easing function
+            ["<C-u>"] = function() neoscroll.ctrl_u({ duration = 150, easing = "sine" }) end,
+            ["<C-d>"] = function() neoscroll.ctrl_d({ duration = 150, easing = "sine" }) end,
+            -- Use the "circular" easing function
+            ["<C-b>"] = function() neoscroll.ctrl_b({ duration = 450, easing = "circular" }) end,
+            ["<C-f>"] = function() neoscroll.ctrl_f({ duration = 450, easing = "circular" }) end,
+            -- When no value is passed the `easing` option supplied in `setup()` is used
+            ["<C-y>"] = function() neoscroll.scroll(-0.1, { move_cursor = false, duration = 100 }) end,
+            ["<C-e>"] = function() neoscroll.scroll(0.1, { move_cursor = false, duration = 100 }) end,
+            ["zt"] = function() neoscroll.zt({ half_win_duration = 300 }) end,
+            ["zz"] = function() neoscroll.zz({ half_win_duration = 300 }) end,
+            ["zb"] = function() neoscroll.zb({ half_win_duration = 300 }) end,
+        }
+        local modes = { "n", "v", "x" }
+        for key, func in pairs(keymap) do
+            vim.keymap.set(modes, key, func)
+        end
+    end,
 }

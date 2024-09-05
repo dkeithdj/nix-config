@@ -5,6 +5,7 @@ return {
     opts = {
         ----@type lspconfig.options
         servers = {
+            -- nginx_language_server = {},
             solc = {},
             nixd = {
                 settings = {
