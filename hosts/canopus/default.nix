@@ -81,6 +81,8 @@
     allowedUDPPortRanges = allowedTCPPortRanges;
   };
 
+  networking.firewall.allowedTCPPorts = [80 443];
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = false;
