@@ -8,7 +8,7 @@
   ...
 }: let
   homeFiles = ["Documents" "Music" "Pictures" "Videos" "Downloads" "Desktop" "Projects"];
-  projectFiles = ["nix" "work" "school" "web"];
+  projectFiles = ["nix" "work" "school" "web" "blogs"];
 
   projectCreate = lib.strings.concatMapStringsSep " " (x: "mkdir -p ${config.home.homeDirectory}/Projects/" + x + "\n") projectFiles;
   homeCreate = lib.strings.concatMapStringsSep " " (x: "mkdir -p ${config.home.homeDirectory}/" + x + "\n") homeFiles;
