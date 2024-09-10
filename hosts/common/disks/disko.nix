@@ -1,10 +1,10 @@
-{ lib
-, disk ? "/dev/vda"
-, withSwap ? false
-, swapSize
-, ...
-}:
 {
+  lib,
+  disk ? "/dev/vda",
+  withSwap ? false,
+  swapSize,
+  ...
+}: {
   disko.devices = {
     disk.main = {
       device = disk;
@@ -46,7 +46,7 @@
             size = "100%FREE";
             content = {
               type = "btrfs";
-              extraArgs = [ "-f" ];
+              extraArgs = ["-f"];
 
               subvolumes = {
                 "/root" = {
@@ -54,12 +54,12 @@
                 };
 
                 "/persist" = {
-                  mountOptions = [ "subvol=persist" "noatime" ];
+                  mountOptions = ["subvol=persist" "noatime"];
                   mountpoint = "/persist";
                 };
 
                 "/nix" = {
-                  mountOptions = [ "subvol=nix" "noatime" ];
+                  mountOptions = ["subvol=nix" "noatime"];
                   mountpoint = "/nix";
                 };
                 "/swap" = lib.mkIf withSwap {

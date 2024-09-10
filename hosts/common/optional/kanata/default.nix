@@ -1,12 +1,15 @@
-{ pkgs, lib, ... }:
 {
-  environment.systemPackages = with pkgs; [ kanata ];
+  pkgs,
+  lib,
+  ...
+}: {
+  environment.systemPackages = with pkgs; [kanata];
 
   services.kanata = {
     enable = lib.mkDefault true;
     keyboards = {
       laptop = {
-        devices = [ "/dev/input/by-path/platform-i8042-serio-0-event-kbd" ];
+        devices = ["/dev/input/by-path/platform-i8042-serio-0-event-kbd"];
         configFile = ./colemak.kbd;
       };
     };

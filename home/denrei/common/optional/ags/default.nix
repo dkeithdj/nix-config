@@ -1,31 +1,31 @@
-{ inputs
-, writeShellScript
-, system
-, stdenv
-, cage
-, swww
-, esbuild
-, dart-sass
-, fd
-, fzf
-, brightnessctl
-, accountsservice
-, slurp
-, wf-recorder
-, wl-clipboard
-, wayshot
-, swappy
-, hyprpicker
-, pavucontrol
-, networkmanager
-, gtk3
-, which
-}:
-let
+{
+  inputs,
+  writeShellScript,
+  system,
+  stdenv,
+  cage,
+  swww,
+  esbuild,
+  dart-sass,
+  fd,
+  fzf,
+  brightnessctl,
+  accountsservice,
+  slurp,
+  wf-recorder,
+  wl-clipboard,
+  wayshot,
+  swappy,
+  hyprpicker,
+  pavucontrol,
+  networkmanager,
+  gtk3,
+  which,
+}: let
   name = "denrei";
 
   ags = inputs.ags.packages.${system}.default.override {
-    extraPackages = [ accountsservice ];
+    extraPackages = [accountsservice];
   };
 
   dependencies = [
@@ -90,14 +90,14 @@ let
     '';
   };
 in
-stdenv.mkDerivation {
-  inherit name;
-  src = config;
+  stdenv.mkDerivation {
+    inherit name;
+    src = config;
 
-  installPhase = ''
-    mkdir -p $out/bin
-    cp -r . $out
-    cp ${desktop} $out/bin/${name}
-    cp ${greeter} $out/bin/greeter
-  '';
-}
+    installPhase = ''
+      mkdir -p $out/bin
+      cp -r . $out
+      cp ${desktop} $out/bin/${name}
+      cp ${greeter} $out/bin/greeter
+    '';
+  }

@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   fonts.fontconfig.enable = true;
   home.packages = [
     pkgs.noto-fonts
@@ -8,5 +7,4 @@
     # { fonts = [ "FantasqueSansMono" ]; }
     pkgs.meslo-lgs-nf
   ];
-
 }

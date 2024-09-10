@@ -1,13 +1,17 @@
-{ pkgs, lib, config, ... }:
-let name = "Denrei Keith";
-in
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
+  name = "Denrei Keith";
+in {
   programs.git = {
     enable = true;
     package = pkgs.gitAndTools.gitFull;
     userName = name;
     userEmail = "42316655+dkeithdj@users.noreply.github.com";
-    aliases = { };
+    aliases = {};
     extraConfig = {
       init.defaultBranch = "main";
 
@@ -19,6 +23,6 @@ in
     };
     # enable git Large File Storage: https://git-lfs.com/
     lfs.enable = true;
-    ignores = [ ".direnv" "result" ];
+    ignores = [".direnv" "result"];
   };
 }

@@ -6,12 +6,11 @@
   swapSize,
   configVars,
   ...
-}:
-{
+}: {
   disko.devices = {
     disk = {
       disk0 = {
-type = "disk";
+        type = "disk";
         device = builtins.elemAt disk 0;
         content = {
           type = "gpt";
@@ -26,14 +25,14 @@ type = "disk";
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = [ "defaults" ];
+                mountOptions = ["defaults"];
               };
             };
             root = {
               size = "100%";
               content = {
                 type = "btrfs";
-                extraArgs = [ "-f" ]; # Override existing partition
+                extraArgs = ["-f"]; # Override existing partition
                 # Subvolumes must set a mountpoint in order to be mounted,
                 # unless their parent is mounted
                 subvolumes = {
@@ -67,7 +66,7 @@ type = "disk";
             };
           };
         };
-        };
+      };
       disk1 = {
         type = "disk";
         device = builtins.elemAt disk 1;

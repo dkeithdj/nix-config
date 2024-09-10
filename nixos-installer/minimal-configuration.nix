@@ -1,10 +1,15 @@
-{ lib, pkgs, configLib, configVars, ... }:
 {
+  lib,
+  pkgs,
+  configLib,
+  configVars,
+  ...
+}: {
   imports = [
     (configLib.relativeToRoot "hosts/common/users/${configVars.username}")
   ];
 
-  fileSystems."/boot".options = [ "umask=0077" ]; # Removes permissions and security warnings.
+  fileSystems."/boot".options = ["umask=0077"]; # Removes permissions and security warnings.
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot = {
     enable = true;
@@ -24,20 +29,22 @@
     qemuGuest.enable = true;
     openssh = {
       enable = true;
-      ports = [ 22 ]; # FIXME: Make this use configVars.networking
+      ports = [22]; # FIXME: Make this use configVars.networking
       settings.PermitRootLogin = "yes";
     };
   };
 
   environment.systemPackages = builtins.attrValues {
-    inherit (pkgs)
+    inherit
+      (pkgs)
       wget
       curl
-      rsync;
+      rsync
+      ;
   };
 
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = ["nix-command" "flakes"];
     warn-dirty = false;
   };
   system.stateVersion = "24.05";

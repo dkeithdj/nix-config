@@ -1,17 +1,20 @@
 #
 # FIXME check for dependency somehow? Requires the msmtp.nix option for email notifications
 #
-
-{ pkgs, lib, config, ... }:
-let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   # FIXME
   # isEnabled = name: predicate: {
   # assertion = predicate;
   # message = "${name} should be enabled for the clamav.nix config to work correctly.";
   # };
-
   # Function to notify users and admin when a suspicious file is detected
-  notify-all-users = pkgs.writeScript "notify-all-users-of-sus-file"
+  notify-all-users =
+    pkgs.writeScript "notify-all-users-of-sus-file"
     ''
       #!/usr/bin/env bash
       ALERT="Signature detected by clamav: $CLAM_VIRUSEVENT_VIRUSNAME in $CLAM_VIRUSEVENT_FILENAME"
@@ -23,18 +26,16 @@ let
 
       echo -e "To:$(hostname).alerts.net@hexagon.cx\n\nSubject: Suspicious file on $(hostname)\n\n$ALERT" | msmtp -a default alerts.net@hexagon.cx
     '';
-in
-{
+in {
   # FIXME
   # assertions = lib.mapAttrsToList isEnabled {
   # "hosts/common/optional/msmtp" = config.msmtp.enable;
   # };
 
   security.sudo = {
-    extraConfig =
-      ''
-        clamav ALL = (ALL) NOPASSWD: SETENV: ${pkgs.libnotify}/bin/notify-send
-      '';
+    extraConfig = ''
+      clamav ALL = (ALL) NOPASSWD: SETENV: ${pkgs.libnotify}/bin/notify-send
+    '';
   };
 
   services = {

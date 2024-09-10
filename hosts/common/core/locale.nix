@@ -1,4 +1,4 @@
-{ lib, ... }: {
+{lib, ...}: {
   i18n = {
     defaultLocale = lib.mkDefault "en_PH.UTF-8";
     extraLocaleSettings = {
@@ -16,4 +16,3 @@
   # location.provider = "geoclue2";
   time.timeZone = lib.mkDefault "Asia/Manila";
 }
-
