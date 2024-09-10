@@ -20,6 +20,8 @@ require("lazy").setup({
         { import = "lazyvim.plugins.extras.coding.codeium" },
         { import = "lazyvim.plugins.extras.coding.copilot" },
         { import = "lazyvim.plugins.extras.coding.mini-surround" },
+        { import = "lazyvim.plugins.extras.coding.luasnip" },
+        { import = "lazyvim.plugins.extras.editor.leap" },
 
         -- { import = "lazyvim.plugins.extras.dap.core" },
         -- { import = "lazyvim.plugins.extras.dap.nlua" },
@@ -36,7 +38,7 @@ require("lazy").setup({
         { import = "lazyvim.plugins.extras.lang.json" },
         { import = "lazyvim.plugins.extras.lang.markdown" },
         -- "lazyvim.plugins.extras.lang.nix", -- use nixd
-        { import = "lazyvim.plugins.extras.lang.omnisharp" },
+        -- { import = "lazyvim.plugins.extras.lang.omnisharp" },
         { import = "lazyvim.plugins.extras.lang.python" },
         { import = "lazyvim.plugins.extras.lang.rust" },
         { import = "lazyvim.plugins.extras.lang.svelte" },
