@@ -46,7 +46,7 @@
       "hosts/common/optional/pipewire.nix" # audio
       "hosts/common/optional/vlc.nix" # media player
       "hosts/common/optional/vial.nix" # media player
-      "hosts/common/optional/mariadb.nix" # media player
+      # "hosts/common/optional/mariadb.nix" # media player
 
       "hosts/common/optional/nautilus.nix" # file manager
 
@@ -88,7 +88,7 @@
     powerOnBoot = true;
     settings.General.Experimental = true; # for gnome-bluetooth percentage
   };
-  # services.blueman.enable = true;
+  services.blueman.enable = true;
 
   # dconf
   programs.dconf.enable = true;
