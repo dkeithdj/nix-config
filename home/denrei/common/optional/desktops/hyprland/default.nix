@@ -66,6 +66,7 @@ in {
       misc = {
         disable_splash_rendering = true;
         force_default_wallpaper = 1;
+        focus_on_activate = true;
       };
 
       input = {
