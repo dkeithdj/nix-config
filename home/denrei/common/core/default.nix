@@ -156,6 +156,8 @@ in {
         gcc
         gnumake
         solc
+        black
+        marksman
         ;
     }
     ++ [pkgs.nodePackages.aws-cdk];
