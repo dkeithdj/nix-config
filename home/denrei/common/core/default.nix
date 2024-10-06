@@ -158,6 +158,7 @@ in {
         solc
         black
         marksman
+        pnpm
         ;
     }
     ++ [pkgs.nodePackages.aws-cdk];
