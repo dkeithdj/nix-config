@@ -14,7 +14,7 @@ in {
     aliases = {};
     extraConfig = {
       init.defaultBranch = "main";
-
+      pull.rebase = "true";
       color.ui = true;
       core.editor = "nvim";
       credential.helper = "store";
