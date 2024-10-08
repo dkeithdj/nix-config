@@ -159,10 +159,9 @@ in {
         black
         marksman
         pnpm
-        eslint
         ;
     }
-    ++ [pkgs.nodePackages.aws-cdk];
+    ++ [pkgs.nodePackages.aws-cdk pkgs.nodePackages.eslint];
 
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
