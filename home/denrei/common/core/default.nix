@@ -159,6 +159,7 @@ in {
         black
         marksman
         pnpm
+        eslint
         ;
     }
     ++ [pkgs.nodePackages.aws-cdk];
