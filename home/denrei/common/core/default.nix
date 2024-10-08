@@ -159,6 +159,8 @@ in {
         black
         marksman
         pnpm
+        minikube
+        kubectl
         ;
     }
     ++ [pkgs.nodePackages.aws-cdk pkgs.nodePackages.eslint];
