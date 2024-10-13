@@ -142,8 +142,10 @@ in {
         
         poetry
         uv
-        cargo
-        rustc
+        # cargo
+        
+        # rustc
+        
         rustup
         terraform
         go
