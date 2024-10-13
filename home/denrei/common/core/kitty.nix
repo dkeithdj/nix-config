@@ -26,7 +26,7 @@
       "kitty_mod+h" = "kitty_scrollback_nvim";
       "kitty_mod+g" = "kitty_scrollback_nvim --config ksb_builtin_last_cmd_output";
     };
-    theme = "Tokyo Night";
+    themeFile = "tokyo_night_night";
     settings = {
       enable_audio_bell = false;
       allow_remote_control = "socket-only";

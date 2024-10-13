@@ -4,9 +4,6 @@
     package = pkgs.zellij;
     enableBashIntegration = true;
     enableZshIntegration = true;
-    settings = {
-      theme = "Tokyo Night Storm";
-      default_shell = "zsh";
-    };
   };
+  home.file.".config/zellij/config.kdl".source = ./config.kdl;
 }

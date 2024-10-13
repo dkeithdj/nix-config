@@ -22,33 +22,30 @@
     pam.services.ags = {};
   };
 
-  environment.systemPackages = with pkgs;
-    [
-      morewaita-icon-theme
-      adwaita-icon-theme
-      qogir-icon-theme
-      loupe
-      nautilus
-      baobab
-      gnome-text-editor
-      gnome-calendar
-      gnome-system-monitor
-      gnome-calculator
-      wl-gammactl
-      wl-clipboard
-      wayshot
-      pavucontrol
-      brightnessctl
-      swww
-    ]
-    ++ (with gnome; [
-      gnome-boxes
-      gnome-control-center
-      gnome-weather
-      gnome-clocks
-      gnome-software # for flatpak
-      gnome-bluetooth
-    ]);
+  environment.systemPackages = with pkgs; [
+    morewaita-icon-theme
+    adwaita-icon-theme
+    qogir-icon-theme
+    loupe
+    nautilus
+    baobab
+    gnome-text-editor
+    gnome-calendar
+    gnome-system-monitor
+    gnome-calculator
+    wl-gammactl
+    wl-clipboard
+    wayshot
+    pavucontrol
+    brightnessctl
+    swww
+    gnome-boxes
+    gnome-control-center
+    gnome-weather
+    gnome-clocks
+    gnome-software # for flatpak
+    gnome-bluetooth
+  ];
 
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {
