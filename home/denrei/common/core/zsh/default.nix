@@ -81,6 +81,7 @@ in {
 
       v = "nvim";
       g = "lazygit";
+      z = "zellij";
 
       ck = "clone-in-kitty --type os-window";
 
