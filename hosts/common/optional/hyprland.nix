@@ -9,7 +9,7 @@
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     xwayland.enable = true;
-    # portalPackage = pkgs.xdg-desktop-portal-hyprland; # default
+    portalPackage = pkgs.xdg-desktop-portal-hyprland; # default
   };
 
   xdg.portal = {

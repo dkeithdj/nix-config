@@ -49,13 +49,14 @@ in {
       exec-once = [
         "ags -b hypr"
         "hyprctl setcursor Qogir 24"
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         # "transmission-gtk"
       ];
 
       monitor = [
         # "eDP-1, 1920x1080, 0x0, 1"
         # "HDMI-A-1, 2560x1440, 1920x0, 1"
-        "DP-2,2560x1440@75.00Hz, 0x0,1, bitdepth, 10"
+        "DP-2,2560x1440@75.00Hz, 0x0,1"
       ];
 
       general = {
