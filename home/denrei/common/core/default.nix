@@ -137,7 +137,8 @@ in {
         zip
         # transmission_4-gtk
         
-        cliphist # clipboard history
+        # cliphist # clipboard history
+        
         # dev stuff
         
         poetry
@@ -180,7 +181,6 @@ in {
       experimental-features = [
         "nix-command"
         "flakes"
-        "repl-flake"
       ];
       warn-dirty = false;
     };
