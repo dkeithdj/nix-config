@@ -47,7 +47,7 @@
       nodejs
 
       prettierd
-      marksman
+      # marksman
       nil
       lua-language-server
       luarocks
