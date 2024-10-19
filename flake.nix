@@ -116,6 +116,7 @@
     self,
     disko,
     nixpkgs,
+    nixpkgs-stable,
     home-manager,
     systems,
     kmonad,

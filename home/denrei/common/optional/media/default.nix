@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     (mpv.override {scripts = [mpvScripts.mpris];})
-    calibre
+    stable.calibre
     spotify
     obs-studio
   ];
