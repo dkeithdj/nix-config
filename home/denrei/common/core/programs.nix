@@ -26,10 +26,12 @@
     # drm_info
     # cosmic-tasks
 
-    appflowy
-    microsoft-edge-dev
+    # appflowy
+    # microsoft-edge-dev
     inputs.zen-browser.packages.x86_64-linux.default
 
     kdenlive
+
+    ciscoPacketTracer8
   ];
 }
