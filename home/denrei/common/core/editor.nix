@@ -14,19 +14,20 @@
     userSettings = {
       buffer_font_family = "FantasqueSansM Nerd Font";
       buffer_font_fallbacks = ["Zed Plex Mono"];
+      ui_font_family = "FantasqueSansM Nerd Font";
       lsp = {
-        enable = true;
-        server = {
-          enable = true;
-          rust-analyzer = {
-            enable = true;
-            package = pkgs.rust-analyzer;
+        rust-analyzer = {
+          binary = {
+            path = pkgs.rust-analyzer;
           };
         };
       };
       tab_size = 2;
       vim_mode = true;
-      theme = "tokyo-night";
+      theme = "Tokyo Night";
+      terminal = {
+        font_family = "FantasqueSansM Nerd Font";
+      };
     };
   };
   home.packages = with pkgs; [
