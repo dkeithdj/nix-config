@@ -15,6 +15,9 @@
       buffer_font_family = "FantasqueSansM Nerd Font";
       buffer_font_fallbacks = ["Zed Plex Mono"];
       ui_font_family = "FantasqueSansM Nerd Font";
+      assistant = {
+        provider = "copilot";
+      };
       lsp = {
         rust-analyzer = {
           binary = {
