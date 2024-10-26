@@ -21,7 +21,7 @@ return {
     ---@type TSConfig
     ---@diagnostic disable-next-line: missing-fields
     opts = {
-        highlight = { enable = true, disable = { "text", "console" } },
+        highlight = { enable = true, disable = { "text", "console", "oil" } },
         indent = { enable = true },
         incremental_selection = {
             enable = true,
