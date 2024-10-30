@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  configVars,
+  ...
+}: {
   programs.vscode = {
     enable = true;
     package = pkgs.vscode.fhsWithPackages (ps: with ps; [rustup zlib openssl.dev pkg-config]);
@@ -21,7 +25,7 @@
       lsp = {
         rust-analyzer = {
           binary = {
-            path = "$HOME/.nix-profile/bin/rust-analyzer";
+            path = "/home/${configVars.username}/.nix-profile/bin/rust-analyzer";
           };
         };
       };
