@@ -41,7 +41,7 @@
       ripgrep
       fd
       fzf
-      cargo
+      # cargo
       go
       python3
       nodejs
