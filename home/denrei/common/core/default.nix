@@ -24,8 +24,8 @@ in {
     stateVersion = lib.mkDefault "24.05";
     sessionPath = [
       "$HOME/.local/bin"
-      "$HOME/.avm/bin/"
-      "$HOME/.cargo/bin/"
+      "$HOME/.avm/bin"
+      "$HOME/.cargo/bin"
       "$HOME/.local/share/solana/install/active_release/bin"
     ];
     sessionVariables = {
