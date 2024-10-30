@@ -4,5 +4,7 @@
     stable.calibre
     spotify
     obs-studio
+    switcheroo
+    gimp-with-plugins
   ];
 }
