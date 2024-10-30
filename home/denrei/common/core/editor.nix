@@ -21,7 +21,7 @@
       lsp = {
         rust-analyzer = {
           binary = {
-            path = pkgs.rust-analyzer;
+            path = "$HOME/.nix-profile/bin/rust-analyzer";
           };
         };
       };
