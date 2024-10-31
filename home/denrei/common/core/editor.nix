@@ -3,22 +3,21 @@
   inputs,
   configVars,
   ...
-}:
-{
+}: {
   programs.vscode = {
     enable = true;
     package = pkgs.vscode.fhsWithPackages (
-      ps: with ps; [
-        rustup
-        zlib
-        openssl.dev
-        pkg-config
-      ]
+      ps:
+        with ps; [
+          rustup
+          zlib
+          openssl.dev
+          pkg-config
+        ]
     );
   };
   programs.zed-editor = {
     enable = true;
-    package = inputs.zed-editor.packages.x86_64-linux.default;
     extensions = [
       "tokyo-night"
       "nix"
@@ -27,7 +26,7 @@
     ];
     userSettings = {
       buffer_font_family = "FantasqueSansM Nerd Font";
-      buffer_font_fallbacks = [ "Zed Plex Mono" ];
+      buffer_font_fallbacks = ["Zed Plex Mono"];
       ui_font_family = "FantasqueSansM Nerd Font";
       assistant = {
         provider = "copilot";
