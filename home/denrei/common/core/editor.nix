@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   configVars,
   ...
 }: {
@@ -29,7 +28,7 @@
       buffer_font_fallbacks = ["Zed Plex Mono"];
       ui_font_family = "FantasqueSansM Nerd Font";
       assistant = {
-        provider = "copilot";
+        provider = "zed.dev";
       };
       lsp = {
         rust-analyzer = {
