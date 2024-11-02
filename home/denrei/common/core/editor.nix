@@ -42,6 +42,9 @@
       theme = "Tokyo Night";
       terminal = {
         font_family = "FantasqueSansM Nerd Font";
+        line_height = {
+          custom = 1.1;
+        };
       };
     };
   };
