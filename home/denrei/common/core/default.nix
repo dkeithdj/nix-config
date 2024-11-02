@@ -162,6 +162,8 @@ in {
 
     nodePackages.aws-cdk
     nodePackages.eslint
+
+    act
   ];
 
   nixpkgs = {
