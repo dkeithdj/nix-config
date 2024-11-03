@@ -1,3 +1,6 @@
+import PanelButton from "../PanelButton";
+import icons from "lib/icons";
+
 const ram = Variable([], {
   poll: [
     2000,
@@ -12,10 +15,16 @@ const ram = Variable([], {
   ],
 });
 
-const Ram = () =>
-  Widget.Label({
-    class_name: "segment",
-    label: ram.bind().as(([total, usage]) => `${usage}/${total} GB`),
+export default () =>
+  PanelButton({
+    window: "ram",
+    child: Widget.Box({
+      children: [
+        Widget.Icon(icons.system.ram),
+        Widget.Label({
+          justification: "center",
+          label: ram.bind().as(([total, usage]) => ` ${usage}/${total} GB`),
+        }),
+      ],
+    }),
   });
-
-export default Ram;
