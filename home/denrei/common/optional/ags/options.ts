@@ -77,6 +77,7 @@ const options = mkOptions(OPTIONS, {
       ]),
       center: opt<Array<import("widget/bar/Bar").BarWidget>>(["date"]),
       end: opt<Array<import("widget/bar/Bar").BarWidget>>([
+        "ram",
         "media",
         "expander",
         "systray",
