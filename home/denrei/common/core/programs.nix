@@ -5,7 +5,7 @@
 }: {
   home.packages = with pkgs; [
     vesktop
-    stable.qbittorrent
+    qbittorrent
     neovide
     obsidian
 
@@ -31,6 +31,6 @@
     inputs.zen-browser.packages.x86_64-linux.default
 
     stable.kdenlive
-    stable.zotero
+    zotero
   ];
 }
