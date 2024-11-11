@@ -31,5 +31,6 @@
     inputs.zen-browser.packages.x86_64-linux.default
 
     kdenlive
+    stable.zotero
   ];
 }
