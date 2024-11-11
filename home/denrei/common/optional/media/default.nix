@@ -5,6 +5,6 @@
     spotify
     obs-studio
     switcheroo
-    gimp-with-plugins
+    stable.gimp-with-plugins
   ];
 }

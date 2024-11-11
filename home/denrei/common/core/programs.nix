@@ -5,7 +5,7 @@
 }: {
   home.packages = with pkgs; [
     vesktop
-    qbittorrent
+    stable.qbittorrent
     neovide
     obsidian
 
@@ -16,9 +16,9 @@
     evince
     gnome-solanum
 
-    postman
+    stable.postman
 
-    zoom-us
+    stable.zoom-us
 
     filelight
     smile
@@ -30,7 +30,7 @@
     # microsoft-edge-dev
     inputs.zen-browser.packages.x86_64-linux.default
 
-    kdenlive
+    stable.kdenlive
     stable.zotero
   ];
 }
