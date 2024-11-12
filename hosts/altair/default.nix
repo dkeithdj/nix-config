@@ -45,7 +45,8 @@
 
       "hosts/common/optional/pipewire.nix" # audio
       "hosts/common/optional/vlc.nix" # media player
-      "hosts/common/optional/vial.nix" # media player
+      "hosts/common/optional/kanata/altair.nix" # keyboard colemak
+      "hosts/common/optional/vial.nix" # keyboard vial
       # "hosts/common/optional/mariadb.nix" # media player
 
       "hosts/common/optional/nautilus.nix" # file manager
