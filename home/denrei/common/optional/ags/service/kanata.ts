@@ -1,5 +1,9 @@
 import { bash } from "lib/utils";
 
+const HOST = Utils.exec("hostname");
+const service =
+  HOST === "altair" ? "kanata-altair.service" : "kanata-canopus.service";
+
 class Kanata extends Service {
   static {
     Service.register(
@@ -12,15 +16,13 @@ class Kanata extends Service {
   }
 
   enabled =
-    Utils.exec("systemctl is-active kanata-laptop.service") === "active"
-      ? true
-      : false;
+    Utils.exec(`systemctl is-active ${service}`) === "active" ? true : false;
 
   async start() {
     if (this.enabled) return;
 
     try {
-      await bash("systemctl start kanata-laptop.service");
+      await bash(`systemctl start ${service}`);
 
       this.enabled = true;
       this.changed("enabled");
@@ -39,7 +41,7 @@ class Kanata extends Service {
   async stop() {
     if (!this.enabled) return;
     try {
-      await bash("systemctl stop kanata-laptop.service");
+      await bash(`systemctl stop ${service}`);
 
       this.enabled = false;
       this.changed("enabled");

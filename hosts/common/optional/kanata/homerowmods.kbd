@@ -1,0 +1,22 @@
+(defsrc
+  caps a r s t n e i o
+)
+(defvar
+  tap-time 150
+  hold-time 200
+)
+(defalias
+  caps (tap-hold 100 100 esc lctl)
+  a (tap-hold $tap-time $hold-time a lmet)
+  r (tap-hold $tap-time $hold-time r lalt)
+  s (tap-hold $tap-time $hold-time s lsft)
+  t (tap-hold $tap-time $hold-time t lctl)
+  n (tap-hold $tap-time $hold-time n rctl)
+  e (tap-hold $tap-time $hold-time e rsft)
+  i (tap-hold $tap-time $hold-time i ralt)
+  o (tap-hold $tap-time $hold-time o rmet)
+)
+
+(deflayer base
+  @caps @a  @r  @s  @t  @n  @e  @i  @o
+)

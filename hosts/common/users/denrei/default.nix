@@ -37,6 +37,8 @@ in {
         extraGroups =
           [
             "wheel"
+            "input"
+            "uinput"
           ]
           ++ ifTheyExist [
             "audio"
