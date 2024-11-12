@@ -1,24 +1,22 @@
-import PanelButton from "../PanelButton";
-import screenrecord from "service/screenrecord";
 import icons from "lib/icons";
+import PanelButton from "../PanelButton";
+import kanata from "service/kanata";
+import options from "options";
+
+const { scheme, dark, light } = options.theme;
+
+const primary =
+  scheme.value === "dark" ? dark.primary.bg.value : light.primary.bg.value;
+const error =
+  scheme.value === "dark" ? dark.error.bg.value : light.error.bg.value;
 
 export default () =>
   PanelButton({
-    class_name: "recorder",
-    on_clicked: () =>
-      screenrecord.recording ? screenrecord.stop() : screenrecord.start(),
+    class_name: "kanata",
+    on_clicked: () => (kanata.enabled ? kanata.stop() : kanata.start()),
     visible: true,
-    child: Widget.Box({
-      children: [
-        Widget.Icon(icons.recorder.recording),
-        Widget.Label({
-          visible: screenrecord.bind("recording"),
-          label: screenrecord.bind("timer").as((time) => {
-            const sec = time % 60;
-            const min = Math.floor(time / 60);
-            return ` ${min}:${sec < 10 ? "0" + sec : sec}`;
-          }),
-        }),
-      ],
+    child: Widget.Icon({
+      icon: icons.keyboard.keyboard,
+      css: kanata.bind("enabled").as((v) => `color: ${v ? primary : error}`),
     }),
   });

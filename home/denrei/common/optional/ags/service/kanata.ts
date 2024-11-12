@@ -1,4 +1,3 @@
-import icons from "lib/icons";
 import { bash } from "lib/utils";
 
 class Kanata extends Service {
@@ -12,38 +11,52 @@ class Kanata extends Service {
     );
   }
 
-  #enabled = true;
+  enabled =
+    Utils.exec("systemctl is-active kanata-laptop.service") === "active"
+      ? true
+      : false;
 
   async start() {
-    if (!this.#enabled) return;
+    if (this.enabled) return;
 
-    bash("sudo systemctl start kanata-laptop.service");
+    try {
+      await bash("systemctl start kanata-laptop.service");
 
-    this.#enabled = true;
-    this.changed("enabled");
-    Utils.notify({
-      iconName: icons.fallback.video,
-      summary: "Kanata",
-      body: "Kanata started",
-    });
+      this.enabled = true;
+      this.changed("enabled");
+      Utils.notify({
+        summary: "Kanata",
+        body: "Kanata started",
+      });
+    } catch (error) {
+      Utils.notify({
+        summary: "Kanata",
+        body: `error: ${error}`,
+      });
+    }
   }
 
   async stop() {
-    if (!this.#enabled) return;
+    if (!this.enabled) return;
+    try {
+      await bash("systemctl stop kanata-laptop.service");
 
-    bash("sudo systemctl stop kanata-laptop.service");
+      this.enabled = false;
+      this.changed("enabled");
 
-    this.#enabled = false;
-    this.changed("enabled");
-
-    Utils.notify({
-      iconName: icons.fallback.video,
-      summary: "Kanata",
-      body: "Kanata stopped",
-    });
+      Utils.notify({
+        summary: "Kanata",
+        body: "Kanata stopped",
+      });
+    } catch (error) {
+      Utils.notify({
+        summary: "Kanata",
+        body: `error: ${error}`,
+      });
+    }
   }
 }
 
 const kanata = new Kanata();
-Object.assign(globalThis, { recorder: kanata });
+Object.assign(globalThis, { kanata: kanata });
 export default kanata;

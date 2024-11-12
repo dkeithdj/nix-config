@@ -142,4 +142,7 @@ export default {
     dark: "dark-mode-symbolic",
     light: "light-mode-symbolic",
   },
+  keyboard: {
+    keyboard: "input-keyboard-symbolic",
+  },
 };

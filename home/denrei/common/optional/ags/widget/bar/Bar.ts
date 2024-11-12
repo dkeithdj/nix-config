@@ -11,6 +11,7 @@ import Workspaces from "./buttons/Workspaces";
 import ScreenRecord from "./buttons/ScreenRecord";
 import Messages from "./buttons/Messages";
 import Ram from "./buttons/Ram";
+import Kanata from "./buttons/Kanata";
 import options from "options";
 
 const { start, center, end } = options.bar.layout;
@@ -31,6 +32,7 @@ const widget = {
   workspaces: Workspaces,
   screenrecord: ScreenRecord,
   messages: Messages,
+  kanata: Kanata,
   ram: Ram,
   expander: () => Widget.Box({ expand: true }),
 };
