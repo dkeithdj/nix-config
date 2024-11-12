@@ -79,7 +79,7 @@ const options = mkOptions(OPTIONS, {
       end: opt<Array<import("widget/bar/Bar").BarWidget>>([
         "media",
         "expander",
-        "kanata",
+        // "kanata",
         "ram",
         "systray",
         "colorpicker",
