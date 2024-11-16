@@ -164,6 +164,8 @@ in {
     nodePackages.eslint
 
     act
+    qmk
+    qmk_hid
   ];
 
   nixpkgs = {
