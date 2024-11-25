@@ -150,7 +150,7 @@ in {
           # "SUPER, period,    ${e} -r 'launcher.open(\":em \")'"
           "SUPER, period,    exec, smile"
           "SUPER, Return, exec, kitty" #
-          "SUPER, W, exec, brave"
+          "SUPER, W, exec, zen"
           "SUPER, T, exec, kitty"
           "SUPER, D, exec, vesktop"
           "SUPER, M, exec, spotify"
