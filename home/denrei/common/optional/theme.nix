@@ -3,24 +3,13 @@
   config,
   ...
 }: let
-  nerdfonts = pkgs.nerdfonts.override {
-    fonts = [
-      "Ubuntu"
-      "UbuntuMono"
-      "CascadiaCode"
-      "FantasqueSansMono"
-      "FiraCode"
-      "Mononoki"
-    ];
-  };
-
   theme = {
     name = "adw-gtk3-dark";
     package = pkgs.adw-gtk3;
   };
   font = {
     name = "Ubuntu Nerd Font";
-    package = nerdfonts;
+    package = pkgs.nerd-fonts.ubuntu;
     size = 11;
   };
   cursorTheme = {
@@ -34,16 +23,24 @@
   };
 in {
   home = {
-    packages = with pkgs; [
-      cantarell-fonts
-      font-awesome
-      theme.package
-      font.package
-      cursorTheme.package
-      iconTheme.package
-      adwaita-icon-theme
-      papirus-icon-theme
-    ];
+    packages = with pkgs;
+      [
+        cantarell-fonts
+        font-awesome
+        theme.package
+        cursorTheme.package
+        iconTheme.package
+        adwaita-icon-theme
+        papirus-icon-theme
+      ]
+      ++ (with pkgs.nerd-fonts; [
+        ubuntu
+        ubuntu-mono
+        caskaydia-cove
+        fantasque-sans-mono
+        fira-code
+        mononoki
+      ]);
     sessionVariables = {
       XCURSOR_THEME = cursorTheme.name;
       XCURSOR_SIZE = "${toString cursorTheme.size}";

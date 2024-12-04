@@ -1,8 +1,10 @@
 {pkgs, ...}: {
   fonts = {
     fontconfig.enable = true;
-    packages = with pkgs; [
-      (nerdfonts.override {fonts = ["FantasqueSansMono" "JetBrainsMono" "FiraMono"];})
+    packages = with pkgs.nerd-fonts; [
+      fantasque-sans-mono
+      jetbrains-mono
+      fira-mono
     ];
   };
 }

@@ -4,7 +4,7 @@
     enable = true;
     monospace = {
       family = "FantasqueSansM Nerd Font";
-      package = pkgs.nerdfonts.override {fonts = ["FantasqueSansMono"];};
+      package = pkgs.nerd-fonts.fantasque-sans-mono;
     };
     regular = {
       family = "Fira Sans";
