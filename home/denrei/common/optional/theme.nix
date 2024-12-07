@@ -64,7 +64,7 @@ in {
   fonts.fontconfig.enable = true;
 
   gtk = {
-    inherit font cursorTheme iconTheme;
+    inherit cursorTheme iconTheme;
     theme.name = theme.name;
     enable = true;
     gtk3.extraCss = ''
