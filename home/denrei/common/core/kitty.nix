@@ -3,7 +3,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   xdg.mimeApps = {
     associations.added = {
       "x-scheme-handler/terminal" = "kitty.desktop";
@@ -14,8 +15,11 @@
   };
   programs.kitty = {
     enable = true;
-    font.name = "FantasqueSansM Nerd Font";
-    font.size = 12;
+    font = {
+      name = "FantasqueSansM Nerd Font";
+      package = pkgs.nerd-fonts.fantasque-sans-mono;
+      size = 12;
+    };
     shellIntegration.enableBashIntegration = true;
     shellIntegration.enableZshIntegration = true;
     keybindings = {
