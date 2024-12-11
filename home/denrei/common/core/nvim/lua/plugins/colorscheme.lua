@@ -1,12 +1,14 @@
+-- if true then return {} end
 return {
-    "folke/tokyonight.nvim",
-    lazy = true,
-    opts = {
-        transparent = false,
-        style = "night",
-        -- styles = {
-        --     sidebars = "transparent",
-        --     floats = "transparent",
-        -- },
+    {
+        "folke/tokyonight.nvim",
+        lazy = true,
+        opts = { style = "moon" },
+    },
+    {
+        "LazyVim/LazyVim",
+        opts = {
+            colorscheme = "tokyonight-moon",
+        },
     },
 }
