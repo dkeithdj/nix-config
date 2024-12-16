@@ -1,0 +1,42 @@
+{
+  "assistant": {
+    "provider": "zed.dev"
+  },
+  "auto_install_extensions": {
+    "docker-compose": true,
+    "dockerfile": true,
+    "nix": true,
+    "tokyo-night": true
+  },
+  "buffer_font_fallbacks": ["Zed Plex Mono"],
+  "buffer_font_family": "FantasqueSansM Nerd Font",
+  "load_direnv": "shell_hook",
+  "lsp": {
+    "rust-analyzer": {
+      "binary": {
+        "path": "/home/denrei/.nix-profile/bin/rust-analyzer"
+      }
+    }
+  },
+  "tab_size": 2,
+  "terminal": {
+    "alternate_scroll": "off",
+    "copy_on_select": false,
+    "dock": "bottom",
+    "env": {
+      "TERM": "wezterm"
+    },
+    "font_family": "FantasqueSansM Nerd Font",
+    "line_height": {
+      "custom": 1.1
+    },
+    "option_as_meta": false,
+    "shell": "system",
+    "toolbar": {
+      "title": true
+    }
+  },
+  "theme": "Tokyo Night",
+  "ui_font_family": "FantasqueSansM Nerd Font",
+  "vim_mode": true
+}
