@@ -9,7 +9,9 @@
     "nix": true,
     "tokyo-night": true
   },
-  "buffer_font_fallbacks": ["Zed Plex Mono"],
+  "buffer_font_fallbacks": [
+    "Zed Plex Mono"
+  ],
   "buffer_font_family": "FantasqueSansM Nerd Font",
   "load_direnv": "shell_hook",
   "lsp": {
@@ -17,8 +19,14 @@
       "binary": {
         "path": "/home/denrei/.nix-profile/bin/rust-analyzer"
       }
+    },
+    "nil": {
+      "binary": {
+        "path": "/home/denrei/.nix-profile/bin/nil"
+      }
     }
   },
+  "formatter": "language_server",
   "tab_size": 2,
   "terminal": {
     "alternate_scroll": "off",
