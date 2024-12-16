@@ -149,9 +149,9 @@ in {
           "SUPER, V,    ${e} -r 'launcher.open(\":ch \")'"
           # "SUPER, period,    ${e} -r 'launcher.open(\":em \")'"
           "SUPER, period,    exec, smile"
-          "SUPER, Return, exec, kitty" #
+          "SUPER, Return, exec, wezterm" #
           "SUPER, W, exec, zen"
-          "SUPER, T, exec, kitty"
+          "SUPER, T, exec, wezterm"
           "SUPER, D, exec, vesktop"
           "SUPER, M, exec, spotify"
           "SUPER, E, exec, gtk-launch org.gnome.Nautilus"

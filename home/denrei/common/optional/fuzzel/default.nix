@@ -1,10 +1,14 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   programs.fuzzel = {
-    enable = true;
+    enable = false;
     package = pkgs.fuzzel;
     settings = {
       main = {
-        terminal = "${pkgs.kitty}/bin/kitty";
+        terminal = "${inputs.wezterm.packages.${pkgs.system}.default}/bin/wezterm";
         layer = "overlay";
         prompt = ">>  ";
         font = "FantasqueSansM Nerd Font";

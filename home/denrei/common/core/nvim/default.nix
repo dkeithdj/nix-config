@@ -13,8 +13,8 @@
     desktopEntries."nvim" = lib.mkIf pkgs.stdenv.isLinux {
       name = "NeoVim";
       comment = "Edit text files";
+      exec = "wezterm -e ${pkgs.neovim}/bin/nvim %F";
       icon = "nvim";
-      exec = "kitty -e ${pkgs.neovim}/bin/nvim %F";
       categories = ["TerminalEmulator"];
       terminal = false;
       mimeType = ["text/plain"];

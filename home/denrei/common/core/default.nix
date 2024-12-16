@@ -36,8 +36,8 @@ in {
       NIXPKGS_ALLOW_INSECURE = "1";
       BROWSER = "zen";
       SHELL = "zsh";
-      TERM = "kitty";
-      TERMINAL = "kitty";
+      TERM = "wezterm";
+      TERMINAL = "wezterm";
       EDITOR = "nvim";
       # MANPAGER = "batman";
       # BAT_THEME = "base16";

@@ -65,6 +65,10 @@ in {
       # No matter what environment we are in we want these tools for root, and the user(s)
       programs.zsh.enable = true;
       programs.git.enable = true;
+
+      environment.enableAllTerminfo = true;
+
+      # This is a minimal environment, so we don't want to install these packages
       environment.systemPackages = [
         pkgs.just
         pkgs.rsync

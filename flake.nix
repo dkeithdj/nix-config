@@ -1,20 +1,19 @@
 {
   description = "Den's Nix-Config";
-  # test
 
-  nixConfig = {
-    extra-substituters = ["https://hyprland.cachix.org"];
-    extra-trusted-public-keys = [
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-    ];
-  };
+  # nixConfig = {
+  #   extra-substituters = ["https://hyprland.cachix.org"];
+  #   extra-trusted-public-keys = [
+  #     "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+  #   ];
+  # };
 
   inputs = {
     #################### Official NixOS and HM Package Sources ####################
 
     # nixpkgs.url = "github:NixOS/nixpkgs/release-24.05";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.05"; # also see 'stable-packages' overlay at 'overlays/default.nix"
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.11"; # also see 'stable-packages' overlay at 'overlays/default.nix"
 
     hardware.url = "github:nixos/nixos-hardware";
     systems.url = "github:nix-systems/default-linux";
@@ -91,7 +90,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
+    wezterm.url = "github:wez/wezterm?dir=nix";
     #################### Personal Repositories ####################
 
     # Private secrets repo.  See ./docs/secretsmgmt.md
@@ -180,12 +181,6 @@
       altair = lib.nixosSystem {
         specialArgs = specialArgs;
         modules = [
-          {
-            nix.settings = {
-              substituters = ["https://cosmic.cachix.org/"];
-              trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
-            };
-          }
           nixos-cosmic.nixosModules.default
           lanzaboote.nixosModules.lanzaboote
           home-manager.nixosModules.home-manager

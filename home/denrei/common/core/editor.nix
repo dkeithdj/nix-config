@@ -46,7 +46,7 @@
         copy_on_select = false;
         dock = "bottom";
         env = {
-          TERM = "kitty";
+          TERM = "wezterm";
         };
         font_family = "FantasqueSansM Nerd Font";
         line_height = {
