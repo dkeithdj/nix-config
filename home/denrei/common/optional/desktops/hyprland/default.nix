@@ -149,7 +149,7 @@ in {
           "SUPER, V,    ${e} -r 'launcher.open(\":ch \")'"
           # "SUPER, period,    ${e} -r 'launcher.open(\":em \")'"
           "SUPER, period,    exec, smile"
-          "SUPER, Return, exec, wezterm" #
+          "SUPER, Return, exec, wezterm -e" #
           "SUPER, W, exec, zen"
           "SUPER, T, exec, wezterm"
           "SUPER, D, exec, vesktop"
