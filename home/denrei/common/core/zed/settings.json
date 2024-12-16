@@ -1,5 +1,6 @@
 {
   "assistant": {
+    "version": "2",
     "provider": "zed.dev"
   },
   "auto_install_extensions": {
