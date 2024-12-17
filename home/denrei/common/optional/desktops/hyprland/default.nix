@@ -117,6 +117,12 @@ in {
         "workspace 4, title:vesktop"
       ];
 
+      windowrulev2 = [
+        "size 640 360, title:(Picture-in-Picture)"
+        "pin, title:^(Picture-in-Picture)$"
+        "float, title:^(Picture-in-Picture)$"
+      ];
+
       bind = let
         binding = mod: cmd: key: arg: "${mod}, ${key}, ${cmd}, ${arg}";
         mvfocus = binding "SUPER" "movefocus";

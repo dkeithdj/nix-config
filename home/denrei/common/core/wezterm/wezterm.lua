@@ -18,8 +18,11 @@ config.font_size = 12.0
 config.default_prog = { "zsh" }
 config.enable_tab_bar = true
 config.enable_scroll_bar = false
-config.use_fancy_tab_bar = true
+config.use_fancy_tab_bar = false
+config.tab_bar_at_bottom = true
+config.show_close_tab_button_in_tabs = true
 config.color_scheme = "tokyonight_night"
+
 config.set_environment_variables = {
 	TERMINFO_DIRS = "/home/denrei/.nix-profile/share/terminfo",
 }
