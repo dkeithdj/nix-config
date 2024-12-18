@@ -36,7 +36,7 @@ in {
       NIXPKGS_ALLOW_INSECURE = "1";
       BROWSER = "zen";
       SHELL = "zsh";
-      TERM = "wezterm";
+      TERM = "xterm-256color";
       TERMINAL = "wezterm";
       EDITOR = "nvim";
       # MANPAGER = "batman";

@@ -115,11 +115,9 @@ in {
         (f "it.mijorus.smile")
         "workspace 4, title:Spotify"
         "workspace 4, title:vesktop"
-      ];
-
-      windowrulev2 = [
         "size 640 360, title:(Picture-in-Picture)"
         "pin, title:^(Picture-in-Picture)$"
+        "move 100%-w-20, title:^(Picture-in-Picture)$"
         "float, title:^(Picture-in-Picture)$"
       ];
 
