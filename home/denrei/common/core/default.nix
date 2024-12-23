@@ -146,6 +146,7 @@ in {
     rustup
     terraform
     go
+    gopls
     python3
     nodejs
     deno

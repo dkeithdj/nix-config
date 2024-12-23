@@ -9,9 +9,7 @@
     "nix": true,
     "tokyo-night": true
   },
-  "buffer_font_fallbacks": [
-    "Zed Plex Mono"
-  ],
+  "buffer_font_fallbacks": ["Zed Plex Mono"],
   "buffer_font_family": "FantasqueSansM Nerd Font",
   "load_direnv": "shell_hook",
   "lsp": {
@@ -26,11 +24,26 @@
       }
     }
   },
+  "relative_line_numbers": true,
+  "scrollbar": {
+    "show": "never"
+  },
+  "vertical_scroll_margin": 0,
+  "tab_bar": {
+    "show": true
+  },
+  "toolbar": {
+    "breadcrumbs": true,
+    "quick_actions": false
+  },
   "formatter": "language_server",
   "tab_size": 2,
   "terminal": {
     "alternate_scroll": "off",
+    "blinking": "terminal_controlled",
     "copy_on_select": false,
+    "working_directory": "current_project_directory",
+    "button": false,
     "dock": "bottom",
     "env": {
       "TERM": "wezterm"
@@ -44,6 +57,16 @@
     "toolbar": {
       "title": true
     }
+  },
+  "project_panel": {
+    "button": false,
+    "auto_fold_dirs": false,
+    "scrollbar": {
+      "show": "never"
+    }
+  },
+  "outline_panel": {
+    "button": false
   },
   "theme": "Tokyo Night",
   "ui_font_family": "FantasqueSansM Nerd Font",
