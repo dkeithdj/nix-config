@@ -1,7 +1,10 @@
 {
   "assistant": {
-    "version": "2",
-    "provider": "zed.dev"
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4o"
+    },
+    "version": "2"
   },
   "auto_install_extensions": {
     "docker-compose": true,
@@ -9,8 +12,11 @@
     "nix": true,
     "tokyo-night": true
   },
-  "buffer_font_fallbacks": ["Zed Plex Mono"],
+  "buffer_font_fallbacks": [
+    "Zed Plex Mono"
+  ],
   "buffer_font_family": "FantasqueSansM Nerd Font",
+  "buffer_line_height": "standard",
   "load_direnv": "shell_hook",
   "lsp": {
     "rust-analyzer": {
@@ -58,9 +64,16 @@
       "title": true
     }
   },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
   "project_panel": {
     "button": false,
+    "file_icons": true,
+    "git_status": true,
     "auto_fold_dirs": false,
+    "indent_size": 12,
     "scrollbar": {
       "show": "never"
     }
