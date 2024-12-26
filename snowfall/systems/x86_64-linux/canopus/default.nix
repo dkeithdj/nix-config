@@ -25,8 +25,10 @@ with lib.${namespace}; {
   ];
 
   cih = {
-    apps.hey = enabled;
-    apps.zoom-us = enabled;
+    apps = {
+      hey = enabled;
+      zoom-us = enabled;
+    };
     system = {
       boot = enabled;
     };
