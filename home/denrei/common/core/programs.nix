@@ -16,9 +16,9 @@
     evince
     gnome-solanum
 
-    stable.postman
-
-    stable.zoom-us
+    # stable.postman
+    #
+    # stable.zoom-us
 
     filelight
     smile
@@ -33,7 +33,7 @@
     qpaeq
     pulseaudio
 
-    stable.kdenlive
+    # stable.kdenlive
     # slack
     zotero
   ];

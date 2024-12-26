@@ -18,6 +18,17 @@
     hardware.url = "github:nixos/nixos-hardware";
     systems.url = "github:nix-systems/default-linux";
 
+    snowfall-lib = {
+      url = "github:snowfallorg/lib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixos-generators.url = "github:nix-community/nixos-generators";
+    nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     home-manager = {
       url = "github:nix-community/home-manager"; # unstable
       # url = "github:nix-community/home-manager/release-24.05";
@@ -136,8 +147,22 @@
     ...
   }: let
     inherit (self) outputs;
+    snow-lib = inputs.snowfall-lib.mkLib {
+      inherit inputs;
+      src = ./.;
 
-    lib = nixpkgs.lib // home-manager.lib;
+      snowfall = {
+        root = ./snowfall;
+        meta = {
+          name = "cih"; # One of the brightest stars
+          title = "Cih";
+        };
+
+        namespace = "cih";
+      };
+    };
+
+    lib = nixpkgs.lib // home-manager.lib // snow-lib;
     forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
     pkgsFor = lib.genAttrs (import systems) (
       system:
@@ -160,85 +185,97 @@
         configLib
         ;
     };
-  in {
-    inherit (nixpkgs) lib;
-    # Custom modules to enable special functionality for nixos or home-manager oriented configs.
-    nixosModules = import ./modules/nixos;
-    homeManagerModules = import ./modules/home-manager;
+  in
+    {
+      inherit (nixpkgs) lib;
+      # Custom modules to enable special functionality for nixos or home-manager oriented configs.
+      nixosModules = import ./modules/nixos;
+      homeManagerModules = import ./modules/home-manager;
 
-    overlays = import ./overlays {inherit inputs outputs;};
-    # Custom modifications/overrides to upstream packages.
-    packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs;});
-    devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs;});
-    formatter = forEachSystem (pkgs: pkgs.alejandra);
+      overlays = import ./overlays {inherit inputs outputs;};
+      # Custom modifications/overrides to upstream packages.
+      packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs;});
+      devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs;});
+      formatter = forEachSystem (pkgs: pkgs.alejandra);
 
-    #################### NixOS Configurations ####################
-    #
-    # Building configurations available through `just rebuild` or `nixos-rebuild --flake .#hostname`
+      #################### NixOS Configurations ####################
+      #
+      # Building configurations available through `just rebuild` or `nixos-rebuild --flake .#hostname`
 
-    nixosConfigurations = {
-      # Desktop PC
-      altair = lib.nixosSystem {
-        specialArgs = specialArgs;
-        modules = [
-          nixos-cosmic.nixosModules.default
-          lanzaboote.nixosModules.lanzaboote
-          home-manager.nixosModules.home-manager
-          {home-manager.extraSpecialArgs = specialArgs;}
-          ./hosts/altair
-        ];
+      nixosConfigurations = {
+        # Desktop PC
+        altair = lib.nixosSystem {
+          specialArgs = specialArgs;
+          modules = [
+            nixos-cosmic.nixosModules.default
+            lanzaboote.nixosModules.lanzaboote
+            home-manager.nixosModules.home-manager
+            {home-manager.extraSpecialArgs = specialArgs;}
+            ./hosts/altair
+          ];
+        };
+        # HP Laptop
+        canopus = lib.nixosSystem {
+          specialArgs = specialArgs;
+          modules = [
+            kmonad.nixosModules.default
+            lanzaboote.nixosModules.lanzaboote
+            home-manager.nixosModules.home-manager
+            {home-manager.extraSpecialArgs = specialArgs;}
+            ./hosts/canopus
+          ];
+        };
+        # QEMU VM
+        polaris = lib.nixosSystem {
+          specialArgs = specialArgs;
+          modules = [
+            inputs.disko.nixosModules.disko
+            home-manager.nixosModules.home-manager
+            {home-manager.extraSpecialArgs = specialArgs;}
+            ./hosts/polaris
+          ];
+        };
       };
-      # HP Laptop
-      canopus = lib.nixosSystem {
-        specialArgs = specialArgs;
-        modules = [
-          kmonad.nixosModules.default
-          lanzaboote.nixosModules.lanzaboote
-          home-manager.nixosModules.home-manager
-          {home-manager.extraSpecialArgs = specialArgs;}
-          ./hosts/canopus
-        ];
+      #################### Home Manager Configurations ####################
+      homeConfigurations = {
+        # Desktop home
+        "denrei@altair" = lib.homeManagerConfiguration {
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = specialArgs;
+          modules = [
+            ./home/denrei/altair.nix
+            ./home/denrei/nixpkgs.nix
+          ];
+        };
+        # HP Laptop home
+        "denrei@canopus" = lib.homeManagerConfiguration {
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = specialArgs;
+          modules = [
+            ./home/denrei/canopus.nix
+            ./home/denrei/nixpkgs.nix
+          ];
+        };
+        # QEMU VM Home
+        "denrei@polaris" = lib.homeManagerConfiguration {
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = specialArgs;
+          modules = [
+            ./home/denrei/polaris.nix
+            ./home/denrei/nixpkgs.nix
+          ];
+        };
       };
-      # QEMU VM
-      polaris = lib.nixosSystem {
-        specialArgs = specialArgs;
-        modules = [
-          inputs.disko.nixosModules.disko
-          home-manager.nixosModules.home-manager
-          {home-manager.extraSpecialArgs = specialArgs;}
-          ./hosts/polaris
-        ];
+    }
+    // lib.mkFlake {
+      channels-config = {
+        allowUnfree = true;
       };
+
+      overlays = with inputs; [];
+
+      systems.modules.nixos = with inputs; [];
+
+      templates = import ./templates {};
     };
-    #################### Home Manager Configurations ####################
-    homeConfigurations = {
-      # Desktop home
-      "denrei@altair" = lib.homeManagerConfiguration {
-        pkgs = pkgsFor.x86_64-linux;
-        extraSpecialArgs = specialArgs;
-        modules = [
-          ./home/denrei/altair.nix
-          ./home/denrei/nixpkgs.nix
-        ];
-      };
-      # HP Laptop home
-      "denrei@canopus" = lib.homeManagerConfiguration {
-        pkgs = pkgsFor.x86_64-linux;
-        extraSpecialArgs = specialArgs;
-        modules = [
-          ./home/denrei/canopus.nix
-          ./home/denrei/nixpkgs.nix
-        ];
-      };
-      # QEMU VM Home
-      "denrei@polaris" = lib.homeManagerConfiguration {
-        pkgs = pkgsFor.x86_64-linux;
-        extraSpecialArgs = specialArgs;
-        modules = [
-          ./home/denrei/polaris.nix
-          ./home/denrei/nixpkgs.nix
-        ];
-      };
-    };
-  };
 }
