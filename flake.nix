@@ -68,6 +68,9 @@
     };
     astal.url = "github:Aylur/astal";
 
+    # ghostty = {
+    #   url = "github:ghostty-org/ghostty";
+    # };
     lf-icons = {
       url = "github:gokcehan/lf";
       flake = false;
@@ -132,6 +135,7 @@
     lanzaboote,
     nixos-cosmic,
     zen-browser,
+    ghostty,
     # zed-editor,
     ...
   }: let
@@ -195,6 +199,11 @@
           kmonad.nixosModules.default
           lanzaboote.nixosModules.lanzaboote
           home-manager.nixosModules.home-manager
+          # {
+          #   environment.systemPackages = [
+          #     ghostty.packages.x86_64-linux.default
+          #   ];
+          # }
           {home-manager.extraSpecialArgs = specialArgs;}
           ./hosts/canopus
         ];

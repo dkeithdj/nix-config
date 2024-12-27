@@ -29,6 +29,7 @@ in {
       "$HOME/.local/share/solana/install/active_release/bin"
     ];
     sessionVariables = {
+      DIRENV_LOG_FORMAT = "";
       PROJECTS = "$HOME/Projects";
       FLAKE = "$HOME/Projects/nix-config";
       QT_XCB_GL_INTEGRATION = "none"; # kde-connect
