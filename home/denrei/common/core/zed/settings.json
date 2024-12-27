@@ -38,12 +38,16 @@
   "tab_bar": {
     "show": true
   },
+  "tab_size": 2,
+  "tabs": {
+    "git_status": true,
+    "file_icons": true
+  },
   "toolbar": {
     "breadcrumbs": true,
-    "quick_actions": false
+    "quick_actions": true
   },
   "formatter": "language_server",
-  "tab_size": 2,
   "terminal": {
     "alternate_scroll": "off",
     "blinking": "terminal_controlled",
@@ -52,7 +56,7 @@
     "button": false,
     "dock": "bottom",
     "env": {
-      "TERM": "wezterm"
+      "TERM": "xterm-256color"
     },
     "font_family": "FantasqueSansM Nerd Font",
     "line_height": {
@@ -81,7 +85,16 @@
   "outline_panel": {
     "button": false
   },
+  "auto_update": false,
+  "features": {
+    "copilot": true,
+    "inline_completion_provider": "copilot"
+  },
   "theme": "Tokyo Night",
   "ui_font_family": "FantasqueSansM Nerd Font",
-  "vim_mode": true
+  "vim_mode": true,
+  "vim": {
+    "highlight_on_yank_duration": 150,
+    "use_system_clipboard": "always"
+  }
 }

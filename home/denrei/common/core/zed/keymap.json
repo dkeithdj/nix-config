@@ -2,10 +2,22 @@
   {
     "context": "Dock || Terminal || Editor || ProjectPanel",
     "bindings": {
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+      "alt-h": [
+        "workspace::ActivatePaneInDirection",
+        "Left"
+      ],
+      "alt-l": [
+        "workspace::ActivatePaneInDirection",
+        "Right"
+      ],
+      "alt-k": [
+        "workspace::ActivatePaneInDirection",
+        "Up"
+      ],
+      "alt-j": [
+        "workspace::ActivatePaneInDirection",
+        "Down"
+      ]
     }
   },
   {

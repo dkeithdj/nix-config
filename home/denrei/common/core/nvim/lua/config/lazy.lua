@@ -37,7 +37,7 @@ require("lazy").setup({
         { import = "lazyvim.plugins.extras.lang.go" },
         { import = "lazyvim.plugins.extras.lang.json" },
         { import = "lazyvim.plugins.extras.lang.markdown" },
-        -- "lazyvim.plugins.extras.lang.nix", -- use nixd
+        { import = "lazyvim.plugins.extras.lang.nix" }, -- use nixd
         -- { import = "lazyvim.plugins.extras.lang.omnisharp" },
         { import = "lazyvim.plugins.extras.lang.python" },
         { import = "lazyvim.plugins.extras.lang.rust" },

@@ -8,15 +8,15 @@ return {
         servers = {
             -- nginx_language_server = {},
             solc = {},
-            nixd = {
-                settings = {
-                    nixd = {
-                        formatting = {
-                            command = { "alejandra" },
-                        },
-                    },
-                },
-            },
+            -- nixd = {
+            --     settings = {
+            --         nixd = {
+            --             formatting = {
+            --                 command = { "alejandra" },
+            --             },
+            --         },
+            --     },
+            -- },
             -- pyright will be automatically installed with mason and loaded with lspconfig
             -- pyright = {},
             lua_ls = {
