@@ -19,35 +19,35 @@ return {
             -- },
             -- pyright will be automatically installed with mason and loaded with lspconfig
             -- pyright = {},
-            lua_ls = {
-                settings = {
-                    Lua = {
-                        runtime = {
-                            version = "LuaJIT",
-                        },
-                        diagnostics = {
-                            globals = { "use", "vim" },
-                        },
-                        hint = {
-                            enable = true,
-                            setType = true,
-                        },
-                        telemetry = {
-                            enable = false,
-                        },
-                        workspace = {
-                            library = {
-                                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                                [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-                                [vim.fn.stdpath("data") .. "/lazy/ui/nvchad_types"] = true,
-                                [vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy"] = true,
-                            },
-                            maxPreload = 100000,
-                            preloadFileSize = 10000,
-                        },
-                    },
-                },
-            },
+            -- lua_ls = {
+            --     settings = {
+            --         Lua = {
+            --             runtime = {
+            --                 version = "LuaJIT",
+            --             },
+            --             diagnostics = {
+            --                 globals = { "use", "vim" },
+            --             },
+            --             hint = {
+            --                 enable = true,
+            --                 setType = true,
+            --             },
+            --             telemetry = {
+            --                 enable = false,
+            --             },
+            --             workspace = {
+            --                 library = {
+            --                     [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+            --                     [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+            --                     [vim.fn.stdpath("data") .. "/lazy/ui/nvchad_types"] = true,
+            --                     [vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy"] = true,
+            --                 },
+            --                 maxPreload = 100000,
+            --                 preloadFileSize = 10000,
+            --             },
+            --         },
+            --     },
+            -- },
             denols = {
                 filetypes = { "typescript", "typescriptreact" },
                 root_dir = function(...) return nvim_lsp.util.root_pattern("deno.jsonc", "deno.json")(...) end,

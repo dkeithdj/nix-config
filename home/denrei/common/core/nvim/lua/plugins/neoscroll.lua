@@ -1,3 +1,4 @@
+if true then return {} end
 return {
     "karb94/neoscroll.nvim",
     enabled = not vim.g.neovide,
