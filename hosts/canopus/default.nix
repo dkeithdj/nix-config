@@ -7,8 +7,12 @@
 {
   inputs,
   configLib,
+  configMk,
   ...
 }:
+let
+  inherit (configMk) enabled disabled;
+in
 {
   imports =
     [
@@ -65,6 +69,7 @@
   apps = {
     cli = {
       nh.enable = true;
+      direnv = enabled;
     };
   };
 

@@ -8,5 +8,8 @@
   bash = import ./apps/cli/bash;
   bat = import ./apps/cli/bat;
   cliphist = import ./apps/cli/cliphist;
+  # terminal
+  kitty = import ./terminal/kitty;
+  wezterm = import ./terminal/wezterm;
   # my-module = import ./my-module.nix;
 }

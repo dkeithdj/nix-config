@@ -30,6 +30,11 @@ in
     cliphist = enabled;
   };
 
+  terminal = {
+    wezterm = enabled;
+    kitty = enabled;
+  };
+
   home = {
     username = configVars.username;
     homeDirectory = "/home/${configVars.username}";
