@@ -27,6 +27,7 @@ in
     gh.enable = true;
     bash = enabled;
     bat = enabled;
+    cliphist = enabled;
   };
 
   home = {

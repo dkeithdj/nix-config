@@ -1,6 +1,7 @@
-{pkgs, ...}: {
-  services.cliphist = {
-    enable = true;
-    allowImages = true;
-  };
+{ pkgs, ... }:
+{
+  # services.cliphist = {
+  #   enable = true;
+  #   allowImages = true;
+  # };
 }

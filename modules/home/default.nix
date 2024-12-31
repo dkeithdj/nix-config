@@ -7,5 +7,6 @@
   gh = import ./apps/cli/gh;
   bash = import ./apps/cli/bash;
   bat = import ./apps/cli/bat;
+  cliphist = import ./apps/cli/cliphist;
   # my-module = import ./my-module.nix;
 }
