@@ -1,4 +1,7 @@
-{ configVars, ... }:
+{ configVars, configMk, ... }:
+let
+  inherit (configMk) enabled disabled;
+in
 {
   imports = [
     #################### Required Configs ####################
@@ -22,7 +25,8 @@
   apps.cli = {
     git.enable = true;
     gh.enable = true;
-    bash.enable = true;
+    bash = enabled;
+    bat = enabled;
   };
 
   home = {

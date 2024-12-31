@@ -10,8 +10,10 @@ let
   cfg = config.apps.cli.bash;
 in
 {
-  options.apps.cli.bash = with types; {
-    enable = mkBoolOpt "Enable bash configuration";
+  options = {
+    apps.cli.bash = with types; {
+      enable = mkBoolOpt false "Enable bash configuration";
+    };
   };
 
   config = mkIf cfg.enable {

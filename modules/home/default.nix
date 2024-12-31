@@ -6,5 +6,6 @@
   git = import ./apps/cli/git;
   gh = import ./apps/cli/gh;
   bash = import ./apps/cli/bash;
+  bat = import ./apps/cli/bat;
   # my-module = import ./my-module.nix;
 }
