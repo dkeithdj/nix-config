@@ -154,6 +154,7 @@
       );
       configVars = import ./vars { inherit inputs lib; };
       configLib = import ./lib { inherit lib; };
+      configMk = import ./lib/lib.nix { inherit lib; };
 
       # TODO: make it so that ags will be in pkgs
       ags = pkgsFor.x86_64-linux.callPackage ./home/denrei/common/optional/ags { inherit inputs; };
@@ -164,6 +165,7 @@
           outputs
           configVars
           configLib
+          configMk
           ;
       };
     in
@@ -171,7 +173,7 @@
       inherit (nixpkgs) lib;
       # Custom modules to enable special functionality for nixos or home-manager oriented configs.
       nixosModules = import ./modules/nixos;
-      homeManagerModules = import ./modules/home-manager;
+      homeManagerModules = import ./modules/home;
 
       overlays = import ./overlays { inherit inputs outputs; };
       # Custom modifications/overrides to upstream packages.
