@@ -28,6 +28,8 @@ in
     bash = enabled;
     bat = enabled;
     cliphist = enabled;
+    yazi = enabled;
+    zoxide = enabled;
   };
 
   terminal = {

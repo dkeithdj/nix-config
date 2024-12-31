@@ -8,6 +8,8 @@
   bash = import ./apps/cli/bash;
   bat = import ./apps/cli/bat;
   cliphist = import ./apps/cli/cliphist;
+  yazi = import ./apps/cli/yazi;
+  zoxide = import ./apps/cli/zoxide;
   # terminal
   kitty = import ./terminal/kitty;
   wezterm = import ./terminal/wezterm;
