@@ -1,4 +1,5 @@
-{configVars, ...}: {
+{ configVars, ... }:
+{
   imports = [
     #################### Required Configs ####################
     common/core # required
@@ -17,6 +18,11 @@
     common/optional/browsers
     common/optional/media
   ];
+
+  apps.cli = {
+    git.enable = true;
+    gh.enable = true;
+  };
 
   home = {
     username = configVars.username;
