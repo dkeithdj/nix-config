@@ -10,6 +10,7 @@
   cliphist = import ./apps/cli/cliphist;
   yazi = import ./apps/cli/yazi;
   zoxide = import ./apps/cli/zoxide;
+  nvim = import ./apps/cli/nvim;
   # terminal
   kitty = import ./terminal/kitty;
   wezterm = import ./terminal/wezterm;
