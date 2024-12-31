@@ -8,7 +8,8 @@
   inputs,
   configLib,
   ...
-}: {
+}:
+{
   imports =
     [
       #################### Every Host Needs This ####################
@@ -61,6 +62,12 @@
   # autoLogin.enable = true;
   # autoLogin.username = "denrei";
 
+  apps = {
+    cli = {
+      nh.enable = true;
+    };
+  };
+
   programs.ssh.startAgent = true;
   # TODO enable and move to greetd area? may need authentication dir or something?
   security.pam.services.greetd.enableGnomeKeyring = true;
@@ -82,7 +89,10 @@
     allowedUDPPortRanges = allowedTCPPortRanges;
   };
 
-  networking.firewall.allowedTCPPorts = [80 443];
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
 
   hardware.bluetooth = {
     enable = true;

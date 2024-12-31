@@ -22,7 +22,7 @@
   apps.cli = {
     git.enable = true;
     gh.enable = true;
-    nh.enable = true;
+    bash.enable = true;
   };
 
   home = {
