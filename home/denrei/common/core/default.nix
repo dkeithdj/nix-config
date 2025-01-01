@@ -6,13 +6,33 @@
   inputs,
   configLib,
   ...
-}: let
-  homeFiles = ["Documents" "Music" "Pictures" "Videos" "Downloads" "Desktop" "Projects"];
-  projectFiles = ["nix" "work" "school" "web" "blogs"];
+}:
+let
+  homeFiles = [
+    "Documents"
+    "Music"
+    "Pictures"
+    "Videos"
+    "Downloads"
+    "Desktop"
+    "Projects"
+  ];
+  projectFiles = [
+    "nix"
+    "work"
+    "school"
+    "web"
+    "blogs"
+  ];
 
-  projectCreate = lib.strings.concatMapStringsSep " " (x: "mkdir -p ${config.home.homeDirectory}/Projects/" + x + "\n") projectFiles;
-  homeCreate = lib.strings.concatMapStringsSep " " (x: "mkdir -p ${config.home.homeDirectory}/" + x + "\n") homeFiles;
-in {
+  projectCreate = lib.strings.concatMapStringsSep " " (
+    x: "mkdir -p ${config.home.homeDirectory}/Projects/" + x + "\n"
+  ) projectFiles;
+  homeCreate = lib.strings.concatMapStringsSep " " (
+    x: "mkdir -p ${config.home.homeDirectory}/" + x + "\n"
+  ) homeFiles;
+in
+{
   imports = (configLib.scanPaths ./.) ++ (builtins.attrValues outputs.homeManagerModules);
   # ++ [ inputs.impermanence.nixosModules.home-manager.impermanence ];
 
@@ -46,8 +66,8 @@ in {
       GOMODCACHE = "${config.home.homeDirectory}/.cache/go/pkg/mod";
     };
     activation = {
-      home = lib.hm.dag.entryAfter ["writeBoundary"] homeCreate;
-      projects = lib.hm.dag.entryAfter ["writeBoundary"] projectCreate;
+      home = lib.hm.dag.entryAfter [ "writeBoundary" ] homeCreate;
+      projects = lib.hm.dag.entryAfter [ "writeBoundary" ] projectCreate;
     };
     # persistence = {
     #   "/persist/home/denrei" = {
@@ -74,9 +94,10 @@ in {
     # };
   };
 
-  gtk.gtk3.bookmarks = let
-    home = config.home.homeDirectory;
-  in
+  gtk.gtk3.bookmarks =
+    let
+      home = config.home.homeDirectory;
+    in
     builtins.map (x: "file://${home}/" + x) homeFiles;
   services = {
     kdeconnect = {
@@ -168,6 +189,11 @@ in {
     act
     qmk
     qmk_hid
+
+    viu
+    chafa
+    ueberzugpp
+    aws-sam-cli
   ];
 
   nixpkgs = {
