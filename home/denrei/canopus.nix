@@ -32,7 +32,7 @@ in
     zoxide = enabled;
     nvim = enabled;
     zsh = enabled;
-    zellib = enabled;
+    zellij = enabled;
   };
   apps.gui = {
     zed = enabled;

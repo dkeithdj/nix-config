@@ -22,4 +22,5 @@
 
   # theme
   dconf = import ./theme/dconf;
+  gtk = import ./theme/gtk;
 }
