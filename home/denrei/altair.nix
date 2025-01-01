@@ -35,6 +35,7 @@ in
   };
   apps.gui = {
     zed = enabled;
+    misc = enabled;
   };
 
   terminal = {

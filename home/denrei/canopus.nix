@@ -23,8 +23,8 @@ in
   ];
 
   apps.cli = {
-    git.enable = true;
-    gh.enable = true;
+    git = enabled;
+    gh = enabled;
     bash = enabled;
     bat = enabled;
     cliphist = enabled;
@@ -36,11 +36,17 @@ in
   };
   apps.gui = {
     zed = enabled;
+    misc = enabled;
   };
 
   terminal = {
     wezterm = enabled;
     kitty = enabled;
+  };
+
+  theme = {
+    dconf = enabled;
+    gtk = enabled;
   };
 
   home = {

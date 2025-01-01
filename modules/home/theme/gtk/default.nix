@@ -8,7 +8,7 @@
 let
   inherit (lib) mkIf types;
   inherit (configMk) mkOpt mkBoolOpt;
-  cfg = config.home.theme.gtk;
+  cfg = config.theme.gtk;
   theme = {
     name = "adw-gtk3-dark";
     package = pkgs.adw-gtk3;

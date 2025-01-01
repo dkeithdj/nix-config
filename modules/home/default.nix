@@ -16,6 +16,8 @@
 
   # gui
   zed = import ./apps/gui/zed;
+  misc = import ./apps/gui/misc;
+
   # terminal
   kitty = import ./terminal/kitty;
   wezterm = import ./terminal/wezterm;
@@ -23,4 +25,5 @@
   # theme
   dconf = import ./theme/dconf;
   gtk = import ./theme/gtk;
+
 }
