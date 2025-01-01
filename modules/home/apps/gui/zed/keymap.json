@@ -1,0 +1,104 @@
+[
+  {
+    "context": "Dock || Terminal || Editor || ProjectPanel",
+    "bindings": {
+      "alt-h": [
+        "workspace::ActivatePaneInDirection",
+        "Left"
+      ],
+      "alt-l": [
+        "workspace::ActivatePaneInDirection",
+        "Right"
+      ],
+      "alt-k": [
+        "workspace::ActivatePaneInDirection",
+        "Up"
+      ],
+      "alt-j": [
+        "workspace::ActivatePaneInDirection",
+        "Down"
+      ]
+    }
+  },
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "shift-h": "pane::ActivatePrevItem",
+      "shift-l": "pane::ActivateNextItem",
+      "space b": "editor::ToggleGitBlame",
+      "shift-k": "editor::Hover",
+      "space l f": "editor::Format",
+      "space d": "diagnostics::Deploy",
+      "space f f": "file_finder::Toggle",
+      "space o": "tab_switcher::Toggle",
+      "space e": "workspace::ToggleLeftDock",
+      "space /": "workspace::NewSearch",
+      "n": "search::SelectNextMatch",
+      "shift-n": "search::SelectPrevMatch",
+      "space t": "workspace::NewCenterTerminal",
+      "g b": "editor::ToggleComments",
+      "+ +": "workspace::Save",
+      "space c": "pane::CloseActiveItem"
+    }
+  },
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "ctrl-k": "editor::ContextMenuPrev",
+      "ctrl-j": "editor::ContextMenuNext"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
+    "bindings": {
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp"
+    }
+  },
+  {
+    "context": "TabSwitcher",
+    "bindings": {
+      "ctrl-k": "menu::SelectPrev",
+      "ctrl-j": "menu::SelectNext"
+    }
+  },
+  {
+    "context": "FileFinder",
+    "bindings": {
+      "ctrl-k": "menu::SelectPrev",
+      "ctrl-j": "menu::SelectNext"
+    }
+  },
+  {
+    "context": "CommandPalette",
+    "bindings": {
+      "ctrl-k": "menu::SelectPrev",
+      "ctrl-j": "menu::SelectNext"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-z": "workspace::ToggleZoom",
+      "cmd-k": [
+        "projects::OpenRecent",
+        {
+          "create_new_window": false
+        }
+      ],
+      "ctrl-x": "tab_switcher::CloseSelectedItem"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-t": "workspace::NewTerminal"
+    }
+  },
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      "space f": "file_finder::Toggle"
+    }
+  }
+]

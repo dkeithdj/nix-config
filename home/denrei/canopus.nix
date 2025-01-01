@@ -30,6 +30,10 @@ in
     cliphist = enabled;
     yazi = enabled;
     zoxide = enabled;
+    nvim = enabled;
+  };
+  apps.gui = {
+    zed = enabled;
   };
 
   terminal = {

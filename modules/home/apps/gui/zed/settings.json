@@ -1,0 +1,98 @@
+{
+  "assistant": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4o"
+    },
+    "version": "2"
+  },
+  "auto_install_extensions": {
+    "docker-compose": true,
+    "dockerfile": true,
+    "nix": true,
+    "tokyo-night": true
+  },
+  "buffer_font_fallbacks": ["Zed Plex Mono"],
+  "buffer_font_family": "FantasqueSansM Nerd Font",
+  "buffer_line_height": "standard",
+  "load_direnv": "shell_hook",
+  "lsp": {
+    "rust-analyzer": {
+      "binary": {
+        "path": "/home/denrei/.nix-profile/bin/rust-analyzer"
+      }
+    },
+    "nix": {
+      "binary": {
+        "path": "/home/denrei/.nix-profile/bin/nil"
+      }
+    }
+  },
+  "relative_line_numbers": true,
+  "scrollbar": {
+    "show": "never"
+  },
+  "vertical_scroll_margin": 0,
+  "tab_bar": {
+    "show": true
+  },
+  "tab_size": 2,
+  "tabs": {
+    "git_status": true,
+    "file_icons": true
+  },
+  "toolbar": {
+    "breadcrumbs": true,
+    "quick_actions": true
+  },
+  "formatter": "language_server",
+  "terminal": {
+    "alternate_scroll": "off",
+    "blinking": "terminal_controlled",
+    "copy_on_select": false,
+    "working_directory": "current_project_directory",
+    "button": false,
+    "dock": "bottom",
+    "env": {
+      "TERM": "xterm-256color"
+    },
+    "font_family": "FantasqueSansM Nerd Font",
+    "line_height": {
+      "custom": 1.1
+    },
+    "option_as_meta": false,
+    "shell": "system",
+    "toolbar": {
+      "title": true
+    }
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "project_panel": {
+    "button": false,
+    "file_icons": true,
+    "git_status": true,
+    "auto_fold_dirs": false,
+    "indent_size": 12,
+    "scrollbar": {
+      "show": "never"
+    }
+  },
+  "outline_panel": {
+    "button": false
+  },
+  "auto_update": false,
+  "features": {
+    "copilot": true,
+    "inline_completion_provider": "copilot"
+  },
+  "theme": "Tokyo Night",
+  "ui_font_family": "FantasqueSansM Nerd Font",
+  "vim_mode": true,
+  "vim": {
+    "highlight_on_yank_duration": 150,
+    "use_system_clipboard": "always"
+  }
+}

@@ -20,7 +20,7 @@ in
     xdg = {
       # configFile.nvim.source = ../nvim;
       # configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink ../nvim;
-      configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Projects/nix-config/home/apps/cli/nvim";
+      configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Projects/nix-config/modules/home/apps/cli/nvim";
       desktopEntries."nvim" = lib.mkIf pkgs.stdenv.isLinux {
         name = "NeoVim";
         comment = "Edit text files";

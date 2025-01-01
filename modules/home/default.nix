@@ -11,6 +11,9 @@
   yazi = import ./apps/cli/yazi;
   zoxide = import ./apps/cli/zoxide;
   nvim = import ./apps/cli/nvim;
+
+  # gui
+  zed = import ./apps/gui/zed;
   # terminal
   kitty = import ./terminal/kitty;
   wezterm = import ./terminal/wezterm;
