@@ -11,6 +11,7 @@
   yazi = import ./apps/cli/yazi;
   zoxide = import ./apps/cli/zoxide;
   nvim = import ./apps/cli/nvim;
+  zsh = import ./apps/cli/zsh;
 
   # gui
   zed = import ./apps/gui/zed;

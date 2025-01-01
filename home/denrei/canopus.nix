@@ -31,6 +31,8 @@ in
     yazi = enabled;
     zoxide = enabled;
     nvim = enabled;
+    zsh = enabled;
+    zellib = enabled;
   };
   apps.gui = {
     zed = enabled;
