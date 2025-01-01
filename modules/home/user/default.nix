@@ -87,7 +87,7 @@ in
       home = {
         username = mkDefault cfg.name;
         homeDirectory = mkDefault cfg.home;
-        stateVersion = mkDefault "24.05";
+        stateVersion = config.system.stateVersion;
         sessionPath = [
           "$HOME/.local/bin"
           "$HOME/.avm/bin"

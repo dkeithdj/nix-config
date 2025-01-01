@@ -8,7 +8,7 @@ in
     # common/core # required
 
     #################### Host-specific Optional Configs ####################
-    common/optional/theme.nix
+    # common/optional/theme.nix
     common/optional/sops.nix
     common/optional/ags.nix
     common/optional/starship.nix
@@ -52,8 +52,11 @@ in
     gtk = enabled;
   };
 
+  # heome = {
+  #   username = configVars.username;
+  #   homeDirectory = "/home/${configVars.username}";
+  # };
   home = {
-    username = configVars.username;
-    homeDirectory = "/home/${configVars.username}";
+    stateVersion = "24.05";
   };
 }
