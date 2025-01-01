@@ -2,18 +2,19 @@
   lib,
   config,
   pkgs,
+  configMk,
   ...
 }:
 
 with lib;
 let
+  inherit (lib) mkIf types;
+  inherit (configMk) mkOpt mkBoolOpt;
   cfg = config.apps.cli.gh;
 in
 {
-  options = {
-    apps.cli.gh = with types; {
-      enable = mkEnableOption "GitHub CLI";
-    };
+  options.apps.cli.gh = with types; {
+    enable = mkBoolOpt false "Enable gh cli";
   };
 
   config = mkIf cfg.enable {

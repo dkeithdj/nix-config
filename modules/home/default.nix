@@ -11,6 +11,7 @@
   yazi = import ./apps/cli/yazi;
   zoxide = import ./apps/cli/zoxide;
   nvim = import ./apps/cli/nvim;
+  zellij = import ./apps/cli/zellij;
   zsh = import ./apps/cli/zsh;
 
   # gui
@@ -18,5 +19,7 @@
   # terminal
   kitty = import ./terminal/kitty;
   wezterm = import ./terminal/wezterm;
-  # my-module = import ./my-module.nix;
+
+  # theme
+  dconf = import ./theme/dconf;
 }
