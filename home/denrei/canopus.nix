@@ -5,7 +5,7 @@ in
 {
   imports = [
     #################### Required Configs ####################
-    common/core # required
+    # common/core # required
 
     #################### Host-specific Optional Configs ####################
     common/optional/theme.nix
@@ -22,12 +22,15 @@ in
     common/optional/media
   ];
 
+  user = enabled;
+
   apps.cli = {
     git = enabled;
     gh = enabled;
     bash = enabled;
     bat = enabled;
     cliphist = enabled;
+    misc = enabled;
     yazi = enabled;
     zoxide = enabled;
     nvim = enabled;

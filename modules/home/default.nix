@@ -8,6 +8,7 @@
   bash = import ./apps/cli/bash;
   bat = import ./apps/cli/bat;
   cliphist = import ./apps/cli/cliphist;
+  cli_misc = import ./apps/cli/misc;
   yazi = import ./apps/cli/yazi;
   zoxide = import ./apps/cli/zoxide;
   nvim = import ./apps/cli/nvim;
@@ -16,7 +17,7 @@
 
   # gui
   zed = import ./apps/gui/zed;
-  misc = import ./apps/gui/misc;
+  gui_misc = import ./apps/gui/misc;
 
   # terminal
   kitty = import ./terminal/kitty;
@@ -25,5 +26,8 @@
   # theme
   dconf = import ./theme/dconf;
   gtk = import ./theme/gtk;
+
+  # user
+  home = import ./user;
 
 }

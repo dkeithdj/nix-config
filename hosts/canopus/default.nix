@@ -66,6 +66,10 @@ in
   # autoLogin.enable = true;
   # autoLogin.username = "denrei";
 
+  system = {
+    fonts = enabled;
+  };
+
   apps = {
     cli = {
       nh.enable = true;
