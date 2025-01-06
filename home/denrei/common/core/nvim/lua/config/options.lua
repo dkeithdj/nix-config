@@ -8,7 +8,7 @@ vim.opt.updatetime = 50
 vim.opt.clipboard = "unnamedplus"
 vim.cmd([[ :set background=dark ]])
 
-g.lazyvim_python_lsp = "pylsp"
+-- g.lazyvim_python_lsp = "pylsp"
 
 -- To disable root detection set to just "cwd"
 g.root_spec = { ".git", "lsp", "cwd" }

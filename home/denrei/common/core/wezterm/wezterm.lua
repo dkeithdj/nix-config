@@ -23,6 +23,10 @@ config.tab_bar_at_bottom = true
 config.show_close_tab_button_in_tabs = true
 config.color_scheme = "tokyonight_night"
 config.pane_focus_follows_mouse = true
+config.inactive_pane_hsb = {
+	saturation = 0.8,
+	brightness = 0.7,
+}
 
 config.set_environment_variables = {
 	TERMINFO_DIRS = "/home/denrei/.nix-profile/share/terminfo",

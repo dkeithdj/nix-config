@@ -1,7 +1,7 @@
 local nvim_lsp = require("lspconfig")
 
-local lsp = vim.g.lazyvim_python_lsp or "pylsp"
-local ruff = vim.g.lazyvim_python_ruff or "ruff"
+-- local lsp = vim.g.lazyvim_python_lsp or "pylsp"
+-- local ruff = vim.g.lazyvim_python_ruff or "ruff"
 return {
   {
     "neovim/nvim-lspconfig",
@@ -20,22 +20,22 @@ return {
         --         },
         --     },
         -- },
-        pylsp = {
-          settings = {
-            pylsp = {
-              plugins = {
-                pyflakes = { enabled = false },
-                pycodestyle = { enabled = false },
-                autopep8 = { enabled = false },
-                yapf = { enabled = false },
-                mccabe = { enabled = false },
-                pylsp_mypy = { enabled = false },
-                pylsp_black = { enabled = false },
-                pylsp_isort = { enabled = false },
-              },
-            },
-          },
-        },
+        -- pylsp = {
+        --   settings = {
+        --     pylsp = {
+        --       plugins = {
+        --         pyflakes = { enabled = false },
+        --         pycodestyle = { enabled = false },
+        --         autopep8 = { enabled = false },
+        --         yapf = { enabled = false },
+        --         mccabe = { enabled = false },
+        --         pylsp_mypy = { enabled = false },
+        --         pylsp_black = { enabled = false },
+        --         pylsp_isort = { enabled = false },
+        --       },
+        --     },
+        --   },
+        -- },
         -- lua_ls = {
         --     settings = {
         --         Lua = {
@@ -105,14 +105,14 @@ return {
       },
     },
   },
-  {
-    "neovim/nvim-lspconfig",
-    opts = function(_, opts)
-      local servers = { "pyright", "pylsp", "ruff", "ruff_lsp", ruff, lsp }
-      for _, server in ipairs(servers) do
-        opts.servers[server] = opts.servers[server] or {}
-        opts.servers[server].enabled = server == lsp or server == ruff
-      end
-    end,
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   opts = function(_, opts)
+  --     local servers = { "pyright", "pylsp", "ruff", "ruff_lsp", ruff, lsp }
+  --     for _, server in ipairs(servers) do
+  --       opts.servers[server] = opts.servers[server] or {}
+  --       opts.servers[server].enabled = server == lsp or server == ruff
+  --     end
+  --   end,
+  -- },
 }
