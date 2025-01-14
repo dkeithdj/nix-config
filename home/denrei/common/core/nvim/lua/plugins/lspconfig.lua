@@ -11,14 +11,32 @@ return {
       servers = {
         -- nginx_language_server = {},
         solc = {},
+        nil_ls = {
+          settings = {
+            nil_ls = {
+              flake = {
+                autoEvalInputs = true,
+                nixpkgsInputName = "nixpkgs",
+              },
+            },
+          },
+        },
         -- nixd = {
-        --     settings = {
-        --         nixd = {
-        --             formatting = {
-        --                 command = { "alejandra" },
-        --             },
-        --         },
+        -- settings = {
+        --   nixd = {
+        --     nixpkgs = {
+        --       expr = "import <nixpkgs> { }",
         --     },
+        --     options = {
+        --       nixos = {
+        --         expr = '(builtins.getFlake ("git+file://" + toString ./.)).nixosConfigurations.k-on.options',
+        --       },
+        --       home_manager = {
+        --         expr = '(builtins.getFlake ("git+file://" + toString ./.)).homeConfigurations."ruixi@k-on".options',
+        --       },
+        --     },
+        --   },
+        -- },
         -- },
         -- pylsp = {
         --   settings = {
