@@ -187,8 +187,8 @@ in
     nodePackages.eslint
 
     act
-    qmk
-    qmk_hid
+    # qmk
+    # qmk_hid
 
     viu
     chafa

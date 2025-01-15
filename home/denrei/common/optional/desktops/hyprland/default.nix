@@ -2,7 +2,8 @@
   inputs,
   pkgs,
   ...
-}: let
+}:
+let
   hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
   # plugins = inputs.hyprland-plugins.packages.${pkgs.system};
 
@@ -14,13 +15,14 @@
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   pactl = "${pkgs.pulseaudio}/bin/pactl";
-in {
+in
+{
   xdg.desktopEntries."org.gnome.Settings" = {
     name = "Settings";
     comment = "Gnome Control Center";
     icon = "org.gnome.Settings";
     exec = "env XDG_CURRENT_DESKTOP=gnome ${pkgs.gnome-control-center}/bin/gnome-control-center";
-    categories = ["X-Preferences"];
+    categories = [ "X-Preferences" ];
     terminal = false;
   };
 
@@ -97,49 +99,62 @@ in {
         workspace_swipe_use_r = true;
       };
 
-      windowrule = let
-        f = regex: "float, ^(${regex})$";
-      in [
-        (f "org.gnome.Calculator")
-        (f "org.gnome.Nautilus")
-        (f "pavucontrol")
-        (f "nm-connection-editor")
-        (f "blueberry.py")
-        (f "org.gnome.Settings")
-        (f "org.gnome.design.Palette")
-        (f "Color Picker")
-        (f "xdg-desktop-portal")
-        (f "xdg-desktop-portal-gnome")
-        # (f "transmission-gtk")
-        (f "com.github.Aylur.ags")
-        (f "it.mijorus.smile")
-        "workspace 4, title:Spotify"
-        "workspace 4, title:vesktop"
-        "size 640 360, title:(Picture-in-Picture)"
-        "pin, title:^(Picture-in-Picture)$"
-        "move 100%-w-20, title:^(Picture-in-Picture)$"
-        "float, title:^(Picture-in-Picture)$"
-      ];
-
-      bind = let
-        binding = mod: cmd: key: arg: "${mod}, ${key}, ${cmd}, ${arg}";
-        mvfocus = binding "SUPER" "movefocus";
-        ws = binding "SUPER" "workspace";
-        resizeactive = binding "SUPER CTRL" "resizeactive";
-        mvactive = binding "SUPER ALT" "moveactive";
-        mvtows = binding "SUPER SHIFT" "movetoworkspace";
-        mvtowssilent = binding "SUPER SHIFT CTRL" "movetoworkspacesilent";
-        e = "exec, ags -b hypr";
-        arr = [
-          1
-          2
-          3
-          4
-          5
-          6
-          7
+      windowrule =
+        let
+          f = regex: "float, ^(${regex})$";
+        in
+        [
+          (f "org.gnome.Calculator")
+          (f "org.gnome.Nautilus")
+          (f "pavucontrol")
+          (f "nm-connection-editor")
+          (f "blueberry.py")
+          (f "org.gnome.Settings")
+          (f "org.gnome.design.Palette")
+          (f "Color Picker")
+          (f "xdg-desktop-portal")
+          (f "xdg-desktop-portal-gnome")
+          # (f "transmission-gtk")
+          (f "com.github.Aylur.ags")
+          (f "it.mijorus.smile")
+          (f "Picture-in-Picture")
+          "workspace 4, title:Spotify"
+          "workspace 4, title:vesktop"
         ];
-      in
+
+      windowrulev2 =
+        let
+          t = regex: "title:^(${regex})$";
+        in
+        [
+          ''float, ${(t "Picture-in-Picture")}''
+          ''pin, ${(t "Picture-in-Picture")}''
+          ''size 640 360, ${(t "Picture-in-Picture")}''
+          ''move 100%-w-20, ${(t "Picture-in-Picture")}''
+        ];
+
+      bind =
+        let
+          binding =
+            mod: cmd: key: arg:
+            "${mod}, ${key}, ${cmd}, ${arg}";
+          mvfocus = binding "SUPER" "movefocus";
+          ws = binding "SUPER" "workspace";
+          resizeactive = binding "SUPER CTRL" "resizeactive";
+          mvactive = binding "SUPER ALT" "moveactive";
+          mvtows = binding "SUPER SHIFT" "movetoworkspace";
+          mvtowssilent = binding "SUPER SHIFT CTRL" "movetoworkspacesilent";
+          e = "exec, ags -b hypr";
+          arr = [
+            1
+            2
+            3
+            4
+            5
+            6
+            7
+          ];
+        in
         [
           "SUPER CTRL SHIFT, R,  ${e} quit; ags -b hypr"
           "SUPER, R,       ${e} -t launcher"
@@ -153,7 +168,7 @@ in {
           "SUPER, V,    ${e} -r 'launcher.open(\":ch \")'"
           # "SUPER, period,    ${e} -r 'launcher.open(\":em \")'"
           "SUPER, period,    exec, smile"
-          "SUPER, Return, exec, wezterm -e" #
+          "SUPER, Return, exec, wezterm -e"
           "SUPER, W, exec, zen"
           "SUPER, T, exec, wezterm"
           "SUPER, D, exec, vesktop"
