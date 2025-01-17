@@ -10,7 +10,12 @@
     "docker-compose": true,
     "dockerfile": true,
     "nix": true,
-    "tokyo-night": true
+    "tokyo-night": true,
+    "catpuccin": true,
+    "svelte": true,
+    "lua": true,
+    "emmet": true,
+    "ruff": true,
   },
   "buffer_font_fallbacks": [
     "Zed Plex Mono"
@@ -172,7 +177,7 @@
     "copilot": true,
     "inline_completion_provider": "copilot"
   },
-  "theme": "Tokyo Night",
+  "theme": "Catppuccin Mocha",
   "ui_font_family": "FantasqueSansM Nerd Font",
   "vim_mode": true,
   "vim": {

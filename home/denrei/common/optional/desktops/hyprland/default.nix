@@ -118,8 +118,6 @@ in
           (f "com.github.Aylur.ags")
           (f "it.mijorus.smile")
           (f "Picture-in-Picture")
-          "workspace 4, title:Spotify"
-          "workspace 4, title:vesktop"
         ];
 
       windowrulev2 =
@@ -131,6 +129,8 @@ in
           ''pin, ${(t "Picture-in-Picture")}''
           ''size 640 360, ${(t "Picture-in-Picture")}''
           ''move 100%-w-20, ${(t "Picture-in-Picture")}''
+          "workspace 4, class:spotify"
+          "workspace 4, class:vesktop"
         ];
 
       bind =
@@ -171,6 +171,7 @@ in
           "SUPER, Return, exec, wezterm -e"
           "SUPER, W, exec, zen"
           "SUPER, T, exec, wezterm"
+          "SUPER, X, exec, zeditor"
           "SUPER, D, exec, vesktop"
           "SUPER, M, exec, spotify"
           "SUPER, E, exec, gtk-launch org.gnome.Nautilus"
