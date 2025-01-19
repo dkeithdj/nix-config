@@ -1,10 +1,10 @@
 {
   "assistant": {
+    "version": "2",
     "default_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-4o"
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-latest"
     },
-    "version": "2"
   },
   "auto_install_extensions": {
     "docker-compose": true,
@@ -66,20 +66,28 @@
           ]
         }
       }
-    }
+    },
+    "emmet": {}
   },
+  "format_on_save": "on",
   "languages": {
     // Refer https://zed.dev/docs/languages/javascript and https://zed.dev/docs/languages/typescript for more info
     "TypeScript": {
       // Refer https://github.com/jellydn/ts-inlay-hints for how to setup for Neovim and VSCode
-      "inlay_hints": {
-        "enabled": true,
-        "show_parameter_hints": false,
-        "show_other_hints": true,
-        "show_type_hints": true,
-      },
+      // "inlay_hints": {
+      //   "enabled": true,
+      //   "show_parameter_hints": false,
+      //   "show_other_hints": false,
+      //   "show_type_hints": true,
+      // },
+      "format_on_save": "prettier",
+      "formatter": "prettier",
+      "prettier": {
+        "allowed": true
+      }
     },
     "Python": {
+      "tab_size": 4,
       "format_on_save": {
         "language_server": {
           "name": "ruff"
