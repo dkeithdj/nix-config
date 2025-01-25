@@ -8,7 +8,8 @@
   inputs,
   configLib,
   ...
-}: {
+}:
+{
   imports =
     [
       #################### Every Host Needs This ####################
@@ -48,6 +49,7 @@
       # "hosts/common/optional/kanata/altair.nix" # keyboard colemak
       "hosts/common/optional/vial.nix" # keyboard vial
       # "hosts/common/optional/mariadb.nix" # media player
+      # "hosts/common/optional/ollama.nix" # ollama
 
       "hosts/common/optional/nautilus.nix" # file manager
 
@@ -82,7 +84,10 @@
     allowedUDPPortRanges = allowedTCPPortRanges;
   };
 
-  networking.firewall.allowedTCPPorts = [80 443];
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
 
   hardware.bluetooth = {
     enable = true;
