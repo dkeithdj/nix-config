@@ -1,12 +1,14 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   services.avahi = {
+    nssmdns = true;
     enable = true;
     nssmdns4 = true;
     openFirewall = true;
   };
   services.printing = {
-    listenAddresses = ["*:631"];
-    allowFrom = ["all"];
+    listenAddresses = [ "*:631" ];
+    allowFrom = [ "all" ];
     browsing = true;
     defaultShared = true;
     openFirewall = true;
@@ -18,6 +20,10 @@
 
       BrowseProtocols all
     '';
-    drivers = with pkgs; [gutenprint hplip brlaser];
+    drivers = with pkgs; [
+      gutenprint
+      hplip
+      brlaser
+    ];
   };
 }
