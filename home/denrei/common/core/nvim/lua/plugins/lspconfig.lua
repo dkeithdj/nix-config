@@ -11,16 +11,16 @@ return {
       servers = {
         -- nginx_language_server = {},
         solc = {},
-        nil_ls = {
-          settings = {
-            nil_ls = {
-              flake = {
-                autoEvalInputs = true,
-                nixpkgsInputName = "nixpkgs",
-              },
-            },
-          },
-        },
+        -- nil_ls = {
+        --   settings = {
+        --     nil_ls = {
+        --       flake = {
+        --         autoEvalInputs = true,
+        --         nixpkgsInputName = "nixpkgs",
+        --       },
+        --     },
+        --   },
+        -- },
         -- nixd = {
         -- settings = {
         --   nixd = {
