@@ -50,6 +50,7 @@
       "hosts/common/optional/vial.nix" # keyboard vial
       # "hosts/common/optional/mariadb.nix" # media player
       "hosts/common/optional/ollama.nix" # ollama
+      "hosts/common/optional/tailscale.nix" # ollama
 
       "hosts/common/optional/nautilus.nix" # file manager
 
