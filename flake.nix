@@ -12,7 +12,7 @@
     #################### Official NixOS and HM Package Sources ####################
 
     # nixpkgs.url = "github:NixOS/nixpkgs/release-24.05";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&ref=nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.11"; # also see 'stable-packages' overlay at 'overlays/default.nix"
 
     hardware.url = "github:nixos/nixos-hardware";
