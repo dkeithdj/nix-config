@@ -3,11 +3,13 @@
   lib,
   config,
   ...
-}: let
-  # cdproject = "${pkgs.cdproject}/bin/cdproject";
-  # setenv = "${pkgs.setenv}/bin/setenv";
-  # scripts = import ./scripts.nix {inherit pkgs;};
-in {
+}:
+let
+in
+# cdproject = "${pkgs.cdproject}/bin/cdproject";
+# setenv = "${pkgs.setenv}/bin/setenv";
+# scripts = import ./scripts.nix {inherit pkgs;};
+{
   # imports = [scripts = ./scripts.nix];
   home.file = {
     ".local/bin/cd-project".source = config.lib.file.mkOutOfStoreSymlink ./cd-project;
@@ -21,28 +23,42 @@ in {
     dotDir = ".config/zsh";
 
     zplug = {
-      enable = true;
+      enable = false;
       zplugHome = "${config.xdg.dataHome}/zsh/zplug";
       plugins = [
-        {name = "zsh-users/zsh-autosuggestions";}
-        {name = "ptavares/zsh-terraform";}
-        {name = "hlissner/zsh-autopair";}
-        {name = "jeffreytse/zsh-vi-mode";}
+        { name = "zsh-users/zsh-autosuggestions"; }
+        {
+          name = "ptavares/zsh-terraform";
+        }
+        { name = "hlissner/zsh-autopair"; }
+        { name = "jeffreytse/zsh-vi-mode"; }
         # { name = "themes/robbyrussell"; tags = [ as:theme from:oh-my-zsh ]; }
 
-        {name = "zap-zsh/fzf";}
-        {name = "Aloxaf/fzf-tab";}
-        {name = "zap-zsh/exa";}
-        {name = "zsh-users/zsh-syntax-highlighting";}
-        {name = "MichaelAquilina/zsh-you-should-use";}
+        { name = "zap-zsh/fzf"; }
+        { name = "Aloxaf/fzf-tab"; }
+        { name = "zap-zsh/exa"; }
+        { name = "zsh-users/zsh-syntax-highlighting"; }
+        { name = "MichaelAquilina/zsh-you-should-use"; }
         # {name = "esc/conda-zsh-completion";}
       ];
     };
 
+    antidote = {
+      enable = true;
+      plugins = [
+        "zsh-users/zsh-autosuggestions"
+        "hlissner/zsh-autopair"
+        "jeffreytse/zsh-vi-mode"
+        "Atlas34/fzf-plugin"
+        "Aloxaf/fzf-tab"
+        "zap-zsh/exa"
+        "zdharma-continuum/fast-syntax-highlighting"
+        "MichaelAquilina/zsh-you-should-use"
+      ];
+    };
+
     initExtra =
-      /*
-      bash
-      */
+      # bash
       ''
         source ~/.nix-profile/bin/aws_zsh_completer.sh
 
