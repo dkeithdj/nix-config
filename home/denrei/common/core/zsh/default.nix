@@ -54,6 +54,7 @@ in
         "zap-zsh/exa"
         "zdharma-continuum/fast-syntax-highlighting"
         "MichaelAquilina/zsh-you-should-use"
+        "ptavares/zsh-terraform"
       ];
     };
 
