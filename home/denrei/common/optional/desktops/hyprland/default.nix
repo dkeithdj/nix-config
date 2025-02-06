@@ -1,10 +1,10 @@
 {
-  inputs,
+  # inputs,
   pkgs,
   ...
 }:
 let
-  hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  # hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
   # plugins = inputs.hyprland-plugins.packages.${pkgs.system};
 
   yt = pkgs.writeShellScript "yt" ''
@@ -28,7 +28,8 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
-    # package = hyprland;
+    package = null;
+    portalPackage = null;
     systemd.enable = true;
     xwayland.enable = true;
     plugins = [
@@ -58,7 +59,7 @@ in
       monitor = [
         # "eDP-1, 1920x1080, 0x0, 1"
         # "HDMI-A-1, 2560x1440, 1920x0, 1"
-        "DP-2,2560x1440@75.00Hz, 0x0,1"
+        "DP-2, 2560x1440@75.00Hz, 0x0, 1"
       ];
 
       general = {
