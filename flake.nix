@@ -76,6 +76,11 @@
       flake = false;
     };
 
+    hyprpanel = {
+      url = "github:jas-singhfsu/hyprpanel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     firefox-gnome-theme = {
       url = "github:rafaelmardojai/firefox-gnome-theme";
       flake = false;
@@ -225,7 +230,13 @@
       homeConfigurations = {
         # Desktop home
         "denrei@altair" = lib.homeManagerConfiguration {
-          pkgs = pkgsFor.x86_64-linux;
+          # pkgs = pkgsFor.x86_64-linux;
+          pkgs = import nixpkgs {
+            inherit pkgsFor;
+            overlays = [
+              inputs.hyprpanel.overlay
+            ];
+          };
           extraSpecialArgs = specialArgs;
           modules = [
             ./home/denrei/altair.nix

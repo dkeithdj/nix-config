@@ -17,6 +17,8 @@
     common/optional/desktops
     common/optional/browsers
     common/optional/media
+
+    # common/optional/hyprpanel
   ];
 
   home = {

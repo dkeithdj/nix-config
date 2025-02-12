@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   services.avahi = {
-    nssmdns = true;
+    # nssmdns = true;
     enable = true;
     nssmdns4 = true;
     openFirewall = true;
