@@ -1,0 +1,16 @@
+{
+    "workbench.colorTheme": "Tokyo Night",
+    "workbench.activityBar.location": "hidden",
+    "editor.minimap.enabled": false,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "editor.fontFamily": "FantasqueSansM Nerd Font",
+    "editor.fontSize": 16,
+    "editor.smoothScrolling": true,
+    "editor.formatOnSave": true,
+    "git.autofetch": true,
+    "editor.fontLigatures": true,
+    "git.confirmSync": false,
+    "solidity.telemetry": false
+}

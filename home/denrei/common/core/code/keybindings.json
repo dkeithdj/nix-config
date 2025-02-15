@@ -1,0 +1,28 @@
+[
+    {
+        "key": "alt+h",
+        "command": "workbench.action.navigateLeft"
+    },
+    {
+        "key": "alt+j",
+        "command": "workbench.action.navigateDown"
+    },
+    {
+        "key": "alt+k",
+        "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "alt+l",
+        "command": "workbench.action.navigateRight"
+    },
+    {
+        "key": "shift-h",
+        "command": "workbench.action.previousEditorInGroup",
+        "when": "editorTextFocus && vim.mode == 'Normal'"
+    },
+    {
+        "key": "shift-l",
+        "command": "workbench.action.nextEditorInGroup",
+        "when": "editorTextFocus && vim.mode == 'Normal'"
+    }
+]
