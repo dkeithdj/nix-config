@@ -54,6 +54,8 @@ in
         # "ags -b hypr"
         "hyprctl setcursor Qogir 24"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        "wl-paste --type image --watch cliphist store" # Stores only image data
+        "wl-paste --type text --watch cliphist store" # Stores only image data
         # "transmission-gtk"
       ];
 
@@ -163,7 +165,7 @@ in
         [
           # "SUPER CTRL SHIFT, R,  ${e} quit; ags -b hypr"
           "SUPER CTRL SHIFT, R,  ${e} q; hyprpanel"
-          # "SUPER, R,       ${e} -t launcher"
+          "SUPER, R,       exec, rofi -show drun"
           # "SUPER, Tab,     ${e} -t overview"
           "SUPER,BACKSPACE,${e} t powermenu"
           # ",XF86PowerOff,  ${e} -r 'powermenu.shutdown()'"
@@ -172,8 +174,10 @@ in
           # ",Print,         ${e} -r 'recorder.screenshot()'"
           # "SHIFT,Print,    ${e} -r 'recorder.screenshot(true)'"
           # "SUPER, V,    ${e} -r 'launcher.open(\":ch \")'"
+          "SUPER, V, exec, rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img -show clipboard -show-icons"
           # "SUPER, period,    ${e} -r 'launcher.open(\":em \")'"
-          "SUPER, period,    exec, smile"
+          # "SUPER, period,    exec, smile"
+          "SUPER, period,    exec, rofi -show emoji"
           "SUPER, Return, exec, wezterm -e"
           "SUPER, W, exec, zen"
           "SUPER, T, exec, wezterm"

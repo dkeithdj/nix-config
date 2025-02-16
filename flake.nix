@@ -58,15 +58,15 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    matugen = {
-      url = "github:InioX/matugen?ref=v2.2.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    ags = {
-      url = "github:Aylur/ags/v1.9.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    astal.url = "github:Aylur/astal";
+    # matugen = {
+    #   url = "github:InioX/matugen?ref=v2.2.0";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # ags = {
+    #   url = "github:Aylur/ags/v1.9.0";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # astal.url = "github:Aylur/astal";
 
     # ghostty = {
     #   url = "github:ghostty-org/ghostty";

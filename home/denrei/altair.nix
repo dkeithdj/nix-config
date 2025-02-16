@@ -19,6 +19,7 @@
     common/optional/media
 
     common/optional/hyprpanel
+    common/optional/rofi
   ];
 
   home = {

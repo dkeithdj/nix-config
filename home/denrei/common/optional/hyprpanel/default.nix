@@ -18,10 +18,6 @@ in
 {
   imports = [ inputs.hyprpanel.homeManagerModules.hyprpanel ];
 
-  home.packages = with pkgs; [
-    rofi
-  ];
-
   programs.hyprpanel = {
     overlay.enable = true;
 
@@ -116,7 +112,7 @@ in
       menus.dashboard.shortcuts.left.shortcut2.command = "spotify";
       menus.dashboard.shortcuts.left.shortcut2.icon = "󰓇";
       menus.dashboard.shortcuts.left.shortcut2.tooltip = "Spotify";
-      menus.dashboard.shortcuts.left.shortcut3.command = "vencord";
+      menus.dashboard.shortcuts.left.shortcut3.command = "vesktop";
       menus.dashboard.shortcuts.left.shortcut3.icon = "";
       menus.dashboard.shortcuts.left.shortcut3.tooltip = "Discord";
       menus.dashboard.shortcuts.left.shortcut4.command = "rofi -show drun";
@@ -131,7 +127,7 @@ in
 
       theme.font = {
         name = "Ubuntu Nerd Font Propo";
-        size = "1.0rem";
+        size = "12px";
       };
     };
   };
