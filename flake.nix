@@ -93,10 +93,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nixos-cosmic = {
+    #   url = "github:lilyinstarlight/nixos-cosmic";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
@@ -139,7 +139,7 @@
       systems,
       kmonad,
       lanzaboote,
-      nixos-cosmic,
+      # nixos-cosmic,
       zen-browser,
       # ghostty,
       # zed-editor,
@@ -193,7 +193,7 @@
         altair = lib.nixosSystem {
           specialArgs = specialArgs;
           modules = [
-            nixos-cosmic.nixosModules.default
+            # nixos-cosmic.nixosModules.default
             lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager
             { home-manager.extraSpecialArgs = specialArgs; }
@@ -230,12 +230,12 @@
       homeConfigurations = {
         # Desktop home
         "denrei@altair" = lib.homeManagerConfiguration {
-          # pkgs = pkgsFor.x86_64-linux;
           pkgs = import nixpkgs {
-            inherit pkgsFor;
+            system = "x86_64-linux";
             overlays = [
               inputs.hyprpanel.overlay
             ];
+            config.allowUnfree = true;
           };
           extraSpecialArgs = specialArgs;
           modules = [

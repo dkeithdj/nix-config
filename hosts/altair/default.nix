@@ -62,6 +62,10 @@
   # autoLogin.enable = true;
   # autoLogin.username = "denrei";
 
+  environment.variables = {
+    PC = "1";
+  };
+
   programs.ssh.startAgent = true;
   # services.gnome.gnome-keyring.enable = true;
   # TODO enable and move to greetd area? may need authentication dir or something?

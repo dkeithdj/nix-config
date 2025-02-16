@@ -9,7 +9,8 @@
   lib,
   configLib,
   ...
-}: {
+}:
+{
   imports =
     [
       #################### Every Host Needs This ####################
@@ -52,7 +53,7 @@
   # autoLogin.enable = true;
   # autoLogin.username = "denrei";
 
-  services.gnome.gnome-keyring.enable = true;
+  # services.gnome.gnome-keyring.enable = true;
   # TODO enable and move to greetd area? may need authentication dir or something?
   # services.pam.services.greetd.enableGnomeKeyring = true;
 

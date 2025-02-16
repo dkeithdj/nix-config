@@ -1,5 +1,5 @@
 {
-  # inputs,
+  inputs,
   pkgs,
   ...
 }:
@@ -30,10 +30,10 @@ in
     enable = true;
     package = null;
     portalPackage = null;
-    systemd.enable = true;
+    # systemd.enable = true;
     xwayland.enable = true;
     plugins = [
-      # inputs.hyprland-hyprspace.packages.${pkgs.system}.default
+      inputs.hyprland-hyprspace.packages.${pkgs.system}.default
       # plugins.hyprexpo
       # plugins.hyprbars
       # plugins.borderspp
@@ -44,13 +44,14 @@ in
         "NIXOS_OZONE_WL, 1" # for ozone-based and electron apps to run on wayland
         "MOZ_ENABLE_WAYLAND, 1" # for firefox to run on wayland
         "MOZ_WEBRENDER, 1" # for firefox to run on wayland
-        "XDG_SESSION_TYPE,wayland"
-        "WLR_NO_HARDWARE_CURSORS,1"
-        "WLR_RENDERER_ALLOW_SOFTWARE,1"
+        "XDG_SESSION_TYPE, wayland"
+        "WLR_NO_HARDWARE_CURSORS, 1"
+        "WLR_RENDERER_ALLOW_SOFTWARE, 1"
         # "QT_QPA_PLATFORM,wayland"
       ];
       exec-once = [
-        "ags -b hypr"
+        # "hyprpanel"
+        # "ags -b hypr"
         "hyprctl setcursor Qogir 24"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         # "transmission-gtk"
@@ -65,6 +66,8 @@ in
       general = {
         layout = "dwindle";
         resize_on_border = true;
+        gaps_in = 5;
+        gaps_out = 10;
       };
 
       misc = {
@@ -116,7 +119,7 @@ in
           (f "xdg-desktop-portal")
           (f "xdg-desktop-portal-gnome")
           # (f "transmission-gtk")
-          (f "com.github.Aylur.ags")
+          # (f "com.github.Aylur.ags")
           (f "it.mijorus.smile")
           (f "Picture-in-Picture")
         ];
@@ -145,7 +148,8 @@ in
           mvactive = binding "SUPER ALT" "moveactive";
           mvtows = binding "SUPER SHIFT" "movetoworkspace";
           mvtowssilent = binding "SUPER SHIFT CTRL" "movetoworkspacesilent";
-          e = "exec, ags -b hypr";
+          # e = "exec, ags -b hypr";
+          e = "exec, hyprpanel";
           arr = [
             1
             2
@@ -157,16 +161,17 @@ in
           ];
         in
         [
-          "SUPER CTRL SHIFT, R,  ${e} quit; ags -b hypr"
-          "SUPER, R,       ${e} -t launcher"
-          "SUPER, Tab,     ${e} -t overview"
-          "SUPER,BACKSPACE,${e} -t 'powermenu'"
-          ",XF86PowerOff,  ${e} -r 'powermenu.shutdown()'"
-          "SUPER, bracketleft,  ${e} -r 'recorder.start()'"
-          "SUPER, bracketright, ${e} -r 'recorder.stop()'"
-          ",Print,         ${e} -r 'recorder.screenshot()'"
-          "SHIFT,Print,    ${e} -r 'recorder.screenshot(true)'"
-          "SUPER, V,    ${e} -r 'launcher.open(\":ch \")'"
+          # "SUPER CTRL SHIFT, R,  ${e} quit; ags -b hypr"
+          "SUPER CTRL SHIFT, R,  ${e} q; hyprpanel"
+          # "SUPER, R,       ${e} -t launcher"
+          # "SUPER, Tab,     ${e} -t overview"
+          "SUPER,BACKSPACE,${e} t powermenu"
+          # ",XF86PowerOff,  ${e} -r 'powermenu.shutdown()'"
+          # "SUPER, bracketleft,  ${e} -r 'recorder.start()'"
+          # "SUPER, bracketright, ${e} -r 'recorder.stop()'"
+          # ",Print,         ${e} -r 'recorder.screenshot()'"
+          # "SHIFT,Print,    ${e} -r 'recorder.screenshot(true)'"
+          # "SUPER, V,    ${e} -r 'launcher.open(\":ch \")'"
           # "SUPER, period,    ${e} -r 'launcher.open(\":em \")'"
           "SUPER, period,    exec, smile"
           "SUPER, Return, exec, wezterm -e"
@@ -235,6 +240,7 @@ in
       ];
 
       decoration = {
+        rounding = 10;
         shadow = {
           enabled = true;
           range = 8;
