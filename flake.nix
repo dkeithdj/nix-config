@@ -161,10 +161,10 @@
       configLib = import ./lib { inherit lib; };
 
       # TODO: make it so that ags will be in pkgs
-      ags = pkgsFor.x86_64-linux.callPackage ./home/denrei/common/optional/ags { inherit inputs; };
+      # ags = pkgsFor.x86_64-linux.callPackage ./home/denrei/common/optional/ags { inherit inputs; };
       specialArgs = {
         inherit
-          ags
+          # ags
           inputs
           outputs
           configVars
@@ -245,7 +245,13 @@
         };
         # HP Laptop home
         "denrei@canopus" = lib.homeManagerConfiguration {
-          pkgs = pkgsFor.x86_64-linux;
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            overlays = [
+              inputs.hyprpanel.overlay
+            ];
+            config.allowUnfree = true;
+          };
           extraSpecialArgs = specialArgs;
           modules = [
             ./home/denrei/canopus.nix

@@ -175,6 +175,7 @@ in
           # "SHIFT,Print,    ${e} -r 'recorder.screenshot(true)'"
           # "SUPER, V,    ${e} -r 'launcher.open(\":ch \")'"
           "SUPER, V, exec, rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img -show clipboard -show-icons"
+          "SUPER, C, exec, rofi -show calc"
           # "SUPER, period,    ${e} -r 'launcher.open(\":em \")'"
           # "SUPER, period,    exec, smile"
           "SUPER, period,    exec, rofi -show emoji"
