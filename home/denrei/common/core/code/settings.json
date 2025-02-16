@@ -1,10 +1,7 @@
 {
     "workbench.colorTheme": "Tokyo Night",
-    "workbench.activityBar.location": "hidden",
+    "explorer.autoReveal": false,
     "editor.minimap.enabled": false,
-    "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1
-    },
     "editor.fontFamily": "FantasqueSansM Nerd Font",
     "editor.fontSize": 16,
     "editor.smoothScrolling": true,
@@ -12,5 +9,15 @@
     "git.autofetch": true,
     "editor.fontLigatures": true,
     "git.confirmSync": false,
-    "solidity.telemetry": false
+    "solidity.telemetry": false,
+    "window.menuBarVisibility": "toggle",
+    "workbench.activityBar.location": "top",
+    "vim.useSystemClipboard": true,
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1
+    },
+    "vim.leader": "<space>",
+    "vim.highlightedyank.enable": true
 }

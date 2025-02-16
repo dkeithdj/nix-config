@@ -24,5 +24,82 @@
         "key": "shift-l",
         "command": "workbench.action.nextEditorInGroup",
         "when": "editorTextFocus && vim.mode == 'Normal'"
+    },
+    {
+        "key": "ctrl-z",
+        "command": "workbench.action.toggleMaximizedPanel",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "a",
+        "command": "explorer.newFile",
+        "when": "explorerViewletFocus && !inputFocus"
+    },
+    {
+        "key": "shift-a",
+        "command": "explorer.newFolder",
+        "when": "explorerViewletFocus && !inputFocus"
+    },
+    {
+        "key": "r",
+        "command": "renameFile",
+        "when": "explorerViewletFocus && !inputFocus"
+    },
+    {
+        "key": "d",
+        "command": "deleteFile",
+        "when": "explorerViewletFocus && !inputFocus"
+    },
+    {
+        "key": "x",
+        "command": "filesExplorer.cut",
+        "when": "explorerViewletFocus && !inputFocus"
+    },
+    {
+        "key": "c",
+        "command": "filesExplorer.copy",
+        "when": "explorerViewletFocus && !inputFocus"
+    },
+    {
+        "key": "p",
+        "command": "filesExplorer.paste",
+        "when": "explorerViewletFocus && !inputFocus"
+    },
+    {
+        "key": "q",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "explorerViewletFocus && !inputFocus"
+    },
+    {
+        "key": "space b o",
+        "command": "workbench.action.closeOtherEditors",
+        "when": "editorFocus && vim.mode =='Normal'"
+    },
+    {
+        "key": "space e",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "editorFocus && vim.mode =='Normal'"
+    },
+    {
+        "key": "space space",
+        "command": "workbench.action.quickOpen",
+        "when": "editorFocus && vim.mode =='Normal'"
+    },
+    {
+        "key": "shift-k",
+        "command": "editor.action.showHover",
+        "when": "editorFocus && vim.mode == 'Normal'"
+    },
+    {
+        "key": "space b p",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "workbench.action.closeSidebar",
+                "workbench.action.closePanel",
+                "workbench.action.closeAuxiliaryBar"
+            ]
+        },
+        "when": "editorFocus && vim.mode == 'Normal' && (sideBarVisible || panelVisible || auxiliaryBarVisible)"
     }
 ]
