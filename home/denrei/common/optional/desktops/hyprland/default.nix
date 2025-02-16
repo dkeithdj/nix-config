@@ -12,9 +12,49 @@ let
     mpv "$(wl-paste)"
   '';
 
+  grimblast = "${inputs.hyprland-contrib.packages.${pkgs.system}.grimblast}/bin/grimblast";
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   pactl = "${pkgs.pulseaudio}/bin/pactl";
+  notify-send = "${pkgs.libnotify}/bin/notify-send";
+
+  snapshot = pkgs.writeShellScriptBin "snapshot" ''
+    outputDir="$HOME/Pictures/Screenshots/"
+    outputFile="snapshot_$(date +%Y-%m-%d_%H-%M-%S).png"
+    outputPath="$outputDir/$outputFile"
+    mkdir -p "$outputDir"
+
+    mode=''${1:-area}
+
+    case "$mode" in
+    active)
+        command="${grimblast} copysave active $outputPath"
+        ;;
+    output)
+        command="${grimblast} copysave output $outputPath"
+        ;;
+    area)
+        command="${grimblast} copysave area $outputPath"
+        ;;
+    *)
+        echo "Invalid option: $mode"
+        echo "Usage: $0 {active|output|area}"
+        exit 1
+        ;;
+    esac
+
+
+    if eval "$command"; then
+        recentFile=$(find "$outputDir" -name 'snapshot_*.png' -printf '%T+ %p\n' | sort -r | head -n 1 | cut -d' ' -f2-)
+        ${notify-send} "Grimblast" "Your snapshot has been saved." \
+            -i video-x-generic \
+            -a "Grimblast" \
+            -t 7000 \
+            -u normal \
+            --action="scriptAction:-xdg-open $outputDir=Directory" \
+            --action="scriptAction:-xdg-open $recentFile=View"
+    fi
+  '';
 in
 {
   xdg.desktopEntries."org.gnome.Settings" = {
@@ -25,6 +65,10 @@ in
     categories = [ "X-Preferences" ];
     terminal = false;
   };
+
+  home.packages = [
+    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast # or any other package
+  ];
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -171,7 +215,7 @@ in
           # ",XF86PowerOff,  ${e} -r 'powermenu.shutdown()'"
           # "SUPER, bracketleft,  ${e} -r 'recorder.start()'"
           # "SUPER, bracketright, ${e} -r 'recorder.stop()'"
-          # ",Print,         ${e} -r 'recorder.screenshot()'"
+          ",Print,         exec, ${snapshot}/bin/snapshot"
           # "SHIFT,Print,    ${e} -r 'recorder.screenshot(true)'"
           # "SUPER, V,    ${e} -r 'launcher.open(\":ch \")'"
           "SUPER, V, exec, rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img -show clipboard -show-icons"
@@ -185,7 +229,7 @@ in
           "SUPER, X, exec, zeditor"
           "SUPER, D, exec, vesktop"
           "SUPER, M, exec, spotify"
-          "SUPER, E, exec, gtk-launch org.gnome.Nautilus"
+          "SUPER, E, exec, nautilus"
           "SUPER, I, exec, gtk-launch org.gnome.Settings"
 
           # youtube

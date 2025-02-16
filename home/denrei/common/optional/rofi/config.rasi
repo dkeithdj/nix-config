@@ -7,6 +7,7 @@ configuration {
   display-filebrowser:        " Files";
   display-window:             " Windows";
   display-clipboard:             "󰅇 Clipboard";
+  display-calc:             " Calc";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
   font: "Ubuntu Nerd Font Propo 12";
@@ -155,14 +156,14 @@ click-to-exit: true;
 /*	me-select-entry: "MousePrimary";*/
 /*	me-accept-entry: "MouseDPrimary";*/
 /*	me-accept-custom: "Control+MouseDPrimary";*/
-  timeout {
-      action: "kb-cancel";
-      delay:  0;
-  }
-  filebrowser {
-      directories-first: true;
-      sorting-method:    "name";
-  }
+  // timeout {
+  //     action: "kb-cancel";
+  //     delay:  0;
+  // }
+  // filebrowser {
+  //     directories-first: true;
+  //     sorting-method:    "name";
+  // }
 }
 
 @theme "/dev/null"

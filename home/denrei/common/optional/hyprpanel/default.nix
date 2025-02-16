@@ -1,4 +1,3 @@
-# *.nix
 {
   inputs,
   lib,
@@ -67,18 +66,16 @@ in
             "clock"
             "media"
           ];
-          right =
-            [
-              "ram"
-              "volume"
-              "network"
-              "systray"
-              "notifications"
-            ]
-            ++ (if (builtins.getEnv "PC" != "1") then [ "battery" ] else [ ])
-            ++ [
-              "power"
-            ];
+          right = [
+            "ram"
+            "volume"
+            "network"
+            "bluetooth"
+            "systray"
+            "notifications"
+            "power"
+            "battery"
+          ];
         };
       };
     };
