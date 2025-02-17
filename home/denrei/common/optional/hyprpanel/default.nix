@@ -73,8 +73,8 @@ in
             "bluetooth"
             "systray"
             "notifications"
-            "power"
             "battery"
+            "power"
           ];
         };
       };
