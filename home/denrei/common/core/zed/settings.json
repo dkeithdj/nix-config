@@ -23,11 +23,9 @@
     "svelte": true,
     "lua": true,
     "emmet": true,
-    "ruff": true,
+    "ruff": true
   },
-  "buffer_font_fallbacks": [
-    "Zed Plex Mono"
-  ],
+  "buffer_font_fallbacks": ["Zed Plex Mono"],
   "buffer_font_family": "FantasqueSansM Nerd Font",
   "buffer_line_height": "standard",
   "load_direnv": "shell_hook",
@@ -38,13 +36,8 @@
   "lsp": {
     "tailwindcss-language-server": {
       "settings": {
-        "classAttributes": [
-          "class",
-          "className",
-          "ngClass",
-          "styles"
-        ],
-      },
+        "classAttributes": ["class", "className", "ngClass", "styles"]
+      }
     },
     "rust-analyzer": {
       "binary": {
@@ -57,9 +50,7 @@
       },
       "settings": {
         "diagnostics": {
-          "ignored": [
-            "unused_binding"
-          ]
+          "ignored": ["unused_binding"]
         }
       }
     },
@@ -69,9 +60,7 @@
       },
       "settings": {
         "diagnostic": {
-          "suppress": [
-            "sema-extra-with"
-          ]
+          "suppress": ["sema-extra-with"]
         }
       }
     },
@@ -106,30 +95,20 @@
           "name": "ruff"
         }
       },
-      "language_servers": [
-        "pyright",
-        "ruff"
-      ]
+      "language_servers": ["pyright", "ruff"]
     },
     "Nix": {
       "formatter": {
         "external": {
-          "command": "nixfmt", // or "nixfmt"
+          "command": "nixfmt" // or "nixfmt"
         }
       }
     }
   },
   // File syntax highlighting
   "file_types": {
-    "Dockerfile": [
-      "Dockerfile",
-      "Dockerfile.*"
-    ],
-    "JSON": [
-      "json",
-      "jsonc",
-      "*.code-snippets"
-    ]
+    "Dockerfile": ["Dockerfile", "Dockerfile.*"],
+    "JSON": ["json", "jsonc", "*.code-snippets"]
   },
   "relative_line_numbers": true,
   "scrollbar": {
@@ -193,7 +172,7 @@
     "copilot": true,
     "inline_completion_provider": "zed"
   },
-  "theme": "Catppuccin Mocha",
+  "theme": "Tokyo Night",
   "ui_font_family": "FantasqueSansM Nerd Font",
   "vim_mode": true,
   "vim": {

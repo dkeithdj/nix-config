@@ -89,7 +89,7 @@ in
       bar.clock.format = "%a %b %d  %H:%M";
       bar.customModules.ram.labelType = "used/total";
       bar.launcher.autoDetectIcon = true;
-      bar.workspaces.show_icons = true;
+      bar.workspaces.show_icons = false;
       bar.workspaces.show_numbered = true;
       bar.workspaces.workspaces = 7;
       menus.clock = {
