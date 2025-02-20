@@ -10,7 +10,7 @@ configuration {
   display-calc:             " Calc";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
-  font: "Ubuntu Nerd Font Propo 12";
+  font: "Ubuntu Nerd Font Propo 10";
   show-icons: true;
   icon-theme: "MoreWaita";
 	location: 2;
@@ -184,7 +184,7 @@ click-to-exit: true;
 }
 
 window {
-  width: 20%;
+  width: 480px;
   background-color: @bg;
   border-radius:  10;
   y-offset: 5em;
@@ -201,7 +201,7 @@ element {
   orientation: horizontal;
   children: [  element-icon ,element-text];
   spacing: 5px;
-  padding: 8 12;
+  padding: 4 6;
   background-color: transparent;
   text-color: @fg-alt;
 }
@@ -237,7 +237,7 @@ inputbar {
 listview {
   background-color: @bg;
   columns: 1;
-  lines: 10;
+  lines: 6;
 }
 
 mainbox {
