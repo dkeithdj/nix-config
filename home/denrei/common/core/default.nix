@@ -161,6 +161,7 @@ in
 
     poetry
     uv
+    bun
     # cargo
 
     # rustc
