@@ -95,7 +95,7 @@ in
       ];
       exec-once = [
         # "hyprpanel"
-        # "ags -b hypr"
+        "ags -b hypr"
         "hyprctl setcursor Qogir 24"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "wl-paste --type image --watch cliphist store" # Stores only image data
@@ -194,8 +194,8 @@ in
           mvactive = binding "SUPER ALT" "moveactive";
           mvtows = binding "SUPER SHIFT" "movetoworkspace";
           mvtowssilent = binding "SUPER SHIFT CTRL" "movetoworkspacesilent";
-          # e = "exec, ags -b hypr";
-          e = "exec, hyprpanel";
+          e = "exec, ags -b hypr";
+          # e = "exec, hyprpanel";
           arr = [
             1
             2
@@ -207,10 +207,10 @@ in
           ];
         in
         [
-          # "SUPER CTRL SHIFT, R,  ${e} quit; ags -b hypr"
-          "SUPER CTRL SHIFT, R,  ${e} q; hyprpanel"
+          "SUPER CTRL SHIFT, R,  ${e} quit; ags -b hypr"
+          # "SUPER CTRL SHIFT, R,  ${e} q; hyprpanel"
           "SUPER, R,       exec, rofi -show drun"
-          # "SUPER, Tab,     ${e} -t overview"
+          "SUPER, Tab,     ${e} -t overview"
           "SUPER,BACKSPACE,${e} t powermenu"
           # ",XF86PowerOff,  ${e} -r 'powermenu.shutdown()'"
           # "SUPER, bracketleft,  ${e} -r 'recorder.start()'"

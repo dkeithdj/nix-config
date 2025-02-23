@@ -58,15 +58,15 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    # matugen = {
-    #   url = "github:InioX/matugen?ref=v2.2.0";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # ags = {
-    #   url = "github:Aylur/ags/v1.9.0";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # astal.url = "github:Aylur/astal";
+    matugen = {
+      url = "github:InioX/matugen?ref=v2.2.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    ags = {
+      url = "github:Aylur/ags/v1.9.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    astal.url = "github:Aylur/astal";
 
     # ghostty = {
     #   url = "github:ghostty-org/ghostty";
@@ -76,10 +76,10 @@
       flake = false;
     };
 
-    hyprpanel = {
-      url = "github:jas-singhfsu/hyprpanel";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # hyprpanel = {
+    #   url = "github:jas-singhfsu/hyprpanel";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     firefox-gnome-theme = {
       url = "github:rafaelmardojai/firefox-gnome-theme";
@@ -197,6 +197,7 @@
             lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager
             { home-manager.extraSpecialArgs = specialArgs; }
+            # { nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; }
             ./hosts/altair
           ];
         };
@@ -227,46 +228,46 @@
         };
       };
       #################### Home Manager Configurations ####################
-      homeConfigurations = {
-        # Desktop home
-        "denrei@altair" = lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            system = "x86_64-linux";
-            overlays = [
-              inputs.hyprpanel.overlay
-            ];
-            config.allowUnfree = true;
-          };
-          extraSpecialArgs = specialArgs;
-          modules = [
-            ./home/denrei/altair.nix
-            ./home/denrei/nixpkgs.nix
-          ];
-        };
-        # HP Laptop home
-        "denrei@canopus" = lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            system = "x86_64-linux";
-            overlays = [
-              inputs.hyprpanel.overlay
-            ];
-            config.allowUnfree = true;
-          };
-          extraSpecialArgs = specialArgs;
-          modules = [
-            ./home/denrei/canopus.nix
-            ./home/denrei/nixpkgs.nix
-          ];
-        };
-        # QEMU VM Home
-        "denrei@polaris" = lib.homeManagerConfiguration {
-          pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = specialArgs;
-          modules = [
-            ./home/denrei/polaris.nix
-            ./home/denrei/nixpkgs.nix
-          ];
-        };
-      };
+      # homeConfigurations = {
+      #   # Desktop home
+      #   "denrei@altair" = lib.homeManagerConfiguration {
+      #     pkgs = import nixpkgs {
+      #       system = "x86_64-linux";
+      #       overlays = [
+      #         inputs.hyprpanel.overlay
+      #       ];
+      #       config.allowUnfree = true;
+      #     };
+      #     extraSpecialArgs = specialArgs;
+      #     modules = [
+      #       ./home/denrei/altair.nix
+      #       ./home/denrei/nixpkgs.nix
+      #     ];
+      #   };
+      #   # HP Laptop home
+      #   "denrei@canopus" = lib.homeManagerConfiguration {
+      #     pkgs = import nixpkgs {
+      #       system = "x86_64-linux";
+      #       overlays = [
+      #         inputs.hyprpanel.overlay
+      #       ];
+      #       config.allowUnfree = true;
+      #     };
+      #     extraSpecialArgs = specialArgs;
+      #     modules = [
+      #       ./home/denrei/canopus.nix
+      #       ./home/denrei/nixpkgs.nix
+      #     ];
+      #   };
+      #   # QEMU VM Home
+      #   "denrei@polaris" = lib.homeManagerConfiguration {
+      #     pkgs = pkgsFor.x86_64-linux;
+      #     extraSpecialArgs = specialArgs;
+      #     modules = [
+      #       ./home/denrei/polaris.nix
+      #       ./home/denrei/nixpkgs.nix
+      #     ];
+      #   };
+      # };
     };
 }
