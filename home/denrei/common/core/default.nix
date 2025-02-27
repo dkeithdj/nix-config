@@ -195,6 +195,8 @@ in
     chafa
     ueberzugpp
     aws-sam-cli
+
+    devenv
   ];
 
   nixpkgs = {

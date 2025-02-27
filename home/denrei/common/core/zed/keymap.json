@@ -4,7 +4,7 @@
     "bindings": {
       // put key-bindings here if you want them to work in normal & visual mode
       // Git
-      "space g h d": "editor::ToggleHunkDiff",
+      "space g h d": "editor::ToggleSelectedDiffHunks",
       "space g h r": "editor::RevertSelectedHunks",
       // Toggle inlay hints
       "space t i": "editor::ToggleInlayHints",
@@ -29,22 +29,10 @@
     "context": "Editor",
     "bindings": {
       // Navigate between panel
-      "alt-h": [
-        "workspace::ActivatePaneInDirection",
-        "Left"
-      ],
-      "alt-l": [
-        "workspace::ActivatePaneInDirection",
-        "Right"
-      ],
-      "alt-k": [
-        "workspace::ActivatePaneInDirection",
-        "Up"
-      ],
-      "alt-j": [
-        "workspace::ActivatePaneInDirection",
-        "Down"
-      ],
+      "alt-h": "workspace::ActivatePaneLeft",
+      "alt-l": "workspace::ActivatePaneRight",
+      "alt-k": "workspace::ActivatePaneUp",
+      "alt-j": "workspace::ActivatePaneDown"
     }
   },
   {
@@ -153,22 +141,10 @@
       "ctrl-n": "workspace::NewTerminal",
       "ctrl-alt-h": "pane::ActivatePrevItem",
       "ctrl-alt-l": "pane::ActivateNextItem",
-      "alt-h": [
-        "workspace::ActivatePaneInDirection",
-        "Left"
-      ],
-      "alt-l": [
-        "workspace::ActivatePaneInDirection",
-        "Right"
-      ],
-      "alt-k": [
-        "workspace::ActivatePaneInDirection",
-        "Up"
-      ],
-      "alt-j": [
-        "workspace::ActivatePaneInDirection",
-        "Down"
-      ]
+      "alt-h": "workspace::ActivatePaneLeft",
+      "alt-l": "workspace::ActivatePaneRight",
+      "alt-k": "workspace::ActivatePaneUp",
+      "alt-j": "workspace::ActivatePaneDown"
     }
   },
   // File panel (netrw)
@@ -186,45 +162,22 @@
       "q": "workspace::ToggleLeftDock",
       "space e": "workspace::ToggleLeftDock",
       // Navigate between panel
-      "alt-h": [
-        "workspace::ActivatePaneInDirection",
-        "Left"
-      ],
-      "alt-l": [
-        "workspace::ActivatePaneInDirection",
-        "Right"
-      ],
-      "alt-k": [
-        "workspace::ActivatePaneInDirection",
-        "Up"
-      ],
-      "alt-j": [
-        "workspace::ActivatePaneInDirection",
-        "Down"
-      ],
-    },
+      "alt-h": "workspace::ActivatePaneLeft",
+      "alt-l": "workspace::ActivatePaneRight",
+      "alt-k": "workspace::ActivatePaneUp",
+      "alt-j": "workspace::ActivatePaneDown"
+    }
   },
   // Panel nagivation
   {
     "context": "Dock",
     "bindings": {
-      "ctrl-w h": [
-        "workspace::ActivatePaneInDirection",
-        "Left"
-      ],
-      "ctrl-w l": [
-        "workspace::ActivatePaneInDirection",
-        "Right"
-      ],
-      "ctrl-w k": [
-        "workspace::ActivatePaneInDirection",
-        "Up"
-      ],
-      "ctrl-w j": [
-        "workspace::ActivatePaneInDirection",
-        "Down"
-      ],
-    },
+      "ctrl-w h": "workspace::ActivatePaneLeft",
+      "ctrl-w l": "workspace::ActivatePaneRight",
+      "ctrl-w k": "workspace::ActivatePaneUp",
+      "ctrl-w j": "workspace::ActivatePaneDown"
+      // ... or other keybindings
+    }
   },
   {
     "context": "vim_mode == insert",
@@ -239,10 +192,8 @@
       "shift-j": "editor::MoveLineDown",
       "shift-k": "editor::MoveLineUp",
       "shift-s": [
-        "vim::PushOperator",
-        {
-          "AddSurrounds": {}
-        }
+        "vim::PushAddSurrounds",
+        {}
       ]
     }
   },
@@ -292,4 +243,17 @@
       "space f": "file_finder::Toggle"
     }
   },
+  {
+    "context": "Editor && edit_prediction",
+    "bindings": {
+      // Here we also allow `alt-enter` to accept the prediction
+      "alt-e": "editor::AcceptEditPrediction"
+    }
+  },
+  {
+    "context": "Editor && edit_prediction_conflict",
+    "bindings": {
+      "alt-e": "editor::AcceptEditPrediction"
+    }
+  }
 ]

@@ -5,7 +5,8 @@
   inputs,
   configVars,
   ...
-}: {
+}:
+{
   xdg = {
     # configFile.nvim.source = ../nvim;
     # configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink ../nvim;
@@ -15,9 +16,9 @@
       comment = "Edit text files";
       exec = "wezterm -e ${pkgs.neovim}/bin/nvim %F";
       icon = "nvim";
-      categories = ["TerminalEmulator"];
+      categories = [ "TerminalEmulator" ];
       terminal = false;
-      mimeType = ["text/plain"];
+      mimeType = [ "text/plain" ];
     };
   };
   programs.neovim = {
@@ -41,7 +42,7 @@
       ripgrep
       fd
       fzf
-      # cargo
+      cargo
       go
       python3
       nodejs

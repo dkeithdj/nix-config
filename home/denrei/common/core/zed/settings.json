@@ -1,5 +1,5 @@
 {
-  "show_inline_completions": false,
+  "show_edit_predictions": true,
   "icon_theme": "Material Icon Theme",
   "assistant": {
     "version": "2",
@@ -69,6 +69,9 @@
   "format_on_save": "on",
   "languages": {
     // Refer https://zed.dev/docs/languages/javascript and https://zed.dev/docs/languages/typescript for more info
+    "TSX": {
+      "show_edit_predictions": true
+    },
     "TypeScript": {
       // Refer https://github.com/jellydn/ts-inlay-hints for how to setup for Neovim and VSCode
       // "inlay_hints": {
@@ -170,7 +173,7 @@
   "auto_update": false,
   "features": {
     "copilot": true,
-    "inline_completion_provider": "zed"
+    "edit_prediction_provider": "zed"
   },
   "theme": "Tokyo Night",
   "ui_font_family": "FantasqueSansM Nerd Font",
