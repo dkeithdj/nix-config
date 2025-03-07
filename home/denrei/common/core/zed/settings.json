@@ -5,12 +5,12 @@
     "version": "2",
     "default_model": {
       "provider": "copilot_chat",
-      "model": "o3-mini"
+      "model": "claude-3-7-sonnet"
     },
     "inline_alternatives": [
       {
-        "provider": "zed.dev",
-        "model": "claude-3-5-sonnet-20241022"
+        "provider": "copilot_chat",
+        "model": "claude-3-7-sonnet"
       }
     ]
   },
@@ -25,7 +25,9 @@
     "emmet": true,
     "ruff": true
   },
-  "buffer_font_fallbacks": ["Zed Plex Mono"],
+  "buffer_font_fallbacks": [
+    "Zed Plex Mono"
+  ],
   "buffer_font_family": "FantasqueSansM Nerd Font",
   "buffer_line_height": "standard",
   "load_direnv": "shell_hook",
@@ -36,7 +38,12 @@
   "lsp": {
     "tailwindcss-language-server": {
       "settings": {
-        "classAttributes": ["class", "className", "ngClass", "styles"]
+        "classAttributes": [
+          "class",
+          "className",
+          "ngClass",
+          "styles"
+        ]
       }
     },
     "rust-analyzer": {
@@ -50,7 +57,9 @@
       },
       "settings": {
         "diagnostics": {
-          "ignored": ["unused_binding"]
+          "ignored": [
+            "unused_binding"
+          ]
         }
       }
     },
@@ -60,7 +69,9 @@
       },
       "settings": {
         "diagnostic": {
-          "suppress": ["sema-extra-with"]
+          "suppress": [
+            "sema-extra-with"
+          ]
         }
       }
     },
@@ -98,7 +109,10 @@
           "name": "ruff"
         }
       },
-      "language_servers": ["pyright", "ruff"]
+      "language_servers": [
+        "pyright",
+        "ruff"
+      ]
     },
     "Nix": {
       "formatter": {
@@ -110,14 +124,21 @@
   },
   // File syntax highlighting
   "file_types": {
-    "Dockerfile": ["Dockerfile", "Dockerfile.*"],
-    "JSON": ["json", "jsonc", "*.code-snippets"]
+    "Dockerfile": [
+      "Dockerfile",
+      "Dockerfile.*"
+    ],
+    "JSON": [
+      "json",
+      "jsonc",
+      "*.code-snippets"
+    ]
   },
   "relative_line_numbers": true,
   "scrollbar": {
     "show": "never"
   },
-  "vertical_scroll_margin": 0,
+  "vertical_scroll_margin": 6,
   "tab_bar": {
     "show": true
   },
@@ -183,5 +204,6 @@
     "use_system_clipboard": "always",
     "use_multiline_find": true,
     "vertical_scroll_margin": 6
-  }
+  },
+  "scroll_beyond_last_line": "vertical_scroll_margin"
 }

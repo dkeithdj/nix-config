@@ -32,7 +32,8 @@
       "alt-h": "workspace::ActivatePaneLeft",
       "alt-l": "workspace::ActivatePaneRight",
       "alt-k": "workspace::ActivatePaneUp",
-      "alt-j": "workspace::ActivatePaneDown"
+      "alt-j": "workspace::ActivatePaneDown",
+      "ctrl-alt-k": "projects::OpenRecent"
     }
   },
   {

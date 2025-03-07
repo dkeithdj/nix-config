@@ -24,7 +24,7 @@
 
     stable.zoom-us
 
-    filelight
+    kdePackages.filelight
     smile
 
     # drm_info
