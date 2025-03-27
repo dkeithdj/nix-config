@@ -5,7 +5,7 @@
     "version": "2",
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-3-7-sonnet"
+      "model": "gpt-4o"
     },
     "inline_alternatives": [
       {
@@ -103,8 +103,8 @@
       "formatter": [
         {
           "code_actions": {
-            "source.organizeImports.ruff": true,
-            "source.fixAll.ruff": true
+            "source.organizeImports.ruff": false,
+            "source.fixAll.ruff": false
           }
         },
         {

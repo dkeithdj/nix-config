@@ -123,10 +123,7 @@
     };
 
     # #################### Zed ####################
-    # zed-editor = {
-    #   url = "github:zed-industries/zed?ref=v0.169.1-pre";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    zed-editor.url = "github:zed-industries/zed/nightly";
   };
 
   outputs =

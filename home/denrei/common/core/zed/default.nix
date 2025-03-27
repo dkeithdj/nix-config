@@ -3,6 +3,7 @@
   lib,
   config,
   configVars,
+  inputs,
   ...
 }:
 {
@@ -23,6 +24,7 @@
 
   programs.zed-editor = {
     enable = true;
+    package = inputs.zed-editor.packages.${pkgs.system}.default;
     extensions = [
       "nix"
       "lua"

@@ -69,8 +69,8 @@
   programs.ssh.startAgent = true;
   # services.gnome.gnome-keyring.enable = true;
   # TODO enable and move to greetd area? may need authentication dir or something?
-  security.pam.services.greetd.enableGnomeKeyring = true;
-  # security.pam.services.gdm-password.enableGnomeKeyring = true;
+  # security.pam.services.greetd.enableGnomeKeyring = true;
+  security.pam.services.gdm-password.enableGnomeKeyring = true;
 
   networking = {
     hostName = "altair";
