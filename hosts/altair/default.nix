@@ -126,6 +126,7 @@
       efi.canTouchEfiVariables = true;
       timeout = 3;
     };
+    initrd.kernelModules = [ "amdgpu" ];
   };
 
   # This is a fix to enable VSCode to successfully remote SSH on a client to a NixOS host
