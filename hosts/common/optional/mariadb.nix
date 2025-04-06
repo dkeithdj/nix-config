@@ -1,8 +1,9 @@
 {
   pkgs,
-  configVars,
+  config,
   ...
-}: {
+}:
+{
   services.mysql = {
     enable = true;
     package = pkgs.mariadb_110;
@@ -32,7 +33,7 @@
     '';
     ensureUsers = [
       {
-        name = configVars.username;
+        name = config.hostSpec.username;
         ensurePermissions = {
           "*.*" = "ALL PRIVILEGES";
           "root.*" = "ALL PRIVILEGES"; # hehe

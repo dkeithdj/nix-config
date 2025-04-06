@@ -1,8 +1,7 @@
 {
-  outputs,
-  lib,
   ...
-}: {
+}:
+{
   programs.ssh = {
     enable = true;
 
@@ -18,6 +17,10 @@
         ];
       };
     };
+
+    # Avoids infinite hang if control socket connection interrupted. ex: vpn goes down/up
+    serverAliveCountMax = 3;
+    serverAliveInterval = 5; # 3 * 5s
     # FIXME: This should probably be for git systems only?
     #controlMaster = "auto";
     #controlPath = "~/.ssh/sockets/S.%r@%h:%p";

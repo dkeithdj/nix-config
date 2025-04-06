@@ -1,33 +1,59 @@
-{inputs, ...}: {
-  # This file defines overlays/custom modifications to upstream packages
-  #
-  # This one brings our custom packages from the 'pkgs' directory
-  additions = final: _prev: import ../pkgs {pkgs = final;};
+#
+# This file defines overlays/custom modifications to upstream packages
+#
 
-  # This one contains whatever you want to overlay
-  # You can change versions, add patches, set compilation flags, anything really.
-  # https://nixos.wiki/wiki/Overlays
+{ inputs, ... }:
+
+let
+  # Adds my custom packages
+  # FIXME: Add per-system packages
+  additions =
+    final: prev:
+    (prev.lib.packagesFromDirectoryRecursive {
+      callPackage = prev.lib.callPackageWith final;
+      directory = ../pkgs/common;
+    });
+
+  linuxModifications = final: prev: prev.lib.mkIf final.stdenv.isLinux { };
+
   modifications = final: prev: {
     # example = prev.example.overrideAttrs (oldAttrs: let ... in {
     # ...
     # });
-    # cliphist = prev.cliphist.overrideAttrs (_old: {
-    #   src = prev.fetchFromGitHub {
-    #     owner = "sentriz";
-    #     repo = "cliphist";
-    #     rev = "8c48df70bb3d9d04ae8691513e81293ed296231a";
-    #     sha256 = "sha256-tImRbWjYCdIY8wVMibc5g5/qYZGwgT9pl4pWvY7BDlI=";
-    #   };
-    #   vendorHash = "sha256-gG8v3JFncadfCEUa7iR6Sw8nifFNTciDaeBszOlGntU=";
-    # });
+    #    flameshot = prev.flameshot.overrideAttrs {
+    #      cmakeFlags = [
+    #        (prev.lib.cmakeBool "USE_WAYLAND_GRIM" true)
+    #        (prev.lib.cmakeBool "USE_WAYLAND_CLIPBOARD" true)
+    #      ];
+    #    };
   };
 
-  # When applied, the unstable nixpkgs set (declared in the flake inputs) will
-  # be accessible through 'pkgs.unstable'
   stable-packages = final: _prev: {
     stable = import inputs.nixpkgs-stable {
-      system = final.system;
+      inherit (final) system;
       config.allowUnfree = true;
+      #      overlays = [
+      #     ];
     };
   };
+
+  # unstable-packages = final: _prev: {
+  #   unstable = import inputs.nixpkgs-unstable {
+  #     inherit (final) system;
+  #     config.allowUnfree = true;
+  #     #      overlays = [
+  #     #     ];
+  #   };
+  # };
+
+in
+{
+  default =
+    final: prev:
+
+    (additions final prev)
+    // (modifications final prev)
+    // (linuxModifications final prev)
+    // (stable-packages final prev);
+  # // (unstable-packages final prev);
 }

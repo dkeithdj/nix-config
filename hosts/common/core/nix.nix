@@ -2,7 +2,6 @@
   inputs,
   config,
   lib,
-  configVars,
   ...
 }:
 {
@@ -22,7 +21,7 @@
       max-free = 1000000000; # 1GB
       trusted-users = [
         "root"
-        configVars.username
+        # configVars.username
       ];
       substituters = [
         "https://cache.nixos.org?priority=10"

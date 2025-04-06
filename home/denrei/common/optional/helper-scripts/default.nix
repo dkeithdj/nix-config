@@ -1,8 +1,8 @@
 {
   pkgs,
-  configVars,
   ...
-}: let
+}:
+let
   scripts = {
     # FIXME: I currently get the following warnings:
     # svn: warning: cannot set LC_CTYPE locale
@@ -10,20 +10,21 @@
     # svn: warning: please check that your locale name is correct
     copy-github-subfolder = pkgs.writeShellApplication {
       name = "copy-github-subfolder";
-      runtimeInputs = with pkgs; [subversion];
+      runtimeInputs = with pkgs; [ subversion ];
       text = builtins.readFile ./copy-github-subfolder.sh;
     };
-    linktree =
-      pkgs.writeShellApplication
-      {
-        name = "linktree";
-        runtimeInputs = with pkgs; [];
-        text = builtins.readFile ./linktree.sh;
-      };
+    linktree = pkgs.writeShellApplication {
+      name = "linktree";
+      runtimeInputs = with pkgs; [ ];
+      text = builtins.readFile ./linktree.sh;
+    };
 
     cows = pkgs.writeShellApplication {
       name = "moooo";
-      runtimeInputs = with pkgs; [cowsay lolcat];
+      runtimeInputs = with pkgs; [
+        cowsay
+        lolcat
+      ];
 
       text = ''
         cowsay "Mooooo" | lolcat
@@ -41,17 +42,17 @@
     #   text = builtins.readFile ./setenv.sh;
     # };
   };
-in {
+in
+{
   home.packages = builtins.attrValues {
-    inherit
-      (scripts)
+    inherit (scripts)
       copy-github-subfolder
       linktree
       cows
       # cdproject
-      
+
       # setenv
-      
+
       ;
   };
 }

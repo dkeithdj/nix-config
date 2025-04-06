@@ -12,6 +12,7 @@
 
     # ./gtk.nix # mainly in gnome
     #    ./qt.nix # mainly in kde
-    ./fonts.nix
+    # ./fonts.nix
   ];
+
 }

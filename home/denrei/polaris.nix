@@ -1,7 +1,8 @@
-{configVars, ...}: {
+{ ... }:
+{
   imports = [
     #################### Required Configs ####################
-    common/core #required
+    common/core # required
 
     #################### Host-specific Optional Configs ####################
     common/optional/sops.nix
@@ -12,8 +13,8 @@
     common/optional/browsers
   ];
 
-  home = {
-    username = configVars.username;
-    homeDirectory = "/home/${configVars.username}";
-  };
+  # home = {
+  #   username = configVars.username;
+  #   homeDirectory = "/home/${configVars.username}";
+  # };
 }

@@ -2,7 +2,6 @@
   pkgs,
   lib,
   config,
-  configVars,
   inputs,
   ...
 }:
@@ -12,13 +11,13 @@
   # );
   xdg.configFile = {
     "zed/settings.json".source = lib.mkForce (
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Projects/nix-config/home/${configVars.username}/common/core/zed/settings.json"
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Projects/nix-config/home/${config.hostSpec.username}/common/core/zed/settings.json"
     );
     "zed/keymap.json".source = lib.mkForce (
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Projects/nix-config/home/${configVars.username}/common/core/zed/keymap.json"
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Projects/nix-config/home/${config.hostSpec.username}/common/core/zed/keymap.json"
     );
     "zed/tasks.json".source = lib.mkForce (
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Projects/nix-config/home/${configVars.username}/common/core/zed/tasks.json"
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Projects/nix-config/home/${config.hostSpec.username}/common/core/zed/tasks.json"
     );
   };
 

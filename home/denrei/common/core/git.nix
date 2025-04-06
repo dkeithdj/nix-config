@@ -3,15 +3,17 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   name = "Denrei Keith";
-in {
+in
+{
   programs.git = {
     enable = true;
     package = pkgs.gitAndTools.gitFull;
     userName = name;
     userEmail = "42316655+dkeithdj@users.noreply.github.com";
-    aliases = {};
+    aliases = { };
     extraConfig = {
       init.defaultBranch = "main";
       pull.rebase = "true";
@@ -23,6 +25,18 @@ in {
     };
     # enable git Large File Storage: https://git-lfs.com/
     lfs.enable = true;
-    ignores = [".direnv" "result"];
+    ignores = [
+      ".csvignore"
+      # nix
+      "*.drv"
+      "result"
+      # python
+      "*.py?"
+      "__pycache__/"
+      ".venv/"
+      # direnv
+      ".direnv"
+      "result"
+    ];
   };
 }

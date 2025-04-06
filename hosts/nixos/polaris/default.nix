@@ -7,31 +7,28 @@
 {
   inputs,
   lib,
-  configLib,
   ...
 }:
 {
-  imports =
-    [
-      #################### Every Host Needs This ####################
-      ./hardware-configuration.nix
+  imports = lib.flatten [
+    #################### Every Host Needs This ####################
+    ./hardware-configuration.nix
 
-      #################### Hardware Modules ####################
-      # inputs.hardware.nixosModules.common-cpu-amd
-      # inputs.hardware.nixosModules.common-gpu-amd
-      # inputs.hardware.nixosModules.common-pc-ssd
+    #################### Hardware Modules ####################
+    # inputs.hardware.nixosModules.common-cpu-amd
+    # inputs.hardware.nixosModules.common-gpu-amd
+    # inputs.hardware.nixosModules.common-pc-ssd
 
-      #################### Disk Layout ####################
-      inputs.disko.nixosModules.disko
-      (configLib.relativeToRoot "hosts/common/disks/standard-disk-config.nix")
-      {
-        _module.args = {
-          disk = "/dev/vda";
-          withSwap = false;
-        };
-      }
-    ]
-    ++ (map configLib.relativeToRoot [
+    #################### Disk Layout ####################
+    inputs.disko.nixosModules.disko
+    (lib.custom.relativeToRoot "hosts/common/disks/standard-disk-config.nix")
+    {
+      _module.args = {
+        disk = "/dev/vda";
+        withSwap = false;
+      };
+    }
+    (map lib.custom.relativeToRoot [
       #################### Required Configs ####################
       "hosts/common/core"
 
@@ -46,8 +43,14 @@
       "hosts/common/optional/vlc.nix" # media player
 
       #################### Users to Create ####################
-      "hosts/common/users/denrei"
-    ]);
+      # "hosts/common/users/denrei"
+    ])
+  ];
+  # ========== Host Specification ==========
+  hostSpec = {
+    hostName = "polaris";
+    persistFolder = "/persist"; # added for "completion" because of the disko spec that was used even though impermanence isn't actually enabled here yet.
+  };
   # set custom autologin options. see greetd.nix for details
   # TODO is there a better spot for this?
   # autoLogin.enable = true;
@@ -58,8 +61,8 @@
   # services.pam.services.greetd.enableGnomeKeyring = true;
 
   networking = {
-    hostName = "polaris";
     networkmanager.enable = true;
+    enableIPv6 = false;
   };
 
   boot = {

@@ -1,81 +1,80 @@
 #############################################################
 #
-#  Altair - Desktop PC
+#  Canopus - HP Laptop
 #  NixOS running on Bare Metal
 #
 ###############################################################
 {
   inputs,
-  configLib,
+  lib,
   ...
 }:
 {
-  imports =
-    [
-      #################### Every Host Needs This ####################
-      ./hardware-configuration.nix
+  imports = lib.flatten [
+    #################### Every Host Needs This ####################
+    ./hardware-configuration.nix
 
-      #################### Hardware Modules ####################
-      # inputs.hardware.nixosModules.common-cpu-amd
-      # inputs.hardware.nixosModules.common-gpu-amd
-      # inputs.hardware.nixosModules.common-pc-ssd
+    #################### Hardware Modules ####################
+    inputs.hardware.nixosModules.common-cpu-amd
+    inputs.hardware.nixosModules.common-gpu-amd
+    inputs.hardware.nixosModules.common-pc-ssd
 
-      #################### Disk Layout ####################
-      inputs.disko.nixosModules.disko
-      (configLib.relativeToRoot "hosts/common/disks/standard-disk-config.nix")
-      {
-        _module.args = {
-          disk = "/dev/nvme1n1";
-          withSwap = false;
-        };
-      }
-    ]
-    ++ (map configLib.relativeToRoot [
+    #################### Disk Layout ####################
+    inputs.disko.nixosModules.disko
+    (lib.custom.relativeToRoot "hosts/common/disks/laptop-disk-config.nix")
+    {
+      _module.args = {
+        disk = [
+          "/dev/nvme0n1"
+          "/dev/sda"
+        ];
+        withSwap = true;
+        swapSize = "8";
+      };
+    }
+    (map lib.custom.relativeToRoot [
       #################### Required Configs ####################
       "hosts/common/core"
 
       #################### Host-specific Optional Configs ####################
       "hosts/common/optional/services/openssh.nix"
       "hosts/common/optional/services/dropbox.nix" # dropbox
-      "hosts/common/optional/secure-boot"
+      # "hosts/common/optional/secure-boot"
 
       # Desktop
       # "hosts/common/optional/services/greetd.nix" # display manager
       "hosts/common/optional/hyprland.nix" # window manager
-      # "hosts/common/optional/cosmic.nix" # cosmic de
 
       "hosts/common/optional/pipewire.nix" # audio
       "hosts/common/optional/vlc.nix" # media player
-      # "hosts/common/optional/kanata/altair.nix" # keyboard colemak
+      "hosts/common/optional/kanata/canopus.nix" # keyboard colemak
       "hosts/common/optional/vial.nix" # keyboard vial
       # "hosts/common/optional/mariadb.nix" # media player
-      "hosts/common/optional/ollama.nix" # ollama
-      "hosts/common/optional/tailscale.nix" # ollama
-
       "hosts/common/optional/nautilus.nix" # file manager
 
       #################### Users to Create ####################
-      "hosts/common/users/denrei"
-    ]);
+      # "hosts/common/users/denrei"
+    ])
+  ];
+
+  # ========== Host Specification ==========
+  hostSpec = {
+    hostName = "canopus";
+    persistFolder = "/persist"; # added for "completion" because of the disko spec that was used even though impermanence isn't actually enabled here yet.
+  };
   # set custom autologin options. see greetd.nix for details
   # TODO is there a better spot for this?
   # autoLogin.enable = true;
   # autoLogin.username = "denrei";
 
-  environment.variables = {
-    PC = "1";
-  };
-
   programs.ssh.startAgent = true;
-  # services.gnome.gnome-keyring.enable = true;
   # TODO enable and move to greetd area? may need authentication dir or something?
   # security.pam.services.greetd.enableGnomeKeyring = true;
   security.pam.services.gdm-password.enableGnomeKeyring = true;
 
   networking = {
-    hostName = "altair";
     networkmanager.enable = true;
-    # enableIPv6 = false;
+    enableIPv6 = false;
   };
 
   # kde connect
@@ -87,16 +86,15 @@
       }
     ];
     allowedUDPPortRanges = allowedTCPPortRanges;
+    allowedTCPPorts = [
+      80
+      443
+    ];
   };
-
-  networking.firewall.allowedTCPPorts = [
-    80
-    443
-  ];
 
   hardware.bluetooth = {
     enable = true;
-    powerOnBoot = true;
+    powerOnBoot = false;
     settings.General.Experimental = true; # for gnome-bluetooth percentage
   };
   services.blueman.enable = true;
@@ -120,13 +118,10 @@
 
   boot = {
     loader = {
-      systemd-boot = {
-        enable = true;
-      };
+      systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
       timeout = 3;
     };
-    initrd.kernelModules = [ "amdgpu" ];
   };
 
   # This is a fix to enable VSCode to successfully remote SSH on a client to a NixOS host

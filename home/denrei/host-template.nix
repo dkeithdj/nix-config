@@ -1,9 +1,10 @@
 {
   lib,
-  configVars,
   ...
-}: let
-in {
+}:
+let
+in
+{
   imports = [
     #################### Hardware Modules ####################
     # inputs.hardware.nixosModules.common-cpu-amd
@@ -13,15 +14,15 @@ in {
     # inputs.hardware.nixosModules.common-pc-ssd
 
     #################### Required Configs ####################
-    ./common/core #required
+    ./common/core # required
 
     #################### Host-specific Optional Configs ####################
   ];
 
-  home = {
-    username = configVars.username;
-    homeDirectory = "/home/${configVars.username}";
-  };
+  # home = {
+  #   username = configVars.username;
+  #   homeDirectory = "/home/${configVars.username}";
+  # };
   # Disable impermanence
   #home.persistence = lib.mkForce { };
 }

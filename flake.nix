@@ -1,12 +1,228 @@
 {
   description = "Den's Nix-Config";
 
-  # nixConfig = {
-  #   extra-substituters = ["https://hyprland.cachix.org"];
-  #   extra-trusted-public-keys = [
-  #     "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-  #   ];
-  # };
+  outputs =
+    {
+      self,
+      nixpkgs,
+      # nixpkgs-stable,
+      # disko,
+      home-manager,
+      # systems,
+      # kmonad,
+      # lanzaboote,
+      # nixos-cosmic,
+      # zen-browser,
+      # ghostty,
+      # zed-editor,
+      ...
+    }@inputs:
+    let
+      inherit (self) outputs;
+
+      forAllSystems = nixpkgs.lib.genAttrs [
+        "x86_64-linux"
+        #"aarch64-darwin"
+      ];
+
+      # ========== Extend lib with lib.custom ==========
+      # NOTE: This approach allows lib.custom to propagate into hm
+      # see: https://github.com/nix-community/home-manager/pull/3454
+      lib = nixpkgs.lib.extend (self: super: { custom = import ./lib { inherit (nixpkgs) lib; }; });
+
+      # lib = nixpkgs.lib // home-manager.lib;
+      # forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
+      # pkgsFor = lib.genAttrs (import systems) (
+      #   system:
+      #   import nixpkgs {
+      #     inherit system;
+      #     config.allowUnfree = true;
+      #   }
+      # );
+      # configVars = import ./vars { inherit inputs lib; };
+      # configLib = import ./lib { inherit lib; };
+
+      # TODO: make it so that ags will be in pkgs
+      # ags = pkgsFor.x86_64-linux.callPackage ./home/denrei/common/optional/ags { inherit inputs; };
+      # specialArgs = {
+      #   inherit
+      #     # ags
+      #     inputs
+      #     outputs
+      #     configVars
+      #     configLib
+      #     ;
+      # };
+    in
+    {
+      # inherit (nixpkgs) lib;
+
+      # ========= Overlays =========
+      #
+      # Custom modifications/overrides to upstream packages.
+      overlays = import ./overlays { inherit inputs; };
+
+      # ========= Host Configurations =========
+      #
+      # Building configurations is available through `just rebuild` or `nixos-rebuild --flake .#hostname`
+      nixosConfigurations = builtins.listToAttrs (
+        map (host: {
+          name = host;
+          value = nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs outputs lib;
+              isDarwin = false;
+            };
+            modules = [ ./hosts/nixos/${host} ];
+          };
+        }) (builtins.attrNames (builtins.readDir ./hosts/nixos))
+      );
+      # darwinConfigurations = builtins.listToAttrs (
+      #   map (host: {
+      #     name = host;
+      #     value = nix-darwin.lib.darwinSystem {
+      #       specialArgs = {
+      #         inherit inputs outputs lib;
+      #         isDarwin = true;
+      #       };
+      #       modules = [ ./hosts/darwin/${host} ];
+      #     };
+      #   }) (builtins.attrNames (builtins.readDir ./hosts/darwin))
+      # );
+
+      # ========= Packages =========
+      #
+      # Add custom packages to be shared or upstreamed.
+      packages = forAllSystems (
+        system:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+            overlays = [ self.overlays.default ];
+          };
+        in
+        nixpkgs.lib.packagesFromDirectoryRecursive {
+          callPackage = nixpkgs.lib.callPackageWith pkgs;
+          directory = ./pkgs/common;
+        }
+      );
+
+      # ========= Formatting =========
+      #
+      # Nix formatter available through 'nix fmt' https://github.com/NixOS/nixfmt
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+      checks = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        import ./checks.nix { inherit inputs system pkgs; }
+      );
+
+      devShells = forAllSystems (
+        system:
+        import ./shell.nix {
+          pkgs = nixpkgs.legacyPackages.${system};
+          checks = self.checks.${system};
+        }
+      );
+
+      # Custom modules to enable special functionality for nixos or home-manager oriented configs.
+      # nixosModules = import ./modules/nixos;
+      # homeManagerModules = import ./modules/home-manager;
+
+      # overlays = import ./overlays { inherit inputs outputs; };
+      # Custom modifications/overrides to upstream packages.
+      # packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
+      # devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
+      # formatter = forEachSystem (pkgs: pkgs.alejandra);
+
+      #################### NixOS Configurations ####################
+      #
+      # Building configurations available through `just rebuild` or `nixos-rebuild --flake .#hostname`
+
+      # nixosConfigurations = {
+      #   # Desktop PC
+      #   altair = lib.nixosSystem {
+      #     specialArgs = specialArgs;
+      #     modules = [
+      #       # nixos-cosmic.nixosModules.default
+      #       lanzaboote.nixosModules.lanzaboote
+      #       home-manager.nixosModules.home-manager
+      #       { home-manager.extraSpecialArgs = specialArgs; }
+      #       # { nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; }
+      #       ./hosts/altair
+      #     ];
+      #   };
+      #   # HP Laptop
+      #   canopus = lib.nixosSystem {
+      #     specialArgs = specialArgs;
+      #     modules = [
+      #       kmonad.nixosModules.default
+      #       home-manager.nixosModules.home-manager
+      #       # {
+      #       #   environment.systemPackages = [
+      #       #     ghostty.packages.x86_64-linux.default
+      #       #   ];
+      #       # }
+      #       { home-manager.extraSpecialArgs = specialArgs; }
+      #       ./hosts/canopus
+      #     ];
+      #   };
+      #   # QEMU VM
+      #   polaris = lib.nixosSystem {
+      #     specialArgs = specialArgs;
+      #     modules = [
+      #       inputs.disko.nixosModules.disko
+      #       home-manager.nixosModules.home-manager
+      #       { home-manager.extraSpecialArgs = specialArgs; }
+      #       ./hosts/polaris
+      #     ];
+      #   };
+      # };
+      #################### Home Manager Configurations ####################
+      # homeConfigurations = {
+      #   # Desktop home
+      #   "denrei@altair" = lib.homeManagerConfiguration {
+      #     pkgs = import nixpkgs {
+      #       system = "x86_64-linux";
+      #       overlays = [
+      #         inputs.hyprpanel.overlay
+      #       ];
+      #       config.allowUnfree = true;
+      #     };
+      #     extraSpecialArgs = specialArgs;
+      #     modules = [
+      #       ./home/denrei/altair.nix
+      #       ./home/denrei/nixpkgs.nix
+      #     ];
+      #   };
+      #   # HP Laptop home
+      #   "denrei@canopus" = lib.homeManagerConfiguration {
+      #     pkgs = import nixpkgs {
+      #       system = "x86_64-linux";
+      #       overlays = [
+      #         inputs.hyprpanel.overlay
+      #       ];
+      #       config.allowUnfree = true;
+      #     };
+      #     extraSpecialArgs = specialArgs;
+      #     modules = [
+      #       ./home/denrei/canopus.nix
+      #       ./home/denrei/nixpkgs.nix
+      #     ];
+      #   };
+      #   # QEMU VM Home
+      #   "denrei@polaris" = lib.homeManagerConfiguration {
+      #     pkgs = pkgsFor.x86_64-linux;
+      #     extraSpecialArgs = specialArgs;
+      #     modules = [
+      #       ./home/denrei/polaris.nix
+      #       ./home/denrei/nixpkgs.nix
+      #     ];
+      #   };
+      # };
+    };
 
   inputs = {
     #################### Official NixOS and HM Package Sources ####################
@@ -93,6 +309,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Pre-commit
+    pre-commit-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # nixos-cosmic = {
     #   url = "github:lilyinstarlight/nixos-cosmic";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -125,146 +347,4 @@
     # #################### Zed ####################
     zed-editor.url = "github:zed-industries/zed/nightly";
   };
-
-  outputs =
-    inputs@{
-      self,
-      disko,
-      nixpkgs,
-      nixpkgs-stable,
-      home-manager,
-      systems,
-      kmonad,
-      lanzaboote,
-      # nixos-cosmic,
-      zen-browser,
-      # ghostty,
-      # zed-editor,
-      ...
-    }:
-    let
-      inherit (self) outputs;
-
-      lib = nixpkgs.lib // home-manager.lib;
-      forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
-      pkgsFor = lib.genAttrs (import systems) (
-        system:
-        import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        }
-      );
-      configVars = import ./vars { inherit inputs lib; };
-      configLib = import ./lib { inherit lib; };
-
-      # TODO: make it so that ags will be in pkgs
-      # ags = pkgsFor.x86_64-linux.callPackage ./home/denrei/common/optional/ags { inherit inputs; };
-      specialArgs = {
-        inherit
-          # ags
-          inputs
-          outputs
-          configVars
-          configLib
-          ;
-      };
-    in
-    {
-      inherit (nixpkgs) lib;
-      # Custom modules to enable special functionality for nixos or home-manager oriented configs.
-      nixosModules = import ./modules/nixos;
-      homeManagerModules = import ./modules/home-manager;
-
-      overlays = import ./overlays { inherit inputs outputs; };
-      # Custom modifications/overrides to upstream packages.
-      packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
-      devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
-      formatter = forEachSystem (pkgs: pkgs.alejandra);
-
-      #################### NixOS Configurations ####################
-      #
-      # Building configurations available through `just rebuild` or `nixos-rebuild --flake .#hostname`
-
-      nixosConfigurations = {
-        # Desktop PC
-        altair = lib.nixosSystem {
-          specialArgs = specialArgs;
-          modules = [
-            # nixos-cosmic.nixosModules.default
-            lanzaboote.nixosModules.lanzaboote
-            home-manager.nixosModules.home-manager
-            { home-manager.extraSpecialArgs = specialArgs; }
-            # { nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; }
-            ./hosts/altair
-          ];
-        };
-        # HP Laptop
-        canopus = lib.nixosSystem {
-          specialArgs = specialArgs;
-          modules = [
-            kmonad.nixosModules.default
-            home-manager.nixosModules.home-manager
-            # {
-            #   environment.systemPackages = [
-            #     ghostty.packages.x86_64-linux.default
-            #   ];
-            # }
-            { home-manager.extraSpecialArgs = specialArgs; }
-            ./hosts/canopus
-          ];
-        };
-        # QEMU VM
-        polaris = lib.nixosSystem {
-          specialArgs = specialArgs;
-          modules = [
-            inputs.disko.nixosModules.disko
-            home-manager.nixosModules.home-manager
-            { home-manager.extraSpecialArgs = specialArgs; }
-            ./hosts/polaris
-          ];
-        };
-      };
-      #################### Home Manager Configurations ####################
-      # homeConfigurations = {
-      #   # Desktop home
-      #   "denrei@altair" = lib.homeManagerConfiguration {
-      #     pkgs = import nixpkgs {
-      #       system = "x86_64-linux";
-      #       overlays = [
-      #         inputs.hyprpanel.overlay
-      #       ];
-      #       config.allowUnfree = true;
-      #     };
-      #     extraSpecialArgs = specialArgs;
-      #     modules = [
-      #       ./home/denrei/altair.nix
-      #       ./home/denrei/nixpkgs.nix
-      #     ];
-      #   };
-      #   # HP Laptop home
-      #   "denrei@canopus" = lib.homeManagerConfiguration {
-      #     pkgs = import nixpkgs {
-      #       system = "x86_64-linux";
-      #       overlays = [
-      #         inputs.hyprpanel.overlay
-      #       ];
-      #       config.allowUnfree = true;
-      #     };
-      #     extraSpecialArgs = specialArgs;
-      #     modules = [
-      #       ./home/denrei/canopus.nix
-      #       ./home/denrei/nixpkgs.nix
-      #     ];
-      #   };
-      #   # QEMU VM Home
-      #   "denrei@polaris" = lib.homeManagerConfiguration {
-      #     pkgs = pkgsFor.x86_64-linux;
-      #     extraSpecialArgs = specialArgs;
-      #     modules = [
-      #       ./home/denrei/polaris.nix
-      #       ./home/denrei/nixpkgs.nix
-      #     ];
-      #   };
-      # };
-    };
 }

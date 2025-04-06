@@ -1,4 +1,4 @@
-{ configVars, ... }:
+{ ... }:
 {
   imports = [
     #################### Required Configs ####################
@@ -22,8 +22,8 @@
     common/optional/rofi
   ];
 
-  home = {
-    username = configVars.username;
-    homeDirectory = "/home/${configVars.username}";
-  };
+  # home = {
+  #   username = configVars.username;
+  #   homeDirectory = "/home/${configVars.username}";
+  # };
 }

@@ -4,11 +4,6 @@
   config,
   ...
 }:
-let
-in
-# cdproject = "${pkgs.cdproject}/bin/cdproject";
-# setenv = "${pkgs.setenv}/bin/setenv";
-# scripts = import ./scripts.nix {inherit pkgs;};
 {
   # imports = [scripts = ./scripts.nix];
   home.file = {
@@ -122,13 +117,21 @@ in
       rm = "rm -vI";
       bc = "bc -ql";
       mkd = "mkdir -pv";
-      cat = "bat";
 
+      #-------------Bat related------------
+      cat = "bat --paging=never";
+      diff = "batdiff";
+      rg = "batgrep";
+      man = "batman";
+
+      #-----------Nix commands----------------
       ncv = "cd $FLAKE && v";
       nhh = "nh home switch";
       nho = "nh os switch";
 
       ve = ". setenv";
+      #-------------SSH---------------
+      ssh = "TERM=xterm ssh";
     };
   };
 }

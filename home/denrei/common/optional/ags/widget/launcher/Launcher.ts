@@ -17,7 +17,7 @@ function Launcher() {
   const applauncher = AppLauncher.Launcher();
   const sh = ShRun.ShRun();
   const shicon = ShRun.Icon();
-  const nix = NixRun.NixRun();
+  // const nix = NixRun.NixRun();
   const nixload = NixRun.Spinner();
   const ch = Cliphist.Cliphist();
   const chicon = Cliphist.Icon();
@@ -88,8 +88,8 @@ function Launcher() {
       favs.reveal_child = text === "";
       help.reveal_child = text.length < 3 && text?.startsWith(":");
 
-      if (text?.startsWith(":nx")) nix.filter(text.substring(3));
-      else nix.filter("");
+      // if (text?.startsWith(":nx")) nix.filter(text.substring(3));
+      // else nix.filter("");
 
       if (text?.startsWith(":sh")) sh.filter(text.substring(3));
       else sh.filter("");
@@ -144,10 +144,10 @@ function Launcher() {
       favs,
       help,
       applauncher,
-      nix,
-      sh,
-      ch,
-      emoji,
+      // nix,
+      // sh,
+      // ch,
+      // emoji,
     ],
   });
 

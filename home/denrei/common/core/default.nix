@@ -2,9 +2,7 @@
   config,
   lib,
   pkgs,
-  outputs,
-  inputs,
-  configLib,
+  hostSpec,
   ...
 }:
 let
@@ -25,22 +23,52 @@ let
     "blogs"
   ];
 
+  platform = if hostSpec.isDarwin then "darwin" else "nixos";
+
   projectCreate = lib.strings.concatMapStringsSep " " (
-    x: "mkdir -p ${config.home.homeDirectory}/Projects/" + x + "\n"
+    x: "mkdir -p ${hostSpec.home}/Projects/" + x + "\n"
   ) projectFiles;
   homeCreate = lib.strings.concatMapStringsSep " " (
-    x: "mkdir -p ${config.home.homeDirectory}/" + x + "\n"
+    x: "mkdir -p ${hostSpec.home}/" + x + "\n"
   ) homeFiles;
 in
 {
-  imports = (configLib.scanPaths ./.) ++ (builtins.attrValues outputs.homeManagerModules);
+  imports = lib.flatten [
+    (map lib.custom.relativeToRoot [
+      "modules/common/host-spec.nix"
+      "modules/home"
+    ])
+    ./${platform}.nix
+    ./code
+    ./nvim
+    ./wezterm
+    ./zed
+    ./zsh
+    ./bash.nix
+    ./bat.nix
+    ./cliphist.nix
+    ./dconf.nix
+    ./direnv.nix
+    ./fonts.nix
+    ./git.nix
+    ./gh.nix
+    ./kitty.nix
+    ./programs.nix
+    ./screen.nix
+    ./ssh.nix
+    ./yazi.nix
+    ./zoxide.nix
+
+  ];
+  # imports = (lib.custom.scanPaths ./.) ++ (builtins.attrValues outputs.homeManagerModules);
   # ++ [ inputs.impermanence.nixosModules.home-manager.impermanence ];
+  inherit hostSpec;
 
   services.ssh-agent.enable = true;
 
   home = {
-    username = lib.mkDefault "denrei";
-    homeDirectory = lib.mkDefault "/home/${config.home.username}";
+    username = lib.mkDefault config.hostSpec.username;
+    homeDirectory = lib.mkDefault config.hostSpec.home;
     stateVersion = lib.mkDefault "24.05";
     sessionPath = [
       "$HOME/.local/bin"
@@ -198,15 +226,6 @@ in
 
     devenv
   ];
-
-  nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
-    config = {
-      allowUnfree = true;
-      # Workaround for https://github.com/nix-community/home-manager/issues/2942
-      allowUnfreePredicate = _: true;
-    };
-  };
 
   nix = {
     package = lib.mkDefault pkgs.nix;

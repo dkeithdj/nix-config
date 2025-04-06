@@ -2,9 +2,9 @@
   inputs,
   config,
   pkgs,
-  configVars,
   ...
-}: {
+}:
+{
   imports = [
     inputs.ags.homeManagerModules.default
   ];
@@ -27,7 +27,7 @@
     gtk3
   ];
 
-  xdg.configFile.ags.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Projects/nix-config/home/${configVars.username}/common/optional/ags";
+  xdg.configFile.ags.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Projects/nix-config/home/${config.hostSpec.username}/common/optional/ags";
 
   programs.ags = {
     enable = true;

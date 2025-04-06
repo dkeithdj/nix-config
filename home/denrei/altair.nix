@@ -1,8 +1,8 @@
-{ configVars, ... }:
+{ ... }:
 {
   imports = [
     #################### Required Configs ####################
-    common/core # required
+    common/core
 
     #################### Host-specific Optional Configs ####################
     common/optional/theme.nix
@@ -22,8 +22,20 @@
     common/optional/rofi
   ];
 
-  home = {
-    username = configVars.username;
-    homeDirectory = "/home/${configVars.username}";
-  };
+  # home = {
+  #   username = configVars.username;
+  #   homeDirectory = "/home/${configVars.username}";
+  # };
+
+  monitors = [
+    {
+      name = "DP-2";
+      width = 2560;
+      height = 1440;
+      refreshRate = 75;
+      primary = true;
+      #vrr = 1;
+    }
+  ];
+
 }
