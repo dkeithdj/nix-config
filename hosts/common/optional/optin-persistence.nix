@@ -4,12 +4,11 @@
 #
 # It works even if / is tmpfs, btrfs snapshot, or even not ephemeral at all.
 {
-  lib,
   inputs,
-  config,
   ...
-}: {
-  imports = [inputs.impermanence.nixosModules.impermanence];
+}:
+{
+  imports = [ inputs.impermanence.nixosModules.impermanence ];
 
   fileSystems."/persist".neededForBoot = true;
 

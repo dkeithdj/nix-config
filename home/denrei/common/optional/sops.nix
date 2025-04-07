@@ -4,11 +4,13 @@
   inputs,
   config,
   ...
-}: let
+}:
+let
   secretsDirectory = builtins.toString inputs.nix-secrets;
   secretsFile = "${secretsDirectory}/secrets.yaml";
   homeDirectory = config.home.homeDirectory;
-in {
+in
+{
   imports = [
     inputs.sops-nix.homeManagerModules.sops
   ];

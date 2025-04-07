@@ -1,18 +1,9 @@
 {
   inputs,
-  lib,
-  pkgs,
+  # lib,
+  # pkgs,
   ...
 }:
-let
-  inherit (lib)
-    types
-    mkIf
-    mkOption
-    mkEnableOption
-    ;
-
-in
 # Shorthand lambda for self-documenting options under settings
 {
   imports = [ inputs.hyprpanel.homeManagerModules.hyprpanel ];

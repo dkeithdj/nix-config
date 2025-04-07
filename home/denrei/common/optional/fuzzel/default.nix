@@ -2,7 +2,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   programs.fuzzel = {
     enable = false;
     package = pkgs.fuzzel;

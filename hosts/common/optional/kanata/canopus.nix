@@ -2,8 +2,9 @@
   pkgs,
   lib,
   ...
-}: {
-  environment.systemPackages = with pkgs; [kanata];
+}:
+{
+  environment.systemPackages = with pkgs; [ kanata ];
 
   services.kanata = {
     enable = lib.mkDefault true;
@@ -12,7 +13,7 @@
         extraDefCfg = ''
           danger-enable-cmd yes
         '';
-        devices = ["/dev/input/by-path/platform-i8042-serio-0-event-kbd"];
+        devices = [ "/dev/input/by-path/platform-i8042-serio-0-event-kbd" ];
         configFile = ./colemak.kbd;
       };
     };

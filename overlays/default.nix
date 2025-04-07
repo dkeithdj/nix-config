@@ -16,7 +16,7 @@ let
 
   linuxModifications = final: prev: prev.lib.mkIf final.stdenv.isLinux { };
 
-  modifications = final: prev: {
+  modifications = _final: _prev: {
     # example = prev.example.overrideAttrs (oldAttrs: let ... in {
     # ...
     # });

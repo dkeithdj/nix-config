@@ -1,3 +1,4 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [microsoft-edge-dev];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ microsoft-edge-dev ];
 }

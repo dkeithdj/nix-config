@@ -3,30 +3,30 @@
 #
 {
   pkgs,
-  lib,
-  config,
+  # lib,
+  # config,
   ...
-}: let
+}:
+let
   # FIXME
   # isEnabled = name: predicate: {
   # assertion = predicate;
   # message = "${name} should be enabled for the clamav.nix config to work correctly.";
   # };
   # Function to notify users and admin when a suspicious file is detected
-  notify-all-users =
-    pkgs.writeScript "notify-all-users-of-sus-file"
-    ''
-      #!/usr/bin/env bash
-      ALERT="Signature detected by clamav: $CLAM_VIRUSEVENT_VIRUSNAME in $CLAM_VIRUSEVENT_FILENAME"
-      # Send an alert to all graphical users.
-      for ADDRESS in /run/user/*; do
-          USERID=''${ADDRESS#/run/user/}
-         /run/wrappers/bin/sudo -u "#$USERID" DBUS_SESSION_BUS_ADDRESS="unix:path=$ADDRESS/bus" ${pkgs.libnotify}/bin/notify-send -i dialog-warning "Suspicious file" "$ALERT"
-      done
+  notify-all-users = pkgs.writeScript "notify-all-users-of-sus-file" ''
+    #!/usr/bin/env bash
+    ALERT="Signature detected by clamav: $CLAM_VIRUSEVENT_VIRUSNAME in $CLAM_VIRUSEVENT_FILENAME"
+    # Send an alert to all graphical users.
+    for ADDRESS in /run/user/*; do
+        USERID=''${ADDRESS#/run/user/}
+       /run/wrappers/bin/sudo -u "#$USERID" DBUS_SESSION_BUS_ADDRESS="unix:path=$ADDRESS/bus" ${pkgs.libnotify}/bin/notify-send -i dialog-warning "Suspicious file" "$ALERT"
+    done
 
-      echo -e "To:$(hostname).alerts.net@hexagon.cx\n\nSubject: Suspicious file on $(hostname)\n\n$ALERT" | msmtp -a default alerts.net@hexagon.cx
-    '';
-in {
+    echo -e "To:$(hostname).alerts.net@hexagon.cx\n\nSubject: Suspicious file on $(hostname)\n\n$ALERT" | msmtp -a default alerts.net@hexagon.cx
+  '';
+in
+{
   # FIXME
   # assertions = lib.mapAttrsToList isEnabled {
   # "hosts/common/optional/msmtp" = config.msmtp.enable;

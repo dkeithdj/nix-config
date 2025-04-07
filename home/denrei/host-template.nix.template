@@ -1,9 +1,7 @@
 {
-  lib,
+  # lib,
   ...
 }:
-let
-in
 {
   imports = [
     #################### Hardware Modules ####################

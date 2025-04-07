@@ -4,8 +4,8 @@ keys:
   hosts:
     - &testbox age1v8v79wlsjnwvxaa6eulqx3zft0m5srj7etgk4v3rg80j42uzecxs26gaxz
   creation_rules:
-  - path_regex: shared\.yaml$
-    key_groups:
-      - age:
-          - *alice_testbox
-          - *testbox
+    - path_regex: shared\.yaml$
+      key_groups:
+        - age:
+            - *alice_testbox
+            - *testbox

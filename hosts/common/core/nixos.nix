@@ -1,5 +1,5 @@
 # Core functionality for every nixos host
-{ config, lib, ... }:
+{ lib, ... }:
 {
   # Database for aiding terminal-based programs
   environment.enableAllTerminfo = true;

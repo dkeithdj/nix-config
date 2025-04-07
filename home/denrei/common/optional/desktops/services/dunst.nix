@@ -2,10 +2,10 @@
 # Dunst
 # Notifcation Daemon
 #
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = builtins.attrValues {
-    inherit
-      (pkgs)
+    inherit (pkgs)
       libnotify
       ; # required by dunst
   };

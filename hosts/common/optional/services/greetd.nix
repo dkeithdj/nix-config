@@ -5,12 +5,13 @@
 {
   config,
   pkgs,
-  ags,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.autoLogin;
-in {
+in
+{
   # Declare custom options for conditionally enabling auto login
   options.autoLogin = {
     enable = lib.mkEnableOption "Enable automatic login";
@@ -23,7 +24,7 @@ in {
   };
 
   config = {
-    environment.systemPackages = with pkgs; [greetd.tuigreet];
+    environment.systemPackages = with pkgs; [ greetd.tuigreet ];
 
     services.greetd = {
       enable = true;
