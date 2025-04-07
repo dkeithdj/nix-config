@@ -154,27 +154,36 @@
           f = regex: "float, ${t regex}";
         in
         [
-          (f "org.gnome.Calculator")
-          (f "org.gnome.Nautilus")
+          # (f "org.gnome.Calculator")
+          # (f "org.gnome.Nautilus")
+          # (f "org.gnome.Settings")
+          # (f "org.gnome.design.Palette")
           (f "pavucontrol")
           (f "nm-connection-editor")
-          (f "blueberry.py")
-          (f "org.gnome.Settings")
-          (f "org.gnome.design.Palette")
+          # (f "blueberry.py")
           (f "Color Picker")
-          (f "xdg-desktop-portal")
-          (f "xdg-desktop-portal-gnome")
+          # (f "xdg-desktop-portal")
+          # (f "xdg-desktop-portal-gnome")
           # (f "transmission-gtk")
           # (f "com.github.Aylur.ags")
           (f "it.mijorus.smile")
-          (f "Picture-in-Picture")
+          # (f "Picture-in-Picture")
 
+          ''float, class:(org.gnome)(.*)''
           ''float, ${(t "Picture-in-Picture")}''
           ''pin, ${(t "Picture-in-Picture")}''
           ''size 640 360, ${(t "Picture-in-Picture")}''
           ''move 100%-w-20, ${(t "Picture-in-Picture")}''
           "workspace 4 silent, class:spotify"
           "workspace 4 silent, class:vesktop"
+
+          "float, title:^(Open File)(.*)$"
+          "float, title:^(Select a File)(.*)$"
+          "float, title:^(Choose wallpaper)(.*)$"
+          "float, title:^(Open Folder)(.*)$"
+          "float, title:^(Save As)(.*)$"
+          "float, title:^(Library)(.*)$"
+          "float, title:^(Accounts)(.*)$"
         ];
 
       decoration = {
