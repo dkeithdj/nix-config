@@ -51,6 +51,7 @@
       "hosts/common/optional/vial.nix" # keyboard vial
       # "hosts/common/optional/mariadb.nix" # media player
       "hosts/common/optional/nautilus.nix" # file manager
+      "hosts/common/optional/tailscale.nix"
 
       #################### Users to Create ####################
       # "hosts/common/users/denrei"
