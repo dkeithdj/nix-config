@@ -29,9 +29,12 @@
         git
         just
         pre-commit
-        age
+        deadnix
         vim
-        ssh-to-age
+        yq-go # jq for yaml, used for build scripts
+        bats # for bash testing
+        age # for bootstrap script
+        ssh-to-age # for bootstrap script
         gh
         sops
         ;

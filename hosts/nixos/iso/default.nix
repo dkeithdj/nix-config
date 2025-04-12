@@ -81,10 +81,13 @@
   services = {
     qemuGuest.enable = true;
     openssh = {
-      ports = [ config.hostSpec.networking.ports.tcp.ssh ];
+      # ports = [ config.hostSpec.networking.ports.tcp.ssh ];
+      ports = [ 22 ];
       settings.PermitRootLogin = lib.mkForce "yes";
     };
   };
+
+  services.tailscale.enable = true;
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
