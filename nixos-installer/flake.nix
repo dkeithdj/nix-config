@@ -37,10 +37,10 @@
               };
             }
             ./minimal-configuration.nix
+            ../hosts/nixos/${name}/hardware-configuration.nix
             {
               networking.hostName = name;
             }
-            "../hosts/${name}/hardware-configuration.nix"
           ];
         });
     in
@@ -48,7 +48,7 @@
       nixosConfigurations = {
         # host = newConfig "name" disk" "withSwap" "swapSize" "diskConfig"
         # Swap size is in GiB
-        altair = newConfig "altair" "/dev/nvme1n1" false "0" "standard-disk-config";
+        # altair = newConfig "altair" "/dev/nvme1n1" false "0" "btrfs-disk";
         canopus = newConfig "canopus" [ "/dev/nvme0n1" "/dev/sda" ] true "8" "laptop-disk-config";
         polaris = newConfig "polaris" "/dev/vda" false "0" "standard-disk-config";
 
@@ -59,12 +59,23 @@
         # `nix build ./nixos-installer#nixosConfigurations.iso.config.system.build.isoImage` - from nix-config directory to generate the iso manually
         #
         # Generated images will be output to the ~/nix-config/results directory unless drive is specified
-        iso = nixpkgs.lib.nixosSystem {
+        # iso = nixpkgs.lib.nixosSystem {
+        #   specialArgs = minimalSpecialArgs;
+        #   modules = [
+        #     "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+        #     "${nixpkgs}/nixos/modules/installer/cd-dvd/channel.nix"
+        #     ./iso
+        #   ];
+        # };
+        altair = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
           specialArgs = minimalSpecialArgs;
           modules = [
-            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-            "${nixpkgs}/nixos/modules/installer/cd-dvd/channel.nix"
-            ./iso
+            inputs.disko.nixosModules.disko
+            ../hosts/common/disks/altair.nix
+            ./minimal-configuration.nix
+            { networking.hostName = "altair"; }
+            ../hosts/nixos/altair/hardware-configuration.nix
           ];
         };
       };
