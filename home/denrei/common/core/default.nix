@@ -56,6 +56,7 @@ in
     # ./programs.nix
     ./screen.nix
     ./ssh.nix
+    ./tmux.nix
     ./yazi.nix
     ./zoxide.nix
 

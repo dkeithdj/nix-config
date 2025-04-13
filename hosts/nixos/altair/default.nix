@@ -53,6 +53,7 @@
       #################### Users to Create ####################
       # "hosts/common/users/denrei"
     ])
+    ./altair.nix
 
   ];
 
@@ -117,6 +118,10 @@
     HandleLidSwitchExternalPower=ignore
   '';
 
+  boot.initrd = {
+    systemd.enable = true;
+  };
+
   boot = {
     loader = {
       systemd-boot = {
@@ -126,12 +131,7 @@
       timeout = 3;
     };
   };
-
-  boot.initrd = {
-    systemd.enable = true;
-    kernelModules = [ "amdgpu" ];
-  };
-
+  services.xserver.videoDrivers = [ "amdgpu" ];
   # This is a fix to enable VSCode to successfully remote SSH on a client to a NixOS host
   # https://nixos.wiki/wiki/Visual_Studio_Code # Remote_SSH
   programs.nix-ld.enable = true;
