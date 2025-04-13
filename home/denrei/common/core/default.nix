@@ -39,10 +39,10 @@ in
       "modules/home"
     ])
     ./${platform}.nix
-    # ./code
+    ./code
     ./nvim
     ./wezterm
-    # ./zed
+    ./zed
     ./zsh
     ./bash.nix
     ./bat.nix
@@ -53,7 +53,7 @@ in
     ./git.nix
     ./gh.nix
     ./kitty.nix
-    # ./programs.nix
+    ./programs.nix
     ./screen.nix
     ./ssh.nix
     ./yazi.nix

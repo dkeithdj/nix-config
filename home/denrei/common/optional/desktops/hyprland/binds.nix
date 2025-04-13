@@ -97,7 +97,7 @@ in
         "SUPER, Return, exec, wezterm -e"
         "SUPER, W, exec, zen"
         "SUPER, T, exec, wezterm"
-        "SUPER, X, exec, zed"
+        "SUPER, X, exec, zeditor"
         "SUPER, D, exec, vesktop"
         "SUPER, M, exec, spotify"
         "SUPER, E, exec, nautilus"

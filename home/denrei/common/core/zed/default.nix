@@ -23,7 +23,8 @@
 
   programs.zed-editor = {
     enable = true;
-    package = inputs.zed-editor.packages.${pkgs.system}.default;
+    package = pkgs.zed-editor;
+    # package = inputs.zed-editor.packages.${pkgs.system}.default;
     extensions = [
       "nix"
       "lua"
