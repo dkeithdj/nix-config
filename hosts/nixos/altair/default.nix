@@ -24,13 +24,7 @@
 
     #################### Disk Layout ####################
     inputs.disko.nixosModules.disko
-    (lib.custom.relativeToRoot "hosts/common/disks/standard-disk-config.nix")
-    {
-      _module.args = {
-        disk = "/dev/nvme1n1";
-        withSwap = false;
-      };
-    }
+    (lib.custom.relativeToRoot "hosts/common/disks/altair.nix")
 
     (map lib.custom.relativeToRoot [
       #################### Required Configs ####################
