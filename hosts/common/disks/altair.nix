@@ -5,9 +5,9 @@
 {
   disko.devices = {
     disk = {
-      disk0 = {
+      altair = {
         type = "disk";
-        device = "/dev/nvme1n1";
+        device = "/dev/nvme0n1";
         content = {
           type = "gpt";
           partitions = {

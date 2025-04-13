@@ -9,7 +9,7 @@
 {
   disko.devices = {
     disk = {
-      disk0 = {
+      btrfs = {
         type = "disk";
         device = disk;
         content = {

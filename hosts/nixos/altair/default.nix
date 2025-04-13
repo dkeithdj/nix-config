@@ -20,7 +20,7 @@
     inputs.hardware.nixosModules.common-pc-ssd
 
     #################### Secure Boot ####################
-    inputs.lanzaboote.nixosModules.lanzaboote
+    # inputs.lanzaboote.nixosModules.lanzaboote
 
     #################### Disk Layout ####################
     inputs.disko.nixosModules.disko
@@ -39,7 +39,7 @@
       #################### Host-specific Optional Configs ####################
       "hosts/common/optional/services/openssh.nix"
       "hosts/common/optional/services/dropbox.nix" # dropbox
-      "hosts/common/optional/secure-boot"
+      # "hosts/common/optional/secure-boot"
 
       # Desktop
       # "hosts/common/optional/services/greetd.nix" # display manager

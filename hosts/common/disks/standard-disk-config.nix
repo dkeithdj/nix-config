@@ -10,7 +10,7 @@
 {
   disko.devices = {
     disk = {
-      disk0 = {
+      standard = {
         type = "disk";
         device = disk;
         content = {
