@@ -1,4 +1,13 @@
-#
-# TODO stage 4: this is a placeholder list for now
-#
-signal-desktop telegram-desktop discord slack
+{ pkgs, ... }:
+{
+
+  home.packages = builtins.attrValues {
+    inherit (pkgs)
+      #telegram-desktop
+      vesktop
+      slack
+      zoom-us
+      ;
+    inherit (pkgs.kdePackages) filelight;
+  };
+}

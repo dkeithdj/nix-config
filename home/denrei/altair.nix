@@ -18,14 +18,18 @@
     common/optional/browsers
     common/optional/media
 
+    #################### Development ####################
+    common/optional/development
+    common/optional/development/code
+    common/optional/development/zed
+    #################### Productivity ####################
+    common/optional/productivity
+    #################### Communication ####################
+    common/optional/comms
+
     # common/optional/hyprpanel
     common/optional/rofi
   ];
-
-  # home = {
-  #   username = configVars.username;
-  #   homeDirectory = "/home/${configVars.username}";
-  # };
 
   monitors = [
     {

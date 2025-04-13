@@ -1,6 +1,5 @@
 {
   pkgs,
-  config,
   ...
 }:
 let
@@ -69,24 +68,34 @@ in
         border-radius: 0;
       }
     '';
+    gtk3.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+    gtk4.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
   };
 
-  qt = {
-    enable = true;
-    platformTheme.name = "kde";
-  };
+  # qt = {
+  #   enable = true;
+  #   platformTheme.name = "kde";
+  # };
 
-  home.file.".local/share/flatpak/overrides/global".text =
-    let
-      dirs = [
-        "/nix/store:ro"
-        "xdg-config/gtk-3.0:ro"
-        "xdg-config/gtk-4.0:ro"
-        "${config.xdg.dataHome}/icons:ro"
-      ];
-    in
-    ''
-      [Context]
-      filesystems=${builtins.concatStringsSep ";" dirs}
-    '';
+  #   home.file.".local/share/flatpak/overrides/global".text =
+  #     let
+  #       dirs = [
+  #         "/nix/store:ro"
+  #         "xdg-config/gtk-3.0:ro"
+  #         "xdg-config/gtk-4.0:ro"
+  #         "${config.xdg.dataHome}/icons:ro"
+  #       ];
+  #     in
+  #     ''
+  #       [Context]
+  #       filesystems=${builtins.concatStringsSep ";" dirs}
+  #     '';
 }

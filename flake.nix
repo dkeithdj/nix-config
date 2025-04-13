@@ -139,7 +139,7 @@
 
     #################### Utilities ####################
 
-    impermanence.url = "github:nix-community/impermanence";
+    # impermanence.url = "github:nix-community/impermanence";
     # Declarative partitioning and formatting
     disko = {
       url = "github:nix-community/disko";
@@ -230,7 +230,8 @@
     # Authenticate via ssh and use shallow clone
     nix-secrets = {
       url = "git+ssh://git@github.com/dkeithdj/nix-secrets.git?ref=main&shallow=1";
-      flake = false;
+      # flake = false;
+      inputs = { };
     };
 
     #################### Firefox ####################
@@ -238,14 +239,14 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #################### Secure Boot ####################
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
-      # Optional but recommended to limit the size of your system closure.
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    ##################### Secure Boot ####################
+    #lanzaboote = {
+    #  url = "github:nix-community/lanzaboote/v0.4.2";
+    #  # Optional but recommended to limit the size of your system closure.
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
     # #################### Zed ####################
-    zed-editor.url = "github:zed-industries/zed/nightly";
+    # zed-editor.url = "github:zed-industries/zed/nightly";
   };
 }

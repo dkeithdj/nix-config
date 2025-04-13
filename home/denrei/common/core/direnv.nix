@@ -1,3 +1,4 @@
+{ ... }:
 {
   programs.direnv = {
     enable = true;
@@ -5,4 +6,5 @@
     enableZshIntegration = true;
     nix-direnv.enable = true; # better than native direnv nix functionality - https://github.com/nix-community/nix-direnv
   };
+  home.sessionVariables.DIRENV_LOG_FORMAT = "";
 }

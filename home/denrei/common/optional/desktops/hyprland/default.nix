@@ -176,6 +176,7 @@
           ''move 100%-w-20, ${(t "Picture-in-Picture")}''
           "workspace 4 silent, class:spotify"
           "workspace 4 silent, class:vesktop"
+          "workspace 4 silent, class:Slack"
 
           "float, title:^(Open File)(.*)$"
           "float, title:^(Select a File)(.*)$"
