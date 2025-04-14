@@ -8,6 +8,7 @@
       onlyoffice-bin_latest
       vial
       smile
+      anydesk
       ;
     inherit (pkgs.kdePackages)
       filelight
