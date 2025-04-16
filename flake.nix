@@ -181,9 +181,10 @@
     };
     astal.url = "github:Aylur/astal";
 
-    # ghostty = {
-    #   url = "github:ghostty-org/ghostty";
-    # };
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
+
     lf-icons = {
       url = "github:gokcehan/lf";
       flake = false;
