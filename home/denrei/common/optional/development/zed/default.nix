@@ -37,5 +37,7 @@
   home.packages = with pkgs; [
     nil
     nixd
+    ansible-lint
+    ansible
   ];
 }
