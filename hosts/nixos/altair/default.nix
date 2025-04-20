@@ -26,6 +26,7 @@
     inputs.disko.nixosModules.disko
     (lib.custom.relativeToRoot "hosts/common/disks/altair.nix")
 
+    # inputs.aagl.nixosModules.default
     (map lib.custom.relativeToRoot [
       #################### Required Configs ####################
       "hosts/common/core"
@@ -49,6 +50,9 @@
       "hosts/common/optional/tailscale.nix" # ollama
 
       "hosts/common/optional/nautilus.nix" # file manager
+      #################### Gaming ####################
+
+      # "hosts/common/optional/gaming"
 
       #################### Users to Create ####################
       # "hosts/common/users/denrei"
@@ -100,6 +104,8 @@
     settings.General.Experimental = true; # for gnome-bluetooth percentage
   };
   services.blueman.enable = true;
+
+  hardware.graphics.enable = true;
 
   # dconf
   programs.dconf.enable = true;

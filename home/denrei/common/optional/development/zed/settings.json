@@ -5,7 +5,7 @@
     "version": "2",
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-3-7-sonnet"
+      "model": "claude-3.7-sonnet-thought"
     },
     "inline_alternatives": [
       {
@@ -28,7 +28,7 @@
   "buffer_font_fallbacks": [
     "Zed Plex Mono"
   ],
-  "buffer_font_family": "FantasqueSansM Nerd Font",
+  "buffer_font_family": "FantasqueSansM Nerd Font Propo",
   "buffer_line_height": "standard",
   "load_direnv": "shell_hook",
   // Inlay hints preconfigured by Zed: Go, Rust, Typescript and Svelte
@@ -167,7 +167,7 @@
       "TERM": "xterm-256color",
       "EDITOR": "zeditor --wait"
     },
-    "font_family": "FantasqueSansM Nerd Font",
+    "font_family": "FantasqueSansM Nerd Font Propo",
     "line_height": {
       "custom": 1.1
     },
@@ -201,7 +201,7 @@
     "edit_prediction_provider": "zed"
   },
   "theme": "Tokyo Night",
-  "ui_font_family": "FantasqueSansM Nerd Font",
+  "ui_font_family": "FantasqueSansM Nerd Font Propo",
   "vim_mode": true,
   "vim": {
     "highlight_on_yank_duration": 150,

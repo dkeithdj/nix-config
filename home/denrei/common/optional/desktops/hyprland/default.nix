@@ -30,7 +30,7 @@
     # systemd.enable = true;
     xwayland.enable = true;
     plugins = [
-      inputs.hyprland-hyprspace.packages.${pkgs.system}.default
+      # inputs.hyprland-hyprspace.packages.${pkgs.system}.default
       # plugins.hyprexpo
       # plugins.hyprbars
       # plugins.borderspp
