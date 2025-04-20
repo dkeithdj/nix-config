@@ -56,6 +56,7 @@
       #################### Users to Create ####################
       # "hosts/common/users/denrei"
     ])
+    ./canopus.nix
   ];
 
   # ========== Host Specification ==========

@@ -1,0 +1,4 @@
+{ ... }:
+{
+  nix.buildMachines = true;
+}
