@@ -166,10 +166,10 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    hyprland-hyprspace = {
-      url = "github:KZDKM/Hyprspace";
-      inputs.hyprland.follows = "hyprland";
-    };
+    # hyprland-hyprspace = {
+    #   url = "github:KZDKM/Hyprspace";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
 
     matugen = {
       url = "github:InioX/matugen?ref=v2.2.0";
@@ -240,6 +240,8 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     ##################### Secure Boot ####################
     #lanzaboote = {
     #  url = "github:nix-community/lanzaboote/v0.4.2";
