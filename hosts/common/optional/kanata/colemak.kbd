@@ -17,9 +17,9 @@
 (deflayer colemak
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  
   grv  1    2    3    4    5    6    7    8    9    0    -    =    \            
-  tab  q    w    f    p    b    [    j    l    u    y    ;    '    bspc         
-  @lctl @a    @r    @s    @t    g    ]    m    @n    @e    @i    @o    ret               
-  lsft x    c    d    v    z    /    k    h    ,    .    @mo2                   
+  tab  b    l    d    w    q    [    ;    f    o    u    j    '    bspc         
+  @lctl @n    @r    @t    @t    g    ]    y    @h   @a    @e    @i    ret               
+  lsft x    m    c    v    z    /    k    p    ,    .    @mo2                   
   caps lmet lalt           spc            @mo1       rctl
 )
 
@@ -66,14 +66,14 @@
   til S-grv
   ? S-/
   pipe S-\
-  a (tap-hold $tap-time $hold-time a lmet)
+  n (tap-hold $tap-time $hold-time n lmet)
   r (tap-hold $tap-time $hold-time r lalt)
-  s (tap-hold $tap-time $hold-time s lsft)
-  t (tap-hold $tap-time $hold-time t lctl)
-  n (tap-hold $tap-time $hold-time n rctl)
-  e (tap-hold $tap-time $hold-time e rsft)
-  i (tap-hold $tap-time $hold-time i ralt)
-  o (tap-hold $tap-time $hold-time o rmet)
+  t (tap-hold $tap-time $hold-time t lsft)
+  s (tap-hold $tap-time $hold-time s lctl)
+  h (tap-hold $tap-time $hold-time h rctl)
+  a (tap-hold $tap-time $hold-time a rsft)
+  e (tap-hold $tap-time $hold-time e ralt)
+  i (tap-hold $tap-time $hold-time i rmet)
   lctl (tap-hold $tap-time $hold-time esc lctl)
 )
 
