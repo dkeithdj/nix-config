@@ -1,0 +1,76 @@
+;;(defcfg
+;; input  (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
+;;output (uinput-sink "KMonad kbd")
+;; fallthrough true
+;;)
+
+;; QWERTY to GRAPHITE
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc      
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \         
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret            
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft               
+  lctl lalt lmet          spc            rmet      ralt
+)
+
+(deflayer graphite
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    del            
+  tab  b    l    d    w    q    [    ;    f    o    u    j    '    bspc         
+  @lctl @n    @r    @t    @s    g    ]    y    @h   @a   @e   @i   ret               
+  lsft x    m    c    v    z    /    k    p    ,    .    @mo2                   
+  caps lalt lmet           spc            @mo1       ralt
+)
+
+(deflayer numlayer
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    -    1    2    3    +    _    _    _    _    _    _    _    _
+  _    [    4    5    6    ]    _    _   left down up   rght _
+  _    7    8    9    0    grv  _    /    \    _    _   _
+  _    _    _              _              _         _
+)
+
+(deflayer symlayer
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    @_   @!   @@   @#   =    _    _    _    _    _    _    _    _
+  _    @{   @$   @%  @^   @}   _    _    _    _    _    _    _
+  _    @&   @*   @op @cp  @til _    @?  @pipe _   _   _
+  _    _    _              _              _         _
+)
+
+(defvar
+  tap-time 150
+  hold-time 200
+)
+
+(defalias
+  mo1 (layer-toggle numlayer)
+  mo2 (layer-toggle symlayer)
+  ;; shifted keys
+  _ S--
+  ! S-1
+  @ S-2
+  # S-3
+  { S-[
+  $ S-4
+  % S-5
+  ^ S-6
+  } S-]
+  & S-7
+  * S-8
+  op S-9
+  cp S-0
+  til S-grv
+  ? S-/
+  pipe S-\
+  n (tap-hold $tap-time $hold-time n lmet)
+  r (tap-hold $tap-time $hold-time r lalt)
+  t (tap-hold $tap-time $hold-time t lsft)
+  s (tap-hold $tap-time $hold-time s lctl)
+  h (tap-hold $tap-time $hold-time h rctl)
+  a (tap-hold $tap-time $hold-time a rsft)
+  e (tap-hold $tap-time $hold-time e ralt)
+  i (tap-hold $tap-time $hold-time i rmet)
+  lctl (tap-hold $tap-time $hold-time esc lctl)
+)
+
+
