@@ -4,7 +4,7 @@
 ;; fallthrough true
 ;;)
 
-;; QWERTY to COLEMAK-DH
+;; QWERTY to GRAPHITE
 (defsrc
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc      
@@ -14,7 +14,7 @@
   lctl lmet lalt           spc            ralt      rctl
 )
 
-(deflayer colemak
+(deflayer graphite
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  
   grv  1    2    3    4    5    6    7    8    9    0    -    =    \            
   tab  b    l    d    w    q    [    ;    f    o    u    j    '    bspc         
@@ -76,4 +76,5 @@
   i (tap-hold $tap-time $hold-time i rmet)
   lctl (tap-hold $tap-time $hold-time esc lctl)
 )
+
 
