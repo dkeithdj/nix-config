@@ -66,14 +66,14 @@
   til S-grv
   ? S-/
   pipe S-\
-  n (tap-hold $tap-time $hold-time n lctl)
+  n (tap-hold $tap-time $hold-time n lmet)
   r (tap-hold $tap-time $hold-time r lalt)
   t (tap-hold $tap-time $hold-time t lsft)
-  s (tap-hold $tap-time $hold-time s lmet)
-  h (tap-hold $tap-time $hold-time h rmet)
+  s (tap-hold $tap-time $hold-time s lctl)
+  h (tap-hold $tap-time $hold-time h rctl)
   a (tap-hold $tap-time $hold-time a rsft)
   e (tap-hold $tap-time $hold-time e ralt)
-  i (tap-hold $tap-time $hold-time i rctl)
+  i (tap-hold $tap-time $hold-time i rmet)
   lctl (tap-hold $tap-time $hold-time esc lctl)
 )
 
