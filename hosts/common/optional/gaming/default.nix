@@ -69,7 +69,7 @@
   };
   environment.systemPackages = with pkgs; [
     (lutris.override {
-      extraLibraries = pkgs: [
+      extraLibraries = _pkgs: [
         libadwaita
       ];
     })

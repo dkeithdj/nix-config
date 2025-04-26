@@ -5,6 +5,7 @@
     {
       self,
       nixpkgs,
+      nix-darwin,
       treefmt-nix,
       # nixpkgs-stable,
       # disko,
@@ -22,7 +23,7 @@
 
       forAllSystems = nixpkgs.lib.genAttrs [
         "x86_64-linux"
-        #"aarch64-darwin"
+        "aarch64-darwin"
       ];
 
       # ========== Extend lib with lib.custom ==========
@@ -63,18 +64,18 @@
           };
         }) (builtins.attrNames (builtins.readDir ./hosts/nixos))
       );
-      # darwinConfigurations = builtins.listToAttrs (
-      #   map (host: {
-      #     name = host;
-      #     value = nix-darwin.lib.darwinSystem {
-      #       specialArgs = {
-      #         inherit inputs outputs lib;
-      #         isDarwin = true;
-      #       };
-      #       modules = [ ./hosts/darwin/${host} ];
-      #     };
-      #   }) (builtins.attrNames (builtins.readDir ./hosts/darwin))
-      # );
+      darwinConfigurations = builtins.listToAttrs (
+        map (host: {
+          name = host;
+          value = nix-darwin.lib.darwinSystem {
+            specialArgs = {
+              inherit inputs outputs lib;
+              isDarwin = true;
+            };
+            modules = [ ./hosts/darwin/${host} ];
+          };
+        }) (builtins.attrNames (builtins.readDir ./hosts/darwin))
+      );
 
       # ========= Packages =========
       #
@@ -135,6 +136,25 @@
       url = "github:nix-community/home-manager"; # unstable
       # url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-homebrew = {
+      url = "github:zhaofengli-wip/nix-homebrew";
+    };
+    homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
+      flake = false;
+    };
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
     };
 
     #################### Utilities ####################

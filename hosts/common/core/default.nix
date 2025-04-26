@@ -11,6 +11,7 @@
 let
   platform = if isDarwin then "darwin" else "nixos";
   platformModules = "${platform}Modules";
+  trusted-users = if isDarwin then [ "@admin" ] else [ "@wheel" ];
 in
 {
   imports = lib.flatten [
@@ -25,7 +26,7 @@ in
       "hosts/common/core/sops.nix" # Core because it's used for backups, mail
       "hosts/common/core/ssh.nix"
       "hosts/common/core/font.nix"
-      "hosts/common/core/printing.nix"
+      # "hosts/common/core/printing.nix"
       #"hosts/common/core/services" #not used yet
       "hosts/common/users/primary"
       "hosts/common/users/primary/${platform}.nix"
@@ -86,9 +87,7 @@ in
       log-lines = 25;
       min-free = 128000000; # 128MB
       max-free = 1000000000; # 1GB
-      trusted-users = [
-        "@wheel"
-      ];
+      trusted-users = trusted-users;
       substituters = [
         "https://cache.nixos.org?priority=10"
         "https://hyprland.cachix.org"
