@@ -20,6 +20,7 @@ _:
   # Productivity Tools
   "raycast"
   "nikitabobko/tap/aerospace"
+  "mediosz/tap/swipeaerospace"
 
   # Browsers
   "zen-browser"

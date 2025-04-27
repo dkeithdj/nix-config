@@ -25,6 +25,7 @@
     common/optional/development/ghostty
     #################### Productivity ####################
     # common/optional/productivity
+    common/optional/aerospace
     #################### Communication ####################
     # common/optional/comms
 

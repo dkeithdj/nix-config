@@ -1,5 +1,37 @@
 {
   "nodes": {
+    "aerospace": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1745715568,
+        "narHash": "sha256-bBtdgFewHWOdrRVWwEJYPHuY6UvBUzGZEgsmtXfdQcc=",
+        "owner": "nikitabobko",
+        "repo": "homebrew-tap",
+        "rev": "403340ce93f00e91204ea4e48cafad4570c94827",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nikitabobko",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
+    "aerospace-swipe": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1743325042,
+        "narHash": "sha256-7xLyNXd99r65yejpMq6DX+m2jCgpqmsXO1wCnkbS7G0=",
+        "owner": "MediosZ",
+        "repo": "homebrew-tap",
+        "rev": "cc8b8d41a1278389a1aef6eaa339ff1a44c2e733",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MediosZ",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "ags": {
       "inputs": {
         "nixpkgs": [
@@ -550,22 +582,6 @@
         "type": "github"
       }
     },
-    "homebrew-bundle": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1745335228,
-        "narHash": "sha256-TIKR2UgtyUmHLNZp255/vLs+1I10hXe+sciMEbAGFwE=",
-        "owner": "homebrew",
-        "repo": "homebrew-bundle",
-        "rev": "a3265c84b232e13048ecbf6fc18a2eedfadbeb08",
-        "type": "github"
-      },
-      "original": {
-        "owner": "homebrew",
-        "repo": "homebrew-bundle",
-        "type": "github"
-      }
-    },
     "homebrew-cask": {
       "flake": false,
       "locked": {
@@ -909,6 +925,22 @@
         "type": "github"
       }
     },
+    "jankyborders": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1738172733,
+        "narHash": "sha256-jggo/EU1IGQsB4q8FQ/6NXP3DEPi8hx/Y02cpnbh2FI=",
+        "owner": "FelixKratz",
+        "repo": "homebrew-formulae",
+        "rev": "aa79c1d02c7923c38a63114d41500109245b5d7f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "FelixKratz",
+        "repo": "homebrew-formulae",
+        "type": "github"
+      }
+    },
     "kmonad": {
       "inputs": {
         "nixpkgs": [
@@ -1073,13 +1105,13 @@
       "locked": {
         "lastModified": 1744563914,
         "narHash": "sha256-0exTKCXDE/8G7gZQ9Gk3EcZBAL7lwzxhD7DtUBsnlGI=",
-        "owner": "zhaofengli-wip",
+        "owner": "zhaofengli",
         "repo": "nix-homebrew",
         "rev": "53507607d69c88efc816e806b8139607c7257285",
         "type": "github"
       },
       "original": {
-        "owner": "zhaofengli-wip",
+        "owner": "zhaofengli",
         "repo": "nix-homebrew",
         "type": "github"
       }
@@ -1374,6 +1406,8 @@
     },
     "root": {
       "inputs": {
+        "aerospace": "aerospace",
+        "aerospace-swipe": "aerospace-swipe",
         "ags": "ags",
         "astal": "astal",
         "disko": "disko",
@@ -1382,12 +1416,12 @@
         "ghostty": "ghostty",
         "hardware": "hardware",
         "home-manager": "home-manager",
-        "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
         "hyprland": "hyprland",
         "hyprland-contrib": "hyprland-contrib",
         "hyprland-plugins": "hyprland-plugins",
+        "jankyborders": "jankyborders",
         "kmonad": "kmonad",
         "lf-icons": "lf-icons",
         "matugen": "matugen",

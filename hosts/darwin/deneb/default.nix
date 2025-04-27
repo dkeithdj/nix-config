@@ -5,8 +5,6 @@
 ###############################################################
 {
   lib,
-  inputs,
-  config,
   ...
 }:
 {
@@ -44,6 +42,8 @@
 
   system.defaults = {
     dock.autohide = true;
+    dock.expose-group-apps = true;
+    spaces.spans-displays = true;
     finder.FXPreferredViewStyle = "clmv";
     loginwindow.GuestEnabled = false;
     NSGlobalDomain = {
@@ -51,6 +51,7 @@
       AppleInterfaceStyle = "Dark";
       AppleShowAllExtensions = true;
       ApplePressAndHoldEnabled = false;
+      NSWindowShouldDragOnGesture = true;
 
       # 120, 90, 60, 30, 12, 6, 2
       KeyRepeat = 2;

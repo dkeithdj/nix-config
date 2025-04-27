@@ -14,9 +14,13 @@
         taps = {
           "homebrew/homebrew-core" = inputs.homebrew-core;
           "homebrew/homebrew-cask" = inputs.homebrew-cask;
+          "nikitabobko/homebrew-tap" = inputs.aerospace;
+          "FelixKratz/homebrew-formulae" = inputs.jankyborders;
+          "MediosZ/homebrew-tap" = inputs.aerospace-swipe;
         };
+
         enableRosetta = true;
-        # autoMigrate = true;
+        autoMigrate = true;
       };
     }
 

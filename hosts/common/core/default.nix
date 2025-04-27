@@ -116,7 +116,6 @@ in
         # "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
       ];
 
-
       allow-import-from-derivation = true;
 
       experimental-features = [

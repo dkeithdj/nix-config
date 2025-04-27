@@ -143,11 +143,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew = {
-      url = "github:zhaofengli-wip/nix-homebrew";
-    };
-    homebrew-bundle = {
-      url = "github:homebrew/homebrew-bundle";
-      flake = false;
+      url = "github:zhaofengli/nix-homebrew";
     };
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
@@ -155,6 +151,18 @@
     };
     homebrew-cask = {
       url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+    aerospace = {
+      url = "github:nikitabobko/homebrew-tap";
+      flake = false;
+    };
+    jankyborders = {
+      url = "github:FelixKratz/homebrew-formulae";
+      flake = false;
+    };
+    aerospace-swipe = {
+      url = "github:MediosZ/homebrew-tap";
       flake = false;
     };
 
