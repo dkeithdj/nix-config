@@ -81,6 +81,9 @@ in
     # This will add your inputs to the system's legacy channels
     # Making legacy nix commands consistent as well, awesome!
     nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
+
+    # Deduplicate and optimize nix store
+    optimise.automatic = true;
     settings = {
       # See https://jackson.dev/post/nix-reasonable-defaults/
       connect-timeout = 5;
@@ -113,8 +116,6 @@ in
         # "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
       ];
 
-      # Deduplicate and optimize nix store
-      auto-optimise-store = true;
 
       allow-import-from-derivation = true;
 

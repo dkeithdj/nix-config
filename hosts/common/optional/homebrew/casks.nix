@@ -5,6 +5,8 @@ _:
   "homebrew/cask/docker"
   "claude"
   "zed@preview"
+  "ghostty"
+  "launchcontrol"
 
   # Communication Tools
   "discord"
@@ -17,6 +19,7 @@ _:
 
   # Productivity Tools
   "raycast"
+  "nikitabobko/tap/aerospace"
 
   # Browsers
   "zen-browser"

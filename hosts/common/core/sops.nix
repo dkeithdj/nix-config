@@ -2,6 +2,7 @@
 {
   inputs,
   config,
+  isDarwin,
   ...
 }:
 let
@@ -35,7 +36,8 @@ in
     # from an ssh key).
     "user_age_keys/${config.hostSpec.username}_${config.networking.hostName}" = {
       owner = config.users.users.${config.hostSpec.username}.name;
-      inherit (config.users.users.${config.hostSpec.username}) group;
+      # inherit (config.users.users.${config.hostSpec.username}) group; not in darwin
+      group = "staff";
       # We need to ensure the entire directory structure is that of the user...
       path = "${config.hostSpec.home}/.config/sops/age/keys.txt";
     };
@@ -54,7 +56,7 @@ in
     let
       ageFolder = "${config.hostSpec.home}/.config/sops/age";
       user = config.users.users.${config.hostSpec.username}.name;
-      group = config.users.users.${config.hostSpec.username}.group;
+      group = if isDarwin then "staff" else config.users.users.${config.hostSpec.username}.group;
     in
     ''
       mkdir -p ${ageFolder} || true

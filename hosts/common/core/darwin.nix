@@ -1,5 +1,30 @@
-{...}:
 {
+  inputs,
+  lib,
+  config,
+  ...
+}:
+{
+  imports = lib.flatten [
+    inputs.nix-homebrew.darwinModules.nix-homebrew
+    {
+      nix-homebrew = {
+        enable = true;
+        user = config.hostSpec.username;
+        taps = {
+          "homebrew/homebrew-core" = inputs.homebrew-core;
+          "homebrew/homebrew-cask" = inputs.homebrew-cask;
+        };
+        enableRosetta = true;
+        # autoMigrate = true;
+      };
+    }
+
+    (map lib.custom.relativeToRoot [
+      "hosts/common/optional/homebrew"
+    ])
+
+  ];
 
   security.sudo.extraConfig = ''
     Defaults lecture = never # rollback results in sudo lectures after each reboot, it's somewhat useless anyway
