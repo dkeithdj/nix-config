@@ -21,8 +21,8 @@
     #################### Development ####################
     # common/optional/development
     # common/optional/development/code
-    # common/optional/development/zed
-    # common/optional/development/ghostty
+    common/optional/development/zed
+    common/optional/development/ghostty
     #################### Productivity ####################
     # common/optional/productivity
     #################### Communication ####################

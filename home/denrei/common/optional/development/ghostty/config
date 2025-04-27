@@ -1,0 +1,11 @@
+shell-integration = zsh
+theme = tokyonight_night
+font-family = FantasqueSansM Nerd Font Propo
+font-feature = feat
+focus-follows-mouse = true
+mouse-hide-while-typing = true
+scrollback-limit = 1000000
+window-save-state = always
+window-decoration = server
+macos-auto-secure-input = true
+macos-secure-input-indication = true

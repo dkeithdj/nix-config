@@ -46,7 +46,6 @@ in
     ./zsh
     ./bash.nix
     ./bat.nix
-    ./cliphist.nix
     ./dconf.nix
     ./direnv.nix
     ./fonts.nix
@@ -65,7 +64,7 @@ in
   # ++ [ inputs.impermanence.nixosModules.home-manager.impermanence ];
   inherit hostSpec;
 
-  services.ssh-agent.enable = true;
+  # services.ssh-agent.enable = true; not in darwin
 
   home = {
     username = lib.mkDefault config.hostSpec.username;
@@ -128,12 +127,6 @@ in
       home = config.home.homeDirectory;
     in
     builtins.map (x: "file://${home}/" + x) homeFiles;
-  services = {
-    kdeconnect = {
-      enable = true;
-      indicator = true;
-    };
-  };
 
   home.packages = with pkgs; [
     # Packages that don't have custom configs go here
@@ -180,11 +173,9 @@ in
     neofetch # system info
     fastfetch # system info
     awscli2
-    wf-recorder
-    wl-clipboard
     zip
     # transmission_4-gtk
-    cliphist
+    # cliphist
 
     # dev stuff
 

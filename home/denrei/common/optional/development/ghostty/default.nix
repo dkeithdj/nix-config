@@ -1,8 +1,19 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  lib,
+  config,
+  ...
+}:
 {
 
+  xdg.configFile = {
+    "ghostty/config".source = lib.mkForce (
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Projects/nix-config/home/${config.hostSpec.username}/common/optional/development/ghostty/config"
+    );
+  };
   programs.ghostty = {
-    enable = true;
+    enable = !config.hostSpec.isDarwin;
     enableZshIntegration = true;
     enableBashIntegration = true;
     installVimSyntax = true;

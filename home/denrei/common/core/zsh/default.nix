@@ -47,7 +47,7 @@
         "zap-zsh/exa"
         "zdharma-continuum/fast-syntax-highlighting"
         "MichaelAquilina/zsh-you-should-use"
-        "ptavares/zsh-terraform"
+        # "ptavares/zsh-terraform"
       ];
     };
 
@@ -56,7 +56,7 @@
       ''
         source ~/.nix-profile/bin/aws_zsh_completer.sh
 
-        bindkey "''${key[Up]}" up-line-or-search
+        bindkey "''${terminfo[kcuu1]}" up-line-or-search
 
         function yy() {
           local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"

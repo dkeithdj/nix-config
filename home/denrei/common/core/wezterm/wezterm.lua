@@ -6,7 +6,7 @@ local config = wezterm.config_builder()
 local act = wezterm.action
 
 wezterm.on("update-right-status", function(window, pane)
-	window:set_right_status(window:active_workspace())
+  window:set_right_status(window:active_workspace())
 end)
 
 -- This is where you actually apply your config choices
@@ -24,35 +24,35 @@ config.show_close_tab_button_in_tabs = true
 config.color_scheme = "tokyonight_night"
 config.pane_focus_follows_mouse = true
 config.inactive_pane_hsb = {
-	saturation = 0.8,
-	brightness = 0.7,
+  saturation = 0.8,
+  brightness = 0.7,
 }
 
 config.set_environment_variables = {
-	TERMINFO_DIRS = "/home/denrei/.nix-profile/share/terminfo",
-	-- TERM = "xterm-256color",
+  TERMINFO_DIRS = "$HOME/.nix-profile/share/terminfo",
+  -- TERM = "xterm-256color",
 }
 config.term = "xterm-256color"
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 
 config.window_frame = {
-	font = wezterm.font("FantasqueSansM Nerd Font"),
-	font_size = 12.0,
+  font = wezterm.font("FantasqueSansM Nerd Font"),
+  font_size = 12.0,
 }
 
 config.keys = {
-	{
-		key = "a",
-		mods = "SUPER",
-		action = wezterm.action.DisableDefaultAssignment,
-	},
-	{ key = "n", mods = "ALT", action = act.SwitchWorkspaceRelative(1) },
-	{ key = "p", mods = "ALT", action = act.SwitchWorkspaceRelative(-1) },
-	{ key = "l", mods = "ALT", action = act.ActivateTabRelative(1) },
-	{ key = "h", mods = "ALT", action = act.ActivateTabRelative(-1) },
+  {
+    key = "a",
+    mods = "SUPER",
+    action = wezterm.action.DisableDefaultAssignment,
+  },
+  { key = "n", mods = "ALT", action = act.SwitchWorkspaceRelative(1) },
+  { key = "p", mods = "ALT", action = act.SwitchWorkspaceRelative(-1) },
+  { key = "l", mods = "ALT", action = act.ActivateTabRelative(1) },
+  { key = "h", mods = "ALT", action = act.ActivateTabRelative(-1) },
 
-	{ key = "o", mods = "ALT", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
-	{ key = "t", mods = "ALT", action = act.ShowLauncherArgs({ flags = "FUZZY|TABS" }) },
+  { key = "o", mods = "ALT", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
+  { key = "t", mods = "ALT", action = act.ShowLauncherArgs({ flags = "FUZZY|TABS" }) },
 }
 
 -- and finally, return the configuration to wezterm

@@ -48,12 +48,12 @@
     },
     "rust-analyzer": {
       "binary": {
-        "path": "/home/denrei/.nix-profile/bin/rust-analyzer"
+        "path": "rust-analyzer"
       }
     },
     "nil": {
       "binary": {
-        "path": "/home/denrei/.nix-profile/bin/nil"
+        "path": "nil"
       },
       "settings": {
         "diagnostics": {
@@ -65,7 +65,7 @@
     },
     "nixd": {
       "binary": {
-        "path": "/home/denrei/.nix-profile/bin/nixd"
+        "path": "nixd"
       },
       "settings": {
         "diagnostic": {
@@ -165,7 +165,6 @@
     "dock": "bottom",
     "env": {
       "TERM": "xterm-256color",
-      "EDITOR": "zeditor --wait"
     },
     "font_family": "FantasqueSansM Nerd Font Propo",
     "line_height": {

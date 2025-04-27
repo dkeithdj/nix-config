@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  hostSpec,
   ...
 }:
 {
@@ -21,7 +22,7 @@
   };
 
   programs.zed-editor = {
-    enable = true;
+    enable = !hostSpec.isDarwin;
     package = pkgs.zed-editor;
     # package = inputs.zed-editor.packages.${pkgs.system}.default;
     extensions = [
@@ -37,7 +38,7 @@
   home.packages = with pkgs; [
     nil
     nixd
-    ansible-lint
-    ansible
+    # ansible-lint not in darwin
+    # ansible
   ];
 }

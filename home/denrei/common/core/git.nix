@@ -37,6 +37,7 @@ in
       # direnv
       ".direnv"
       "result"
+      ".DS_Store"
     ];
   };
 }
