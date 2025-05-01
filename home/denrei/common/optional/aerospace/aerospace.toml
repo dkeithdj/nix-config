@@ -11,11 +11,11 @@ after-login-command = []
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
   'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=3.0',
-  'exec-and-forget open -n /Applications/SwipeAeroSpace.app'
+  'exec-and-forget open -n /Applications/SwipeAeroSpace.app',
 ]
 
 # Start AeroSpace at login
-start-at-login = false
+start-at-login = true
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
@@ -64,10 +64,10 @@ preset = 'qwerty'
 [gaps]
 inner.horizontal = 5
 inner.vertical = 5
-outer.left = 0
-outer.bottom = 0
-outer.top = 0
-outer.right = 0
+outer.left = 5
+outer.bottom = 5
+outer.top = 5
+outer.right = 5
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -132,13 +132,13 @@ alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-1 = 'move-node-to-workspace 1'
-alt-shift-2 = 'move-node-to-workspace 2'
-alt-shift-3 = 'move-node-to-workspace 3'
-alt-shift-4 = 'move-node-to-workspace 4'
-alt-shift-5 = 'move-node-to-workspace 5'
-alt-shift-6 = 'move-node-to-workspace 6'
-alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
+alt-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
+alt-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
+alt-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
+alt-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
+alt-shift-6 = 'move-node-to-workspace 6 --focus-follows-window'
+alt-shift-7 = 'move-node-to-workspace 7 --focus-follows-window'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -176,6 +176,11 @@ shift-down = ['volume set 0', 'mode main']
 
 # Move apps directly to a workspace
 # Use 'aerospace list-apps' to get the app-id
+
+[[on-window-detected]]
+check-further-callbacks = true
+run = 'layout floating'
+
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
 run = 'move-node-to-workspace 4'
@@ -185,21 +190,9 @@ if.app-id = 'com.hnc.Discord'
 run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
-check-further-callbacks = true
-run = 'layout floating'
+if.app-id = "com.tinyspeck.slackmacgap" # Slack
+run = "move-node-to-workspace 5"
 
 [[on-window-detected]]
-if.app-id = 'dev.zed.Zed'
-run = 'layout tiling'
-
-[[on-window-detected]]
-if.app-id = 'com.mitchellh.ghostty'
-run = 'layout tiling'
-
-[[on-window-detected]]
-if.app-id = 'com.github.wez.wezterm'
-run = 'layout tiling'
-
-[[on-window-detected]]
-if.app-id = 'app.zen-browser.zen'
-run = 'layout tiling'
+if.app-id = "com.mitchellh.ghostty"
+run = ["layout floating", "move-node-to-workspace 2"]

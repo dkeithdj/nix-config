@@ -7,6 +7,7 @@ _:
   "zed@preview"
   "ghostty"
   "launchcontrol"
+  "postman"
 
   # Communication Tools
   "discord"
@@ -21,6 +22,11 @@ _:
   "raycast"
   "nikitabobko/tap/aerospace"
   "mediosz/tap/swipeaerospace"
+  "itsycal"
+
+  # menubar
+  "stats"
+  "hiddenbar"
 
   # Browsers
   "zen-browser"

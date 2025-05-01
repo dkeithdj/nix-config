@@ -1,42 +1,55 @@
-;;(defcfg
-;; input  (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
-;;output (uinput-sink "KMonad kbd")
-;; fallthrough true
-;;)
+(defcfg
+  process-unmapped-keys yes
+;;  macos-dev-names-include (
+;;   "Apple Internal Keyboard / Trackpad"
+;; )
+)
 
 ;; QWERTY to GRAPHITE
 (defsrc
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc      
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \         
-  caps a    s    d    f    g    h    j    k    l    ;    '    ret            
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft               
-  lctl lalt lmet          spc            rmet      ralt
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv   1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab   q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps  a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft  z    x    c    v    b    n    m    ,    .    /    rsft
+  fn    lctl lalt lmet           spc            rmet ralt ◀   ▲  ▼  ▶
 )
 
 (deflayer graphite
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    del            
-  tab  b    l    d    w    q    [    ;    f    o    u    j    '    bspc         
-  @lctl @n    @r    @t    @s    g    ]    y    @h   @a   @e   @i   ret               
-  lsft x    m    c    v    z    /    k    p    ,    .    @mo2                   
-  caps lalt lmet           spc            @mo1       ralt
+  esc   🔅  🔆   mctl sls  dtn  dnd  ◀◀ ▶⏸  ▶▶  🔇  🔉  🔊
+  grv   1    2    3    4    5    6    7    8    9    0    -    =    del
+  tab   b    l    d    w    q    [    ;    f    o    u    j    '    bspc
+  @lctl @n   @r   @t   @s   g    ]    y    @h   @a   @e   @i   ret
+  lsft  x    m    c    v    z    /    k    p    ,    .    @mo2
+  @fn   lctl lalt lmet           spc            @mo1 ralt ◀   ▲  ▼  ▶
 )
 
 (deflayer numlayer
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    -    1    2    3    +    _    _    _    _    _    _    _    _
-  _    [    4    5    6    ]    _    _   left down up   rght _
-  _    7    8    9    0    grv  _    /    \    _    _   _
-  _    _    _              _              _         _
+  _     _    _    _    _    _    _    _    _    _    _    _    _
+  _     _    _    _    _    _    _    _    _    _    _    _    _    _
+  _     -    1    2    3    +    _    _    _    _    _    _    _    _
+  _     [    4    5    6    ]    _    _   left down up   rght _
+  _     7    8    9    0    grv  _    /    \    _    _   _
+  _     _    _    _         _                   _    _   _    _   _   _
 )
 
 (deflayer symlayer
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    @_   @!   @@   @#   =    _    _    _    _    _    _    _    _
-  _    @{   @$   @%  @^   @}   _    _    _    _    _    _    _
-  _    @&   @*   @op @cp  @til _    @?  @pipe _   _   _
-  _    _    _              _              _         _
+  _     _    _    _    _    _    _    _    _    _    _    _    _
+  _     _    _    _    _    _    _    _    _    _    _    _    _    _
+  _     @_   @!   @@   @#   =    _    _    _    _    _    _    _    _
+  _     @{   @$   @%  @^   @}    _    _    _    _    _    _    _
+  _     @&   @*   @op @cp  @til _    @?  @pipe _   _   _
+  _     _    _    _         _                   _    _   _    _   _   _
 )
 
+(deflayer fn
+  _     f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12
+  _     _     _     _     _     _     _     _     _     _     _     _     _     _
+  _     _     _     _     _     _     _     _     _     _     _     _     _     _
+  _     _     _     _     _     _     _     _     ⤒     ⇞     ⇟     ⤓     _
+  _     _     _     _     _     _     _     _     _     _     _     _
+  _     _     _     _                 _                 _     _     ⤒    ⇞ ⇟    ⤓
+)
 (defvar
   tap-time 150
   hold-time 200
@@ -71,6 +84,5 @@
   e (tap-hold $tap-time $hold-time e ralt)
   i (tap-hold $tap-time $hold-time i rctl)
   lctl (tap-hold $tap-time $hold-time esc lctl)
+  fn (tap-hold $tap-time $hold-time fn (layer-toggle fn))
 )
-
-
