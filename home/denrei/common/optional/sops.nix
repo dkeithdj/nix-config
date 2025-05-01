@@ -32,6 +32,9 @@ in
       "ssh_keys/altair" = {
         path = "${homeDirectory}/.ssh/id_altair";
       };
+      "ssh_keys/deneb" = {
+        path = "${homeDirectory}/.ssh/id_deneb";
+      };
     };
   };
 }

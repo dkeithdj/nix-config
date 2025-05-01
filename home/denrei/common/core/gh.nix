@@ -4,7 +4,7 @@
     enable = true;
     extensions = with pkgs; [ gh-markdown-preview ];
     settings = {
-      git_protocol = "http";
+      git_protocol = "ssh";
       prompt = "enabled";
     };
   };
