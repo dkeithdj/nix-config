@@ -5,8 +5,15 @@
 {
   # imports = [scripts = ./scripts.nix];
   home.file = {
-    ".local/bin/cd-project".source = config.lib.file.mkOutOfStoreSymlink ./cd-project;
-    ".local/bin/setenv".source = config.lib.file.mkOutOfStoreSymlink ./setenv;
+    ".local/bin/cd-project" = {
+      source = config.lib.file.mkOutOfStoreSymlink ./cd-project;
+      executable = true;
+    };
+
+    ".local/bin/setenv" = {
+      source = config.lib.file.mkOutOfStoreSymlink ./setenv;
+      executable = true;
+    };
   };
   programs.zsh = {
     enable = true;
@@ -66,7 +73,6 @@
           fi
           rm -f -- "$tmp"
         }
-        bindkey -s '^g' '. cd-project\r'
 
         bindkey "^p" up-line-or-beginning-search # Up
         bindkey "^n" down-line-or-beginning-search # Down
@@ -87,11 +93,14 @@
       jqless = "jq -C | less -r";
 
       ls = "eza";
+      l = "ls -lah";
       exa = "eza";
 
       v = "nvim";
       g = "lazygit";
       z = "zellij";
+
+      p = ". cd-project";
 
       ck = "clone-in-kitty --type os-window";
 

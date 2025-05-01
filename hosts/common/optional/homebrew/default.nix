@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   homebrew = {
     # This is a module from nix-darwin
@@ -6,13 +6,10 @@
     enable = true;
     casks = pkgs.callPackage ./casks.nix { };
     brews = pkgs.callPackage ./brews.nix { };
-    onActivation.cleanup = "zap";
+    onActivation.cleanup = "uninstall";
     onActivation.autoUpdate = true;
     onActivation.upgrade = true;
-
-    # taps = [
-    #   "nikitabobko/homebrew-tap"
-    # ];
+    taps = builtins.attrNames config.nix-homebrew.taps;
 
     # These app IDs are from using the mas CLI app
     # mas = mac app store

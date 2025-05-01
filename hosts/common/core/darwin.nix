@@ -20,7 +20,7 @@
         };
 
         enableRosetta = true;
-        autoMigrate = true;
+        mutableTaps = false;
       };
     }
 
