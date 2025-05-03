@@ -30,5 +30,6 @@ _:
 
   # Browsers
   "zen-browser"
+  "brave-browser"
 
 ]

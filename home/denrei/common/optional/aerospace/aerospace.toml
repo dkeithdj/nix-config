@@ -183,16 +183,20 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
-run = 'move-node-to-workspace 4'
+run = 'move-node-to-workspace 7'
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
-run = 'move-node-to-workspace 4'
+run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
 if.app-id = "com.tinyspeck.slackmacgap" # Slack
-run = "move-node-to-workspace 5"
+run = "move-node-to-workspace 4"
 
 [[on-window-detected]]
 if.app-id = "com.mitchellh.ghostty"
+run = ["layout floating", "move-node-to-workspace 3"]
+
+[[on-window-detected]]
+if.app-id = "dev.zed.Zed-Preview"
 run = ["layout floating", "move-node-to-workspace 2"]

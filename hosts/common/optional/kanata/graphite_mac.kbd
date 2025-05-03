@@ -1,8 +1,8 @@
 (defcfg
   process-unmapped-keys yes
-;;  macos-dev-names-include (
-;;   "Apple Internal Keyboard / Trackpad"
-;; )
+  macos-dev-names-include (
+   "Apple Internal Keyboard / Trackpad"
+  )
 )
 
 ;; QWERTY to GRAPHITE

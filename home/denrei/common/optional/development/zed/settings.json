@@ -10,7 +10,7 @@
     "inline_alternatives": [
       {
         "provider": "copilot_chat",
-        "model": "claude-3-7-sonnet"
+        "model": "gpt-4.1"
       }
     ]
   },
@@ -70,7 +70,7 @@
       "settings": {
         "diagnostic": {
           "suppress": [
-            "sema-extra-with"
+            "semi-extra-with"
           ]
         }
       }
