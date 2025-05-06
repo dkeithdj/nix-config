@@ -7,15 +7,6 @@
       nixpkgs,
       nix-darwin,
       treefmt-nix,
-      # nixpkgs-stable,
-      # disko,
-      # systems,
-      # kmonad,
-      # lanzaboote,
-      # nixos-cosmic,
-      # zen-browser,
-      # ghostty,
-      # zed-editor,
       ...
     }@inputs:
     let
