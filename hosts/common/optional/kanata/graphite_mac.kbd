@@ -1,45 +1,54 @@
 (defcfg
   process-unmapped-keys yes
   macos-dev-names-include (
-   "Apple Internal Keyboard / Trackpad"
+    "Apple Internal Keyboard / Trackpad"
   )
 )
 
 ;; QWERTY to GRAPHITE
 (defsrc
-  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
-  grv   1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab   q    w    e    r    t    y    u    i    o    p    [    ]    \
-  caps  a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft  z    x    c    v    b    n    m    ,    .    /    rsft
-  fn    lctl lalt lmet           spc            rmet ralt ◀   ▲  ▼  ▶
+  esc   f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12
+  grv   1     2     3     4     5     6     7     8     9     0     -     =     bspc
+  tab   q     w     e     r     t     y     u     i     o     p     [     ]     \
+  caps  a     s     d     f     g     h     j     k     l     ;     '     ret
+  lsft  z     x     c     v     b     n     m     ,     .     /     rsft
+  fn    lctl  lalt  lmet            spc            rmet  ralt  ◀     ▲     ▼     ▶
 )
 
 (deflayer graphite
-  esc   🔅  🔆   mctl sls  dtn  dnd  ◀◀ ▶⏸  ▶▶  🔇  🔉  🔊
-  grv   1    2    3    4    5    6    7    8    9    0    -    =    del
-  tab   b    l    d    w    q    [    ;    f    o    u    j    '    bspc
-  @lctl @n   @r   @t   @s   g    ]    y    @h   @a   @e   @i   ret
-  lsft  x    m    c    v    z    /    k    p    ,    .    @mo2
-  @fn   lctl lalt lmet           spc            @mo1 ralt ◀   ▲  ▼  ▶
+  esc   🔅    🔆    mctl  sls   dtn   dnd   ◀◀    ▶⏸   ▶▶    🔇    🔉    🔊
+  grv   1     2     3     4     5     6     7     8     9     0     -     =     XX
+  XX    b     @c_tab_l   @c_tab_d   w     q     [     XX    @c_del_f     @c_del_o  @c_del_u  j     XX    XX
+  XX    @n    @c_esc_r   @c_esc_t   @s    g     ]     y     @c_bspc_h    @c_bspc_a @c_bspc_e @i    XX
+  XX    x     m     c     v     z     /     k     @c_ret_p  @c_ret_co @c_ret_do @l_sys1
+  @fn   lctl  lalt  @l_sys2        @tmeh          rsft  @l_num    ◀         ▲         ▼         ▶
 )
 
-(deflayer numlayer
-  _     _    _    _    _    _    _    _    _    _    _    _    _
-  _     _    _    _    _    _    _    _    _    _    _    _    _    _
-  _     -    1    2    3    +    _    _    _    _    _    _    _    _
-  _     [    4    5    6    ]    _    _   left down up   rght _
-  _     7    8    9    0    grv  _    /    \    _    _   _
-  _     _    _    _         _                   _    _   _    _   _   _
+(deflayer num
+  _     _     _     _     _     _     _     _     _     _     _     _     _
+  _     _     _     _     _     _     _     _     _     _     _     _     _     _
+  _     -     1     2     3     +     _     _     XX    ret    bspc   del   _     _
+  _     [     4     5     6     ]     _     _     left  down   up     rght  _
+  _     7     8     9     0     grv   _     /     \     _      _      _
+  _     _     _     _              lmet              _     _     _     _     _     _
 )
 
-(deflayer symlayer
-  _     _    _    _    _    _    _    _    _    _    _    _    _
-  _     _    _    _    _    _    _    _    _    _    _    _    _    _
-  _     @_   @!   @@   @#   =    _    _    _    _    _    _    _    _
-  _     @{   @$   @%  @^   @}    _    _    _    _    _    _    _
-  _     @&   @*   @op @cp  @til _    @?  @pipe _   _   _
-  _     _    _    _         _                   _    _   _    _   _   _
+(deflayer sys1
+  _     _     _     _     _     _     _     _     _     _     _     _     _
+  _     _     _     _     _     _     _     _     _     _     _     _     _     _
+  _     @_    @!    @@    @#    =     _     _     _     _     _     _     _     _
+  _     @{    @$    @%    @^    @}    _     _     _     _     _     _     _
+  _     @&    @*    @op   @cp   @til  _     @?    @pipe _      _      _
+  _     _     _     _              lmet              _     _     _     _     _     _
+)
+
+(deflayer sys2
+  _     f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12
+  _     _     _     _     _     _     _     _     _     _     _     _     _     _
+  _     tab   esc   _     _     _     _     _     XX    ret    bspc   del   _     _
+  _     _     _     _     _     _     _     _     left  down   up     rght  _
+  _     @cx   _     @cc   @cv   @cz   _     _     _     _      _      _
+  _     _     _     _              lmet              _     _     ⤒     ⇞     ⇟     ⤓
 )
 
 (deflayer fn
@@ -48,41 +57,119 @@
   _     _     _     _     _     _     _     _     _     _     _     _     _     _
   _     _     _     _     _     _     _     _     ⤒     ⇞     ⇟     ⤓     _
   _     _     _     _     _     _     _     _     _     _     _     _
-  _     _     _     _                 _                 _     _     ⤒    ⇞ ⇟    ⤓
+  _     _     _     _              lmet              _     _     ⤒     ⇞     ⇟     ⤓
 )
 (defvar
-  tap-time 150
-  hold-time 200
+  tap-time        150
+  hold-time       200
+  hold-time-slow  250
 )
 
 (defalias
-  mo1 (layer-toggle numlayer)
-  mo2 (layer-toggle symlayer)
+  l_num    (layer-toggle num)
+  l_sys1   (layer-toggle sys1)
+  l_sys2   (layer-toggle sys2)
+
   ;; shifted keys
-  _ S--
-  ! S-1
-  @ S-2
-  # S-3
-  { S-[
-  $ S-4
-  % S-5
-  ^ S-6
-  } S-]
-  & S-7
-  * S-8
-  op S-9
-  cp S-0
-  til S-grv
-  ? S-/
-  pipe S-\
-  n (tap-hold $tap-time $hold-time n lctl)
-  r (tap-hold $tap-time $hold-time r lalt)
-  t (tap-hold $tap-time $hold-time t lsft)
-  s (tap-hold $tap-time $hold-time s lmet)
-  h (tap-hold $tap-time $hold-time h rmet)
-  a (tap-hold $tap-time $hold-time a rsft)
-  e (tap-hold $tap-time $hold-time e ralt)
-  i (tap-hold $tap-time $hold-time i rctl)
-  lctl (tap-hold $tap-time $hold-time esc lctl)
-  fn (tap-hold $tap-time $hold-time fn (layer-toggle fn))
+  _        S--
+  !        S-1
+  @        S-2
+  #        S-3
+  {        S-[
+  $        S-4
+  %        S-5
+  ^        S-6
+  }        S-]
+  &        S-7
+  *        S-8
+  op       S-9
+  cp       S-0
+  til      S-grv
+  ?        S-/
+  pipe     S-\
+
+  ;; homerow mods
+  n        (tap-hold $tap-time $hold-time-slow n lctl)
+  r        (tap-hold $tap-time $hold-time       r lalt)
+  t        (tap-hold $tap-time $hold-time       t lsft)
+  s        (tap-hold $tap-time $hold-time       s lmet)
+  h        (tap-hold $tap-time $hold-time       h rmet)
+  a        (tap-hold $tap-time $hold-time       a rsft)
+  e        (tap-hold $tap-time $hold-time       e ralt)
+  i        (tap-hold $tap-time $hold-time-slow  i rctl)
+
+  ;; shortcuts
+  cc       M-c
+  cv       M-v
+  cx       M-x
+  cz       M-z
+  ctb      C-tab
+  cstb     C-S-tab
+
+  lctl     (tap-hold $tap-time $hold-time esc lctl)
+  fn       (tap-hold $tap-time $hold-time fn (layer-toggle fn))
+
+  meh      (multi ctl alt sft)
+  tmeh     (tap-hold $tap-time $hold-time spc @meh)
+
+  sve     (macro S-; w ret)
+
+  ;; chords
+  c_del_f (chord del f)
+  c_del_o (chord del o)
+  c_del_u (chord del u)
+
+  c_bspc_h (chord bspc h)
+  c_bspc_a (chord bspc a)
+  c_bspc_e (chord bspc e)
+
+  c_ret_p  (chord ret p)
+  c_ret_co (chord ret ,)
+  c_ret_do (chord ret .)
+
+  c_tab_l (chord tab l)
+  c_tab_d (chord tab d)
+
+  c_esc_r (chord esc r)
+  c_esc_t (chord esc t)
+
+
+
 )
+
+(defchords del 15
+  (f    ) f
+  (  o  ) o
+  (    u) u
+  (f o  ) ;
+  (  o u) del
+)
+
+(defchords bspc 15
+  (h    ) @h
+  (  a  ) @a
+  (    e) @e
+  (h a  ) '
+  (  a e) bspc
+)
+
+(defchords ret 15
+  (p    ) p
+  (  ,  ) ,
+  (    .) .
+  (p ,  ) @sve
+  (  , .) ret
+)
+
+(defchords tab 15
+  (l  ) l
+  (  d) d
+  (l d) tab
+)
+
+(defchords esc 15
+  (r  ) @r
+  (  t) @t
+  (r t) esc
+)
+
