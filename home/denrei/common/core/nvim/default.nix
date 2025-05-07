@@ -57,7 +57,7 @@
       nodePackages.eslint
       eslint_d
       nodePackages.prettier
-      ruff-lsp
+      ruff
       black
       pyright
     ];

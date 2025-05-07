@@ -57,10 +57,13 @@
         # "ptavares/zsh-terraform"
       ];
     };
-
-    initExtra =
+    initContent =
       # bash
       ''
+        if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
+          . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+          . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
+        fi
         source ~/.nix-profile/bin/aws_zsh_completer.sh
 
         bindkey "''${terminfo[kcuu1]}" up-line-or-search
@@ -132,7 +135,7 @@
       man = "batman";
 
       #-----------Nix commands----------------
-      ncv = "cd $FLAKE && v";
+      ncv = "cd $NH_FLAKE && v";
       nhh = "nh home switch";
       nho = "nh os switch";
 

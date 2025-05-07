@@ -79,7 +79,7 @@ in
     sessionVariables = {
       DIRENV_LOG_FORMAT = "";
       PROJECTS = "$HOME/Projects";
-      FLAKE = "$HOME/Projects/nix-config";
+      NH_FLAKE = "$HOME/Projects/nix-config";
       QT_XCB_GL_INTEGRATION = "none"; # kde-connect
       NIXPKGS_ALLOW_UNFREE = "1";
       NIXPKGS_ALLOW_INSECURE = "1";

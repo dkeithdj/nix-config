@@ -121,7 +121,7 @@ in
     eval "$(${starshipCmd} init bash)"
   '';
 
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
     eval "$(${starshipCmd} init zsh)"
   '';
 }
