@@ -23,6 +23,7 @@ _:
   "nikitabobko/tap/aerospace"
   "mediosz/tap/swipeaerospace"
   "itsycal"
+  # "macs-fan-control"
 
   # menubar
   "stats"

@@ -3,7 +3,7 @@
   ...
 }:
 {
-  environment.systemPackages = with pkgs; [ kanata ];
+  # environment.systemPackages = with pkgs; [ kanata ];
 
   launchd.daemons = {
     karabiner-vhiddaemon = {
@@ -27,7 +27,7 @@
     kanata = {
       serviceConfig = {
         ProgramArguments = [
-          "${pkgs.kanata}/bin/kanata"
+          "/opt/homebrew/bin/kanata"
           "-c"
           "/Users/denrei/Projects/nix-config/hosts/common/optional/kanata/graphite_mac.kbd"
           "--port"

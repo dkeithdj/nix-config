@@ -1,4 +1,4 @@
 _: [
-  # "kanata"
+  "kanata"
   "borders"
 ]
