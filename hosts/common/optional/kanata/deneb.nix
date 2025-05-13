@@ -29,7 +29,7 @@
         ProgramArguments = [
           "/opt/homebrew/bin/kanata"
           "-c"
-          "/Users/denrei/Projects/nix-config/hosts/common/optional/kanata/graphite_mac.kbd"
+          "/Users/denrei/Projects/nix-config/hosts/common/optional/kanata/graphite_mac_callum.kbd"
           "--port"
           "10000"
           "--debug"

@@ -17,11 +17,11 @@
 
 (deflayer graphite
   esc   🔅    🔆    mctl  sls   dtn   dnd   ◀◀    ▶⏸   ▶▶    🔇    🔉    🔊
-  grv   1     2     3     4     5     6     7     8     9     0     -     =     XX
+  XX    XX    XX    XX    XX    XX    XX    XX    XX   XX    XX    XX    XX   XX
   XX    b     @c_tab_l   @c_tab_d   w     q     [     XX    @c_del_f     @c_del_o  @c_del_u  j     XX    XX
   XX    @n    @c_esc_r   @c_esc_t   @s    g     ]     y     @c_bspc_h    @c_bspc_a @c_bspc_e @i    XX
   XX    x     m     c     v     z     /     k     @c_ret_p  @c_ret_co @c_ret_do @l_sys1
-  @fn   lctl  lalt  @l_sys2        @tmeh          rsft  @l_num    ◀         ▲         ▼         ▶
+  @fn   lctl  lalt  @l_num        @tmeh          rsft  @l_num    ◀         ▲         ▼         ▶
 )
 
 (deflayer num
@@ -97,6 +97,8 @@
   a        (tap-hold $tap-time $hold-time       a rsft)
   e        (tap-hold $tap-time $hold-time       e ralt)
   i        (tap-hold $tap-time $hold-time-slow  i rctl)
+
+  ;;l        (tap-hold $tap-time $hold-time       l @)
 
   ;; shortcuts
   cc       M-c

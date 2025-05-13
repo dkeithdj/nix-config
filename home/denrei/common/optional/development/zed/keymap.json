@@ -5,7 +5,7 @@
       // put key-bindings here if you want them to work in normal & visual mode
       // Git
       "space g h d": "editor::ToggleSelectedDiffHunks",
-      "space g h r": "editor::RevertSelectedHunks",
+      "space g h r": "git::Restore",
       // Toggle inlay hints
       "space t i": "editor::ToggleInlayHints",
       // Toggle soft wrap
@@ -20,7 +20,7 @@
       // Search word under cursor
       "space s w": "pane::DeploySearch",
       // Chat with AI
-      "space a c": "assistant::ToggleFocus",
+      "space a c": "agent::ToggleFocus",
       // Go to file with `gf`
       "g f": "editor::OpenExcerpts",
     },
@@ -43,7 +43,7 @@
       // Window movement bindings
       // Ctrl jklk to move between panes
       // +LSP
-      "space b": "editor::ToggleGitBlame",
+      "space b": "git::Blame",
       "shift-k": "editor::Hover",
       "space o": "tab_switcher::Toggle",
       "space c a": "editor::ToggleCodeActions",
@@ -51,7 +51,7 @@
       "space .": "editor::ToggleCodeActions",
       "space c r": "editor::Rename",
       "n": "search::SelectNextMatch",
-      "shift-n": "search::SelectPrevMatch",
+      "shift-n": "search::SelectPreviousMatch",
       "g d": "editor::GoToDefinition",
       "g D": "editor::GoToDefinitionSplit",
       "g i": "editor::GoToImplementation",
@@ -61,10 +61,10 @@
       "g r": "editor::FindAllReferences",
       "] d": "editor::GoToDiagnostic",
       "+ +": "workspace::Save",
-      "[ d": "editor::GoToPrevDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic",
       // TODO: Go to next/prev error
       "] e": "editor::GoToDiagnostic",
-      "[ e": "editor::GoToPrevDiagnostic",
+      "[ e": "editor::GoToPreviousDiagnostic",
       // Symbol search
       "s s": "outline::Toggle",
       "s S": "project_symbols::Toggle",
@@ -73,11 +73,11 @@
       // +Git
       // Git prev/next hunk
       "] h": "editor::GoToHunk",
-      "[ h": "editor::GoToPrevHunk",
+      "[ h": "editor::GoToPreviousHunk",
       // TODO: git diff is not ready yet, refer https://github.com/zed-industries/zed/issues/8665#issuecomment-2194000497
       // + Buffers
       // Switch between buffers
-      "shift-h": "pane::ActivatePrevItem",
+      "shift-h": "pane::ActivatePreviousItem",
       "shift-l": "pane::ActivateNextItem",
       // Close active panel
       "shift-q": "pane::CloseActiveItem",
@@ -140,7 +140,7 @@
     "bindings": {
       "ctrl-`": "workspace::ToggleBottomDock",
       "ctrl-n": "workspace::NewTerminal",
-      "ctrl-alt-h": "pane::ActivatePrevItem",
+      "ctrl-alt-h": "pane::ActivatePreviousItem",
       "ctrl-alt-l": "pane::ActivateNextItem",
       "alt-h": "workspace::ActivatePaneLeft",
       "alt-l": "workspace::ActivatePaneRight",
@@ -183,8 +183,9 @@
   {
     "context": "vim_mode == insert",
     "bindings": {
-      "ctrl-k": "editor::ContextMenuPrev",
-      "ctrl-j": "editor::ContextMenuNext"
+      "ctrl-k": "editor::ContextMenuPrevious",
+      "ctrl-j": "editor::ContextMenuNext",
+      "ctrl-space": "editor::ShowCompletions"
     }
   },
   {
@@ -201,21 +202,21 @@
   {
     "context": "TabSwitcher",
     "bindings": {
-      "ctrl-k": "menu::SelectPrev",
+      "ctrl-k": "menu::SelectPrevious",
       "ctrl-j": "menu::SelectNext"
     }
   },
   {
     "context": "FileFinder",
     "bindings": {
-      "ctrl-k": "menu::SelectPrev",
+      "ctrl-k": "menu::SelectPrevious",
       "ctrl-j": "menu::SelectNext"
     }
   },
   {
     "context": "CommandPalette",
     "bindings": {
-      "ctrl-k": "menu::SelectPrev",
+      "ctrl-k": "menu::SelectPrevious",
       "ctrl-j": "menu::SelectNext"
     }
   },

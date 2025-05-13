@@ -8,6 +8,7 @@ _:
   "ghostty"
   "launchcontrol"
   "postman"
+  "visual-studio-code"
 
   # Communication Tools
   "discord"

@@ -1,7 +1,7 @@
 {
   "show_edit_predictions": true,
   "icon_theme": "Material Icon Theme",
-  "assistant": {
+  "agent": {
     "version": "2",
     "default_model": {
       "provider": "copilot_chat",
@@ -197,7 +197,7 @@
   "auto_update": false,
   "features": {
     "copilot": true,
-    "edit_prediction_provider": "zed"
+    "edit_prediction_provider": "copilot"
   },
   "theme": "Tokyo Night",
   "ui_font_family": "FantasqueSansM Nerd Font Propo",
@@ -208,5 +208,6 @@
     "use_multiline_find": true,
     "vertical_scroll_margin": 6
   },
-  "scroll_beyond_last_line": "vertical_scroll_margin"
+  "scroll_beyond_last_line": "vertical_scroll_margin",
+  "show_completions_on_input": true
 }
