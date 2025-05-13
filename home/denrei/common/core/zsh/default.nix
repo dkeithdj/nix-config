@@ -6,12 +6,12 @@
   # imports = [scripts = ./scripts.nix];
   home.file = {
     ".local/bin/cd-project" = {
-      source = config.lib.file.mkOutOfStoreSymlink ./cd-project;
+      source = ./cd-project;
       executable = true;
     };
 
     ".local/bin/setenv" = {
-      source = config.lib.file.mkOutOfStoreSymlink ./setenv;
+      source = ./setenv;
       executable = true;
     };
   };
