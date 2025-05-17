@@ -26,44 +26,44 @@
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
   XX    b     @⇥l   @⇥d   w     q       XX    '     f     @⌦o   @⌦u   j     XX    XX
   XX    n     @␛r   @␛t   @s    g       XX    y     @h    @⌫a   @⌫e   i     XX
-  z     x     m     c     v     XX      XX    k     @↵p   @↵,   @↵.   @?
-  @fn   XX    XX          @lme spc            rsft  @rme        XX    XX    XX    XX
+  z     x     m     c     v     rpt-any        XX    k     @↵p   @↵,   @↵.   @?
+  @fn   XX    XX    @lme           @nspc            rsft  @rme  XX    XX    XX    XX
 )
 
 (deflayer num
   _     _     _     _     _     _       _     _     _     _     _     _     _
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
   XX    _     @#    @$    @%    @^      XX    +     7     8     9     @*    XX    XX
-  XX    @osft @octl @oalt @omet _       XX    0     4     5     6     =     XX
+  XX    @osft @octl @oalt @omet _       XX    0     4     @⌫5   @⌫6   =     XX
   @cz   @cx   @cc   @cv   @cr   XX      XX    -     1     2     3     /
-  _     XX    XX          _     _             _     _           XX    XX    XX    XX
+  _     XX    XX    _              _                _     _     XX    XX    XX    XX
 )
-
+;; TODO: add mods in here
 (deflayer sym
   _     _     _     _     _     _       _     _     _     _     _     _     _
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
   XX    @til  @<    [     ]     @>      XX    _     _     _     _     _     XX    XX
-  XX    grv   @_    @pl   @pr   @&      XX    _     left  down  up    rght  XX
-  \     @@    @{    @}    @|    XX      XX    @rpta _     _     _     _
-  _     XX    XX          _     _             _     _           XX    XX    XX    XX
+  XX    grv   @_    @pl   @pr   @&      XX    _     @omet @oalt @octl @osft XX
+  \     @@    @{    @}    @|    XX      XX    rpt-any _     _     _     _
+  _     XX    XX    _              _                _     _     XX    XX    XX    XX
 )
 
 (deflayer nav
   _     _     _     _     _     _       _     _     _     _     _     _     _
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
   XX    _     _     _     _     _       XX    _     _     _     _     _     XX    XX
-  XX    @osft @octl @oalt @omet _       XX    _     _     _     _     _     XX
-  _     _     _     _     _     XX      XX    _     _     _     _     _
-  _     XX    XX          _     _             _     _           XX    XX    XX    XX
+  XX    @osft @octl @oalt @omet _       XX    _     left  down  up    rght  XX
+  @cz   @cx   @cc   @cv   @cr   XX      XX    rpt-any _     _     _     _
+  _     XX    XX    _              _                @fn     _     XX    XX    XX    XX
 )
 
 (deflayer fn
-  _     _     _     _     _     _       _     _     _     _     _     _     _
+  _     f1    f2    f3    f4    f5      f6    f7    f8    f9    f10   f11   f12
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
   XX    _     _     _     _     _       XX    _     _     _     _     _     XX    XX
   XX    _     _     _     _     _       XX    _     _     _     _     _     XX
   _     _     _     _     _     XX      XX    _     _     _     _     _
-  _     XX    XX          _     _             _     _           XX    XX    XX    XX
+  _     XX    XX    _              _                _     _     XX    XX    XX    XX
 )
 
 (defvirtualkeys
@@ -94,7 +94,7 @@
   ;; layer toggles
   ;; num    (layer-toggle num)
   ;; sym   (layer-toggle sym)
-  ;; nav   (layer-toggle nav)
+  nav   (layer-toggle nav)
   ;; num (one-shot 500 (layer-while-held num))
   ;;sym (one-shot 500 (layer-while-held sym))
 
@@ -120,6 +120,8 @@
   a        (tap-hold $tap-time $hold-time       a ralt)
   e        (tap-hold $tap-time $hold-time       e rctl)
   i        (tap-hold $tap-time $hold-time-slow  i rctl)
+
+  nspc     (tap-hold $tap-time $hold-time     spc @nav)
 )
 
 (defalias
@@ -160,6 +162,8 @@
   ;; ⌫h (chord bspc h)
   ⌫a (chord bspc a)
   ⌫e (chord bspc e)
+  ⌫5 (chord nbspc 5)
+  ⌫6 (chord nbspc 6)
 
   ↵p  (chord ret p)
   ↵,  (chord ret ,)
@@ -206,6 +210,12 @@
   (    e) @e
   ;; (h a  ) '
   (  a e) bspc
+
+)
+(defchords nbspc 15
+  (5  ) 5
+  (  6) 6
+  (5 6) bspc
 )
 
 (defchords ret 15
