@@ -33,12 +33,13 @@
 (deflayer num
   _     _     _     _     _     _       _     _     _     _     _     _     _
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
-  XX    _     @#    @$    @%    @^      XX    +     7     8     9     @*    XX    XX
+  XX    _     @#    @^    @%    @$      XX    +     7     8     9     @*    XX    XX
   XX    @osft @octl @oalt @omet _       XX    0     4     @⌫5   @⌫6   =     XX
-  @cz   @cx   @cc   @cv   @cr   XX      XX    -     1     2     3     /
+  @cz   @cx   @cc   @cv   _     XX      XX    -     1     2     3     /
   _     XX    XX    _              _                _     _     XX    XX    XX    XX
 )
 ;; TODO: add mods in here
+#|
 (deflayer sym
   _     _     _     _     _     _       _     _     _     _     _     _     _
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
@@ -47,13 +48,22 @@
   \     @@    @{    @}    @|    XX      XX    rpt-any _     _     _     _
   _     XX    XX    _              _                _     _     XX    XX    XX    XX
 )
+|#
+(deflayer sym
+  _     _     _     _     _     _       _     _     _     _     _     _     _
+  XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
+  XX    _     _     _     _     _       XX    @<    [     ]     @>    @til  XX    XX
+  XX    @osft @octl @oalt @omet _       XX    @&    @pl   @⌫pr  @⌫_   grv   XX
+  _     _     _     _     _     XX      XX    @|    @{    @}    @@    \
+  _     XX    XX    _              _                _     _     XX    XX    XX    XX
+)
 
 (deflayer nav
   _     _     _     _     _     _       _     _     _     _     _     _     _
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
-  XX    _     _     _     _     _       XX    _     _     _     _     _     XX    XX
+  XX    _     _     _     _     _       XX    _     ⤓     ⇟     ⇞     ⤒     XX    XX
   XX    @osft @octl @oalt @omet _       XX    _     left  down  up    rght  XX
-  @cz   @cx   @cc   @cv   @cr   XX      XX    rpt-any _     _     _     _
+  @cz   @cx   @cc   @cv   _     XX      XX    _     _     _     _     _
   _     XX    XX    _              _                @fn     _     XX    XX    XX    XX
 )
 
@@ -68,9 +78,9 @@
 
 (defvirtualkeys
   callum (switch
-    ((and nop1 nop2)) (layer-while-held nav) break
+    ((and nop1 nop2)) (layer-while-held sym) break
     (nop1) (layer-while-held num) break
-    (nop2) (layer-while-held sym) break)
+    (nop2) (layer-while-held nav) break)
   activate-callum (multi
    (one-shot-pause-processing 5)
    (switch
@@ -93,7 +103,7 @@
 (defalias
   ;; layer toggles
   ;; num    (layer-toggle num)
-  ;; sym   (layer-toggle sym)
+  sym   (layer-toggle sym)
   nav   (layer-toggle nav)
   ;; num (one-shot 500 (layer-while-held num))
   ;;sym (one-shot 500 (layer-while-held sym))
@@ -121,7 +131,7 @@
   e        (tap-hold $tap-time $hold-time       e rctl)
   i        (tap-hold $tap-time $hold-time-slow  i rctl)
 
-  nspc     (tap-hold $tap-time $hold-time     spc @nav)
+  nspc     (tap-hold $tap-time $hold-time     spc @sym)
 )
 
 (defalias
@@ -164,6 +174,8 @@
   ⌫e (chord bspc e)
   ⌫5 (chord nbspc 5)
   ⌫6 (chord nbspc 6)
+  ⌫pr (chord sbspc @pr)
+  ⌫_ (chord sbspc @_)
 
   ↵p  (chord ret p)
   ↵,  (chord ret ,)
@@ -216,6 +228,12 @@
   (5  ) 5
   (  6) 6
   (5 6) bspc
+)
+
+(defchords sbspc 15
+  (@pr   ) @pr
+  (    @_) @_
+  (@pr @_) bspc
 )
 
 (defchords ret 15
