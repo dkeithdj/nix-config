@@ -11,7 +11,7 @@
   hold-time-slow  250
 )
 
-;; QWERTY to GRAPHITE
+;; https://github.com/jtroo/kanata/blob/main/docs/fancy_symbols.md
 (defsrc
   esc   f1    f2    f3    f4    f5      f6    f7    f8    f9    f10   f11   f12
   grv   1     2     3     4     5       6     7     8     9     0     -     =     bspc
@@ -25,8 +25,8 @@
   esc   🔅     🔆     mctl  sls   dtn     dnd   ◀◀    ▶⏸    ▶▶    🔇     🔉     🔊
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
   XX    b     @⇥l   @⇥d   w     q       XX    '     f     @⌦o   @⌦u   j     XX    XX
-  XX    n     @␛r   @␛t   @s    g       XX    y     @h    @⌫a   @⌫e   i     XX
-  z     x     m     c     v     rpt-any        XX    k     @↵p   @↵,   @↵.   @?
+  XX    n     @␛r   @␛t   @cws  g       XX    y     @cwh  @⌫a   @⌫e   i     XX
+  z     x     m     c     v     XX            XX    k     @↵p   @↵,   @↵.   @?
   @fn   XX    XX    @lme           @nspc            rsft  @rme  XX    XX    XX    XX
 )
 
@@ -34,37 +34,27 @@
   _     _     _     _     _     _       _     _     _     _     _     _     _
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
   XX    _     @#    @^    @%    @$      XX    +     7     8     9     @*    XX    XX
-  XX    @osft @octl @oalt @omet _       XX    0     4     @⌫5   @⌫6   =     XX
+  XX    @octl @oalt @osft @omet _       XX    0     4     @⌫5   @⌫6   =     XX
   @cz   @cx   @cc   @cv   _     XX      XX    -     1     2     3     /
   _     XX    XX    _              _                _     _     XX    XX    XX    XX
 )
-;; TODO: add mods in here
-#|
+
 (deflayer sym
   _     _     _     _     _     _       _     _     _     _     _     _     _
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
   XX    @til  @<    [     ]     @>      XX    _     _     _     _     _     XX    XX
-  XX    grv   @_    @pl   @pr   @&      XX    _     @omet @oalt @octl @osft XX
-  \     @@    @{    @}    @|    XX      XX    rpt-any _     _     _     _
-  _     XX    XX    _              _                _     _     XX    XX    XX    XX
-)
-|#
-(deflayer sym
-  _     _     _     _     _     _       _     _     _     _     _     _     _
-  XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
-  XX    _     _     _     _     _       XX    @<    [     ]     @>    @til  XX    XX
-  XX    @osft @octl @oalt @omet _       XX    @&    @pl   @⌫pr  @⌫_   grv   XX
-  _     _     _     _     _     XX      XX    @|    @{    @}    @@    \
+  XX    grv   @⌫_   @⌫pl  @pr   @&      XX    _     @omet @osft @oalt @octl XX
+  \     @@    @{    @}    @|    XX      XX    _     _     _     _     _
   _     XX    XX    _              _                _     _     XX    XX    XX    XX
 )
 
 (deflayer nav
   _     _     _     _     _     _       _     _     _     _     _     _     _
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
-  XX    _     _     _     _     _       XX    _     ⤓     ⇟     ⇞     ⤒     XX    XX
-  XX    @osft @octl @oalt @omet _       XX    _     left  down  up    rght  XX
+  XX    _     _     _     _     _       XX    _     ↖     ⇟     ⇞     ↘     XX    XX
+  XX    @octl @oalt @osft @omet _       XX    _     left  down  up    rght  XX
   @cz   @cx   @cc   @cv   _     XX      XX    _     _     _     _     _
-  _     XX    XX    _              _                @fn     _     XX    XX    XX    XX
+  _     XX    XX    _              _                @fn   _     XX    XX    XX    XX
 )
 
 (deflayer fn
@@ -78,9 +68,9 @@
 
 (defvirtualkeys
   callum (switch
-    ((and nop1 nop2)) (layer-while-held sym) break
+    ((and nop1 nop2)) (layer-while-held nav) break
     (nop1) (layer-while-held num) break
-    (nop2) (layer-while-held nav) break)
+    (nop2) (layer-while-held sym) break)
   activate-callum (multi
    (one-shot-pause-processing 5)
    (switch
@@ -131,7 +121,8 @@
   e        (tap-hold $tap-time $hold-time       e rctl)
   i        (tap-hold $tap-time $hold-time-slow  i rctl)
 
-  nspc     (tap-hold $tap-time $hold-time     spc @sym)
+  nspc     (tap-hold $tap-time $hold-time     spc @nav)
+  cwt (caps-word-toggle 2000)
 )
 
 (defalias
@@ -165,17 +156,8 @@
 
 (defalias
   ;; chords
-  ;; ⌦f (chord del f)
   ⌦o (chord del o)
   ⌦u (chord del u)
-
-  ;; ⌫h (chord bspc h)
-  ⌫a (chord bspc a)
-  ⌫e (chord bspc e)
-  ⌫5 (chord nbspc 5)
-  ⌫6 (chord nbspc 6)
-  ⌫pr (chord sbspc @pr)
-  ⌫_ (chord sbspc @_)
 
   ↵p  (chord ret p)
   ↵,  (chord ret ,)
@@ -209,31 +191,9 @@
 )
 
 (defchords del 15
-  ;; (f    ) f
   (  o  ) o
   (    u) u
-  ;; (f o  ) ;
   (  o u) del
-)
-
-(defchords bspc 15
-  ;; (h    ) @h
-  (  a  ) @a
-  (    e) @e
-  ;; (h a  ) '
-  (  a e) bspc
-
-)
-(defchords nbspc 15
-  (5  ) 5
-  (  6) 6
-  (5 6) bspc
-)
-
-(defchords sbspc 15
-  (@pr   ) @pr
-  (    @_) @_
-  (@pr @_) bspc
 )
 
 (defchords ret 15
@@ -251,8 +211,23 @@
 )
 
 (defchords esc 15
-  (r  ) @r
-  (  t) @t
+  (r  ) r
+  (  t) t
   (r t) esc
 )
 
+(deftemplate rhc (chordgroupname timeout k1 k2 alias1 alias2 output)
+  (defalias
+    $alias1 (chord $chordgroupname $k1)
+    $alias2 (chord $chordgroupname $k2)
+  )
+  (defchords $chordgroupname $timeout
+    ($k1    ) $k1
+    (    $k2) $k2
+    ($k1 $k2) $output
+  )
+)
+(t! rhc base-bspc 15 a e ⌫a ⌫e bspc)
+(t! rhc num-bspc 15 5 6 ⌫5 ⌫6 bspc)
+(t! rhc sym-bspc 15 @pl @_ ⌫pl ⌫_ bspc)
+(t! rhc capsword 30 s h cws cwh @cwt)
