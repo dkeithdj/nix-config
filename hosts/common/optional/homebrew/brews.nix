@@ -1,4 +1,5 @@
 _: [
   "kanata"
   "borders"
+  "grafana"
 ]

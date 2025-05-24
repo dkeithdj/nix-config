@@ -36,6 +36,7 @@
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-darwin";
+  system.primaryUser = "denrei";
 
   # Turn off NIX_PATH warnings now that we're using flakes
   system.checks.verifyNixPath = false;

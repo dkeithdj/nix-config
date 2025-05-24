@@ -9,6 +9,7 @@ _:
   "launchcontrol"
   "postman"
   "visual-studio-code"
+  "kicad"
 
   # Communication Tools
   "discord"
@@ -31,7 +32,7 @@ _:
   "hiddenbar"
 
   # Browsers
-  "zen-browser"
+  "zen"
   "brave-browser"
 
 ]
