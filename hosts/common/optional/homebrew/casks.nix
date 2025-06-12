@@ -19,6 +19,7 @@ _:
 
   # Entertainment Tools
   "vlc"
+  "transmission"
 
   # Productivity Tools
   "raycast"
