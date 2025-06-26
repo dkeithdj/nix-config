@@ -125,7 +125,7 @@
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-`": "terminal_panel::ToggleFocus",
+      // "ctrl-`": "workspace::ToggleBottomDock",
       "space g g": [
         "task::Spawn",
         {

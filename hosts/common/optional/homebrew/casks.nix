@@ -16,6 +16,9 @@ _:
   "slack"
   "telegram"
   "zoom"
+  "obs"
+  "audacity"
+  "vb-cable"
 
   # Entertainment Tools
   "vlc"
@@ -26,6 +29,7 @@ _:
   "nikitabobko/tap/aerospace"
   "mediosz/tap/swipeaerospace"
   "itsycal"
+  "betterdisplay"
   # "macs-fan-control"
 
   # menubar
