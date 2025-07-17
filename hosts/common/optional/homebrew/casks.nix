@@ -2,7 +2,7 @@ _:
 
 [
   # Development Tools
-  "homebrew/cask/docker"
+  "docker-desktop"
   "claude"
   "zed@preview"
   "ghostty"
@@ -19,6 +19,8 @@ _:
   "obs"
   "audacity"
   "vb-cable"
+  "blackhole-16ch"
+  "imaging-edge"
 
   # Entertainment Tools
   "vlc"

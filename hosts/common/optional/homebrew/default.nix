@@ -6,7 +6,7 @@
     enable = true;
     casks = pkgs.callPackage ./casks.nix { };
     brews = pkgs.callPackage ./brews.nix { };
-    onActivation.cleanup = "zap";
+    onActivation.cleanup = "uninstall";
     onActivation.autoUpdate = true;
     onActivation.upgrade = true;
     taps = builtins.attrNames config.nix-homebrew.taps;
@@ -18,9 +18,10 @@
     # $ nix shell nixpkgs#mas
     # $ mas search <app name>
     #
-    # masApps = {
-    #   "hidden-bar" = 1452453066;
-    #   "wireguard" = 1451685025;
-    # };
+    masApps = {
+      Bitwarden = 1352778147;
+      # "hidden-bar" = 1452453066;
+      # "wireguard" = 1451685025;
+    };
   };
 }
