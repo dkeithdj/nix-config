@@ -52,6 +52,7 @@ in
       ".direnv"
       "result"
       ".DS_Store"
+      "cdk.out"
     ];
   };
 }

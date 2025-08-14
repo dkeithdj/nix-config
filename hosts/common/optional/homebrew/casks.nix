@@ -9,7 +9,9 @@ _:
   "launchcontrol"
   "postman"
   "visual-studio-code"
-  "kicad"
+  # "kicad"
+  "dbeaver-community"
+  # "tableplus"
 
   # Communication Tools
   "discord"
@@ -18,9 +20,9 @@ _:
   "zoom"
   "obs"
   "audacity"
-  "vb-cable"
-  "blackhole-16ch"
-  "imaging-edge"
+  # "vb-cable"
+  # "blackhole-16ch"
+  # "imaging-edge"
 
   # Entertainment Tools
   "vlc"
