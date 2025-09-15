@@ -19,7 +19,7 @@ in
   ''; # this only does one pubkey
   programs.git = {
     enable = true;
-    package = pkgs.gitAndTools.gitFull;
+    # package = pkgs.gitFull;
     userName = name;
     userEmail = userEmail;
     aliases = { };

@@ -12,6 +12,7 @@ _:
   # "kicad"
   "dbeaver-community"
   # "tableplus"
+  "tuple"
 
   # Communication Tools
   "discord"

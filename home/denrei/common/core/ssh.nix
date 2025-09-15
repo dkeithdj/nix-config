@@ -5,7 +5,6 @@
   programs.ssh = {
     enable = true;
 
-    addKeysToAgent = "yes";
     matchBlocks = {
       "git" = {
         host = "github.com";
@@ -15,12 +14,28 @@
         identityFile = [
           "~/.ssh/id_ed25519_github"
         ];
+        serverAliveCountMax = 3;
+        serverAliveInterval = 5; # 3 * 5s
+        addKeysToAgent = "yes";
+      };
+      "work-meterz" = {
+        host = "github-meterz";
+        hostname = "github.com";
+        user = "git";
+        forwardAgent = true;
+        identitiesOnly = true;
+        identityFile = [
+          "~/.ssh/id_work_meterz"
+        ];
+        serverAliveCountMax = 3;
+        serverAliveInterval = 5; # 3 * 5s
+        addKeysToAgent = "yes";
       };
     };
 
     # Avoids infinite hang if control socket connection interrupted. ex: vpn goes down/up
-    serverAliveCountMax = 3;
-    serverAliveInterval = 5; # 3 * 5s
+    # serverAliveCountMax = 3;
+    # serverAliveInterval = 5; # 3 * 5s
     # FIXME: This should probably be for git systems only?
     #controlMaster = "auto";
     #controlPath = "~/.ssh/sockets/S.%r@%h:%p";
