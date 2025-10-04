@@ -194,6 +194,10 @@ if.app-id = 'com.hnc.Discord'
 run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
+if.app-id = 'com.facebook.archon.developerID'
+run = 'move-node-to-workspace 9'
+
+[[on-window-detected]]
 if.app-id = "com.brave.Browser"
 run = ["layout floating", "move-node-to-workspace 5"]
 

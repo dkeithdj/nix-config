@@ -21,6 +21,7 @@ _:
   "zoom"
   "obs"
   "audacity"
+  "messenger"
   # "vb-cable"
   # "blackhole-16ch"
   # "imaging-edge"
