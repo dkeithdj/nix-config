@@ -22,8 +22,8 @@
       // Chat with AI
       "space a c": "agent::ToggleFocus",
       // Go to file with `gf`
-      "g f": "editor::OpenExcerpts",
-    },
+      "g f": "editor::OpenExcerpts"
+    }
   },
   {
     "context": "Editor",
@@ -84,7 +84,7 @@
       "ctrl-q": "pane::CloseActiveItem",
       "space b d": "pane::CloseActiveItem",
       // Close other items
-      "space b o": "pane::CloseInactiveItems",
+      "space b o": "pane::CloseOtherItems",
       "space b p": "workspace::CloseAllDocks",
       // File finder
       "space space": "file_finder::Toggle",
@@ -110,16 +110,9 @@
     "context": "Editor && vim_operator == c",
     "bindings": {
       "c": "vim::CurrentLine",
-      "r": "editor::Rename" // zed specific
+      "r": "editor::Rename", // zed specific
+      "a": "editor::ToggleCodeActions" // zed specific
     }
-  },
-  // Code Action
-  {
-    "context": "Editor && vim_operator == c",
-    "bindings": {
-      "c": "vim::CurrentLine",
-      "a": "editor::ToggleCodeActions", // zed specific
-    },
   },
   // Toggle terminal
   {
@@ -130,10 +123,10 @@
         "task::Spawn",
         {
           "task_name": "lazygit",
-          "target": "center",
+          "target": "center"
         }
-      ],
-    },
+      ]
+    }
   },
   {
     "context": "Terminal",

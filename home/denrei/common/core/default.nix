@@ -217,6 +217,8 @@ in
     aws-sam-cli
 
     devenv
+    imagemagick
+    ghostscript
   ];
 
   nix = {
