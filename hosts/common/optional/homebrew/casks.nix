@@ -3,6 +3,7 @@ _:
 [
   # Development Tools
   "docker-desktop"
+  "container"
   "claude"
   "zed@preview"
   "ghostty"
@@ -13,6 +14,7 @@ _:
   "dbeaver-community"
   # "tableplus"
   "tuple"
+  "bitwarden"
 
   # Communication Tools
   "discord"
@@ -36,6 +38,7 @@ _:
   "mediosz/tap/swipeaerospace"
   "itsycal"
   "betterdisplay"
+  # "linearmouse"
   # "macs-fan-control"
 
   # menubar

@@ -28,7 +28,7 @@
     extensions = [
       "nix"
       "lua"
-      "ruff"
+      # "ruff"
       "tokyo-night"
       "docker-compose"
       "dockerfile"

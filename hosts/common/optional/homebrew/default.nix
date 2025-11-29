@@ -19,7 +19,7 @@
     # $ mas search <app name>
     #
     masApps = {
-      Bitwarden = 1352778147;
+      # Bitwarden = 1352778147;
       # "hidden-bar" = 1452453066;
       # "wireguard" = 1451685025;
     };

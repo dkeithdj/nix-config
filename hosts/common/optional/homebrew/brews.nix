@@ -1,6 +1,7 @@
 _: [
   "kanata"
   "borders"
-  "grafana"
+  # "grafana"
   "docker"
+  # "cdktf"
 ]

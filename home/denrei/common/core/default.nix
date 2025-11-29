@@ -214,11 +214,11 @@ in
     viu
     chafa
     ueberzugpp
-    aws-sam-cli
+    # aws-sam-cli
 
-    devenv
     imagemagick
     ghostscript
+    dive
   ];
 
   nix = {
