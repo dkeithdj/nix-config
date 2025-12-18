@@ -1,7 +1,9 @@
 {
+  "colorize_brackets": true,
   "show_edit_predictions": true,
   "icon_theme": "Material Icon Theme",
   "agent": {
+    "always_allow_tool_actions": true,
     "default_profile": "write",
     "default_model": {
       "provider": "copilot_chat",
@@ -10,7 +12,7 @@
     "inline_alternatives": [
       {
         "provider": "copilot_chat",
-        "model": "gpt-4.1"
+        "model": "claude-sonnet-4"
       }
     ]
   },
@@ -22,8 +24,7 @@
     "catpuccin": true,
     "svelte": true,
     "lua": true,
-    "emmet": true,
-    "ruff": true
+    "emmet": true
   },
   "buffer_font_fallbacks": [".ZedMono"],
   "buffer_font_family": "FantasqueSansM Nerd Font Propo",
@@ -115,7 +116,7 @@
           }
         }
       ],
-      "language_servers": ["ruff", "!pylsp"]
+      "language_servers": ["ty", "ruff", "!pylsp"]
     },
     "Nix": {
       "formatter": {
@@ -128,9 +129,10 @@
   // File syntax highlighting
   "file_types": {
     "Dockerfile": ["Dockerfile", "Dockerfile.*"],
-    "JSON": ["json", "jsonc", "*.code-snippets"]
+    "JSON": ["json", "jsonc", "*.code-snippets"],
+    "C++": ["*.dtsi", "*.keymap"]
   },
-  "relative_line_numbers": true,
+  "relative_line_numbers": "wrapped",
   "scrollbar": {
     "show": "never"
   },
@@ -189,6 +191,7 @@
   "theme": "Tokyo Night",
   "ui_font_family": "FantasqueSansM Nerd Font Propo",
   "vim_mode": true,
+  "cursor_blink": false,
   "vim": {
     "highlight_on_yank_duration": 150,
     "use_system_clipboard": "always"

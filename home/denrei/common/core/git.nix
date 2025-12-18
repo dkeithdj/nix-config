@@ -20,10 +20,14 @@ in
   programs.git = {
     enable = true;
     # package = pkgs.gitFull;
-    userName = name;
-    userEmail = userEmail;
-    aliases = { };
-    extraConfig = {
+    # userName = name;
+    # userEmail = userEmail;
+    settings = {
+      user = {
+        name = name;
+        email = userEmail;
+        signingkey = publicKey;
+      };
       init.defaultBranch = "main";
       pull.rebase = "true";
       color.ui = true;
@@ -35,7 +39,6 @@ in
       commit.gpgSign = true;
       gpg.format = "ssh";
       gpg.ssh.allowedSignersFile = "${sshFolder}/allowed_signers";
-      user.signingkey = publicKey;
     };
     # enable git Large File Storage: https://git-lfs.com/
     lfs.enable = true;
