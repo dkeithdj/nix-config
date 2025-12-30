@@ -3,12 +3,15 @@
   macos-dev-names-include (
     "Apple Internal Keyboard / Trackpad"
   )
+  concurrent-tap-hold yes
 )
 
 (defvar
   tap-time        150
   hold-time       200
   hold-time-slow  250
+  chord-time      18
+  chord-time-slow 30
 )
 
 ;; https://github.com/jtroo/kanata/blob/main/docs/fancy_symbols.md
@@ -24,18 +27,27 @@
 (deflayer graphite
   esc   🔅     🔆     mctl  sls   dtn     dnd   ◀◀    ▶⏸    ▶▶    🔇     🔉     🔊
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
-  XX    b     @⇥l   @⇥d   w     q       XX    '     f     @⌦o   @⌦u   j     XX    XX
-  XX    n     @␛r   @␛t   @cws  g       XX    y     @cwh  @⌫a   @⌫e   i     XX
-  z     x     m     c     v     XX            XX    k     @↵p   @↵,   @↵.   @?
-  @fn   XX    XX    @lme           @nspc            rsft  @rme  XX    XX    XX    XX
+  XX    b     l     d     w     q       XX    '     f     o     u     j     XX    XX
+  XX    n     r     t     @cws  g       XX    y     @cwh  a     e     i     XX
+  z     x     m     c     v     XX      XX    k     p     @,    @.    @?
+  fn    XX    XX    @fret          @nspc            sft   @num  XX    XX    XX    XX
 )
+
+;;(deflayer num
+;; _     _     _     _     _     _       _     _     _     _     _     _     _
+;; XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
+;; XX    _     @#    @^    @%    @$      XX    +     7     8     9     @*    XX    XX
+;; XX    @octl @oalt @osft @omet _       XX    0     4     5     6     =     XX
+;; @cz   @cx   @cc   @cv   _     XX      XX    -     1     2     3     /
+;; _     XX    XX    _              _                _     _     XX    XX    XX    XX
+;;)
 
 (deflayer num
   _     _     _     _     _     _       _     _     _     _     _     _     _
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
-  XX    _     @#    @^    @%    @$      XX    +     7     8     9     @*    XX    XX
-  XX    @octl @oalt @osft @omet _       XX    0     4     @⌫5   @⌫6   =     XX
-  @cz   @cx   @cc   @cv   _     XX      XX    -     1     2     3     /
+  XX    _     7     8     9     _       XX    _     _     _     _     _     XX    XX
+  XX    0     4     5     6     _       XX    _     @omet @osft @oalt @octl XX
+  _     1     2     3     _     XX      XX    _     _     _     _     _
   _     XX    XX    _              _                _     _     XX    XX    XX    XX
 )
 
@@ -43,7 +55,7 @@
   _     _     _     _     _     _       _     _     _     _     _     _     _
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
   XX    @til  @<    [     ]     @>      XX    _     _     _     _     _     XX    XX
-  XX    grv   @⌫_   @⌫pl  @pr   @&      XX    _     @omet @osft @oalt @octl XX
+  XX    grv   @_    @pl   @pr   @&      XX    _     @omet @osft @oalt @octl XX
   \     @@    @{    @}    @|    XX      XX    _     _     _     _     _
   _     XX    XX    _              _                _     _     XX    XX    XX    XX
 )
@@ -51,50 +63,51 @@
 (deflayer nav
   _     _     _     _     _     _       _     _     _     _     _     _     _
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
-  XX    _     _     _     _     _       XX    _     ↖     ⇟     ⇞     ↘     XX    XX
-  XX    @octl @oalt @osft @omet _       XX    _     left  down  up    rght  XX
-  @cz   @cx   @cc   @cv   _     XX      XX    _     _     _     _     _
+  XX    _     _     _     _     _       XX    ⇞     bspc  up    del   _     XX    XX
+  XX    @octl @oalt @osft @omet _       XX    ⇟     left  down  rght  ret   XX
+  @cz   @cx   @cc   @cv   _     XX      XX    _     tab   _     _     _
   _     XX    XX    _              _                @fn   _     XX    XX    XX    XX
 )
 
 (deflayer fn
-  _     f1    f2    f3    f4    f5      f6    f7    f8    f9    f10   f11   f12
+  _     _     _     _     _     _       _     _     _     _     _     _     _
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
-  XX    _     _     _     _     _       XX    _     _     _     _     _     XX    XX
-  XX    _     _     _     _     _       XX    _     _     _     _     _     XX
-  _     _     _     _     _     XX      XX    _     _     _     _     _
-  _     XX    XX    _              _                _     _     XX    XX    XX    XX
+  XX    f12   f7    f8    f9    _       XX    _     ◀◀    🔊     ▶▶    _     XX    XX
+  XX    f11   f4    f5    f6    _       XX    _     @dprev 🔉     @dnext _     XX
+  f10   f1    f2    f3    _     XX      XX    _     _     _     _     _
+  _     XX    XX    _              _                ▶⏸    🔇     XX    XX    XX    XX
 )
 
-(defvirtualkeys
-  callum (switch
-    ((and nop1 nop2)) (layer-while-held nav) break
-    (nop1) (layer-while-held num) break
-    (nop2) (layer-while-held sym) break)
-  activate-callum (multi
-   (one-shot-pause-processing 5)
-   (switch
-    ((or nop1 nop2))
-     (multi (on-press release-vkey callum)
-            (on-press press-vkey callum))
-     break
-    () (on-press release-vkey callum) break))
-)
+;;(defvirtualkeys
+;; callum (switch
+;;   ((and nop1 nop2)) (layer-while-held nav) break
+;;   (nop1) (layer-while-held num) break
+;;   (nop2) (layer-while-held sym) break)
+;; activate-callum (multi
+;;  (one-shot-pause-processing 5)
+;;  (switch
+;;   ((or nop1 nop2))
+;;    (multi (on-press release-vkey callum)
+;;           (on-press press-vkey callum))
+;;    break
+;;   () (on-press release-vkey callum) break))
+;;)
 
-(defalias
-  lme (multi nop1
-             (on-press tap-vkey activate-callum)
-             (on-release tap-vkey activate-callum))
-  rme (multi nop2
-             (on-press tap-vkey activate-callum)
-             (on-release tap-vkey activate-callum))
-)
+;;(defalias
+;; lme (multi nop1
+;;            (on-press tap-vkey activate-callum)
+;;            (on-release tap-vkey activate-callum))
+;; rme (multi nop2
+;;            (on-press tap-vkey activate-callum)
+;;            (on-release tap-vkey activate-callum))
+;;)
 
 (defalias
   ;; layer toggles
-  ;; num    (layer-toggle num)
-  sym   (layer-toggle sym)
+  num    (layer-toggle num)
+  ;;sym   (layer-toggle sym)
   nav   (layer-toggle nav)
+  fn   (layer-toggle fn)
   ;; num (one-shot 500 (layer-while-held num))
   ;;sym (one-shot 500 (layer-while-held sym))
 
@@ -104,7 +117,7 @@
 (defalias
   octl (one-shot 2000 lctl)
   oalt (one-shot 2000 lalt)
-  osft (one-shot 2000 lsft)
+  osft (one-shot 2000 sft)
   omet (one-shot 2000 lmet)
 
   std (layer-toggle graphite)
@@ -121,16 +134,9 @@
   e        (tap-hold $tap-time $hold-time       e rctl)
   i        (tap-hold $tap-time $hold-time-slow  i rctl)
 
-  nspc     (tap-hold $tap-time $hold-time     spc @nav)
   cwt (caps-word-toggle 2000)
 )
 
-(defalias
-  ;; mod-morph keys
- , (fork , (macro (unshift ;)) ( rsft , ))
- . (fork . (macro S-; ) ( rsft . ))
- ? (fork S-/ (macro S-1 ) ( rsft / ))
-)
 
 (defalias
   ;; shifted keys
@@ -155,19 +161,29 @@
 )
 
 (defalias
+  ;; mod-morph keys
+ , (fork , (macro (unshift ;)) ( sft , ))
+ . (fork . (macro S-; ) ( sft . ))
+ ? (fork S-/ (macro S-1 ) ( sft / ))
+ pl< (fork @pl (macro S-, ) ( sft h a ))
+ pr> (fork @pr (macro S-. ) ( sft a e ))
+)
+
+(defalias
   ;; chords
-  ⌦o (chord del o)
-  ⌦u (chord del u)
+;;  ⌦o (chord del o)
+  ;;⌦u (chord del u)
 
-  ↵p  (chord ret p)
-  ↵,  (chord ret ,)
-  ↵. (chord ret .)
+;; ↵p  (chord ret p)
+;; ↵,  (chord ret ,)
+;; ↵. (chord ret .)
 
-  ⇥l (chord tab l)
-  ⇥d (chord tab d)
+;; ⇥l (chord tab l)
+;; ⇥d (chord tab d)
 
-  ␛r (chord esc r)
-  ␛t (chord esc t)
+;; ␛r (chord esc r)
+;; ␛t (chord esc t)
+;; will put right hand and left hand chords
 )
 
 (defalias
@@ -182,39 +198,82 @@
   cstb     C-S-tab
 
   lctl     (tap-hold $tap-time $hold-time esc lctl)
-  fn       (tap-hold $tap-time $hold-time fn (layer-toggle fn))
+  ;; fn       (tap-hold $tap-time $hold-time fn @fn)
+  nspc     (tap-hold $tap-time $hold-time     spc @nav)
+  fret     (tap-hold $tap-time $hold-time     ret @fn)
 
   meh      (multi ctl alt sft)
   tmeh     (tap-hold $tap-time $hold-time spc @meh)
 
-  sve     (macro S-; w ret)
+  sve     (macro esc S-; w ret)
+  dprev   (multi ctl alt sft left)
+  dnext   (multi ctl alt sft rght)
+
+)
+(defchordsv2
+;; left hand side
+  ;; vertical
+  (w e) tab $chord-time first-release ()
+  (s d) esc $chord-time first-release ()
+  (z x) @cc $chord-time first-release ()
+  (x c) @cv  $chord-time first-release ()
+  ;; horizontal
+  (w s) @@ $chord-time-slow first-release ()
+  (s z) grv $chord-time-slow first-release ()
+  (e d) @# $chord-time-slow first-release ()
+  (d x) \ $chord-time-slow first-release ()
+  (r f) @$ $chord-time-slow first-release ()
+  (f c) = $chord-time-slow first-release ()
+  (t g) @% $chord-time-slow first-release ()
+  (g v) @til $chord-time-slow first-release ()
+
+;; right hand side
+  ;; vertical
+  (i o) bspc $chord-time first-release ()
+  (o p) del $chord-time first-release ()
+  (k l) @pl< $chord-time first-release ()
+  (l ;) @pr> $chord-time first-release ()
+  (m ,) @sve $chord-time first-release ()
+  (, .) [ $chord-time first-release ()
+  (. /) ] $chord-time first-release ()
+  ;; horizontal
+  (u j) @^ $chord-time-slow first-release ()
+  (j m) @_ $chord-time-slow first-release ()
+  (i k) +  $chord-time-slow first-release ()
+  (k ,) -  $chord-time-slow first-release ()
+  (o l) @* $chord-time-slow first-release ()
+  (l .) /  $chord-time-slow first-release ()
+  (p ;) @& $chord-time-slow first-release ()
+  (; /) @| $chord-time-slow first-release ()
+;;  (participating-keysN) actionN timeoutN release-behaviourN (disabled-layersN)
 )
 
-(defchords del 15
-  (  o  ) o
-  (    u) u
-  (  o u) del
-)
+;;(defchords del 15
+  ;;(  o  ) o
+  ;;(    u) u
+  ;;(  o u) del
+;;)
 
-(defchords ret 15
-  (p    ) p
-  (  ,  ) @,
-  (    .) @.
-  (p ,  ) @sve
-  (  , .) ret
-)
+;;(defchords ret 15
+;; (p    ) p
+;; (  ,  ) @,
+;; (    .) @.
+;; (p ,  ) @sve
+;; (  , .) ret
+;;)
 
-(defchords tab 15
-  (l  ) l
-  (  d) d
-  (l d) tab
-)
+;;(defchords tab 15
+;;  (l  ) l
+;;  (  d) d
+;;  (l d) tab
+;;)
 
-(defchords esc 15
-  (r  ) r
-  (  t) t
-  (r t) esc
-)
+;;(defchords esc 15
+;;  (r  ) r
+;;  (  t) t
+;;  (r t) esc
+;;)
+
 
 (deftemplate rhc (chordgroupname timeout k1 k2 alias1 alias2 output)
   (defalias
@@ -227,7 +286,7 @@
     ($k1 $k2) $output
   )
 )
-(t! rhc base-bspc 15 a e ⌫a ⌫e bspc)
-(t! rhc num-bspc 15 5 6 ⌫5 ⌫6 bspc)
-(t! rhc sym-bspc 15 @pl @_ ⌫pl ⌫_ bspc)
+;;(t! rhc base-bspc 15 a e ⌫a ⌫e bspc)
+;;(t! rhc num-bspc 15 5 6 ⌫5 ⌫6 bspc)
+;;(t! rhc sym-bspc 15 @pl @_ ⌫pl ⌫_ bspc)
 (t! rhc capsword 30 s h cws cwh @cwt)
