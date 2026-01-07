@@ -22,8 +22,8 @@
       // Chat with AI
       "space a c": "agent::ToggleFocus",
       // Go to file with `gf`
-      "g f": "editor::OpenExcerpts"
-    }
+      "g f": "editor::OpenExcerpts",
+    },
   },
   {
     "context": "Editor",
@@ -33,8 +33,8 @@
       "alt-l": "workspace::ActivatePaneRight",
       "alt-k": "workspace::ActivatePaneUp",
       "alt-j": "workspace::ActivatePaneDown",
-      "ctrl-alt-k": "projects::OpenRecent"
-    }
+      "ctrl-alt-k": "projects::OpenRecent",
+    },
   },
   {
     "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
@@ -92,8 +92,8 @@
       "space /": "pane::DeploySearch",
       // TODO: Open other files
       // Show project panel with current file
-      "space e": "pane::RevealInProjectPanel"
-    }
+      "space e": "pane::RevealInProjectPanel",
+    },
   },
   // Empty pane, set of keybindings that are available when there is no active editor
   {
@@ -102,8 +102,8 @@
       // Open file finder
       "space space": "file_finder::Toggle",
       // Open recent project
-      "space f p": "projects::OpenRecent"
-    }
+      "space f p": "projects::OpenRecent",
+    },
   },
   // Rename
   {
@@ -111,23 +111,23 @@
     "bindings": {
       "c": "vim::CurrentLine",
       "r": "editor::Rename", // zed specific
-      "a": "editor::ToggleCodeActions" // zed specific
-    }
+      "a": "editor::ToggleCodeActions", // zed specific
+    },
   },
   // Toggle terminal
-  {
-    "context": "Workspace",
-    "bindings": {
-      // "ctrl-`": "workspace::ToggleBottomDock",
-      "space g g": [
-        "task::Spawn",
-        {
-          "task_name": "lazygit",
-          "target": "center"
-        }
-      ]
-    }
-  },
+  // {
+  //   "context": "Workspace",
+  //   "bindings": {
+  //     "ctrl-`": "workspace::ToggleBottomDock",
+  //     "space g g": [
+  //       "task::Spawn",
+  //       {
+  //         "task_name": "lazygit",
+  //         "target": "center",
+  //       },
+  //     ],
+  //   },
+  // },
   {
     "context": "Terminal",
     "bindings": {
@@ -138,8 +138,8 @@
       "alt-h": "workspace::ActivatePaneLeft",
       "alt-l": "workspace::ActivatePaneRight",
       "alt-k": "workspace::ActivatePaneUp",
-      "alt-j": "workspace::ActivatePaneDown"
-    }
+      "alt-j": "workspace::ActivatePaneDown",
+    },
   },
   // File panel (netrw)
   {
@@ -159,8 +159,8 @@
       "alt-h": "workspace::ActivatePaneLeft",
       "alt-l": "workspace::ActivatePaneRight",
       "alt-k": "workspace::ActivatePaneUp",
-      "alt-j": "workspace::ActivatePaneDown"
-    }
+      "alt-j": "workspace::ActivatePaneDown",
+    },
   },
   // Panel nagivation
   {
@@ -169,49 +169,46 @@
       "ctrl-w h": "workspace::ActivatePaneLeft",
       "ctrl-w l": "workspace::ActivatePaneRight",
       "ctrl-w k": "workspace::ActivatePaneUp",
-      "ctrl-w j": "workspace::ActivatePaneDown"
+      "ctrl-w j": "workspace::ActivatePaneDown",
       // ... or other keybindings
-    }
+    },
   },
   {
     "context": "vim_mode == insert",
     "bindings": {
       "ctrl-k": "editor::ContextMenuPrevious",
       "ctrl-j": "editor::ContextMenuNext",
-      "ctrl-space": "editor::ShowCompletions"
-    }
+      "ctrl-space": "editor::ShowCompletions",
+    },
   },
   {
     "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
     "bindings": {
       "shift-j": "editor::MoveLineDown",
       "shift-k": "editor::MoveLineUp",
-      "shift-s": [
-        "vim::PushAddSurrounds",
-        {}
-      ]
-    }
+      "shift-s": ["vim::PushAddSurrounds", {}],
+    },
   },
   {
     "context": "TabSwitcher",
     "bindings": {
       "ctrl-k": "menu::SelectPrevious",
-      "ctrl-j": "menu::SelectNext"
-    }
+      "ctrl-j": "menu::SelectNext",
+    },
   },
   {
     "context": "FileFinder",
     "bindings": {
       "ctrl-k": "menu::SelectPrevious",
-      "ctrl-j": "menu::SelectNext"
-    }
+      "ctrl-j": "menu::SelectNext",
+    },
   },
   {
     "context": "CommandPalette",
     "bindings": {
       "ctrl-k": "menu::SelectPrevious",
-      "ctrl-j": "menu::SelectNext"
-    }
+      "ctrl-j": "menu::SelectNext",
+    },
   },
   {
     "context": "Workspace",
@@ -220,35 +217,35 @@
       "cmd-k": [
         "projects::OpenRecent",
         {
-          "create_new_window": false
-        }
+          "create_new_window": false,
+        },
       ],
-      "ctrl-x": "tab_switcher::CloseSelectedItem"
-    }
+      "ctrl-x": "tab_switcher::CloseSelectedItem",
+    },
   },
   {
     "context": "Terminal",
     "bindings": {
-      "cmd-t": "workspace::NewTerminal"
-    }
+      "cmd-t": "workspace::NewTerminal",
+    },
   },
   {
     "context": "EmptyPane || SharedScreen",
     "bindings": {
-      "space f": "file_finder::Toggle"
-    }
+      "space f": "file_finder::Toggle",
+    },
   },
   {
     "context": "Editor && edit_prediction",
     "bindings": {
       // Here we also allow `alt-enter` to accept the prediction
-      "alt-e": "editor::AcceptEditPrediction"
-    }
+      "alt-e": "editor::AcceptEditPrediction",
+    },
   },
   {
     "context": "Editor && edit_prediction_conflict",
     "bindings": {
-      "alt-e": "editor::AcceptEditPrediction"
-    }
-  }
+      "alt-e": "editor::AcceptEditPrediction",
+    },
+  },
 ]
