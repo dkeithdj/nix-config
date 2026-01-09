@@ -200,4 +200,5 @@
   "horizontal_scroll_margin": 6,
   "scroll_beyond_last_line": "vertical_scroll_margin",
   "show_completions_on_input": true,
+  "which_key": { "enabled": true },
 }

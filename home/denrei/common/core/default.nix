@@ -21,6 +21,7 @@ let
     "school"
     "web"
     "blogs"
+    "sides"
   ];
 
   platform = if hostSpec.isDarwin then "darwin" else "nixos";
@@ -74,7 +75,7 @@ in
       "$HOME/.local/bin"
       "$HOME/.avm/bin"
       "$HOME/.cargo/bin"
-      "$HOME/.local/share/solana/install/active_release/bin"
+      # "$HOME/.local/share/solana/install/active_release/bin"
     ];
     sessionVariables = {
       DIRENV_LOG_FORMAT = "";
@@ -192,19 +193,19 @@ in
     gopls
     python3
     nodejs
-    deno
+    # deno
     yarn
     elixir
     gcc
     gnumake
-    solc
+    # solc
     black
     marksman
     pnpm
     minikube
     kubectl
 
-    nodePackages.aws-cdk
+    # nodePackages.aws-cdk
     nodePackages.eslint
 
     act
