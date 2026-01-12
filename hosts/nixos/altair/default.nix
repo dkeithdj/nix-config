@@ -39,6 +39,7 @@
       # Desktop
       # "hosts/common/optional/services/greetd.nix" # display manager
       "hosts/common/optional/hyprland.nix" # window manager
+      "hosts/common/optional/desktops"
       # "hosts/common/optional/cosmic.nix" # cosmic de
 
       "hosts/common/optional/pipewire.nix" # audio
@@ -46,7 +47,7 @@
       # "hosts/common/optional/kanata/altair.nix" # keyboard colemak
       "hosts/common/optional/vial.nix" # keyboard vial
       # "hosts/common/optional/mariadb.nix" # media player
-      "hosts/common/optional/ollama.nix" # ollama
+      # "hosts/common/optional/ollama.nix" # ollama
       "hosts/common/optional/tailscale.nix" # ollama
 
       "hosts/common/optional/nautilus.nix" # file manager
@@ -64,6 +65,7 @@
   # ========== Host Specification ==========
   hostSpec = {
     hostName = "altair";
+    desktop = "cosmic";
     persistFolder = "/persist"; # added for "completion" because of the disko spec that was used even though impermanence isn't actually enabled here yet.
   };
   # set custom autologin options. see greetd.nix for details

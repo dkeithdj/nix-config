@@ -134,6 +134,17 @@
       default = "1";
       description = "Used to indicate what scaling to use. Floating point number";
     };
+    desktop = lib.mkOption {
+      type = lib.types.nullOr (
+        lib.types.enum [
+          "hyprland"
+          "cosmic"
+          "gnome"
+        ]
+      );
+      default = null;
+      description = "The desktop environment/window manager to use (null for none/server)";
+    };
   };
 
   config = {

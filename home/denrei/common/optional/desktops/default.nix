@@ -1,8 +1,12 @@
+{ lib, hostSpec, ... }:
 {
-  imports = [
+  imports = lib.flatten [
     # Packages with custom configs go here
 
-    ./hyprland
+    (lib.optionals (hostSpec.desktop == "hyprland") [
+      ./hyprland
+      ../ags.nix
+    ])
 
     ########## Utilities ##########
     #    ./services/dunst.nix # Notification daemon
