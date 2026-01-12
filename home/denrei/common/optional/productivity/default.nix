@@ -5,7 +5,7 @@
     inherit (pkgs)
       qbittorrent # dunno where to put this
       obsidian
-      onlyoffice-bin_latest
+      onlyoffice-desktopeditors
       vial
       smile
       anydesk

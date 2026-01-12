@@ -29,7 +29,7 @@
     common/optional/comms
 
     # common/optional/hyprpanel
-    common/optional/rofi
+    # common/optional/rofi
   ];
 
   monitors = [

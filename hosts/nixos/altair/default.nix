@@ -38,7 +38,7 @@
 
       # Desktop
       # "hosts/common/optional/services/greetd.nix" # display manager
-      "hosts/common/optional/hyprland.nix" # window manager
+      # "hosts/common/optional/hyprland.nix" # window manager
       "hosts/common/optional/desktops"
       # "hosts/common/optional/cosmic.nix" # cosmic de
 
@@ -58,7 +58,7 @@
       #################### Users to Create ####################
       # "hosts/common/users/denrei"
     ])
-    ./altair.nix
+    # ./altair.nix
 
   ];
 
@@ -73,11 +73,11 @@
   # autoLogin.enable = true;
   # autoLogin.username = "denrei";
 
-  programs.ssh.startAgent = true;
+  # programs.ssh.startAgent = true;
   # services.gnome.gnome-keyring.enable = true;
   # TODO enable and move to greetd area? may need authentication dir or something?
   # security.pam.services.greetd.enableGnomeKeyring = true;
-  security.pam.services.gdm-password.enableGnomeKeyring = true;
+  # security.pam.services.gdm-password.enableGnomeKeyring = true;
 
   networking = {
     # hostName = "altair";
@@ -110,7 +110,7 @@
   hardware.graphics.enable = true;
 
   # dconf
-  programs.dconf.enable = true;
+  # programs.dconf.enable = true;
 
   programs.virt-manager.enable = true;
   virtualisation = {
@@ -120,11 +120,11 @@
   };
 
   # logind
-  services.logind.extraConfig = ''
-    HandlePowerKey=ignore
-    HandleLidSwitch=suspend
-    HandleLidSwitchExternalPower=ignore
-  '';
+  # services.logind.settings.Login = ''
+  #   HandlePowerKey=ignore
+  #   HandleLidSwitch=suspend
+  #   HandleLidSwitchExternalPower=ignore
+  # '';
 
   boot.initrd = {
     systemd.enable = true;

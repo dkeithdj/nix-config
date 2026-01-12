@@ -4,8 +4,8 @@
   ...
 }:
 {
-  programs.ssh = lib.optionalAttrs pkgs.stdenv.isLinux {
-    startAgent = true;
+  # programs.ssh = lib.optionalAttrs pkgs.stdenv.isLinux {
+  #   startAgent = true;
 
-  };
+  # };
 }

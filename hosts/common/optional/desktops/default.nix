@@ -3,8 +3,8 @@
 { lib, ... }:
 {
   imports = [
-    ./hyprland.nix
-    ./cosmic.nix
-    ./gnome.nix
+    ../hyprland.nix
+    ../cosmic.nix
+    ../gnome.nix
   ];
 }

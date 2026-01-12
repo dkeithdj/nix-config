@@ -7,14 +7,14 @@
     "default_profile": "write",
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-opus-4.5",
+      "model": "claude-opus-4.5"
     },
     "inline_alternatives": [
       {
         "provider": "copilot_chat",
-        "model": "claude-sonnet-4",
-      },
-    ],
+        "model": "claude-sonnet-4"
+      }
+    ]
   },
   "auto_install_extensions": {
     "docker-compose": true,
@@ -24,46 +24,53 @@
     "catpuccin": true,
     "svelte": true,
     "lua": true,
-    "emmet": true,
+    "emmet": true
   },
-  "buffer_font_fallbacks": [".ZedMono"],
+  "buffer_font_fallbacks": [
+    ".ZedMono"
+  ],
   "buffer_font_family": "FantasqueSansM Nerd Font Propo",
   "buffer_line_height": "standard",
   "load_direnv": "shell_hook",
-  // Inlay hints preconfigured by Zed: Go, Rust, Typescript and Svelte
-  // "inlay_hints": {
-  //   "enabled": true,
-  // },
   "lsp": {
     "tailwindcss-language-server": {
       "settings": {
-        "classAttributes": ["class", "className", "ngClass", "styles"],
-      },
+        "classAttributes": [
+          "class",
+          "className",
+          "ngClass",
+          "styles"
+        ]
+      }
     },
     "rust-analyzer": {
       "binary": {
-        "path": "rust-analyzer",
-      },
+        "path": "rust-analyzer"
+      }
     },
     "nil": {
       "binary": {
-        "path": "nil",
+        "path": "nil"
       },
       "settings": {
         "diagnostics": {
-          "ignored": ["unused_binding"],
-        },
-      },
+          "ignored": [
+            "unused_binding"
+          ]
+        }
+      }
     },
     "nixd": {
       "binary": {
-        "path": "nixd",
+        "path": "nixd"
       },
       "settings": {
         "diagnostic": {
-          "suppress": ["semi-extra-with"],
-        },
-      },
+          "suppress": [
+            "semi-extra-with"
+          ]
+        }
+      }
     },
     "emmet": {},
     "ruff": {
@@ -72,83 +79,90 @@
           "configurationPreference": "filesystemFirst",
           "codeAction": {
             "disableRuleComment": {
-              "enable": false,
+              "enable": false
             },
             "fixViolation": {
-              "enable": true,
-            },
+              "enable": true
+            }
           },
           "organizeImports": true,
-          "showSyntaxErrors": true,
-        },
-      },
-    },
+          "showSyntaxErrors": true
+        }
+      }
+    }
   },
-  //"format_on_save": "on",
   "languages": {
-    // Refer https://zed.dev/docs/languages/javascript and https://zed.dev/docs/languages/typescript for more info
     "TSX": {
-      "show_edit_predictions": true,
+      "show_edit_predictions": true
     },
     "TypeScript": {
-      // Refer https://github.com/jellydn/ts-inlay-hints for how to setup for Neovim and VSCode
-      // "inlay_hints": {
-      //   "enabled": true,
-      //   "show_parameter_hints": false,
-      //   "show_other_hints": false,
-      //   "show_type_hints": true,
-      // },
       "format_on_save": "on",
       "formatter": "prettier",
       "prettier": {
-        "allowed": true,
-      },
+        "allowed": true
+      }
     },
     "Python": {
       "tab_size": 4,
       "format_on_save": "on",
       "formatter": [
-        { "code_action": "source.organizeImports.ruff" },
-        { "code_action": "source.fixAll.ruff" },
+        {
+          "code_action": "source.organizeImports.ruff"
+        },
+        {
+          "code_action": "source.fixAll.ruff"
+        },
         {
           "language_server": {
-            "name": "ruff",
-          },
-        },
+            "name": "ruff"
+          }
+        }
       ],
-      "language_servers": ["ty", "ruff", "!pylsp"],
+      "language_servers": [
+        "ty",
+        "ruff",
+        "!pylsp"
+      ]
     },
     "Nix": {
       "formatter": {
         "external": {
-          "command": "nixfmt", // or "nixfmt"
-        },
-      },
-    },
+          "command": "nixfmt"
+        }
+      }
+    }
   },
-  // File syntax highlighting
   "file_types": {
-    "Dockerfile": ["Dockerfile", "Dockerfile.*"],
-    "JSON": ["json", "jsonc", "*.code-snippets"],
-    "C++": ["*.dtsi", "*.keymap"],
+    "Dockerfile": [
+      "Dockerfile",
+      "Dockerfile.*"
+    ],
+    "JSON": [
+      "json",
+      "jsonc",
+      "*.code-snippets"
+    ],
+    "C++": [
+      "*.dtsi",
+      "*.keymap"
+    ]
   },
   "relative_line_numbers": "wrapped",
   "scrollbar": {
-    "show": "never",
+    "show": "never"
   },
   "tab_bar": {
-    "show": true,
+    "show": true
   },
   "tab_size": 2,
   "tabs": {
     "git_status": true,
-    "file_icons": true,
+    "file_icons": true
   },
   "toolbar": {
     "breadcrumbs": true,
-    "quick_actions": true,
+    "quick_actions": true
   },
-  //"formatter": "language_server",
   "terminal": {
     "alternate_scroll": "off",
     "blinking": "terminal_controlled",
@@ -157,18 +171,18 @@
     "button": false,
     "dock": "bottom",
     "env": {
-      "TERM": "xterm-256color",
+      "TERM": "xterm-256color"
     },
     "font_family": "FantasqueSansM Nerd Font Propo",
     "line_height": {
-      "custom": 1.1,
+      "custom": 1.1
     },
     "option_as_meta": false,
-    "shell": "system",
+    "shell": "system"
   },
   "telemetry": {
     "diagnostics": false,
-    "metrics": false,
+    "metrics": false
   },
   "project_panel": {
     "button": false,
@@ -177,16 +191,16 @@
     "auto_fold_dirs": false,
     "indent_size": 12,
     "scrollbar": {
-      "show": "never",
-    },
+      "show": "never"
+    }
   },
   "outline_panel": {
     "button": false,
-    "dock": "right",
+    "dock": "right"
   },
   "auto_update": false,
   "features": {
-    "edit_prediction_provider": "copilot",
+    "edit_prediction_provider": "copilot"
   },
   "theme": "Tokyo Night",
   "ui_font_family": "FantasqueSansM Nerd Font Propo",
@@ -194,11 +208,13 @@
   "cursor_blink": false,
   "vim": {
     "highlight_on_yank_duration": 150,
-    "use_system_clipboard": "always",
+    "use_system_clipboard": "always"
   },
   "vertical_scroll_margin": 6,
   "horizontal_scroll_margin": 6,
   "scroll_beyond_last_line": "vertical_scroll_margin",
   "show_completions_on_input": true,
-  "which_key": { "enabled": true },
+  "which_key": {
+    "enabled": true
+  }
 }

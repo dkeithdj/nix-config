@@ -5,6 +5,7 @@
 
     (lib.optionals (hostSpec.desktop == "hyprland") [
       ./hyprland
+      ../rofi
       ../ags.nix
     ])
 

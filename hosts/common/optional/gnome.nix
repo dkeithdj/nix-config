@@ -5,7 +5,7 @@
   ...
 }:
 {
-  config = lib.mkIf (config.hostSpec.desktop == "hyprland") {
+  config = lib.mkIf (config.hostSpec.desktop == "gnome") {
     environment = {
       systemPackages = with pkgs; [
         morewaita-icon-theme
