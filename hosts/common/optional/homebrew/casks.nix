@@ -13,8 +13,10 @@ _:
   # "kicad"
   "dbeaver-community"
   # "tableplus"
-  "tuple"
+  # "tuple"
   "bitwarden"
+  "wezterm@nightly"
+  "claude-code"
 
   # Communication Tools
   "discord"

@@ -2,6 +2,7 @@
   pkgs,
   config,
   inputs,
+  hostSpec,
   ...
 }:
 {
@@ -10,7 +11,7 @@
   # home.packages = with pkgs; [wezterm];
   programs.wezterm = {
     package = inputs.wezterm.packages.${pkgs.system}.default;
-    enable = true;
+    enable = if hostSpec.isDarwin then false else true;
     enableZshIntegration = true;
     enableBashIntegration = true;
     # extraConfig = builtins.readFile ./wezterm.lua;

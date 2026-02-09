@@ -60,8 +60,8 @@
       # 120, 94, 68, 35, 25, 15
       InitialKeyRepeat = 15;
 
-      "com.apple.sound.beep.volume" = 0.0;
-      "com.apple.sound.beep.feedback" = 0;
+      # "com.apple.sound.beep.volume" = 0.0;
+      # "com.apple.sound.beep.feedback" = 0;
     };
 
   };

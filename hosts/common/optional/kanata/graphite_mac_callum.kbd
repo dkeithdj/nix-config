@@ -30,7 +30,7 @@
   XX    b     l     d     w     q       XX    '     f     o     u     j     XX    XX
   XX    n     r     t     @cws  g       XX    y     @cwh  a     e     i     XX
   z     x     m     c     v     XX      XX    k     p     @,    @.    @?
-  fn    XX    XX    @fret          @nspc            sft   @num  XX    XX    XX    XX
+  fn    XX    XX    @nspc     @fret           @num  sft  XX    XX    XX    XX
 )
 
 ;;(deflayer num
