@@ -19,7 +19,7 @@
     installVimSyntax = true;
     package = inputs.ghostty.packages.${pkgs.system}.default;
     settings = {
-      theme = "tokyonight_night";
+      theme = "Tokyonight Night";
       font-family = "FantasqueSansM Nerd Font Propo";
       font-feature = "feat";
       focus-follows-mouse = true;

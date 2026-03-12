@@ -1,5 +1,5 @@
 shell-integration = zsh
-theme = tokyonight_night
+theme = Tokyonight Night
 font-family = FantasqueSansM Nerd Font Propo
 font-feature = feat
 focus-follows-mouse = true

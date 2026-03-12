@@ -1,4 +1,12 @@
 {
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry"
+    }
+  },
+  "edit_predictions": {
+    "provider": "copilot",
+  },
   "minimap": {
     "current_line_highlight": "line",
   },
@@ -6,7 +14,6 @@
   "show_edit_predictions": true,
   "icon_theme": "Material Icon Theme",
   "agent": {
-    "always_allow_tool_actions": true,
     "default_profile": "write",
     "default_model": {
       "provider": "copilot_chat",
@@ -176,9 +183,6 @@
     "dock": "right",
   },
   "auto_update": false,
-  "features": {
-    "edit_prediction_provider": "copilot",
-  },
   "theme": "Tokyo Night",
   "ui_font_family": "FantasqueSansM Nerd Font Propo",
   "vim_mode": true,

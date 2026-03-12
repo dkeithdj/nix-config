@@ -171,7 +171,7 @@ in
     nix-diff # Differ, more detailed
     nix-output-monitor
     nh # Nice wrapper for NixOS and HM
-    neofetch # system info
+    #neofetch # system info
     fastfetch # system info
     awscli2
     zip
