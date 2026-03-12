@@ -9,6 +9,9 @@ on:
 jobs:
   check-update:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     outputs:
       has_updates: ${{ steps.check.outputs.has_updates }}
     steps:
@@ -42,6 +45,9 @@ jobs:
     needs: check-update
     if: needs.check-update.outputs.has_updates == 'true'
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     strategy:
       fail-fast: false
       matrix:
@@ -72,6 +78,9 @@ jobs:
     needs: check-update
     if: needs.check-update.outputs.has_updates == 'true'
     runs-on: macos-latest
+    permissions:
+      id-token: write
+      contents: read
     strategy:
       fail-fast: false
       matrix:
@@ -94,6 +103,9 @@ jobs:
       - name: Update flake inputs
         run: nix flake update
 
+      - name: Prefetch flake inputs
+        run: nix flake metadata --no-update-lock-file
+
       - name: Build Darwin configuration (${{ matrix.host }})
         run: |
           nix build .#darwinConfigurations.${{ matrix.host }}.config.system.build.toplevel --dry-run
@@ -102,6 +114,7 @@ jobs:
     needs: [build-nixos, build-darwin]
     runs-on: ubuntu-latest
     permissions:
+      id-token: write
       contents: write
     steps:
       - uses: actions/checkout@v4
