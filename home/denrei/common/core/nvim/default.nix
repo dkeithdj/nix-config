@@ -54,9 +54,9 @@
       lua
       stylua
       alejandra
-      nodePackages.eslint
+      # nodePackages.eslint
       eslint_d
-      nodePackages.prettier
+      # nodePackages.prettier
       ruff
       black
       pyright

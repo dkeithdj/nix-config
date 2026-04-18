@@ -2,7 +2,8 @@ _:
 
 [
   # Development Tools
-  "docker-desktop"
+  # "docker-desktop"
+  "docker"
   "container"
   "claude"
   "zed@preview"

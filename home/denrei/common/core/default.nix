@@ -202,11 +202,11 @@ in
     black
     marksman
     pnpm
-    minikube
-    kubectl
+    # minikube
+    # kubectl
 
     # nodePackages.aws-cdk
-    nodePackages.eslint
+    # nodePackages.eslint
 
     act
     # qmk

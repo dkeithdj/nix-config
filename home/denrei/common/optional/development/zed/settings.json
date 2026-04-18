@@ -1,8 +1,14 @@
 {
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "git_panel": {
+    "dock": "left",
+  },
   "agent_servers": {
     "claude-acp": {
-      "type": "registry"
-    }
+      "type": "registry",
+    },
   },
   "edit_predictions": {
     "provider": "copilot",
@@ -14,6 +20,8 @@
   "show_edit_predictions": true,
   "icon_theme": "Material Icon Theme",
   "agent": {
+    "sidebar_side": "right",
+    "dock": "right",
     "default_profile": "write",
     "default_model": {
       "provider": "copilot_chat",
@@ -169,6 +177,7 @@
     "metrics": false,
   },
   "project_panel": {
+    "dock": "left",
     "button": false,
     "file_icons": true,
     "git_status": true,
