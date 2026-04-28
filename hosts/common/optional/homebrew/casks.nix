@@ -52,4 +52,8 @@ _:
   "zen"
   "brave-browser"
 
+  # Creativity Tools
+  "freecad"
+  "darktable"
+
 ]
