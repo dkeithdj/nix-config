@@ -20,9 +20,12 @@
       mimeType = [ "text/plain" ];
     };
   };
+
   programs.neovim = {
     enable = true;
     package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+    initLua = builtins.readFile ./init.lua;
+    sideloadInitLua = true;
     viAlias = true;
     vimAlias = true;
 
@@ -31,6 +34,7 @@
     withPython3 = true;
 
     extraPackages = with pkgs; [
+      statix
       git
       gcc
       gnumake

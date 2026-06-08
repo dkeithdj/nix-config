@@ -6,6 +6,6 @@
   imports = [
     ./brave.nix
     ./firefox.nix
-    ./zen.nix
+    # ./zen.nix
   ];
 }

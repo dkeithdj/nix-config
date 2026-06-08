@@ -2,14 +2,15 @@ _:
 
 [
   # Development Tools
-  # "docker-desktop"
-  "docker"
-  "container"
+  "docker-desktop"
+  # "docker"
+  # "container"
   "claude"
   "zed@preview"
   "ghostty"
   "launchcontrol"
   "postman"
+  "bruno"
   "visual-studio-code"
   # "kicad"
   "dbeaver-community"
@@ -22,8 +23,8 @@ _:
   # Communication Tools
   "discord"
   "slack"
-  "telegram"
-  "zoom"
+  # "telegram"
+  # "zoom"
   "obs"
   # "audacity"
   # "messenger"
@@ -55,5 +56,7 @@ _:
   # Creativity Tools
   "freecad"
   "darktable"
+  "bambu-studio"
+  "orcaslicer"
 
 ]
