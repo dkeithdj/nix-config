@@ -56,7 +56,8 @@ _:
   # Creativity Tools
   "freecad"
   "darktable"
-  "bambu-studio"
+  # "bambu-studio"
   "orcaslicer"
+  "blender"
 
 ]
