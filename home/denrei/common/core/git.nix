@@ -56,6 +56,18 @@ in
       "result"
       ".DS_Store"
       "cdk.out"
+      # Environment
+      ".env"
+      # Devenv
+      ".devenv*"
+      "devenv.local.nix"
+      "devenv.local.yaml"
+      # pre-commit
+      ".pre-commit-config.yaml"
+      # rust
+      "target/"
+      #data
+      ".csvignore"
     ];
   };
 }

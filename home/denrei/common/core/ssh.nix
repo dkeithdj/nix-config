@@ -5,10 +5,9 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-
-    matchBlocks = {
+    settings = {
       "git" = {
-        host = "github.com";
+        host = "github.com gitlab.com";
         user = "git";
         forwardAgent = true;
         identitiesOnly = true;
