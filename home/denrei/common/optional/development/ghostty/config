@@ -1,6 +1,7 @@
 shell-integration = zsh
 theme = Tokyonight Night
 font-family = FantasqueSansM Nerd Font Propo
+font-size = 16
 font-feature = feat
 focus-follows-mouse = true
 mouse-hide-while-typing = true

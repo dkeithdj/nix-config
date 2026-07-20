@@ -6,7 +6,7 @@
     enable = true;
     casks = pkgs.callPackage ./casks.nix { };
     brews = pkgs.callPackage ./brews.nix { };
-    onActivation.cleanup = "uninstall";
+    onActivation.cleanup = "zap";
     onActivation.autoUpdate = true;
     onActivation.upgrade = true;
     taps = builtins.attrNames config.nix-homebrew.taps;

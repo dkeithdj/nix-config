@@ -5,7 +5,7 @@
       yazi # file explorer
       file
       poppler
-      unar
+      # unar
       ffmpegthumbnailer
       ;
   };

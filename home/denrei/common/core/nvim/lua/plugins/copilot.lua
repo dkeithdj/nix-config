@@ -1,26 +1,25 @@
-if true then
-	return {}
-end
+if true then return {} end
 
 return {
-	"github/copilot.vim",
-	config = function()
-		vim.g.copilot_enabled = true
-		vim.keymap.set("i", "<C-J>", 'copilot#Accept("\\<CR>")', {
-			expr = true,
-			replace_keycodes = false,
-		})
+  "github/copilot.vim",
+  enabled = false,
+  config = function()
+    vim.g.copilot_enabled = true
+    vim.keymap.set("i", "<C-J>", 'copilot#Accept("\\<CR>")', {
+      expr = true,
+      replace_keycodes = false,
+    })
 
-		vim.keymap.set("n", "<leader>ug", function()
-			local notify = require("notify")
-			vim.g.copilot_enabled = not vim.g.copilot_enabled
+    vim.keymap.set("n", "<leader>ug", function()
+      local notify = require("notify")
+      vim.g.copilot_enabled = not vim.g.copilot_enabled
 
-			if vim.g.copilot_enabled then
-				notify("Copilot: Enabled", "info")
-			else
-				notify("Copilot: Disabled", "info")
-			end
-		end, { desc = "Toggle Copilot" })
-		vim.g.copilot_no_tab_map = true
-	end,
+      if vim.g.copilot_enabled then
+        notify("Copilot: Enabled", "info")
+      else
+        notify("Copilot: Disabled", "info")
+      end
+    end, { desc = "Toggle Copilot" })
+    vim.g.copilot_no_tab_map = true
+  end,
 }
