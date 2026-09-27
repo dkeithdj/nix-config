@@ -9,7 +9,7 @@ _:
   "zed@preview"
   "ghostty"
   "launchcontrol"
-  "postman"
+  # "postman"
   "bruno"
   "visual-studio-code"
   # "kicad"
@@ -47,7 +47,7 @@ _:
 
   # menubar
   "stats"
-  "hiddenbar"
+  # "hiddenbar"
 
   # Browsers
   "zen"
