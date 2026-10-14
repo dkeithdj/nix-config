@@ -39,7 +39,7 @@ _:
   # Productivity Tools
   "raycast"
   "nikitabobko/tap/aerospace"
-  "mediosz/tap/swipeaerospace"
+  # "mediosz/tap/swipeaerospace"
   "itsycal"
   "betterdisplay"
   # "linearmouse"

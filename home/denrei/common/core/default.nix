@@ -220,6 +220,7 @@ in
     imagemagick
     ghostscript
     dive
+    ffmpeg-full
   ];
 
   nix = {
