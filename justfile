@@ -128,3 +128,6 @@ sops-add-shared-creation-rules USER HOST:
 sops-add-creation-rules USER HOST:
     just sops-add-host-creation-rules {{USER}} {{HOST}} && \
     just sops-add-shared-creation-rules {{USER}} {{HOST}}
+
+update-darwin:
+  sudo darwin-rebuild switch --flake .#deneb --verbose --show-trace
