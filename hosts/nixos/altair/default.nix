@@ -126,10 +126,6 @@
   #   HandleLidSwitchExternalPower=ignore
   # '';
 
-  boot.initrd = {
-    systemd.enable = true;
-  };
-
   boot = {
     loader = {
       systemd-boot = {
