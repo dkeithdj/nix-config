@@ -53,7 +53,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.linting.eslint" },
     { import = "lazyvim.plugins.extras.ui.treesitter-context" },
 
-    { import = "lazyvim.plugins.extras.vscode" },
+    -- { import = "lazyvim.plugins.extras.vscode" },
     { import = "plugins" },
   },
   lockfile = vim.fn.stdpath("cache") .. "/lazy-lock.json",

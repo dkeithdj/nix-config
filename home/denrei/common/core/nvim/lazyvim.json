@@ -2,7 +2,9 @@
   "extras": [
     "lazyvim.plugins.extras.lang.ansible",
     "lazyvim.plugins.extras.lang.prisma",
-    "lazyvim.plugins.extras.lang.toml"
+    "lazyvim.plugins.extras.lang.sql",
+    "lazyvim.plugins.extras.lang.toml",
+    "lazyvim.plugins.extras.lang.typescript.tsc"
   ],
   "install_version": 7,
   "news": {
