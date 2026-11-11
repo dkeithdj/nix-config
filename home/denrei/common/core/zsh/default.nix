@@ -104,6 +104,7 @@
       z = "zellij";
 
       p = ". cd-project";
+      m = ". m"; # work
 
       ck = "clone-in-kitty --type os-window";
 
