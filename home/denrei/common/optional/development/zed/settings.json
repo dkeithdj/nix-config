@@ -1,41 +1,57 @@
 {
+  "diff_view_style": "unified",
+  "theme_overrides": {
+    "styles": {
+      "panel.focused_border": "#ff0000ff"
+    }
+  },
   "collaboration_panel": {
-    "dock": "left",
+    "button": false,
+    "dock": "left"
   },
   "git_panel": {
     "dock": "left",
+    "default_width": 640
   },
   "agent_servers": {
     "claude-acp": {
       "default_config_options": {
+        "effort": "default",
+        "fast": false,
+        "mode": "auto",
+        "model": "opus",
         "agent": "public-api"
       },
-      "type": "registry",
-    },
+      "type": "registry"
+    }
   },
   "edit_predictions": {
-    "provider": "none",
+    "provider": "none"
   },
   "minimap": {
-    "current_line_highlight": "line",
+    "current_line_highlight": "line"
   },
   "colorize_brackets": true,
   "show_edit_predictions": true,
   "icon_theme": "Material Icon Theme",
   "agent": {
-    "sidebar_side": "right",
+    "threads_sidebar": {
+      "position": "right"
+    },
     "dock": "right",
+    "flexible": false,
+    "default_width": 450,
     "default_profile": "write",
     "default_model": {
-      "provider": "copilot_chat",
-      "model": "claude-opus-4.6",
+      "provider": "anthropic",
+      "model": "claude-opus-4.6"
     },
     "inline_alternatives": [
       {
-        "provider": "copilot_chat",
-        "model": "claude-sonnet-4",
-      },
-    ],
+        "provider": "anthropic",
+        "model": "claude-sonnet-4"
+      }
+    ]
   },
   "auto_install_extensions": {
     "docker-compose": true,
@@ -46,6 +62,11 @@
     "svelte": true,
     "lua": true,
     "emmet": true,
+    "rainbow-csv": true,
+    "material-icon-theme": true,
+    "make": true,
+    "terraform": true,
+    "toml": true
   },
   "buffer_font_fallbacks": [".ZedMono"],
   "buffer_font_family": "FantasqueSansM Nerd Font Propo",
@@ -54,33 +75,33 @@
   "lsp": {
     "tailwindcss-language-server": {
       "settings": {
-        "classAttributes": ["class", "className", "ngClass", "styles"],
-      },
+        "classAttributes": ["class", "className", "ngClass", "styles"]
+      }
     },
     "rust-analyzer": {
       "binary": {
-        "path": "rust-analyzer",
-      },
+        "path": "rust-analyzer"
+      }
     },
     "nil": {
       "binary": {
-        "path": "nil",
+        "path": "nil"
       },
       "settings": {
         "diagnostics": {
-          "ignored": ["unused_binding"],
-        },
-      },
+          "ignored": ["unused_binding"]
+        }
+      }
     },
     "nixd": {
       "binary": {
-        "path": "nixd",
+        "path": "nixd"
       },
       "settings": {
         "diagnostic": {
-          "suppress": ["semi-extra-with"],
-        },
-      },
+          "suppress": ["semi-extra-with"]
+        }
+      }
     },
     "ruff": {
       "initialization_options": {
@@ -88,75 +109,75 @@
           "configurationPreference": "filesystemFirst",
           "codeAction": {
             "disableRuleComment": {
-              "enable": false,
+              "enable": false
             },
             "fixViolation": {
-              "enable": true,
-            },
+              "enable": true
+            }
           },
           "organizeImports": true,
-          "showSyntaxErrors": true,
-        },
-      },
-    },
+          "showSyntaxErrors": true
+        }
+      }
+    }
   },
   "languages": {
     "TSX": {
-      "show_edit_predictions": true,
+      "show_edit_predictions": true
     },
     "TypeScript": {
       "format_on_save": "on",
       "formatter": "prettier",
       "prettier": {
-        "allowed": true,
-      },
+        "allowed": true
+      }
     },
     "Python": {
       "tab_size": 4,
       "format_on_save": "on",
       "formatter": [
         {
-          "code_action": "source.organizeImports.ruff",
+          "code_action": "source.organizeImports.ruff"
         },
         {
-          "code_action": "source.fixAll.ruff",
+          "code_action": "source.fixAll.ruff"
         },
         {
           "language_server": {
-            "name": "ruff",
-          },
-        },
+            "name": "ruff"
+          }
+        }
       ],
-      "language_servers": ["ty", "ruff", "!pylsp"],
+      "language_servers": ["ty", "ruff", "!pylsp"]
     },
     "Nix": {
       "formatter": {
         "external": {
-          "command": "nixfmt",
-        },
-      },
-    },
+          "command": "nixfmt"
+        }
+      }
+    }
   },
   "file_types": {
     "Dockerfile": ["Dockerfile", "Dockerfile.*"],
     "JSON": ["json", "jsonc", "*.code-snippets"],
-    "C++": ["*.dtsi", "*.keymap"],
+    "C++": ["*.dtsi", "*.keymap"]
   },
   "relative_line_numbers": "wrapped",
   "scrollbar": {
-    "show": "never",
+    "show": "never"
   },
   "tab_bar": {
-    "show": true,
+    "show": true
   },
   "tab_size": 2,
   "tabs": {
     "git_status": true,
-    "file_icons": true,
+    "file_icons": true
   },
   "toolbar": {
     "breadcrumbs": true,
-    "quick_actions": true,
+    "quick_actions": true
   },
   "terminal": {
     "alternate_scroll": "off",
@@ -165,34 +186,37 @@
     "working_directory": "current_project_directory",
     "button": false,
     "dock": "bottom",
+    "default_height": 335,
     "env": {
-      "TERM": "xterm-256color",
+      "TERM": "xterm-256color"
     },
     "font_family": "FantasqueSansM Nerd Font Propo",
     "line_height": {
-      "custom": 1.1,
+      "custom": 1.1
     },
     "option_as_meta": false,
-    "shell": "system",
+    "shell": "system"
   },
   "telemetry": {
     "diagnostics": false,
-    "metrics": false,
+    "metrics": false
   },
   "project_panel": {
     "dock": "left",
+    "default_width": 300,
     "button": false,
     "file_icons": true,
     "git_status": true,
     "auto_fold_dirs": false,
     "indent_size": 12,
     "scrollbar": {
-      "show": "never",
-    },
+      "show": "never"
+    }
   },
   "outline_panel": {
     "button": false,
-    "dock": "right",
+    "dock": "left",
+    "default_width": 300
   },
   "auto_update": false,
   "theme": "Tokyo Night",
@@ -201,13 +225,14 @@
   "cursor_blink": false,
   "vim": {
     "highlight_on_yank_duration": 150,
-    "use_system_clipboard": "always",
+    "use_system_clipboard": "always"
   },
   "vertical_scroll_margin": 6,
   "horizontal_scroll_margin": 6,
   "scroll_beyond_last_line": "vertical_scroll_margin",
   "show_completions_on_input": true,
   "which_key": {
-    "enabled": true,
+    "enabled": true
   },
+  "semantic_tokens": "combined"
 }

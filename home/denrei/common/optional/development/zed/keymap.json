@@ -132,6 +132,9 @@
     "context": "Terminal",
     "bindings": {
       "ctrl-`": "workspace::ToggleBottomDock",
+      // Resize bottom dock: ~1/2 and ~1/4 of editor height (px, tuned for 1440p)
+      "ctrl-alt-2": ["action::Sequence", ["workspace::ResetActiveDockSize", ["workspace::IncreaseActiveDockSize", { "px": 335 }]]],
+      "ctrl-alt-4": "workspace::ResetActiveDockSize",
       "ctrl-n": "workspace::NewTerminal",
       "ctrl-alt-h": "pane::ActivatePreviousItem",
       "ctrl-alt-l": "pane::ActivateNextItem",
@@ -169,7 +172,9 @@
       "ctrl-w h": "workspace::ActivatePaneLeft",
       "ctrl-w l": "workspace::ActivatePaneRight",
       "ctrl-w k": "workspace::ActivatePaneUp",
-      "ctrl-w j": "workspace::ActivatePaneDown"
+      "ctrl-w j": "workspace::ActivatePaneDown",
+      // Resize focused dock to its default size (~1/4 of window, see default_width/default_height)
+      "ctrl-alt-4": "workspace::ResetActiveDockSize"
       // ... or other keybindings
     }
   },
