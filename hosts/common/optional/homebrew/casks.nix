@@ -52,6 +52,7 @@ _:
   # Browsers
   "zen"
   "brave-browser"
+  "helium-browser"
 
   # Creativity Tools
   "freecad"
